@@ -2,13 +2,19 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#000000">
+
 <title>Home</title>
 
 <style>
+
 :root{
   --glass: rgba(255,255,255,.18);
   --glass2: rgba(255,255,255,.09);
@@ -21,15 +27,22 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
   margin:0;
   width:100%;
   height:100%;
   min-height:100%;
   overflow:hidden;
   background:#000;
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+  color:#fff;
+
+  font-family:
+  -apple-system,
+  BlinkMacSystemFont,
+  "SF Pro Display",
+  "Segoe UI",
+  sans-serif;
 }
 
 body{
@@ -39,7 +52,10 @@ body{
   height:100%;
 }
 
-button,input,select,textarea{
+button,
+input,
+select,
+textarea{
   font:inherit;
 }
 
@@ -48,19 +64,30 @@ button{
   appearance:none;
 }
 
-/* ===== FULLSCREEN HOME ===== */
+
+/* =========================================================
+   HOME
+========================================================= */
 
 #home{
   position:absolute;
   inset:0;
+
   width:100%;
   height:100%;
+
   min-height:100svh;
   min-height:100dvh;
+
   overflow:hidden;
 
   background:
-    linear-gradient(160deg,#53657a,#263548 50%,#0b1119);
+  linear-gradient(
+    160deg,
+    #53657a,
+    #263548 50%,
+    #0b1119
+  );
 
   background-position:center;
   background-size:cover;
@@ -69,26 +96,35 @@ button{
 
 #home::before{
   content:"";
+
   position:absolute;
   inset:0;
+
   pointer-events:none;
+
   background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.05),
-      rgba(0,0,0,.02) 45%,
-      rgba(0,0,0,.26)
-    );
+  linear-gradient(
+    180deg,
+    rgba(0,0,0,.05),
+    rgba(0,0,0,.02) 45%,
+    rgba(0,0,0,.26)
+  );
 }
 
-/* ===== TOP CLOCK ===== */
+
+/* =========================================================
+   CLOCK
+========================================================= */
 
 .hero{
   position:relative;
   z-index:3;
+
   padding:
-    calc(env(safe-area-inset-top) + 14px)
-    22px 8px;
+  calc(env(safe-area-inset-top) + 14px)
+  22px
+  8px;
+
   user-select:none;
   -webkit-user-select:none;
 }
@@ -96,44 +132,108 @@ button{
 .hero-time{
   font-size:58px;
   line-height:.95;
+
   font-weight:250;
+
   letter-spacing:-3px;
-  text-shadow:0 2px 14px rgba(0,0,0,.35);
+
+  text-shadow:
+  0 2px 14px
+  rgba(0,0,0,.35);
 }
 
 .hero-date{
   margin-top:8px;
+
   font-size:16px;
+
   opacity:.92;
-  text-shadow:0 2px 8px rgba(0,0,0,.4);
+
+  text-shadow:
+  0 2px 8px
+  rgba(0,0,0,.4);
 }
 
-/* ===== PAGES ===== */
+
+/* скрытая область настроек */
+
+.secret-corner{
+  position:absolute;
+
+  z-index:20;
+
+  top:0;
+  right:0;
+
+  width:58px;
+  height:58px;
+
+  background:transparent;
+
+  border:0;
+
+  opacity:0;
+
+  padding:0;
+}
+
+
+/* =========================================================
+   PAGES
+========================================================= */
 
 .pages-viewport{
   position:absolute;
+
   z-index:2;
+
   left:0;
   right:0;
-  top:calc(env(safe-area-inset-top) + 130px);
-  bottom:calc(env(safe-area-inset-bottom) + 132px);
+
+  top:
+  calc(
+    env(safe-area-inset-top)
+    +
+    130px
+  );
+
+  bottom:
+  calc(
+    env(safe-area-inset-bottom)
+    +
+    132px
+  );
+
   overflow:hidden;
+
   touch-action:pan-y;
 }
 
 .pages-track{
   height:100%;
+
   display:flex;
-  transition:transform .32s cubic-bezier(.22,.7,.18,1);
+
+  transition:
+  transform .32s
+  cubic-bezier(.22,.7,.18,1);
+
   will-change:transform;
 }
 
 .page{
   flex:0 0 100%;
+
   width:100%;
   height:100%;
-  padding:18px 18px 12px;
+
+  padding:
+  18px
+  18px
+  12px;
+
   overflow-y:auto;
+
   scrollbar-width:none;
 }
 
@@ -143,149 +243,260 @@ button{
 
 .app-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:24px 12px;
+
+  grid-template-columns:
+  repeat(4,1fr);
+
+  gap:
+  24px
+  12px;
+
   align-content:start;
 }
 
-/* ===== APP ICON ===== */
+
+/* =========================================================
+   ICON
+========================================================= */
 
 .app{
   min-width:0;
+
   text-align:center;
+
   user-select:none;
+
   cursor:pointer;
 }
 
 .app-icon{
   width:min(17vw,72px);
   height:min(17vw,72px);
+
   margin:auto;
+
   border-radius:20px;
+
   position:relative;
+
   overflow:hidden;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   font-size:32px;
 
   background:
-    linear-gradient(145deg,rgba(255,255,255,.34),rgba(255,255,255,.08));
+  linear-gradient(
+    145deg,
+    rgba(255,255,255,.34),
+    rgba(255,255,255,.08)
+  );
 
-  border:1px solid rgba(255,255,255,.28);
+  border:
+  1px solid
+  rgba(255,255,255,.28);
 
   box-shadow:
-    0 10px 28px rgba(0,0,0,.25),
-    inset 0 1px 1px rgba(255,255,255,.65),
-    inset 0 -1px 1px rgba(255,255,255,.08);
+  0 10px 28px
+  rgba(0,0,0,.25),
 
-  backdrop-filter:blur(18px) saturate(170%);
-  -webkit-backdrop-filter:blur(18px) saturate(170%);
+  inset 0 1px 1px
+  rgba(255,255,255,.65),
 
-  transition:transform .12s ease,filter .12s ease;
+  inset 0 -1px 1px
+  rgba(255,255,255,.08);
+
+  backdrop-filter:
+  blur(18px)
+  saturate(170%);
+
+  -webkit-backdrop-filter:
+  blur(18px)
+  saturate(170%);
+
+  transition:
+  transform .12s ease,
+  filter .12s ease;
 }
 
 .app-icon::before{
   content:"";
+
   position:absolute;
+
   top:-30%;
   left:-15%;
+
   width:85%;
   height:65%;
+
   border-radius:50%;
-  background:rgba(255,255,255,.2);
+
+  background:
+  rgba(255,255,255,.2);
+
   filter:blur(8px);
-  transform:rotate(-12deg);
+
+  transform:
+  rotate(-12deg);
+
   pointer-events:none;
 }
 
 .app-icon img{
   position:absolute;
+
   inset:0;
+
   width:100%;
   height:100%;
+
   object-fit:cover;
 }
 
 .app-icon .emoji{
   position:relative;
+
   z-index:2;
 }
 
 .app:active .app-icon{
   transform:scale(.89);
+
   filter:brightness(.9);
 }
 
 .app-name{
   margin-top:7px;
+
   padding:0 2px;
+
   font-size:12px;
+
   white-space:nowrap;
+
   overflow:hidden;
+
   text-overflow:ellipsis;
-  text-shadow:0 2px 5px rgba(0,0,0,.78);
+
+  text-shadow:
+  0 2px 5px
+  rgba(0,0,0,.78);
 }
 
-/* ===== PAGE DOTS ===== */
+
+/* =========================================================
+   PAGE DOTS
+========================================================= */
 
 .page-dots{
   position:absolute;
+
   z-index:5;
+
   left:0;
   right:0;
-  bottom:calc(env(safe-area-inset-bottom) + 108px);
+
+  bottom:
+  calc(
+    env(safe-area-inset-bottom)
+    +
+    108px
+  );
+
   display:flex;
+
   justify-content:center;
+
   gap:7px;
+
   pointer-events:none;
 }
 
 .page-dot{
   width:7px;
   height:7px;
+
   border-radius:50%;
-  background:rgba(255,255,255,.38);
+
+  background:
+  rgba(255,255,255,.38);
+
   transition:.2s;
 }
 
 .page-dot.active{
   background:#fff;
+
   transform:scale(1.08);
 }
 
-/* ===== DOCK ===== */
+
+/* =========================================================
+   DOCK
+========================================================= */
 
 .dock{
   position:absolute;
+
   z-index:5;
+
   left:14px;
   right:14px;
-  bottom:max(10px,env(safe-area-inset-bottom));
+
+  bottom:
+  max(
+    10px,
+    env(safe-area-inset-bottom)
+  );
+
   height:90px;
+
   border-radius:30px;
 
   display:flex;
+
   align-items:center;
-  justify-content:space-around;
+
+  justify-content:
+  space-around;
 
   background:
-    linear-gradient(145deg,rgba(255,255,255,.23),rgba(255,255,255,.07));
+  linear-gradient(
+    145deg,
+    rgba(255,255,255,.23),
+    rgba(255,255,255,.07)
+  );
 
-  border:1px solid rgba(255,255,255,.25);
+  border:
+  1px solid
+  rgba(255,255,255,.25);
 
   box-shadow:
-    0 12px 35px rgba(0,0,0,.3),
-    inset 0 1px rgba(255,255,255,.3);
+  0 12px 35px
+  rgba(0,0,0,.3),
 
-  backdrop-filter:blur(28px) saturate(175%);
-  -webkit-backdrop-filter:blur(28px) saturate(175%);
+  inset 0 1px
+  rgba(255,255,255,.3);
+
+  backdrop-filter:
+  blur(28px)
+  saturate(175%);
+
+  -webkit-backdrop-filter:
+  blur(28px)
+  saturate(175%);
 }
 
 .dock .app-icon{
   width:62px;
   height:62px;
+
   border-radius:18px;
+
   font-size:28px;
 }
 
@@ -293,89 +504,169 @@ button{
   display:none;
 }
 
-/* ===== SETTINGS ===== */
+
+/* =========================================================
+   OVERLAY
+========================================================= */
 
 .overlay{
   display:none;
+
   position:absolute;
+
   inset:0;
+
   z-index:100;
-  background:rgba(7,8,12,.72);
-  backdrop-filter:blur(28px);
-  -webkit-backdrop-filter:blur(28px);
+
+  background:
+  rgba(7,8,12,.72);
+
+  backdrop-filter:
+  blur(28px);
+
+  -webkit-backdrop-filter:
+  blur(28px);
+
   overflow-y:auto;
+
   padding:
-    calc(env(safe-area-inset-top) + 22px)
-    16px
-    calc(env(safe-area-inset-bottom) + 24px);
+  calc(
+    env(safe-area-inset-top)
+    +
+    22px
+  )
+
+  16px
+
+  calc(
+    env(safe-area-inset-bottom)
+    +
+    24px
+  );
 }
 
 .overlay.show{
   display:block;
 }
 
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
 .panel{
   max-width:440px;
+
   margin:auto;
+
   border-radius:28px;
+
   padding:20px;
-  background:rgba(34,34,41,.8);
-  border:1px solid rgba(255,255,255,.15);
-  box-shadow:0 18px 50px rgba(0,0,0,.42);
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
+
+  background:
+  rgba(34,34,41,.8);
+
+  border:
+  1px solid
+  rgba(255,255,255,.15);
+
+  box-shadow:
+  0 18px 50px
+  rgba(0,0,0,.42);
+
+  backdrop-filter:
+  blur(25px);
+
+  -webkit-backdrop-filter:
+  blur(25px);
 }
 
 .panel-title{
   font-size:24px;
+
   font-weight:700;
-  margin:0 0 20px;
+
+  margin:
+  0 0 20px;
 }
 
 .section-title{
-  margin:22px 2px 10px;
+  margin:
+  22px
+  2px
+  10px;
+
   font-size:12px;
+
   text-transform:uppercase;
+
   letter-spacing:.75px;
+
   opacity:.55;
 }
 
 .btn{
   width:100%;
+
   min-height:50px;
+
   border:0;
+
   border-radius:15px;
+
   margin-top:10px;
+
   background:#fff;
+
   color:#111;
+
   font-weight:650;
 }
 
 .btn.secondary{
   color:#fff;
-  background:rgba(255,255,255,.1);
+
+  background:
+  rgba(255,255,255,.1);
 }
 
 .btn.danger{
   color:#ffb3ad;
-  background:rgba(255,59,48,.14);
+
+  background:
+  rgba(255,59,48,.14);
 }
 
-/* ===== WALLPAPERS ===== */
+
+/* =========================================================
+   WALLPAPERS
+========================================================= */
 
 .wallpaper-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+  repeat(3,1fr);
+
   gap:10px;
 }
 
 .wallpaper{
   aspect-ratio:9/16;
+
   border-radius:15px;
-  background:center/cover no-repeat;
+
+  background:
+  center/cover
+  no-repeat;
+
   position:relative;
+
   overflow:hidden;
-  border:2px solid transparent;
+
+  border:
+  2px solid
+  transparent;
 }
 
 .wallpaper.selected{
@@ -384,98 +675,153 @@ button{
 
 .wallpaper.selected::after{
   content:"✓";
+
   position:absolute;
+
   right:6px;
   top:6px;
+
   width:24px;
   height:24px;
+
   border-radius:50%;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   background:#fff;
+
   color:#111;
+
   font-weight:800;
 }
 
 .mini-x{
   position:absolute;
+
   left:6px;
   top:6px;
+
   width:24px;
   height:24px;
+
   border-radius:50%;
+
   border:0;
-  background:rgba(0,0,0,.55);
+
+  background:
+  rgba(0,0,0,.55);
+
   color:#fff;
 }
 
-/* ===== PAGE SETTINGS ===== */
+
+/* =========================================================
+   SETTINGS ROW
+========================================================= */
 
 .page-row,
 .app-row{
   min-height:58px;
+
   display:flex;
+
   gap:10px;
+
   align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid rgba(255,255,255,.08);
+
+  justify-content:
+  space-between;
+
+  border-bottom:
+  1px solid
+  rgba(255,255,255,.08);
 }
 
 .row-left{
   min-width:0;
+
   flex:1;
 }
 
 .row-title{
   white-space:nowrap;
+
   overflow:hidden;
+
   text-overflow:ellipsis;
 }
 
 .row-sub{
   margin-top:3px;
+
   font-size:12px;
+
   opacity:.5;
 }
 
 .row-actions{
   display:flex;
+
   align-items:center;
+
   gap:7px;
 }
 
 .small-btn{
   border:0;
+
   min-width:36px;
+
   height:36px;
-  padding:0 10px;
+
+  padding:
+  0 10px;
+
   border-radius:11px;
-  background:rgba(255,255,255,.1);
+
+  background:
+  rgba(255,255,255,.1);
+
   color:#fff;
 }
 
 .small-btn.red{
   color:#ffb3ad;
-  background:rgba(255,59,48,.15);
+
+  background:
+  rgba(255,59,48,.15);
 }
 
-/* ===== SWITCH ===== */
+
+/* =========================================================
+   SWITCH
+========================================================= */
 
 .switch{
   width:49px;
   height:29px;
+
   padding:3px;
+
   border-radius:18px;
-  background:rgba(255,255,255,.18);
+
+  background:
+  rgba(255,255,255,.18);
+
   transition:.2s;
 }
 
 .switch-knob{
   width:23px;
   height:23px;
+
   border-radius:50%;
+
   background:#fff;
+
   transition:.2s;
 }
 
@@ -483,18 +829,28 @@ button{
   background:#34c759;
 }
 
-.switch.on .switch-knob{
-  transform:translateX(20px);
+.switch.on
+.switch-knob{
+  transform:
+  translateX(20px);
 }
 
-/* ===== FORMS ===== */
+
+/* =========================================================
+   FORM
+========================================================= */
 
 .form{
   display:none;
+
   margin-top:12px;
+
   padding:14px;
+
   border-radius:18px;
-  background:rgba(255,255,255,.07);
+
+  background:
+  rgba(255,255,255,.07);
 }
 
 .form.show{
@@ -505,23 +861,37 @@ button{
 .select,
 .textarea{
   width:100%;
+
   margin-top:10px;
-  border:1px solid rgba(255,255,255,.12);
+
+  border:
+  1px solid
+  rgba(255,255,255,.12);
+
   border-radius:14px;
-  background:rgba(255,255,255,.08);
+
+  background:
+  rgba(255,255,255,.08);
+
   color:#fff;
+
   outline:none;
 }
 
 .input,
 .select{
   height:48px;
-  padding:0 13px;
+
+  padding:
+  0 13px;
 }
 
 .textarea{
   min-height:100px;
-  padding:12px 13px;
+
+  padding:
+  12px 13px;
+
   resize:vertical;
 }
 
@@ -531,35 +901,57 @@ button{
 
 .icon-pick{
   display:grid;
-  grid-template-columns:repeat(6,1fr);
+
+  grid-template-columns:
+  repeat(6,1fr);
+
   gap:8px;
+
   margin-top:10px;
 }
 
 .icon-choice{
   height:44px;
+
   border-radius:11px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   font-size:23px;
-  background:rgba(255,255,255,.07);
-  border:1px solid transparent;
+
+  background:
+  rgba(255,255,255,.07);
+
+  border:
+  1px solid
+  transparent;
 }
 
 .icon-choice.selected{
   border-color:#fff;
-  background:rgba(255,255,255,.16);
+
+  background:
+  rgba(255,255,255,.16);
 }
 
 .custom-icon-preview{
   width:72px;
   height:72px;
+
   margin-top:10px;
+
   border-radius:18px;
+
   overflow:hidden;
+
   display:none;
-  background:rgba(255,255,255,.08);
+
+  background:
+  rgba(255,255,255,.08);
 }
 
 .custom-icon-preview.show{
@@ -569,98 +961,153 @@ button{
 .custom-icon-preview img{
   width:100%;
   height:100%;
+
   object-fit:cover;
 }
 
-/* ===== BUILT-IN APPS ===== */
+
+/* =========================================================
+   BUILTIN APPS
+========================================================= */
 
 #builtinOverlay{
   padding:0;
+
   background:#f2f2f7;
+
   color:#111;
+
   backdrop-filter:none;
+
   -webkit-backdrop-filter:none;
 }
 
 .builtin-shell{
   position:absolute;
+
   inset:0;
+
   background:#f2f2f7;
+
   color:#111;
+
   display:flex;
+
   flex-direction:column;
 }
 
 .builtin-top{
   padding:
-    calc(env(safe-area-inset-top) + 10px)
-    16px
-    10px;
+  calc(
+    env(safe-area-inset-top)
+    +
+    10px
+  )
+
+  16px
+  10px;
+
   min-height:64px;
+
   display:flex;
+
   align-items:flex-end;
+
   gap:10px;
-  background:rgba(248,248,250,.92);
-  border-bottom:1px solid #d8d8dc;
+
+  background:
+  rgba(248,248,250,.92);
+
+  border-bottom:
+  1px solid
+  #d8d8dc;
 }
 
 .back-btn{
   border:0;
+
   background:none;
+
   padding:0;
+
   color:#007aff;
+
   font-size:16px;
 }
 
 .builtin-title{
   font-size:20px;
+
   font-weight:700;
 }
 
 .builtin-body{
   flex:1;
+
   overflow-y:auto;
+
   padding:14px;
 }
 
 .card{
   border-radius:16px;
+
   background:#fff;
+
   padding:14px;
+
   margin-bottom:10px;
-  box-shadow:0 1px 2px rgba(0,0,0,.04);
+
+  box-shadow:
+  0 1px 2px
+  rgba(0,0,0,.04);
 }
 
 .chat-row,
 .contact-row{
   display:flex;
+
   align-items:center;
+
   gap:12px;
-  padding:12px 4px;
-  border-bottom:1px solid #ececf0;
+
+  padding:
+  12px 4px;
+
+  border-bottom:
+  1px solid
+  #ececf0;
 }
 
 .avatar{
   width:48px;
   height:48px;
-  border-radius:50%;
-  background:linear-gradient(145deg,#7aa7ff,#836dff);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:700;
-  overflow:hidden;
-}
 
-.avatar img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+  border-radius:50%;
+
+  background:
+  linear-gradient(
+    145deg,
+    #7aa7ff,
+    #836dff
+  );
+
+  color:#fff;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-weight:700;
+
+  overflow:hidden;
 }
 
 .chat-main{
   flex:1;
+
   min-width:0;
 }
 
@@ -670,1093 +1117,5000 @@ button{
 
 .chat-last{
   margin-top:3px;
+
   color:#74747a;
+
   font-size:14px;
+
   white-space:nowrap;
+
   overflow:hidden;
+
   text-overflow:ellipsis;
 }
 
 .bubble{
   max-width:78%;
-  padding:9px 12px;
+
+  padding:
+  9px 12px;
+
   border-radius:17px;
-  margin:7px 0;
+
+  margin:
+  7px 0;
+
   line-height:1.35;
+
   font-size:15px;
 }
 
 .bubble.in{
   background:#e9e9ee;
+
   margin-right:auto;
 }
 
 .bubble.out{
   background:#2f80ff;
+
   color:#fff;
+
   margin-left:auto;
 }
 
 .compose{
   display:flex;
+
   gap:8px;
-  padding:10px 12px calc(env(safe-area-inset-bottom) + 8px);
+
+  padding:
+  10px
+  12px
+  calc(
+    env(safe-area-inset-bottom)
+    +
+    8px
+  );
+
   background:#f8f8fa;
-  border-top:1px solid #dddde2;
+
+  border-top:
+  1px solid
+  #dddde2;
 }
 
 .compose input{
   flex:1;
+
   height:42px;
-  border:1px solid #d7d7dc;
+
+  border:
+  1px solid
+  #d7d7dc;
+
   border-radius:21px;
-  padding:0 14px;
+
+  padding:
+  0 14px;
+
   background:#fff;
+
   color:#111;
 }
 
 .compose button{
   width:42px;
   height:42px;
+
   border-radius:50%;
+
   border:0;
+
   background:#007aff;
+
   color:#fff;
 }
 
 .social-post{
   background:#fff;
+
   margin-bottom:14px;
+
   border-radius:15px;
+
   overflow:hidden;
 }
 
 .social-head{
   display:flex;
+
   align-items:center;
+
   gap:10px;
+
   padding:12px;
 }
 
 .social-img{
   width:100%;
+
   aspect-ratio:1/1;
+
   object-fit:cover;
+
   background:#ddd;
 }
 
 .social-text{
   padding:12px;
+
   line-height:1.35;
 }
 
 .note-item{
   background:#fff;
+
   border-radius:13px;
+
   padding:13px;
+
   margin-bottom:9px;
 }
 
-/* ===== HELPERS ===== */
+
+/* =========================================================
+   IN APP BROWSER
+========================================================= */
+
+#browserOverlay{
+  padding:0;
+
+  background:#000;
+
+  backdrop-filter:none;
+
+  -webkit-backdrop-filter:none;
+}
+
+.browser-shell{
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
+
+  flex-direction:column;
+
+  background:#000;
+}
+
+.browser-top{
+  min-height:58px;
+
+  padding:
+  calc(
+    env(safe-area-inset-top)
+    +
+    8px
+  )
+
+  12px
+  8px;
+
+  display:flex;
+
+  align-items:flex-end;
+
+  gap:10px;
+
+  background:
+  rgba(20,20,22,.96);
+
+  border-bottom:
+  1px solid
+  rgba(255,255,255,.1);
+
+  color:#fff;
+}
+
+.browser-back,
+.browser-close{
+  border:0;
+
+  background:
+  rgba(255,255,255,.1);
+
+  color:#fff;
+
+  height:38px;
+
+  min-width:44px;
+
+  padding:
+  0 12px;
+
+  border-radius:12px;
+
+  font-size:16px;
+}
+
+.browser-title{
+  flex:1;
+
+  min-width:0;
+
+  text-align:center;
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  font-weight:650;
+}
+
+.browser-frame{
+  flex:1;
+
+  width:100%;
+
+  border:0;
+
+  background:#fff;
+}
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
 
 .muted{
   opacity:.55;
+
   font-size:13px;
 }
 
 .hidden{
   display:none !important;
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <div id="home">
 
-  <div class="hero" id="secretHotspot">
-    <div class="hero-time" id="heroTime">11:01</div>
-    <div class="hero-date" id="heroDate"></div>
-  </div>
+  <div
+  class="hero"
+  id="secretHotspot">
 
-  <div class="pages-viewport" id="pagesViewport">
-    <div class="pages-track" id="pagesTrack"></div>
-  </div>
+    <div
+    class="hero-time"
+    id="heroTime">
 
-  <div class="page-dots" id="pageDots"></div>
+      11:01
 
-  <div class="dock" id="dock"></div>
-
-</div>
-
-<!-- SETTINGS -->
-<div class="overlay" id="settingsOverlay">
-  <div class="panel">
-    <div class="panel-title">Настройки</div>
-
-    <div class="section-title">Обои</div>
-    <div class="wallpaper-grid" id="wallpaperGrid"></div>
-    <input id="wallpaperInput" type="file" accept="image/*" hidden>
-    <button class="btn" onclick="document.getElementById('wallpaperInput').click()">＋ Добавить обои</button>
-
-    <div class="section-title">Страницы</div>
-    <div id="pageSettings"></div>
-    <button class="btn" onclick="addPage()">＋ Добавить страницу</button>
-
-    <div class="section-title">Приложения</div>
-    <div id="appSettings"></div>
-    <button class="btn" onclick="toggleAppForm()">＋ Добавить приложение</button>
-
-    <div class="form" id="appForm">
-      <input class="input" id="newAppTitle" placeholder="Название">
-
-      <select class="select" id="newAppPage"></select>
-
-      <select class="select" id="newAppType" onchange="updateTypeFields()">
-        <option value="url">Открыть ссылку / приложение</option>
-        <option value="messages">Встроенные сообщения</option>
-        <option value="contacts">Встроенные контакты</option>
-        <option value="social">Встроенная лента</option>
-        <option value="notes">Встроенные заметки</option>
-      </select>
-
-      <input class="input" id="newAppUrl" placeholder="https://... или URL-схема">
-
-      <div class="section-title">Значок</div>
-      <div class="icon-pick" id="emojiPicker"></div>
-
-      <input id="iconFileInput" type="file" accept="image/*" hidden>
-      <button class="btn secondary" onclick="document.getElementById('iconFileInput').click()">Выбрать свою иконку</button>
-      <div class="custom-icon-preview" id="customIconPreview"></div>
-
-      <button class="btn" onclick="addApp()">Добавить</button>
     </div>
 
-    <button class="btn secondary" onclick="closeSettings()">Готово</button>
+    <div
+    class="hero-date"
+    id="heroDate">
+    </div>
+
   </div>
+
+
+  <button
+  class="secret-corner"
+  id="secretCorner"
+  aria-label="settings">
+  </button>
+
+
+  <div
+  class="pages-viewport"
+  id="pagesViewport">
+
+    <div
+    class="pages-track"
+    id="pagesTrack">
+    </div>
+
+  </div>
+
+
+  <div
+  class="page-dots"
+  id="pageDots">
+  </div>
+
+
+  <div
+  class="dock"
+  id="dock">
+  </div>
+
 </div>
 
-<!-- BUILT-IN APP OVERLAY -->
-<div class="overlay" id="builtinOverlay"></div>
+
+
+<!-- SETTINGS -->
+
+<div
+class="overlay"
+id="settingsOverlay">
+
+  <div class="panel">
+
+    <div class="panel-title">
+      Настройки
+    </div>
+
+
+    <div class="section-title">
+      Обои
+    </div>
+
+    <div
+    class="wallpaper-grid"
+    id="wallpaperGrid">
+    </div>
+
+    <input
+    id="wallpaperInput"
+    type="file"
+    accept="image/*"
+    hidden>
+
+    <button
+    class="btn"
+    onclick="
+    document
+    .getElementById('wallpaperInput')
+    .click()
+    ">
+
+      ＋ Добавить обои
+
+    </button>
+
+
+    <div class="section-title">
+      Страницы
+    </div>
+
+    <div
+    id="pageSettings">
+    </div>
+
+    <button
+    class="btn"
+    onclick="addPage()">
+
+      ＋ Добавить страницу
+
+    </button>
+
+
+    <div class="section-title">
+      Приложения
+    </div>
+
+    <div
+    id="appSettings">
+    </div>
+
+
+    <button
+    class="btn"
+    onclick="toggleAppForm()">
+
+      ＋ Добавить приложение
+
+    </button>
+
+
+    <div
+    class="form"
+    id="appForm">
+
+
+      <input
+      class="input"
+      id="newAppTitle"
+      placeholder="Название">
+
+
+      <select
+      class="select"
+      id="newAppPage">
+      </select>
+
+
+      <select
+      class="select"
+      id="newAppType"
+      onchange="updateTypeFields()">
+
+        <option value="url">
+          Открыть ссылку / приложение
+        </option>
+
+        <option value="messages">
+          Встроенные сообщения
+        </option>
+
+        <option value="contacts">
+          Встроенные контакты
+        </option>
+
+        <option value="social">
+          Встроенная лента
+        </option>
+
+        <option value="notes">
+          Встроенные заметки
+        </option>
+
+      </select>
+
+
+      <input
+      class="input"
+      id="newAppUrl"
+      placeholder="https://... или URL-схема">
+
+
+      <div class="section-title">
+        Значок
+      </div>
+
+
+      <div
+      class="icon-pick"
+      id="emojiPicker">
+      </div>
+
+
+      <input
+      id="iconFileInput"
+      type="file"
+      accept="image/*"
+      hidden>
+
+
+      <button
+      class="btn secondary"
+      onclick="
+      document
+      .getElementById('iconFileInput')
+      .click()
+      ">
+
+        Выбрать свою иконку
+
+      </button>
+
+
+      <div
+      class="custom-icon-preview"
+      id="customIconPreview">
+      </div>
+
+
+      <button
+      class="btn"
+      onclick="addApp()">
+
+        Добавить
+
+      </button>
+
+    </div>
+
+
+    <button
+    class="btn secondary"
+    onclick="closeSettings()">
+
+      Готово
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<!-- BUILTIN -->
+
+<div
+class="overlay"
+id="builtinOverlay">
+</div>
+
+
+
+<!-- BROWSER -->
+
+<div
+class="overlay"
+id="browserOverlay">
+</div>
+
+
 
 <script>
+
+
 /* =========================================================
-   STATE
+   ICONS
 ========================================================= */
 
 const emojiChoices = [
-  "🎵","📅","💬","🎮","📊","📝","🖼️","🗺️",
-  "🌐","📞","📷","🧮","📁","📚","✉️","🚗",
-  "🎬","📺","☁️","⭐","👤","📸","🎧","⚙️"
+
+  "🎵","📅","💬","🎮",
+  "📊","📝","🖼️","🗺️",
+
+  "🌐","📞","📷","🧮",
+  "📁","📚","✉️","🚗",
+
+  "🎬","📺","☁️","⭐",
+  "👤","📸","🎧","⚙️"
+
 ];
 
+
+/* =========================================================
+   DEFAULT
+========================================================= */
+
 const defaultState = {
-  currentPage: 0,
-  pages: [
-    { id:"page_1", name:"Страница 1" }
+
+  currentPage:0,
+
+  pages:[
+
+    {
+      id:"page_1",
+      name:"Страница 1"
+    }
+
   ],
-  apps: [
+
+
+  apps:[
+
+
     {
       id:"music",
+
       title:"Музыка",
+
       icon:"🎵",
+
       iconImage:null,
+
       type:"url",
-      url:"https://madenjanna-ui.github.io/Music-edition/",
+
+      url:
+      "https://madenjanna-ui.github.io/Music-edition/",
+
       pageId:"page_1",
+
       enabled:true,
+
       removable:false
     },
+
+
     {
       id:"games",
+
       title:"Игры",
+
       icon:"🎮",
+
       iconImage:null,
+
       type:"url",
-      url:"https://madenjanna-ui.github.io/Avtoslalom/",
+
+      url:
+      "https://madenjanna-ui.github.io/Avtoslalom/",
+
       pageId:"page_1",
+
       enabled:true,
+
       removable:false
     },
+
+
     {
       id:"messages",
+
       title:"Сообщения",
+
       icon:"💬",
+
       iconImage:null,
+
       type:"messages",
+
       url:"",
+
       pageId:"page_1",
+
       enabled:true,
+
       removable:true
     },
+
+
     {
       id:"contacts",
+
       title:"Контакты",
+
       icon:"👤",
+
       iconImage:null,
+
       type:"contacts",
+
       url:"",
+
       pageId:"page_1",
+
       enabled:true,
+
       removable:true
     },
+
+
     {
       id:"social",
+
       title:"Лента",
+
       icon:"📸",
+
       iconImage:null,
+
       type:"social",
+
       url:"",
+
       pageId:"page_1",
+
       enabled:true,
+
       removable:true
     },
+
+
     {
       id:"notes",
+
       title:"Заметки",
+
       icon:"📝",
+
       iconImage:null,
+
       type:"notes",
+
       url:"",
+
       pageId:"page_1",
+
       enabled:true,
+
       removable:true
     }
+
   ],
-  dock: [
-    { id:"dock_phone", title:"Телефон", icon:"📞", type:"url", url:"tel:", iconImage:null },
-    { id:"dock_web", title:"Интернет", icon:"🌐", type:"url", url:"https://www.google.com/", iconImage:null },
-    { id:"dock_camera", title:"Камера", icon:"📷", type:"url", url:"camera:", iconImage:null },
-    { id:"dock_calc", title:"Калькулятор", icon:"🧮", type:"url", url:"calc:", iconImage:null }
+
+
+  dock:[
+
+
+    {
+      id:"dock_phone",
+
+      title:"Телефон",
+
+      icon:"📞",
+
+      type:"url",
+
+      url:"tel:",
+
+      iconImage:null
+    },
+
+
+    {
+      id:"dock_web",
+
+      title:"Интернет",
+
+      icon:"🌐",
+
+      type:"url",
+
+      url:
+      "https://www.google.com/",
+
+      iconImage:null
+    },
+
+
+    {
+      id:"dock_camera",
+
+      title:"Камера",
+
+      icon:"📷",
+
+      type:"url",
+
+      url:"camera:",
+
+      iconImage:null
+    },
+
+
+    {
+      id:"dock_calc",
+
+      title:"Калькулятор",
+
+      icon:"🧮",
+
+      type:"url",
+
+      url:"calc:",
+
+      iconImage:null
+    }
+
   ],
-  wallpapers: [],
-  currentWallpaper: null
+
+
+  wallpapers:[],
+
+  currentWallpaper:null
+
 };
 
-let state = loadState();
-let selectedEmoji = "⭐";
-let selectedCustomIcon = null;
+
+let state =
+loadState();
+
+
+let selectedEmoji =
+"⭐";
+
+
+let selectedCustomIcon =
+null;
+
 
 /* =========================================================
    STORAGE
 ========================================================= */
 
-function loadState(){
-  try{
-    const raw = localStorage.getItem("guestDesktopV3");
-    if(!raw) return structuredClone(defaultState);
-    const saved = JSON.parse(raw);
+function cloneDefault(){
 
-    // merge in case old save misses fields
-    saved.pages = Array.isArray(saved.pages) && saved.pages.length ? saved.pages : structuredClone(defaultState.pages);
-    saved.apps = Array.isArray(saved.apps) ? saved.apps : structuredClone(defaultState.apps);
-    saved.dock = Array.isArray(saved.dock) ? saved.dock : structuredClone(defaultState.dock);
-    saved.wallpapers = Array.isArray(saved.wallpapers) ? saved.wallpapers : [];
-    saved.currentPage = Number.isInteger(saved.currentPage) ? saved.currentPage : 0;
+  return JSON.parse(
+    JSON.stringify(
+      defaultState
+    )
+  );
+
+}
+
+
+function loadState(){
+
+  try{
+
+    const raw =
+    localStorage.getItem(
+      "guestDesktopV3"
+    );
+
+
+    if(!raw){
+
+      return cloneDefault();
+
+    }
+
+
+    const saved =
+    JSON.parse(raw);
+
+
+    saved.pages =
+    Array.isArray(saved.pages)
+    &&
+    saved.pages.length
+
+    ?
+
+    saved.pages
+
+    :
+
+    cloneDefault().pages;
+
+
+    saved.apps =
+    Array.isArray(saved.apps)
+
+    ?
+
+    saved.apps
+
+    :
+
+    cloneDefault().apps;
+
+
+    saved.dock =
+    Array.isArray(saved.dock)
+
+    ?
+
+    saved.dock
+
+    :
+
+    cloneDefault().dock;
+
+
+    saved.wallpapers =
+    Array.isArray(saved.wallpapers)
+
+    ?
+
+    saved.wallpapers
+
+    :
+
+    [];
+
+
+    saved.currentPage =
+    Number.isInteger(
+      saved.currentPage
+    )
+
+    ?
+
+    saved.currentPage
+
+    :
+
+    0;
+
 
     return saved;
-  }catch(e){
-    return structuredClone(defaultState);
+
   }
+
+  catch(error){
+
+    return cloneDefault();
+
+  }
+
 }
 
+
 function saveState(){
+
   try{
-    localStorage.setItem("guestDesktopV3", JSON.stringify(state));
+
+    localStorage.setItem(
+
+      "guestDesktopV3",
+
+      JSON.stringify(state)
+
+    );
+
+
     return true;
-  }catch(e){
-    alert("Не удалось сохранить данные. Возможно, память браузера заполнена.");
-    return false;
+
   }
+
+  catch(error){
+
+    alert(
+      "Не удалось сохранить данные."
+    );
+
+
+    return false;
+
+  }
+
 }
+
 
 /* =========================================================
    TIME
 ========================================================= */
 
 function updateClock(){
-  const now = new Date();
 
-  document.getElementById("heroTime").textContent =
-    now.toLocaleTimeString("ru-RU",{hour:"2-digit",minute:"2-digit"});
+  const now =
+  new Date();
 
-  let d = now.toLocaleDateString("ru-RU",{
-    weekday:"long",
-    day:"numeric",
-    month:"long"
-  });
 
-  d = d.charAt(0).toUpperCase() + d.slice(1);
-  document.getElementById("heroDate").textContent = d;
+  document
+  .getElementById(
+    "heroTime"
+  )
+  .textContent =
+
+  now.toLocaleTimeString(
+
+    "ru-RU",
+
+    {
+
+      hour:"2-digit",
+
+      minute:"2-digit"
+
+    }
+
+  );
+
+
+  let date =
+
+  now.toLocaleDateString(
+
+    "ru-RU",
+
+    {
+
+      weekday:"long",
+
+      day:"numeric",
+
+      month:"long"
+
+    }
+
+  );
+
+
+  date =
+
+  date.charAt(0)
+  .toUpperCase()
+
+  +
+
+  date.slice(1);
+
+
+  document
+  .getElementById(
+    "heroDate"
+  )
+  .textContent =
+  date;
+
 }
 
+
 updateClock();
-setInterval(updateClock,10000);
+
+
+setInterval(
+
+  updateClock,
+
+  10000
+
+);
+
 
 /* =========================================================
    WALLPAPER
 ========================================================= */
 
 function applyWallpaper(){
-  const home = document.getElementById("home");
 
-  if(state.currentWallpaper){
-    home.style.backgroundImage = `url("${state.currentWallpaper}")`;
-  }else{
-    home.style.backgroundImage =
-      "linear-gradient(160deg,#53657a,#263548 50%,#0b1119)";
-  }
-}
+  const home =
 
-function compressImage(dataUrl,maxW,maxH,quality,callback){
-  const img = new Image();
-  img.onload = ()=>{
-    let w = img.width;
-    let h = img.height;
-    const ratio = Math.min(maxW/w,maxH/h,1);
-    w = Math.max(1,Math.round(w*ratio));
-    h = Math.max(1,Math.round(h*ratio));
+  document
+  .getElementById(
+    "home"
+  );
 
-    const c = document.createElement("canvas");
-    c.width = w;
-    c.height = h;
 
-    const ctx = c.getContext("2d");
-    ctx.drawImage(img,0,0,w,h);
+  if(
+    state.currentWallpaper
+  ){
 
-    callback(c.toDataURL("image/jpeg",quality));
-  };
-  img.src = dataUrl;
-}
+    home.style
+    .backgroundImage =
 
-document.getElementById("wallpaperInput").addEventListener("change",function(){
-  const file = this.files && this.files[0];
-  if(!file) return;
+    `url("${state.currentWallpaper}")`;
 
-  const reader = new FileReader();
-  reader.onload = e=>{
-    compressImage(e.target.result,1179,2556,.8,compressed=>{
-      const item = {
-        id:"wall_"+Date.now(),
-        image:compressed
-      };
-
-      state.wallpapers.push(item);
-      state.currentWallpaper = compressed;
-
-      if(saveState()){
-        applyWallpaper();
-        renderWallpaperSettings();
-      }else{
-        state.wallpapers.pop();
-      }
-    });
-  };
-  reader.readAsDataURL(file);
-  this.value="";
-});
-
-function renderWallpaperSettings(){
-  const box = document.getElementById("wallpaperGrid");
-  box.innerHTML = "";
-
-  if(!state.wallpapers.length){
-    box.innerHTML = `<div class="muted" style="grid-column:1/-1;padding:12px 0">Обои пока не добавлены</div>`;
-    return;
   }
 
-  state.wallpapers.forEach(w=>{
-    const el = document.createElement("div");
-    el.className = "wallpaper" + (state.currentWallpaper===w.image ? " selected" : "");
-    el.style.backgroundImage = `url("${w.image}")`;
+  else{
 
-    el.onclick = ()=>{
-      state.currentWallpaper = w.image;
-      saveState();
-      applyWallpaper();
-      renderWallpaperSettings();
-    };
+    home.style
+    .backgroundImage =
 
-    const del = document.createElement("button");
-    del.className = "mini-x";
-    del.textContent = "×";
-    del.onclick = ev=>{
-      ev.stopPropagation();
+    "linear-gradient(160deg,#53657a,#263548 50%,#0b1119)";
 
-      const wasCurrent = state.currentWallpaper===w.image;
-      state.wallpapers = state.wallpapers.filter(x=>x.id!==w.id);
+  }
 
-      if(wasCurrent){
-        state.currentWallpaper = state.wallpapers[0]?.image || null;
-      }
-
-      saveState();
-      applyWallpaper();
-      renderWallpaperSettings();
-    };
-
-    el.appendChild(del);
-    box.appendChild(el);
-  });
 }
+
 
 /* =========================================================
-   ICON HTML
+   IMAGE COMPRESSION
+========================================================= */
+
+function compressImage(
+  dataUrl,
+  maxW,
+  maxH,
+  quality,
+  callback
+){
+
+  const img =
+  new Image();
+
+
+  img.onload =
+  ()=>{
+
+
+    let width =
+    img.width;
+
+
+    let height =
+    img.height;
+
+
+    const ratio =
+
+    Math.min(
+
+      maxW / width,
+
+      maxH / height,
+
+      1
+
+    );
+
+
+    width =
+
+    Math.max(
+
+      1,
+
+      Math.round(
+        width * ratio
+      )
+
+    );
+
+
+    height =
+
+    Math.max(
+
+      1,
+
+      Math.round(
+        height * ratio
+      )
+
+    );
+
+
+    const canvas =
+
+    document
+    .createElement(
+      "canvas"
+    );
+
+
+    canvas.width =
+    width;
+
+
+    canvas.height =
+    height;
+
+
+    const ctx =
+
+    canvas
+    .getContext(
+      "2d"
+    );
+
+
+    ctx.drawImage(
+
+      img,
+
+      0,
+      0,
+
+      width,
+      height
+
+    );
+
+
+    callback(
+
+      canvas.toDataURL(
+
+        "image/jpeg",
+
+        quality
+
+      )
+
+    );
+
+  };
+
+
+  img.src =
+  dataUrl;
+
+}
+
+
+/* =========================================================
+   WALLPAPER INPUT
+========================================================= */
+
+document
+.getElementById(
+  "wallpaperInput"
+)
+.addEventListener(
+  "change",
+  function(){
+
+
+    const file =
+
+    this.files
+    &&
+    this.files[0];
+
+
+    if(!file){
+
+      return;
+
+    }
+
+
+    const reader =
+
+    new FileReader();
+
+
+    reader.onload =
+    event =>{
+
+
+      compressImage(
+
+        event.target.result,
+
+        1179,
+
+        2556,
+
+        .8,
+
+        compressed =>{
+
+
+          const item = {
+
+            id:
+            "wall_"
+            +
+            Date.now(),
+
+            image:
+            compressed
+
+          };
+
+
+          state.wallpapers
+          .push(item);
+
+
+          state.currentWallpaper =
+          compressed;
+
+
+          if(
+            saveState()
+          ){
+
+            applyWallpaper();
+
+            renderWallpaperSettings();
+
+          }
+
+          else{
+
+            state.wallpapers
+            .pop();
+
+          }
+
+        }
+
+      );
+
+    };
+
+
+    reader.readAsDataURL(
+      file
+    );
+
+
+    this.value="";
+
+  }
+);
+
+
+/* =========================================================
+   WALLPAPER SETTINGS
+========================================================= */
+
+function renderWallpaperSettings(){
+
+  const box =
+
+  document
+  .getElementById(
+    "wallpaperGrid"
+  );
+
+
+  box.innerHTML =
+  "";
+
+
+  if(
+    !state.wallpapers.length
+  ){
+
+    box.innerHTML = `
+
+      <div
+      class="muted"
+      style="
+      grid-column:1/-1;
+      padding:12px 0;
+      ">
+
+        Обои пока не добавлены
+
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  state.wallpapers
+  .forEach(
+    wallpaper =>{
+
+
+      const element =
+
+      document
+      .createElement(
+        "div"
+      );
+
+
+      element.className =
+
+      "wallpaper"
+
+      +
+
+      (
+        state.currentWallpaper
+        ===
+        wallpaper.image
+
+        ?
+
+        " selected"
+
+        :
+
+        ""
+      );
+
+
+      element.style
+      .backgroundImage =
+
+      `url("${wallpaper.image}")`;
+
+
+      element.onclick =
+      ()=>{
+
+
+        state.currentWallpaper =
+        wallpaper.image;
+
+
+        saveState();
+
+        applyWallpaper();
+
+        renderWallpaperSettings();
+
+      };
+
+
+      const del =
+
+      document
+      .createElement(
+        "button"
+      );
+
+
+      del.className =
+      "mini-x";
+
+
+      del.textContent =
+      "×";
+
+
+      del.onclick =
+      event =>{
+
+
+        event.stopPropagation();
+
+
+        const wasCurrent =
+
+        state.currentWallpaper
+        ===
+        wallpaper.image;
+
+
+        state.wallpapers =
+
+        state.wallpapers
+        .filter(
+
+          item =>
+          item.id
+          !==
+          wallpaper.id
+
+        );
+
+
+        if(
+          wasCurrent
+        ){
+
+          state.currentWallpaper =
+
+          state.wallpapers[0]
+          ?.image
+
+          ||
+
+          null;
+
+        }
+
+
+        saveState();
+
+        applyWallpaper();
+
+        renderWallpaperSettings();
+
+      };
+
+
+      element
+      .appendChild(
+        del
+      );
+
+
+      box
+      .appendChild(
+        element
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   ICON
 ========================================================= */
 
 function iconHTML(app){
-  if(app.iconImage){
-    return `<div class="app-icon"><img src="${app.iconImage}" alt=""></div>`;
+
+  if(
+    app.iconImage
+  ){
+
+    return `
+
+      <div class="app-icon">
+
+        <img
+        src="${app.iconImage}"
+        alt="">
+
+      </div>
+
+    `;
+
   }
 
-  return `<div class="app-icon"><span class="emoji">${escapeHTML(app.icon || "⭐")}</span></div>`;
-}
 
-function createAppElement(app,dock=false){
-  const el = document.createElement("div");
-  el.className = "app";
-  el.innerHTML = `
-    ${iconHTML(app)}
-    <div class="app-name">${escapeHTML(app.title || "")}</div>
+  return `
+
+    <div class="app-icon">
+
+      <span class="emoji">
+
+        ${
+          escapeHTML(
+            app.icon
+            ||
+            "⭐"
+          )
+        }
+
+      </span>
+
+    </div>
+
   `;
 
-  el.onclick = ()=>openApp(app);
-  return el;
 }
 
+
 /* =========================================================
-   RENDER DESKTOP
+   APP ELEMENT
+========================================================= */
+
+function createAppElement(
+  app
+){
+
+  const element =
+
+  document
+  .createElement(
+    "div"
+  );
+
+
+  element.className =
+  "app";
+
+
+  element.innerHTML = `
+
+    ${iconHTML(app)}
+
+    <div class="app-name">
+
+      ${
+        escapeHTML(
+          app.title
+          ||
+          ""
+        )
+      }
+
+    </div>
+
+  `;
+
+
+  element.onclick =
+  ()=>{
+
+    openApp(app);
+
+  };
+
+
+  return element;
+
+}
+
+
+/* =========================================================
+   DESKTOP
 ========================================================= */
 
 function renderDesktop(){
-  if(!state.pages.length){
-    state.pages.push({id:"page_"+Date.now(),name:"Страница 1"});
+
+  if(
+    !state.pages.length
+  ){
+
+    state.pages.push({
+
+      id:
+      "page_"
+      +
+      Date.now(),
+
+      name:
+      "Страница 1"
+
+    });
+
   }
 
-  state.currentPage = Math.max(0,Math.min(state.currentPage,state.pages.length-1));
 
-  const track = document.getElementById("pagesTrack");
-  const dots = document.getElementById("pageDots");
-  const dock = document.getElementById("dock");
+  state.currentPage =
 
-  track.innerHTML = "";
-  dots.innerHTML = "";
-  dock.innerHTML = "";
+  Math.max(
 
-  state.pages.forEach((page,index)=>{
-    const pageEl = document.createElement("section");
-    pageEl.className = "page";
+    0,
 
-    const grid = document.createElement("div");
-    grid.className = "app-grid";
+    Math.min(
 
-    state.apps
-      .filter(a=>a.enabled!==false && a.pageId===page.id)
-      .forEach(app=>grid.appendChild(createAppElement(app)));
+      state.currentPage,
 
-    pageEl.appendChild(grid);
-    track.appendChild(pageEl);
+      state.pages.length
+      -
+      1
 
-    const dot = document.createElement("span");
-    dot.className = "page-dot" + (index===state.currentPage ? " active" : "");
-    dots.appendChild(dot);
-  });
+    )
 
-  state.dock.forEach(app=>{
-    dock.appendChild(createAppElement(app,true));
-  });
+  );
 
-  updatePagePosition(false);
+
+  const track =
+
+  document
+  .getElementById(
+    "pagesTrack"
+  );
+
+
+  const dots =
+
+  document
+  .getElementById(
+    "pageDots"
+  );
+
+
+  const dock =
+
+  document
+  .getElementById(
+    "dock"
+  );
+
+
+  track.innerHTML =
+  "";
+
+
+  dots.innerHTML =
+  "";
+
+
+  dock.innerHTML =
+  "";
+
+
+  state.pages
+  .forEach(
+
+    (
+      page,
+      index
+    ) =>{
+
+
+      const pageElement =
+
+      document
+      .createElement(
+        "section"
+      );
+
+
+      pageElement.className =
+      "page";
+
+
+      const grid =
+
+      document
+      .createElement(
+        "div"
+      );
+
+
+      grid.className =
+      "app-grid";
+
+
+      state.apps
+
+      .filter(
+
+        app =>
+
+        app.enabled !== false
+
+        &&
+
+        app.pageId
+        ===
+        page.id
+
+      )
+
+      .forEach(
+
+        app =>{
+
+          grid
+          .appendChild(
+
+            createAppElement(
+              app
+            )
+
+          );
+
+        }
+
+      );
+
+
+      pageElement
+      .appendChild(
+        grid
+      );
+
+
+      track
+      .appendChild(
+        pageElement
+      );
+
+
+      const dot =
+
+      document
+      .createElement(
+        "span"
+      );
+
+
+      dot.className =
+
+      "page-dot"
+
+      +
+
+      (
+        index
+        ===
+        state.currentPage
+
+        ?
+
+        " active"
+
+        :
+
+        ""
+      );
+
+
+      dots
+      .appendChild(
+        dot
+      );
+
+    }
+
+  );
+
+
+  state.dock
+  .forEach(
+
+    app =>{
+
+      dock
+      .appendChild(
+
+        createAppElement(
+          app
+        )
+
+      );
+
+    }
+
+  );
+
+
+  updatePagePosition(
+    false
+  );
+
 }
 
-function updatePagePosition(animate=true){
-  const track = document.getElementById("pagesTrack");
-  track.style.transition = animate ? "transform .32s cubic-bezier(.22,.7,.18,1)" : "none";
-  track.style.transform = `translateX(-${state.currentPage*100}%)`;
 
-  [...document.querySelectorAll(".page-dot")]
-    .forEach((d,i)=>d.classList.toggle("active",i===state.currentPage));
+/* =========================================================
+   PAGE POSITION
+========================================================= */
 
-  setTimeout(()=>track.style.transition="transform .32s cubic-bezier(.22,.7,.18,1)",0);
+function updatePagePosition(
+  animate=true
+){
+
+  const track =
+
+  document
+  .getElementById(
+    "pagesTrack"
+  );
+
+
+  track.style
+  .transition =
+
+  animate
+
+  ?
+
+  "transform .32s cubic-bezier(.22,.7,.18,1)"
+
+  :
+
+  "none";
+
+
+  track.style
+  .transform =
+
+  `translateX(-${state.currentPage * 100}%)`;
+
+
+  [
+
+    ...
+    document
+    .querySelectorAll(
+      ".page-dot"
+    )
+
+  ]
+
+  .forEach(
+
+    (
+      dot,
+      index
+    ) =>{
+
+      dot.classList
+      .toggle(
+
+        "active",
+
+        index
+        ===
+        state.currentPage
+
+      );
+
+    }
+
+  );
+
+
+  setTimeout(
+
+    ()=>{
+
+      track.style
+      .transition =
+
+      "transform .32s cubic-bezier(.22,.7,.18,1)";
+
+    },
+
+    0
+
+  );
+
 }
+
 
 /* =========================================================
    SWIPE
 ========================================================= */
 
-const viewport = document.getElementById("pagesViewport");
-let touchStartX = 0;
-let touchStartY = 0;
-let touching = false;
+const viewport =
 
-viewport.addEventListener("touchstart",e=>{
-  if(!e.touches?.length) return;
-  touching = true;
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-},{passive:true});
+document
+.getElementById(
+  "pagesViewport"
+);
 
-viewport.addEventListener("touchend",e=>{
-  if(!touching) return;
-  touching = false;
 
-  const t = e.changedTouches?.[0];
-  if(!t) return;
+let touchStartX =
+0;
 
-  const dx = t.clientX-touchStartX;
-  const dy = t.clientY-touchStartY;
 
-  if(Math.abs(dx)<45 || Math.abs(dx)<Math.abs(dy)) return;
+let touchStartY =
+0;
 
-  if(dx<0 && state.currentPage<state.pages.length-1){
-    state.currentPage++;
-  }else if(dx>0 && state.currentPage>0){
-    state.currentPage--;
-  }else{
-    return;
+
+let touching =
+false;
+
+
+viewport
+.addEventListener(
+
+  "touchstart",
+
+  event =>{
+
+
+    if(
+      !event.touches
+      ?.length
+    ){
+
+      return;
+
+    }
+
+
+    touching =
+    true;
+
+
+    touchStartX =
+
+    event.touches[0]
+    .clientX;
+
+
+    touchStartY =
+
+    event.touches[0]
+    .clientY;
+
+  },
+
+  {
+    passive:true
   }
 
-  saveState();
-  updatePagePosition(true);
-},{passive:true});
+);
+
+
+viewport
+.addEventListener(
+
+  "touchend",
+
+  event =>{
+
+
+    if(
+      !touching
+    ){
+
+      return;
+
+    }
+
+
+    touching =
+    false;
+
+
+    const touch =
+
+    event.changedTouches
+    ?.[0];
+
+
+    if(
+      !touch
+    ){
+
+      return;
+
+    }
+
+
+    const dx =
+
+    touch.clientX
+    -
+    touchStartX;
+
+
+    const dy =
+
+    touch.clientY
+    -
+    touchStartY;
+
+
+    if(
+
+      Math.abs(dx)
+      <
+      45
+
+      ||
+
+      Math.abs(dx)
+      <
+      Math.abs(dy)
+
+    ){
+
+      return;
+
+    }
+
+
+    if(
+
+      dx
+      <
+      0
+
+      &&
+
+      state.currentPage
+      <
+      state.pages.length
+      -
+      1
+
+    ){
+
+      state.currentPage++;
+
+    }
+
+    else if(
+
+      dx
+      >
+      0
+
+      &&
+
+      state.currentPage
+      >
+      0
+
+    ){
+
+      state.currentPage--;
+
+    }
+
+    else{
+
+      return;
+
+    }
+
+
+    saveState();
+
+    updatePagePosition(
+      true
+    );
+
+  },
+
+  {
+    passive:true
+  }
+
+);
+
 
 /* =========================================================
    OPEN APP
 ========================================================= */
 
 function openApp(app){
-  if(!app) return;
 
-  switch(app.type){
-    case "messages":
-      openMessages();
-      break;
-    case "contacts":
-      openContacts();
-      break;
-    case "social":
-      openSocial();
-      break;
-    case "notes":
-      openNotes();
-      break;
-    default:
-      if(app.url && app.url !== "#"){
-        window.location.href = app.url;
-      }
+  if(
+    !app
+  ){
+
+    return;
+
   }
+
+
+  switch(
+    app.type
+  ){
+
+
+    case "messages":
+
+      openMessages();
+
+      break;
+
+
+    case "contacts":
+
+      openContacts();
+
+      break;
+
+
+    case "social":
+
+      openSocial();
+
+      break;
+
+
+    case "notes":
+
+      openNotes();
+
+      break;
+
+
+    default:
+
+
+      if(
+
+        app.url
+
+        &&
+
+        app.url
+        !==
+        "#"
+
+      ){
+
+
+        if(
+
+          /^https?:\/\//i
+          .test(
+            app.url
+          )
+
+        ){
+
+          openInAppBrowser(
+
+            app.url,
+
+            app.title
+            ||
+            "Приложение"
+
+          );
+
+        }
+
+        else{
+
+          window.location.href =
+          app.url;
+
+        }
+
+      }
+
+  }
+
 }
 
+
 /* =========================================================
-   BUILT-IN APPS
+   BROWSER
+========================================================= */
+
+function openInAppBrowser(
+  url,
+  title="Приложение"
+){
+
+  const overlay =
+
+  document
+  .getElementById(
+    "browserOverlay"
+  );
+
+
+  overlay.innerHTML = `
+
+    <div class="browser-shell">
+
+
+      <div class="browser-top">
+
+
+        <button
+        class="browser-back"
+        onclick="browserBack()">
+
+          ‹ Назад
+
+        </button>
+
+
+        <div class="browser-title">
+
+          ${
+            escapeHTML(
+              title
+            )
+          }
+
+        </div>
+
+
+        <button
+        class="browser-close"
+        onclick="closeInAppBrowser()">
+
+          ✕
+
+        </button>
+
+
+      </div>
+
+
+      <iframe
+
+      class="browser-frame"
+
+      id="browserFrame"
+
+      src="${escapeAttr(url)}"
+
+      allow="
+      autoplay;
+      fullscreen;
+      clipboard-read;
+      clipboard-write
+      ">
+
+      </iframe>
+
+
+    </div>
+
+  `;
+
+
+  overlay.classList
+  .add(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   BROWSER BACK
+========================================================= */
+
+function browserBack(){
+
+  const frame =
+
+  document
+  .getElementById(
+    "browserFrame"
+  );
+
+
+  if(
+    !frame
+  ){
+
+    closeInAppBrowser();
+
+    return;
+
+  }
+
+
+  try{
+
+    if(
+
+      frame.contentWindow
+      .history
+      .length
+      >
+      1
+
+    ){
+
+      frame.contentWindow
+      .history
+      .back();
+
+
+      return;
+
+    }
+
+  }
+
+  catch(error){
+
+  }
+
+
+  closeInAppBrowser();
+
+}
+
+
+/* =========================================================
+   CLOSE BROWSER
+========================================================= */
+
+function closeInAppBrowser(){
+
+  const overlay =
+
+  document
+  .getElementById(
+    "browserOverlay"
+  );
+
+
+  overlay.classList
+  .remove(
+    "show"
+  );
+
+
+  overlay.innerHTML =
+  "";
+
+}
+
+
+/* =========================================================
+   CHATS DATA
 ========================================================= */
 
 const sampleChats = [
-  {id:"c1",name:"Анна",last:"Хорошо, тогда вечером 😊",messages:[
-    {side:"in",text:"Привет! Ты сегодня свободен?"},
-    {side:"out",text:"После шести да."},
-    {side:"in",text:"Хорошо, тогда вечером 😊"}
-  ]},
-  {id:"c2",name:"Максим",last:"Фото получил 👍",messages:[
-    {side:"out",text:"Отправил тебе фото."},
-    {side:"in",text:"Фото получил 👍"}
-  ]},
-  {id:"c3",name:"Семья",last:"Встречаемся в 19:00",messages:[
-    {side:"in",text:"Встречаемся в 19:00"},
-    {side:"out",text:"Отлично."}
-  ]}
+
+  {
+
+    id:"c1",
+
+    name:"Анна",
+
+    last:
+    "Хорошо, тогда вечером 😊",
+
+    messages:[
+
+      {
+        side:"in",
+        text:
+        "Привет! Ты сегодня свободен?"
+      },
+
+      {
+        side:"out",
+        text:
+        "После шести да."
+      },
+
+      {
+        side:"in",
+        text:
+        "Хорошо, тогда вечером 😊"
+      }
+
+    ]
+
+  },
+
+
+  {
+
+    id:"c2",
+
+    name:"Максим",
+
+    last:
+    "Фото получил 👍",
+
+    messages:[
+
+      {
+        side:"out",
+        text:
+        "Отправил тебе фото."
+      },
+
+      {
+        side:"in",
+        text:
+        "Фото получил 👍"
+      }
+
+    ]
+
+  },
+
+
+  {
+
+    id:"c3",
+
+    name:"Семья",
+
+    last:
+    "Встречаемся в 19:00",
+
+    messages:[
+
+      {
+        side:"in",
+        text:
+        "Встречаемся в 19:00"
+      },
+
+      {
+        side:"out",
+        text:
+        "Отлично."
+      }
+
+    ]
+
+  }
+
 ];
 
-function showBuiltin(title,bodyHtml){
-  const ov = document.getElementById("builtinOverlay");
-  ov.innerHTML = `
-    <div class="builtin-shell">
-      <div class="builtin-top">
-        <button class="back-btn" onclick="closeBuiltin()">‹ Назад</button>
-        <div class="builtin-title">${escapeHTML(title)}</div>
-      </div>
-      <div class="builtin-body">${bodyHtml}</div>
-    </div>
-  `;
-  ov.classList.add("show");
-}
-
-function closeBuiltin(){
-  const ov = document.getElementById("builtinOverlay");
-  ov.classList.remove("show");
-  ov.innerHTML = "";
-}
-
-function openMessages(){
-  const rows = sampleChats.map(c=>`
-    <div class="chat-row" onclick="openChat('${c.id}')">
-      <div class="avatar">${escapeHTML(c.name.charAt(0))}</div>
-      <div class="chat-main">
-        <div class="chat-name">${escapeHTML(c.name)}</div>
-        <div class="chat-last">${escapeHTML(c.last)}</div>
-      </div>
-    </div>
-  `).join("");
-
-  showBuiltin("Сообщения",`<div class="card">${rows}</div>`);
-}
-
-function openChat(id){
-  const chat = sampleChats.find(c=>c.id===id);
-  if(!chat) return;
-
-  const ov = document.getElementById("builtinOverlay");
-  ov.innerHTML = `
-    <div class="builtin-shell">
-      <div class="builtin-top">
-        <button class="back-btn" onclick="openMessages()">‹ Чаты</button>
-        <div class="builtin-title">${escapeHTML(chat.name)}</div>
-      </div>
-      <div class="builtin-body" id="chatBody">
-        ${chat.messages.map(m=>`<div class="bubble ${m.side}">${escapeHTML(m.text)}</div>`).join("")}
-      </div>
-      <div class="compose">
-        <input id="chatInput" placeholder="Сообщение">
-        <button onclick="sendLocalMessage('${chat.id}')">↑</button>
-      </div>
-    </div>
-  `;
-  ov.classList.add("show");
-}
-
-function sendLocalMessage(id){
-  const input = document.getElementById("chatInput");
-  const text = input.value.trim();
-  if(!text) return;
-
-  const chat = sampleChats.find(c=>c.id===id);
-  if(!chat) return;
-
-  chat.messages.push({side:"out",text});
-  chat.last = text;
-  input.value = "";
-  openChat(id);
-
-  setTimeout(()=>{
-    const b = document.getElementById("chatBody");
-    if(b) b.scrollTop = b.scrollHeight;
-  },0);
-}
-
-function openContacts(){
-  const contacts = [
-    ["Анна","+7 900 000-00-01"],
-    ["Максим","+7 900 000-00-02"],
-    ["Ирина","+7 900 000-00-03"],
-    ["Сергей","+7 900 000-00-04"]
-  ];
-
-  showBuiltin("Контакты",
-    `<div class="card">
-      ${contacts.map(c=>`
-        <div class="contact-row">
-          <div class="avatar">${escapeHTML(c[0][0])}</div>
-          <div class="chat-main">
-            <div class="chat-name">${escapeHTML(c[0])}</div>
-            <div class="chat-last">${escapeHTML(c[1])}</div>
-          </div>
-        </div>
-      `).join("")}
-    </div>`
-  );
-}
-
-function openSocial(){
-  const svg1 = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
-    <svg xmlns="http://www.w3.org/2000/svg" width="900" height="900">
-      <defs>
-        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-          <stop stop-color="#ffb36b"/>
-          <stop offset="1" stop-color="#6c63ff"/>
-        </linearGradient>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#g)"/>
-      <circle cx="450" cy="360" r="160" fill="rgba(255,255,255,.25)"/>
-      <path d="M0 700 Q240 520 430 700 T900 650 V900 H0Z" fill="rgba(0,0,0,.2)"/>
-    </svg>
-  `);
-
-  const svg2 = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
-    <svg xmlns="http://www.w3.org/2000/svg" width="900" height="900">
-      <rect width="100%" height="100%" fill="#18283d"/>
-      <circle cx="680" cy="220" r="90" fill="#f6d365"/>
-      <path d="M0 620 Q250 450 470 620 T900 560 V900 H0Z" fill="#2f5d50"/>
-      <path d="M0 710 Q260 560 500 730 T900 690 V900 H0Z" fill="#173d34"/>
-    </svg>
-  `);
-
-  showBuiltin("Лента",`
-    <div class="social-post">
-      <div class="social-head">
-        <div class="avatar">A</div>
-        <div><b>anna_photo</b><div class="muted">Сегодня</div></div>
-      </div>
-      <img class="social-img" src="${svg1}" alt="">
-      <div class="social-text"><b>anna_photo</b> Отличный вечер ✨</div>
-    </div>
-
-    <div class="social-post">
-      <div class="social-head">
-        <div class="avatar">M</div>
-        <div><b>max_travel</b><div class="muted">Вчера</div></div>
-      </div>
-      <img class="social-img" src="${svg2}" alt="">
-      <div class="social-text"><b>max_travel</b> Наконец-то выбрались за город.</div>
-    </div>
-  `);
-}
-
-function openNotes(){
-  let notes = JSON.parse(localStorage.getItem("guestDesktopNotes") || "[]");
-
-  const list = notes.length
-    ? notes.map((n,i)=>`
-        <div class="note-item" onclick="editNote(${i})">
-          <b>${escapeHTML(n.title || "Заметка")}</b>
-          <div class="muted" style="margin-top:5px">${escapeHTML((n.text||"").slice(0,80))}</div>
-        </div>
-      `).join("")
-    : `<div class="muted">Заметок пока нет</div>`;
-
-  showBuiltin("Заметки",`
-    <button class="btn" style="margin:0 0 12px;background:#007aff;color:#fff" onclick="editNote(-1)">＋ Новая заметка</button>
-    ${list}
-  `);
-}
-
-function editNote(index){
-  const notes = JSON.parse(localStorage.getItem("guestDesktopNotes") || "[]");
-  const note = index>=0 ? notes[index] : {title:"",text:""};
-
-  const ov = document.getElementById("builtinOverlay");
-  ov.innerHTML = `
-    <div class="builtin-shell">
-      <div class="builtin-top">
-        <button class="back-btn" onclick="openNotes()">‹ Заметки</button>
-        <div class="builtin-title">${index>=0 ? "Редактирование" : "Новая заметка"}</div>
-      </div>
-      <div class="builtin-body">
-        <input class="input" style="background:#fff;color:#111;border-color:#ddd" id="noteTitle" placeholder="Название" value="${escapeAttr(note.title)}">
-        <textarea class="textarea" style="background:#fff;color:#111;border-color:#ddd" id="noteText" placeholder="Текст">${escapeHTML(note.text)}</textarea>
-        <button class="btn" style="background:#007aff;color:#fff" onclick="saveNote(${index})">Сохранить</button>
-      </div>
-    </div>
-  `;
-}
-
-function saveNote(index){
-  const title = document.getElementById("noteTitle").value.trim();
-  const text = document.getElementById("noteText").value.trim();
-
-  const notes = JSON.parse(localStorage.getItem("guestDesktopNotes") || "[]");
-  const obj = {title,text};
-
-  if(index>=0) notes[index] = obj;
-  else notes.unshift(obj);
-
-  localStorage.setItem("guestDesktopNotes",JSON.stringify(notes));
-  openNotes();
-}
 
 /* =========================================================
-   SETTINGS OPEN / CLOSE
+   SHOW BUILTIN
 ========================================================= */
 
-let longPressTimer = null;
-const hotspot = document.getElementById("secretHotspot");
+function showBuiltin(
+  title,
+  bodyHtml
+){
 
-function startLongPress(){
-  clearTimeout(longPressTimer);
-  longPressTimer = setTimeout(openSettings,1700);
+  const overlay =
+
+  document
+  .getElementById(
+    "builtinOverlay"
+  );
+
+
+  overlay.innerHTML = `
+
+    <div class="builtin-shell">
+
+
+      <div class="builtin-top">
+
+
+        <button
+        class="back-btn"
+        onclick="closeBuiltin()">
+
+          ‹ Назад
+
+        </button>
+
+
+        <div class="builtin-title">
+
+          ${
+            escapeHTML(
+              title
+            )
+          }
+
+        </div>
+
+
+      </div>
+
+
+      <div class="builtin-body">
+
+        ${bodyHtml}
+
+      </div>
+
+
+    </div>
+
+  `;
+
+
+  overlay.classList
+  .add(
+    "show"
+  );
+
 }
+
+
+/* =========================================================
+   CLOSE BUILTIN
+========================================================= */
+
+function closeBuiltin(){
+
+  const overlay =
+
+  document
+  .getElementById(
+    "builtinOverlay"
+  );
+
+
+  overlay.classList
+  .remove(
+    "show"
+  );
+
+
+  overlay.innerHTML =
+  "";
+
+}
+
+
+/* =========================================================
+   MESSAGES
+========================================================= */
+
+function openMessages(){
+
+  const rows =
+
+  sampleChats
+  .map(
+
+    chat =>`
+
+      <div
+      class="chat-row"
+      onclick="
+      openChat('${chat.id}')
+      ">
+
+
+        <div class="avatar">
+
+          ${
+            escapeHTML(
+              chat.name
+              .charAt(0)
+            )
+          }
+
+        </div>
+
+
+        <div class="chat-main">
+
+
+          <div class="chat-name">
+
+            ${
+              escapeHTML(
+                chat.name
+              )
+            }
+
+          </div>
+
+
+          <div class="chat-last">
+
+            ${
+              escapeHTML(
+                chat.last
+              )
+            }
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    `
+
+  )
+  .join("");
+
+
+  showBuiltin(
+
+    "Сообщения",
+
+    `
+
+      <div class="card">
+
+        ${rows}
+
+      </div>
+
+    `
+
+  );
+
+}
+
+
+/* =========================================================
+   OPEN CHAT
+========================================================= */
+
+function openChat(id){
+
+  const chat =
+
+  sampleChats
+  .find(
+
+    item =>
+    item.id
+    ===
+    id
+
+  );
+
+
+  if(
+    !chat
+  ){
+
+    return;
+
+  }
+
+
+  const overlay =
+
+  document
+  .getElementById(
+    "builtinOverlay"
+  );
+
+
+  overlay.innerHTML = `
+
+    <div class="builtin-shell">
+
+
+      <div class="builtin-top">
+
+
+        <button
+        class="back-btn"
+        onclick="openMessages()">
+
+          ‹ Чаты
+
+        </button>
+
+
+        <div class="builtin-title">
+
+          ${
+            escapeHTML(
+              chat.name
+            )
+          }
+
+        </div>
+
+
+      </div>
+
+
+      <div
+      class="builtin-body"
+      id="chatBody">
+
+
+        ${
+
+
+          chat.messages
+          .map(
+
+            message =>`
+
+              <div
+              class="
+              bubble
+              ${message.side}
+              ">
+
+                ${
+                  escapeHTML(
+                    message.text
+                  )
+                }
+
+              </div>
+
+            `
+
+          )
+          .join("")
+
+
+        }
+
+
+      </div>
+
+
+      <div class="compose">
+
+
+        <input
+        id="chatInput"
+        placeholder="Сообщение">
+
+
+        <button
+        onclick="
+        sendLocalMessage('${chat.id}')
+        ">
+
+          ↑
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+  `;
+
+
+  overlay.classList
+  .add(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   SEND MESSAGE
+========================================================= */
+
+function sendLocalMessage(id){
+
+  const input =
+
+  document
+  .getElementById(
+    "chatInput"
+  );
+
+
+  const text =
+
+  input.value
+  .trim();
+
+
+  if(
+    !text
+  ){
+
+    return;
+
+  }
+
+
+  const chat =
+
+  sampleChats
+  .find(
+
+    item =>
+    item.id
+    ===
+    id
+
+  );
+
+
+  if(
+    !chat
+  ){
+
+    return;
+
+  }
+
+
+  chat.messages
+  .push({
+
+    side:"out",
+
+    text:text
+
+  });
+
+
+  chat.last =
+  text;
+
+
+  input.value =
+  "";
+
+
+  openChat(id);
+
+}
+
+
+/* =========================================================
+   CONTACTS
+========================================================= */
+
+function openContacts(){
+
+  const contacts = [
+
+    [
+      "Анна",
+      "+7 900 000-00-01"
+    ],
+
+    [
+      "Максим",
+      "+7 900 000-00-02"
+    ],
+
+    [
+      "Ирина",
+      "+7 900 000-00-03"
+    ],
+
+    [
+      "Сергей",
+      "+7 900 000-00-04"
+    ]
+
+  ];
+
+
+  showBuiltin(
+
+    "Контакты",
+
+    `
+
+      <div class="card">
+
+
+        ${
+
+
+          contacts
+          .map(
+
+            contact =>`
+
+              <div class="contact-row">
+
+
+                <div class="avatar">
+
+                  ${
+                    escapeHTML(
+                      contact[0][0]
+                    )
+                  }
+
+                </div>
+
+
+                <div class="chat-main">
+
+
+                  <div class="chat-name">
+
+                    ${
+                      escapeHTML(
+                        contact[0]
+                      )
+                    }
+
+                  </div>
+
+
+                  <div class="chat-last">
+
+                    ${
+                      escapeHTML(
+                        contact[1]
+                      )
+                    }
+
+                  </div>
+
+
+                </div>
+
+
+              </div>
+
+            `
+
+          )
+          .join("")
+
+
+        }
+
+
+      </div>
+
+    `
+
+  );
+
+}
+
+
+/* =========================================================
+   SOCIAL
+========================================================= */
+
+function openSocial(){
+
+  const image1 =
+
+  "data:image/svg+xml;charset=utf-8,"
+
+  +
+
+  encodeURIComponent(`
+
+  <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="900"
+  height="900">
+
+    <defs>
+
+      <linearGradient
+      id="g"
+      x1="0"
+      y1="0"
+      x2="1"
+      y2="1">
+
+        <stop
+        stop-color="#ffb36b"/>
+
+        <stop
+        offset="1"
+        stop-color="#6c63ff"/>
+
+      </linearGradient>
+
+    </defs>
+
+    <rect
+    width="100%"
+    height="100%"
+    fill="url(#g)"/>
+
+    <circle
+    cx="450"
+    cy="360"
+    r="160"
+    fill="rgba(255,255,255,.25)"/>
+
+  </svg>
+
+  `);
+
+
+  const image2 =
+
+  "data:image/svg+xml;charset=utf-8,"
+
+  +
+
+  encodeURIComponent(`
+
+  <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="900"
+  height="900">
+
+    <rect
+    width="100%"
+    height="100%"
+    fill="#18283d"/>
+
+    <circle
+    cx="680"
+    cy="220"
+    r="90"
+    fill="#f6d365"/>
+
+    <path
+    d="
+    M0 620
+    Q250 450 470 620
+    T900 560
+    V900
+    H0Z
+    "
+    fill="#2f5d50"/>
+
+  </svg>
+
+  `);
+
+
+  showBuiltin(
+
+    "Лента",
+
+    `
+
+      <div class="social-post">
+
+        <div class="social-head">
+
+          <div class="avatar">
+            A
+          </div>
+
+          <div>
+
+            <b>
+              anna_photo
+            </b>
+
+            <div class="muted">
+              Сегодня
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <img
+        class="social-img"
+        src="${image1}"
+        alt="">
+
+
+        <div class="social-text">
+
+          <b>
+            anna_photo
+          </b>
+
+          Отличный вечер ✨
+
+        </div>
+
+      </div>
+
+
+      <div class="social-post">
+
+        <div class="social-head">
+
+          <div class="avatar">
+            M
+          </div>
+
+          <div>
+
+            <b>
+              max_travel
+            </b>
+
+            <div class="muted">
+              Вчера
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <img
+        class="social-img"
+        src="${image2}"
+        alt="">
+
+
+        <div class="social-text">
+
+          <b>
+            max_travel
+          </b>
+
+          Наконец-то выбрались за город.
+
+        </div>
+
+      </div>
+
+    `
+
+  );
+
+}
+
+
+/* =========================================================
+   NOTES
+========================================================= */
+
+function openNotes(){
+
+  const notes =
+
+  JSON.parse(
+
+    localStorage
+    .getItem(
+      "guestDesktopNotes"
+    )
+
+    ||
+
+    "[]"
+
+  );
+
+
+  const list =
+
+  notes.length
+
+  ?
+
+  notes
+  .map(
+
+    (
+      note,
+      index
+    ) =>`
+
+      <div
+      class="note-item"
+      onclick="
+      editNote(${index})
+      ">
+
+        <b>
+
+          ${
+            escapeHTML(
+              note.title
+              ||
+              "Заметка"
+            )
+          }
+
+        </b>
+
+
+        <div
+        class="muted"
+        style="
+        margin-top:5px;
+        ">
+
+          ${
+            escapeHTML(
+
+              (
+                note.text
+                ||
+                ""
+              )
+              .slice(
+                0,
+                80
+              )
+
+            )
+          }
+
+        </div>
+
+      </div>
+
+    `
+
+  )
+  .join("")
+
+  :
+
+  `
+
+    <div class="muted">
+
+      Заметок пока нет
+
+    </div>
+
+  `;
+
+
+  showBuiltin(
+
+    "Заметки",
+
+    `
+
+      <button
+
+      class="btn"
+
+      style="
+      margin:0 0 12px;
+      background:#007aff;
+      color:#fff;
+      "
+
+      onclick="
+      editNote(-1)
+      ">
+
+        ＋ Новая заметка
+
+      </button>
+
+
+      ${list}
+
+    `
+
+  );
+
+}
+
+
+/* =========================================================
+   EDIT NOTE
+========================================================= */
+
+function editNote(index){
+
+  const notes =
+
+  JSON.parse(
+
+    localStorage
+    .getItem(
+      "guestDesktopNotes"
+    )
+
+    ||
+
+    "[]"
+
+  );
+
+
+  const note =
+
+  index
+  >=
+  0
+
+  ?
+
+  notes[index]
+
+  :
+
+  {
+
+    title:"",
+
+    text:""
+
+  };
+
+
+  const overlay =
+
+  document
+  .getElementById(
+    "builtinOverlay"
+  );
+
+
+  overlay.innerHTML = `
+
+    <div class="builtin-shell">
+
+
+      <div class="builtin-top">
+
+
+        <button
+        class="back-btn"
+        onclick="openNotes()">
+
+          ‹ Заметки
+
+        </button>
+
+
+        <div class="builtin-title">
+
+          ${
+            index
+            >=
+            0
+
+            ?
+
+            "Редактирование"
+
+            :
+
+            "Новая заметка"
+          }
+
+        </div>
+
+
+      </div>
+
+
+      <div class="builtin-body">
+
+
+        <input
+
+        class="input"
+
+        style="
+        background:#fff;
+        color:#111;
+        border-color:#ddd;
+        "
+
+        id="noteTitle"
+
+        placeholder="Название"
+
+        value="${
+          escapeAttr(
+            note.title
+          )
+        }">
+
+
+        <textarea
+
+        class="textarea"
+
+        style="
+        background:#fff;
+        color:#111;
+        border-color:#ddd;
+        "
+
+        id="noteText"
+
+        placeholder="Текст">${
+          escapeHTML(
+            note.text
+          )
+        }</textarea>
+
+
+        <button
+
+        class="btn"
+
+        style="
+        background:#007aff;
+        color:#fff;
+        "
+
+        onclick="
+        saveNote(${index})
+        ">
+
+          Сохранить
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   SAVE NOTE
+========================================================= */
+
+function saveNote(index){
+
+  const title =
+
+  document
+  .getElementById(
+    "noteTitle"
+  )
+  .value
+  .trim();
+
+
+  const text =
+
+  document
+  .getElementById(
+    "noteText"
+  )
+  .value
+  .trim();
+
+
+  const notes =
+
+  JSON.parse(
+
+    localStorage
+    .getItem(
+      "guestDesktopNotes"
+    )
+
+    ||
+
+    "[]"
+
+  );
+
+
+  const note = {
+
+    title:title,
+
+    text:text
+
+  };
+
+
+  if(
+    index
+    >=
+    0
+  ){
+
+    notes[index] =
+    note;
+
+  }
+
+  else{
+
+    notes.unshift(
+      note
+    );
+
+  }
+
+
+  localStorage.setItem(
+
+    "guestDesktopNotes",
+
+    JSON.stringify(
+      notes
+    )
+
+  );
+
+
+  openNotes();
+
+}
+
+
+/* =========================================================
+   SETTINGS ENTRY
+========================================================= */
+
+let longPressTimer =
+null;
+
+
+const hotspot =
+
+document
+.getElementById(
+  "secretHotspot"
+);
+
+
+const secretCorner =
+
+document
+.getElementById(
+  "secretCorner"
+);
+
+
+function startLongPress(
+  event
+){
+
+  if(
+
+    event
+
+    &&
+
+    event.cancelable
+
+  ){
+
+    event.preventDefault();
+
+  }
+
+
+  clearTimeout(
+    longPressTimer
+  );
+
+
+  longPressTimer =
+
+  setTimeout(
+
+    ()=>{
+
+      openSettings();
+
+    },
+
+    1200
+
+  );
+
+}
+
+
 function cancelLongPress(){
-  clearTimeout(longPressTimer);
+
+  clearTimeout(
+    longPressTimer
+  );
+
 }
 
-hotspot.addEventListener("touchstart",startLongPress,{passive:true});
-hotspot.addEventListener("touchend",cancelLongPress,{passive:true});
-hotspot.addEventListener("touchmove",cancelLongPress,{passive:true});
-hotspot.addEventListener("mousedown",startLongPress);
-hotspot.addEventListener("mouseup",cancelLongPress);
-hotspot.addEventListener("mouseleave",cancelLongPress);
+
+function bindLongPress(
+  element
+){
+
+  if(
+    !element
+  ){
+
+    return;
+
+  }
+
+
+  element
+  .addEventListener(
+
+    "pointerdown",
+
+    startLongPress
+
+  );
+
+
+  element
+  .addEventListener(
+
+    "pointerup",
+
+    cancelLongPress
+
+  );
+
+
+  element
+  .addEventListener(
+
+    "pointercancel",
+
+    cancelLongPress
+
+  );
+
+
+  element
+  .addEventListener(
+
+    "pointerleave",
+
+    cancelLongPress
+
+  );
+
+
+  element
+  .addEventListener(
+
+    "contextmenu",
+
+    event =>{
+
+      event.preventDefault();
+
+    }
+
+  );
+
+}
+
+
+bindLongPress(
+  hotspot
+);
+
+
+bindLongPress(
+  secretCorner
+);
+
+
+/* =========================================================
+   SECOND SECRET METHOD
+========================================================= */
+
+let secretTapCount =
+0;
+
+
+let secretTapTimer =
+null;
+
+
+document
+.getElementById(
+  "heroDate"
+)
+.addEventListener(
+
+  "click",
+
+  ()=>{
+
+
+    secretTapCount++;
+
+
+    clearTimeout(
+      secretTapTimer
+    );
+
+
+    if(
+      secretTapCount
+      >=
+      4
+    ){
+
+      secretTapCount =
+      0;
+
+
+      openSettings();
+
+
+      return;
+
+    }
+
+
+    secretTapTimer =
+
+    setTimeout(
+
+      ()=>{
+
+        secretTapCount =
+        0;
+
+      },
+
+      900
+
+    );
+
+  }
+
+);
+
+
+/* =========================================================
+   OPEN SETTINGS
+========================================================= */
 
 function openSettings(){
+
   renderSettings();
-  document.getElementById("settingsOverlay").classList.add("show");
+
+
+  document
+  .getElementById(
+    "settingsOverlay"
+  )
+  .classList
+  .add(
+    "show"
+  );
+
 }
 
+
+/* =========================================================
+   CLOSE SETTINGS
+========================================================= */
+
 function closeSettings(){
-  document.getElementById("settingsOverlay").classList.remove("show");
+
+  document
+  .getElementById(
+    "settingsOverlay"
+  )
+  .classList
+  .remove(
+    "show"
+  );
+
 }
+
 
 /* =========================================================
    PAGE SETTINGS
 ========================================================= */
 
 function renderPageSettings(){
-  const box = document.getElementById("pageSettings");
-  box.innerHTML = "";
 
-  state.pages.forEach((p,index)=>{
-    const row = document.createElement("div");
-    row.className = "page-row";
-    row.innerHTML = `
-      <div class="row-left">
-        <div class="row-title">${escapeHTML(p.name)}</div>
-        <div class="row-sub">${state.apps.filter(a=>a.pageId===p.id).length} прилож.</div>
-      </div>
-      <div class="row-actions">
-        <button class="small-btn" ${index===0 ? "disabled" : ""}>←</button>
-        <button class="small-btn" ${index===state.pages.length-1 ? "disabled" : ""}>→</button>
-        <button class="small-btn red" ${state.pages.length===1 ? "disabled" : ""}>×</button>
-      </div>
-    `;
+  const box =
 
-    const buttons = row.querySelectorAll("button");
+  document
+  .getElementById(
+    "pageSettings"
+  );
 
-    buttons[0].onclick = ()=>{
-      if(index<=0) return;
-      [state.pages[index-1],state.pages[index]] = [state.pages[index],state.pages[index-1]];
-      state.currentPage = index-1;
-      saveState();
-      renderDesktop();
-      renderSettings();
-    };
 
-    buttons[1].onclick = ()=>{
-      if(index>=state.pages.length-1) return;
-      [state.pages[index+1],state.pages[index]] = [state.pages[index],state.pages[index+1]];
-      state.currentPage = index+1;
-      saveState();
-      renderDesktop();
-      renderSettings();
-    };
+  box.innerHTML =
+  "";
 
-    buttons[2].onclick = ()=>{
-      if(state.pages.length===1) return;
 
-      const firstOther = state.pages.find(x=>x.id!==p.id);
-      state.apps.forEach(a=>{
-        if(a.pageId===p.id) a.pageId = firstOther.id;
-      });
+  state.pages
+  .forEach(
 
-      state.pages = state.pages.filter(x=>x.id!==p.id);
-      state.currentPage = Math.min(state.currentPage,state.pages.length-1);
-      saveState();
-      renderDesktop();
-      renderSettings();
-    };
+    (
+      page,
+      index
+    ) =>{
 
-    box.appendChild(row);
-  });
+
+      const row =
+
+      document
+      .createElement(
+        "div"
+      );
+
+
+      row.className =
+      "page-row";
+
+
+      row.innerHTML = `
+
+        <div class="row-left">
+
+
+          <div class="row-title">
+
+            ${
+              escapeHTML(
+                page.name
+              )
+            }
+
+          </div>
+
+
+          <div class="row-sub">
+
+            ${
+              state.apps
+              .filter(
+
+                app =>
+                app.pageId
+                ===
+                page.id
+
+              )
+              .length
+            }
+
+            прилож.
+
+          </div>
+
+
+        </div>
+
+
+        <div class="row-actions">
+
+
+          <button
+          class="small-btn"
+          ${index === 0 ? "disabled" : ""}>
+
+            ←
+
+          </button>
+
+
+          <button
+          class="small-btn"
+          ${
+            index
+            ===
+            state.pages.length
+            -
+            1
+
+            ?
+
+            "disabled"
+
+            :
+
+            ""
+          }>
+
+            →
+
+          </button>
+
+
+          <button
+          class="small-btn red"
+          ${
+            state.pages.length
+            ===
+            1
+
+            ?
+
+            "disabled"
+
+            :
+
+            ""
+          }>
+
+            ×
+
+          </button>
+
+
+        </div>
+
+      `;
+
+
+      const buttons =
+
+      row
+      .querySelectorAll(
+        "button"
+      );
+
+
+      buttons[0]
+      .onclick =
+      ()=>{
+
+
+        if(
+          index
+          <=
+          0
+        ){
+
+          return;
+
+        }
+
+
+        [
+
+          state.pages[index - 1],
+
+          state.pages[index]
+
+        ]
+
+        =
+
+        [
+
+          state.pages[index],
+
+          state.pages[index - 1]
+
+        ];
+
+
+        state.currentPage =
+        index - 1;
+
+
+        saveState();
+
+        renderDesktop();
+
+        renderSettings();
+
+      };
+
+
+      buttons[1]
+      .onclick =
+      ()=>{
+
+
+        if(
+
+          index
+          >=
+          state.pages.length
+          -
+          1
+
+        ){
+
+          return;
+
+        }
+
+
+        [
+
+          state.pages[index + 1],
+
+          state.pages[index]
+
+        ]
+
+        =
+
+        [
+
+          state.pages[index],
+
+          state.pages[index + 1]
+
+        ];
+
+
+        state.currentPage =
+        index + 1;
+
+
+        saveState();
+
+        renderDesktop();
+
+        renderSettings();
+
+      };
+
+
+      buttons[2]
+      .onclick =
+      ()=>{
+
+
+        if(
+          state.pages.length
+          ===
+          1
+        ){
+
+          return;
+
+        }
+
+
+        const firstOther =
+
+        state.pages
+        .find(
+
+          item =>
+          item.id
+          !==
+          page.id
+
+        );
+
+
+        state.apps
+        .forEach(
+
+          app =>{
+
+
+            if(
+              app.pageId
+              ===
+              page.id
+            ){
+
+              app.pageId =
+              firstOther.id;
+
+            }
+
+          }
+
+        );
+
+
+        state.pages =
+
+        state.pages
+        .filter(
+
+          item =>
+          item.id
+          !==
+          page.id
+
+        );
+
+
+        state.currentPage =
+
+        Math.min(
+
+          state.currentPage,
+
+          state.pages.length
+          -
+          1
+
+        );
+
+
+        saveState();
+
+        renderDesktop();
+
+        renderSettings();
+
+      };
+
+
+      box
+      .appendChild(
+        row
+      );
+
+    }
+
+  );
+
 }
+
+
+/* =========================================================
+   ADD PAGE
+========================================================= */
 
 function addPage(){
-  const num = state.pages.length+1;
-  state.pages.push({
-    id:"page_"+Date.now(),
-    name:"Страница "+num
+
+  const number =
+
+  state.pages.length
+  +
+  1;
+
+
+  state.pages
+  .push({
+
+    id:
+    "page_"
+    +
+    Date.now(),
+
+    name:
+    "Страница "
+    +
+    number
+
   });
 
-  state.currentPage = state.pages.length-1;
+
+  state.currentPage =
+
+  state.pages.length
+  -
+  1;
+
+
   saveState();
+
   renderDesktop();
+
   renderSettings();
+
 }
+
 
 /* =========================================================
    APP SETTINGS
 ========================================================= */
 
 function renderAppSettings(){
-  const box = document.getElementById("appSettings");
-  box.innerHTML = "";
 
-  state.apps.forEach(app=>{
-    const pageName = state.pages.find(p=>p.id===app.pageId)?.name || "";
+  const box =
 
-    const row = document.createElement("div");
-    row.className = "app-row";
-    row.innerHTML = `
-      <div class="row-left">
-        <div class="row-title">${app.iconImage ? "🖼️" : escapeHTML(app.icon || "⭐")} ${escapeHTML(app.title)}</div>
-        <div class="row-sub">${escapeHTML(pageName)}</div>
-      </div>
+  document
+  .getElementById(
+    "appSettings"
+  );
 
-      <div class="row-actions">
-        <div class="switch ${app.enabled!==false ? "on" : ""}">
-          <div class="switch-knob"></div>
+
+  box.innerHTML =
+  "";
+
+
+  state.apps
+  .forEach(
+
+    app =>{
+
+
+      const pageName =
+
+      state.pages
+      .find(
+
+        page =>
+        page.id
+        ===
+        app.pageId
+
+      )
+      ?.name
+
+      ||
+
+      "";
+
+
+      const row =
+
+      document
+      .createElement(
+        "div"
+      );
+
+
+      row.className =
+      "app-row";
+
+
+      row.innerHTML = `
+
+        <div class="row-left">
+
+
+          <div class="row-title">
+
+            ${
+              app.iconImage
+
+              ?
+
+              "🖼️"
+
+              :
+
+              escapeHTML(
+                app.icon
+                ||
+                "⭐"
+              )
+            }
+
+            ${
+              escapeHTML(
+                app.title
+              )
+            }
+
+          </div>
+
+
+          <div class="row-sub">
+
+            ${
+              escapeHTML(
+                pageName
+              )
+            }
+
+          </div>
+
+
         </div>
-        ${app.removable!==false ? `<button class="small-btn red">×</button>` : ""}
-      </div>
-    `;
 
-    const sw = row.querySelector(".switch");
-    sw.onclick = ()=>{
-      app.enabled = app.enabled===false ? true : false;
-      saveState();
-      renderDesktop();
-      renderSettings();
-    };
 
-    const del = row.querySelector(".small-btn.red");
-    if(del){
-      del.onclick = ()=>{
-        if(confirm(`Удалить «${app.title}»?`)){
-          state.apps = state.apps.filter(a=>a.id!==app.id);
-          saveState();
-          renderDesktop();
-          renderSettings();
-        }
+        <div class="row-actions">
+
+
+          <div
+          class="
+          switch
+          ${
+            app.enabled !== false
+            ?
+            "on"
+            :
+            ""
+          }
+          ">
+
+            <div
+            class="switch-knob">
+            </div>
+
+          </div>
+
+
+          ${
+            app.removable !== false
+
+            ?
+
+            `
+
+              <button
+              class="small-btn red">
+
+                ×
+
+              </button>
+
+            `
+
+            :
+
+            ""
+          }
+
+
+        </div>
+
+      `;
+
+
+      const switchElement =
+
+      row
+      .querySelector(
+        ".switch"
+      );
+
+
+      switchElement.onclick =
+      ()=>{
+
+
+        app.enabled =
+
+        app.enabled
+        ===
+        false
+
+        ?
+
+        true
+
+        :
+
+        false;
+
+
+        saveState();
+
+        renderDesktop();
+
+        renderSettings();
+
       };
+
+
+      const deleteButton =
+
+      row
+      .querySelector(
+        ".small-btn.red"
+      );
+
+
+      if(
+        deleteButton
+      ){
+
+        deleteButton.onclick =
+        ()=>{
+
+
+          if(
+
+            confirm(
+              `Удалить «${app.title}»?`
+            )
+
+          ){
+
+
+            state.apps =
+
+            state.apps
+            .filter(
+
+              item =>
+              item.id
+              !==
+              app.id
+
+            );
+
+
+            saveState();
+
+            renderDesktop();
+
+            renderSettings();
+
+          }
+
+        };
+
+      }
+
+
+      box
+      .appendChild(
+        row
+      );
+
     }
 
-    box.appendChild(row);
-  });
+  );
+
 }
+
+
+/* =========================================================
+   PAGE SELECT
+========================================================= */
 
 function renderPageSelect(){
-  const sel = document.getElementById("newAppPage");
-  sel.innerHTML = state.pages.map(p=>
-    `<option value="${escapeAttr(p.id)}">${escapeHTML(p.name)}</option>`
-  ).join("");
+
+  const select =
+
+  document
+  .getElementById(
+    "newAppPage"
+  );
+
+
+  select.innerHTML =
+
+  state.pages
+  .map(
+
+    page =>`
+
+      <option
+      value="${escapeAttr(page.id)}">
+
+        ${
+          escapeHTML(
+            page.name
+          )
+        }
+
+      </option>
+
+    `
+
+  )
+  .join("");
+
 }
+
+
+/* =========================================================
+   EMOJI PICKER
+========================================================= */
 
 function renderEmojiPicker(){
-  const box = document.getElementById("emojiPicker");
-  box.innerHTML = "";
 
-  emojiChoices.forEach(icon=>{
-    const el = document.createElement("div");
-    el.className = "icon-choice" + (icon===selectedEmoji ? " selected" : "");
-    el.textContent = icon;
-    el.onclick = ()=>{
-      selectedEmoji = icon;
-      selectedCustomIcon = null;
-      document.getElementById("customIconPreview").classList.remove("show");
-      renderEmojiPicker();
-    };
-    box.appendChild(el);
-  });
+  const box =
+
+  document
+  .getElementById(
+    "emojiPicker"
+  );
+
+
+  box.innerHTML =
+  "";
+
+
+  emojiChoices
+  .forEach(
+
+    icon =>{
+
+
+      const element =
+
+      document
+      .createElement(
+        "div"
+      );
+
+
+      element.className =
+
+      "icon-choice"
+
+      +
+
+      (
+        icon
+        ===
+        selectedEmoji
+
+        ?
+
+        " selected"
+
+        :
+
+        ""
+      );
+
+
+      element.textContent =
+      icon;
+
+
+      element.onclick =
+      ()=>{
+
+
+        selectedEmoji =
+        icon;
+
+
+        selectedCustomIcon =
+        null;
+
+
+        document
+        .getElementById(
+          "customIconPreview"
+        )
+        .classList
+        .remove(
+          "show"
+        );
+
+
+        renderEmojiPicker();
+
+      };
+
+
+      box
+      .appendChild(
+        element
+      );
+
+    }
+
+  );
+
 }
+
+
+/* =========================================================
+   APP FORM
+========================================================= */
 
 function toggleAppForm(){
-  document.getElementById("appForm").classList.toggle("show");
+
+  document
+  .getElementById(
+    "appForm"
+  )
+  .classList
+  .toggle(
+    "show"
+  );
+
+
   renderPageSelect();
+
   renderEmojiPicker();
+
   updateTypeFields();
+
 }
+
+
+/* =========================================================
+   APP TYPE
+========================================================= */
 
 function updateTypeFields(){
-  const type = document.getElementById("newAppType").value;
-  document.getElementById("newAppUrl").style.display = type==="url" ? "block" : "none";
+
+  const type =
+
+  document
+  .getElementById(
+    "newAppType"
+  )
+  .value;
+
+
+  document
+  .getElementById(
+    "newAppUrl"
+  )
+  .style
+  .display =
+
+  type
+  ===
+  "url"
+
+  ?
+
+  "block"
+
+  :
+
+  "none";
+
 }
 
-document.getElementById("iconFileInput").addEventListener("change",function(){
-  const file = this.files && this.files[0];
-  if(!file) return;
 
-  const reader = new FileReader();
-  reader.onload = e=>{
-    compressImage(e.target.result,512,512,.86,compressed=>{
-      selectedCustomIcon = compressed;
+/* =========================================================
+   ICON FILE
+========================================================= */
 
-      const prev = document.getElementById("customIconPreview");
-      prev.innerHTML = `<img src="${compressed}" alt="">`;
-      prev.classList.add("show");
+document
+.getElementById(
+  "iconFileInput"
+)
+.addEventListener(
 
-      document.querySelectorAll(".icon-choice").forEach(x=>x.classList.remove("selected"));
-    });
-  };
-  reader.readAsDataURL(file);
-  this.value="";
-});
+  "change",
+
+  function(){
+
+
+    const file =
+
+    this.files
+    &&
+    this.files[0];
+
+
+    if(
+      !file
+    ){
+
+      return;
+
+    }
+
+
+    const reader =
+
+    new FileReader();
+
+
+    reader.onload =
+    event =>{
+
+
+      compressImage(
+
+        event.target.result,
+
+        512,
+
+        512,
+
+        .86,
+
+        compressed =>{
+
+
+          selectedCustomIcon =
+          compressed;
+
+
+          const preview =
+
+          document
+          .getElementById(
+            "customIconPreview"
+          );
+
+
+          preview.innerHTML = `
+
+            <img
+            src="${compressed}"
+            alt="">
+
+          `;
+
+
+          preview.classList
+          .add(
+            "show"
+          );
+
+
+          document
+          .querySelectorAll(
+            ".icon-choice"
+          )
+          .forEach(
+
+            item =>{
+
+              item.classList
+              .remove(
+                "selected"
+              );
+
+            }
+
+          );
+
+        }
+
+      );
+
+    };
+
+
+    reader.readAsDataURL(
+      file
+    );
+
+
+    this.value="";
+
+  }
+
+);
+
+
+/* =========================================================
+   ADD APP
+========================================================= */
 
 function addApp(){
-  const title = document.getElementById("newAppTitle").value.trim();
-  const type = document.getElementById("newAppType").value;
-  const pageId = document.getElementById("newAppPage").value;
-  const url = document.getElementById("newAppUrl").value.trim();
 
-  if(!title){
-    alert("Введите название.");
+  const title =
+
+  document
+  .getElementById(
+    "newAppTitle"
+  )
+  .value
+  .trim();
+
+
+  const type =
+
+  document
+  .getElementById(
+    "newAppType"
+  )
+  .value;
+
+
+  const pageId =
+
+  document
+  .getElementById(
+    "newAppPage"
+  )
+  .value;
+
+
+  const url =
+
+  document
+  .getElementById(
+    "newAppUrl"
+  )
+  .value
+  .trim();
+
+
+  if(
+    !title
+  ){
+
+    alert(
+      "Введите название."
+    );
+
+
     return;
+
   }
 
-  if(type==="url" && !url){
-    alert("Введите ссылку или URL-схему.");
+
+  if(
+
+    type
+    ===
+    "url"
+
+    &&
+
+    !url
+
+  ){
+
+    alert(
+      "Введите ссылку или URL-схему."
+    );
+
+
     return;
+
   }
 
-  state.apps.push({
-    id:"app_"+Date.now(),
-    title,
+
+  state.apps
+  .push({
+
+    id:
+    "app_"
+    +
+    Date.now(),
+
+    title:title,
+
     icon:selectedEmoji,
-    iconImage:selectedCustomIcon,
-    type,
-    url:type==="url" ? url : "",
+
+    iconImage:
+    selectedCustomIcon,
+
+    type:type,
+
+    url:
+    type
+    ===
+    "url"
+
+    ?
+
+    url
+
+    :
+
+    "",
+
+    pageId:
     pageId,
+
     enabled:true,
+
     removable:true
+
   });
 
-  if(!saveState()) return;
 
-  document.getElementById("newAppTitle").value = "";
-  document.getElementById("newAppUrl").value = "";
-  selectedEmoji = "⭐";
-  selectedCustomIcon = null;
-  document.getElementById("customIconPreview").classList.remove("show");
+  if(
+    !saveState()
+  ){
+
+    return;
+
+  }
+
+
+  document
+  .getElementById(
+    "newAppTitle"
+  )
+  .value =
+  "";
+
+
+  document
+  .getElementById(
+    "newAppUrl"
+  )
+  .value =
+  "";
+
+
+  selectedEmoji =
+  "⭐";
+
+
+  selectedCustomIcon =
+  null;
+
+
+  document
+  .getElementById(
+    "customIconPreview"
+  )
+  .classList
+  .remove(
+    "show"
+  );
+
 
   renderDesktop();
+
   renderSettings();
 
-  document.getElementById("appForm").classList.remove("show");
+
+  document
+  .getElementById(
+    "appForm"
+  )
+  .classList
+  .remove(
+    "show"
+  );
+
 }
+
 
 /* =========================================================
    SETTINGS RENDER
 ========================================================= */
 
 function renderSettings(){
+
   renderWallpaperSettings();
+
   renderPageSettings();
+
   renderAppSettings();
+
   renderPageSelect();
+
   renderEmojiPicker();
+
   updateTypeFields();
+
 }
+
 
 /* =========================================================
    SAFE HTML
 ========================================================= */
 
 function escapeHTML(text){
-  return String(text ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+
+  return String(
+    text
+    ??
+    ""
+  )
+
+  .replaceAll(
+    "&",
+    "&amp;"
+  )
+
+  .replaceAll(
+    "<",
+    "&lt;"
+  )
+
+  .replaceAll(
+    ">",
+    "&gt;"
+  )
+
+  .replaceAll(
+    '"',
+    "&quot;"
+  )
+
+  .replaceAll(
+    "'",
+    "&#039;"
+  );
+
 }
 
+
 function escapeAttr(text){
-  return escapeHTML(text).replaceAll("`","&#096;");
+
+  return escapeHTML(
+    text
+  )
+  .replaceAll(
+    "`",
+    "&#096;"
+  );
+
 }
+
 
 /* =========================================================
    START
 ========================================================= */
 
 applyWallpaper();
+
 renderDesktop();
+
 renderSettings();
 
 </script>
+
+
 </body>
 </html>
