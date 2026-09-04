@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#07101d">
+
+<title>Home</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+    color:white;
+    background:#07101d;
+}
+
+body{
+    position:fixed;
+    inset:0;
+}
+
+.home{
+    width:100%;
+    height:100dvh;
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(4,10,22,.08),
+            rgba(3,8,17,.28) 45%,
+            rgba(2,6,13,.72)
+        ),
+        url("wallpaper.jpg") center/cover no-repeat;
+}
+
+/* ---------- STATUS ---------- */
+
+.status{
+    height:58px;
+    padding:
+        max(14px,env(safe-area-inset-top))
+        24px
+        0;
+
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+
+    font-size:16px;
+    font-weight:650;
+    position:relative;
+    z-index:5;
+}
+
+#clock{
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+.right-status{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:14px;
+}
+
+/* ---------- DATE ---------- */
+
+.date-area{
+    padding:12px 25px 5px;
+}
+
+.big-time{
+    font-size:48px;
+    line-height:1;
+    font-weight:300;
+    letter-spacing:-2px;
+}
+
+.date{
+    margin-top:7px;
+    font-size:15px;
+    opacity:.75;
+}
+
+/* ---------- APPS ---------- */
+
+.apps{
+    padding:28px 22px 130px;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    column-gap:15px;
+    row-gap:25px;
+}
+
+.app{
+    text-align:center;
+    cursor:pointer;
+    user-select:none;
+}
+
+.icon{
+    width:min(17vw,72px);
+    height:min(17vw,72px);
+
+    margin:auto;
+
+    border-radius:18px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.18),
+            rgba(255,255,255,.055)
+        );
+
+    border:1px solid rgba(255,255,255,.16);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.28),
+        inset 0 1px rgba(255,255,255,.12);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    transition:.12s;
+}
+
+.app:active .icon{
+    transform:scale(.90);
+}
+
+.name{
+    margin-top:7px;
+    font-size:12px;
+    text-shadow:0 1px 4px #000;
+}
+
+/* ---------- DOCK ---------- */
+
+.dock{
+    position:absolute;
+
+    left:18px;
+    right:18px;
+
+    bottom:
+        calc(12px + env(safe-area-inset-bottom));
+
+    height:88px;
+
+    border-radius:28px;
+
+    background:rgba(20,25,38,.48);
+
+    border:1px solid rgba(255,255,255,.13);
+
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.dock .icon{
+    width:61px;
+    height:61px;
+    border-radius:16px;
+    font-size:29px;
+}
+
+/* ---------- SECRET PANEL ---------- */
+
+.secret{
+    position:absolute;
+    inset:0;
+
+    background:rgba(3,6,12,.91);
+
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    z-index:50;
+}
+
+.secret.show{
+    display:flex;
+}
+
+.panel{
+    width:85%;
+    max-width:350px;
+
+    padding:26px;
+
+    border-radius:26px;
+
+    background:rgba(35,40,52,.92);
+
+    border:1px solid rgba(255,255,255,.14);
+
+    text-align:center;
+}
+
+.panel h2{
+    margin:0 0 20px;
+    font-size:20px;
+}
+
+.panel button{
+    width:100%;
+    height:52px;
+
+    border:0;
+    border-radius:15px;
+
+    margin-top:10px;
+
+    font-size:16px;
+
+    background:#fff;
+    color:#111;
+}
+
+.panel .cancel{
+    background:rgba(255,255,255,.10);
+    color:#fff;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="home">
+
+    <!-- STATUS -->
+
+    <div class="status">
+
+        <!-- удерживать для скрытого меню -->
+        <div id="clock">09:41</div>
+
+        <div class="right-status">
+            <span>●●●</span>
+            <span>⌁</span>
+            <span>100%</span>
+        </div>
+
+    </div>
+
+
+    <!-- DATE -->
+
+    <div class="date-area">
+
+        <div class="big-time" id="bigTime">
+            09:41
+        </div>
+
+        <div class="date" id="date">
+            Пятница, 4 сентября
+        </div>
+
+    </div>
+
+
+    <!-- APPLICATIONS -->
+
+    <div class="apps">
+
+        <div class="app"
+             onclick="openApp('music')">
+
+            <div class="icon">🎵</div>
+            <div class="name">Музыка</div>
+
+        </div>
+
+
+        <div class="app"
+             onclick="openApp('planner')">
+
+            <div class="icon">📅</div>
+            <div class="name">Планер</div>
+
+        </div>
+
+
+        <div class="app"
+             onclick="openApp('family')">
+
+            <div class="icon">💬</div>
+            <div class="name">Сообщения</div>
+
+        </div>
+
+
+        <div class="app"
+             onclick="openApp('games')">
+
+            <div class="icon">🎮</div>
+            <div class="name">Игры</div>
+
+        </div>
+
+
+        <div class="app"
+             onclick="openApp('journal')">
+
+            <div class="icon">📊</div>
+            <div class="name">Журнал</div>
+
+        </div>
+
+
+        <div class="app"
+             onclick="openApp('notes')">
+
+            <div class="icon">📝</div>
+            <div class="name">Заметки</div>
+
+        </div>
+
+
+        <div class="app"
+             onclick="openApp('camera')">
+
+            <div class="icon">📷</div>
+            <div class="name">Камера</div>
+
+        </div>
+
+
+        <div class="app"
+             onclick="openApp('maps')">
+
+            <div class="icon">🗺️</div>
+            <div class="name">Карты</div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DOCK -->
+
+    <div class="dock">
+
+        <div class="app"
+             onclick="openApp('phone')">
+
+            <div class="icon">📞</div>
+
+        </div>
+
+
+        <div class="app"
+             onclick="openApp('browser')">
+
+            <div class="icon">🌐</div>
+
+        </div>
+
+
+        <div class="app"
+             onclick="openApp('camera')">
+
+            <div class="icon">📷</div>
+
+        </div>
+
+
+        <div class="app"
+             onclick="openApp('calculator')">
+
+            <div class="icon">🧮</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SECRET MENU -->
+
+<div class="secret" id="secret">
+
+    <div class="panel">
+
+        <h2>Настройки</h2>
+
+        <button onclick="location.reload()">
+            Обновить
+        </button>
+
+        <button class="cancel"
+                onclick="closeSecret()">
+            Закрыть
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   APPLICATION LIST
+========================= */
+
+const apps = {
+
+    music:
+    "https://madenjanna-ui.github.io/Music-edition/",
+
+    planner:
+    "#",
+
+    family:
+    "#",
+
+    games:
+    "https://madenjanna-ui.github.io/Avtoslalom/",
+
+    journal:
+    "#",
+
+    notes:
+    "#",
+
+    maps:
+    "https://maps.apple.com/",
+
+    browser:
+    "https://www.google.com/",
+
+    /* системные URL-схемы */
+    phone:
+    "tel:",
+
+    camera:
+    "camera:",
+
+    calculator:
+    "calc:"
+
+};
+
+
+/* =========================
+   OPEN APPLICATION
+========================= */
+
+function openApp(name){
+
+    const url = apps[name];
+
+    if(!url || url === "#"){
+        return;
+    }
+
+    window.location.href = url;
+}
+
+
+/* =========================
+   CLOCK
+========================= */
+
+function updateClock(){
+
+    const now = new Date();
+
+    const time =
+        now.toLocaleTimeString(
+            "ru-RU",
+            {
+                hour:"2-digit",
+                minute:"2-digit"
+            }
+        );
+
+    document.getElementById("clock")
+        .textContent=time;
+
+    document.getElementById("bigTime")
+        .textContent=time;
+
+
+    const date =
+        now.toLocaleDateString(
+            "ru-RU",
+            {
+                weekday:"long",
+                day:"numeric",
+                month:"long"
+            }
+        );
+
+    document.getElementById("date")
+        .textContent=
+            date.charAt(0).toUpperCase()
+            +date.slice(1);
+}
+
+updateClock();
+
+setInterval(updateClock,10000);
+
+
+/* =========================
+   SECRET LONG PRESS
+========================= */
+
+const clock =
+    document.getElementById("clock");
+
+let pressTimer;
+
+
+clock.addEventListener(
+    "touchstart",
+    ()=>{
+
+        pressTimer=setTimeout(
+            openSecret,
+            1800
+        );
+
+    }
+);
+
+
+clock.addEventListener(
+    "touchend",
+    ()=>{
+
+        clearTimeout(pressTimer);
+
+    }
+);
+
+
+clock.addEventListener(
+    "touchmove",
+    ()=>{
+
+        clearTimeout(pressTimer);
+
+    }
+);
+
+
+function openSecret(){
+
+    navigator.vibrate?.(40);
+
+    document
+        .getElementById("secret")
+        .classList.add("show");
+}
+
+
+function closeSecret(){
+
+    document
+        .getElementById("secret")
+        .classList.remove("show");
+}
+
+</script>
+
+</body>
+</html>
