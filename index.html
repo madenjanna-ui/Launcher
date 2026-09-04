@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 
-<meta
-name="viewport"
+<meta name="viewport"
 content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,10 +15,9 @@ content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,vie
 <style>
 
 :root{
-  --glass: rgba(255,255,255,.18);
-  --glass2: rgba(255,255,255,.09);
-  --line: rgba(255,255,255,.28);
-  --text:#fff;
+  --glass:rgba(255,255,255,.17);
+  --glassStrong:rgba(255,255,255,.25);
+  --line:rgba(255,255,255,.25);
 }
 
 *{
@@ -32,7 +30,6 @@ body{
   margin:0;
   width:100%;
   height:100%;
-  min-height:100%;
   overflow:hidden;
   background:#000;
   color:#fff;
@@ -48,26 +45,24 @@ body{
 body{
   position:fixed;
   inset:0;
-  width:100%;
-  height:100%;
 }
 
 button,
 input,
-select,
-textarea{
+textarea,
+select{
   font:inherit;
 }
 
 button{
-  -webkit-appearance:none;
   appearance:none;
+  -webkit-appearance:none;
 }
 
 
-/* =========================================================
+/* =====================================================
    HOME
-========================================================= */
+===================================================== */
 
 #home{
   position:absolute;
@@ -84,9 +79,9 @@ button{
   background:
   linear-gradient(
     160deg,
-    #53657a,
-    #263548 50%,
-    #0b1119
+    #4b5f7b,
+    #26354a 50%,
+    #0c121c
   );
 
   background-position:center;
@@ -105,87 +100,38 @@ button{
   background:
   linear-gradient(
     180deg,
-    rgba(0,0,0,.05),
-    rgba(0,0,0,.02) 45%,
-    rgba(0,0,0,.26)
+    rgba(0,0,0,.01),
+    rgba(0,0,0,.02) 60%,
+    rgba(0,0,0,.22)
   );
 }
 
 
-/* =========================================================
-   CLOCK
-========================================================= */
+/* =====================================================
+   INVISIBLE ADMIN HOTSPOT
+===================================================== */
 
-.hero{
-  position:relative;
-  z-index:3;
-
-  padding:
-  calc(env(safe-area-inset-top) + 14px)
-  22px
-  8px;
-
-  user-select:none;
-  -webkit-user-select:none;
-}
-
-.hero-time{
-  font-size:58px;
-  line-height:.95;
-
-  font-weight:250;
-
-  letter-spacing:-3px;
-
-  text-shadow:
-  0 2px 14px
-  rgba(0,0,0,.35);
-}
-
-.hero-date{
-  margin-top:8px;
-
-  font-size:16px;
-
-  opacity:.92;
-
-  text-shadow:
-  0 2px 8px
-  rgba(0,0,0,.4);
-}
-
-
-/* скрытая область настроек */
-
-.secret-corner{
+.admin-hotspot{
   position:absolute;
-
-  z-index:20;
 
   top:0;
-  right:0;
+  left:0;
 
-  width:58px;
-  height:58px;
+  z-index:50;
 
-  background:transparent;
-
-  border:0;
+  width:55px;
+  height:55px;
 
   opacity:0;
-
-  padding:0;
 }
 
 
-/* =========================================================
+/* =====================================================
    PAGES
-========================================================= */
+===================================================== */
 
-.pages-viewport{
+.pages{
   position:absolute;
-
-  z-index:2;
 
   left:0;
   right:0;
@@ -194,22 +140,20 @@ button{
   calc(
     env(safe-area-inset-top)
     +
-    130px
+    18px
   );
 
   bottom:
   calc(
     env(safe-area-inset-bottom)
     +
-    132px
+    120px
   );
 
   overflow:hidden;
-
-  touch-action:pan-y;
 }
 
-.pages-track{
+.track{
   height:100%;
 
   display:flex;
@@ -217,8 +161,6 @@ button{
   transition:
   transform .32s
   cubic-bezier(.22,.7,.18,1);
-
-  will-change:transform;
 }
 
 .page{
@@ -228,9 +170,9 @@ button{
   height:100%;
 
   padding:
+  20px
   18px
-  18px
-  12px;
+  20px;
 
   overflow-y:auto;
 
@@ -241,25 +183,27 @@ button{
   display:none;
 }
 
-.app-grid{
+
+/* =====================================================
+   IOS-LIKE APP GRID
+===================================================== */
+
+.grid{
   display:grid;
 
   grid-template-columns:
   repeat(4,1fr);
 
-  gap:
-  24px
-  12px;
+  column-gap:12px;
+
+  row-gap:22px;
 
   align-content:start;
 }
 
-
-/* =========================================================
-   ICON
-========================================================= */
-
 .app{
+  position:relative;
+
   min-width:0;
 
   text-align:center;
@@ -270,14 +214,14 @@ button{
 }
 
 .app-icon{
-  width:min(17vw,72px);
-  height:min(17vw,72px);
+  position:relative;
+
+  width:min(16.8vw,68px);
+  height:min(16.8vw,68px);
 
   margin:auto;
 
-  border-radius:20px;
-
-  position:relative;
+  border-radius:17px;
 
   overflow:hidden;
 
@@ -286,40 +230,33 @@ button{
   align-items:center;
   justify-content:center;
 
-  font-size:32px;
+  font-size:31px;
 
   background:
   linear-gradient(
     145deg,
-    rgba(255,255,255,.34),
+    rgba(255,255,255,.32),
     rgba(255,255,255,.08)
   );
 
   border:
   1px solid
-  rgba(255,255,255,.28);
+  rgba(255,255,255,.25);
 
   box-shadow:
-  0 10px 28px
-  rgba(0,0,0,.25),
+  0 8px 20px
+  rgba(0,0,0,.22),
 
   inset 0 1px 1px
-  rgba(255,255,255,.65),
-
-  inset 0 -1px 1px
-  rgba(255,255,255,.08);
+  rgba(255,255,255,.55);
 
   backdrop-filter:
-  blur(18px)
-  saturate(170%);
+  blur(16px)
+  saturate(175%);
 
   -webkit-backdrop-filter:
-  blur(18px)
-  saturate(170%);
-
-  transition:
-  transform .12s ease,
-  filter .12s ease;
+  blur(16px)
+  saturate(175%);
 }
 
 .app-icon::before{
@@ -327,8 +264,8 @@ button{
 
   position:absolute;
 
-  top:-30%;
-  left:-15%;
+  left:-10%;
+  top:-35%;
 
   width:85%;
   height:65%;
@@ -336,19 +273,13 @@ button{
   border-radius:50%;
 
   background:
-  rgba(255,255,255,.2);
+  rgba(255,255,255,.22);
 
-  filter:blur(8px);
-
-  transform:
-  rotate(-12deg);
-
-  pointer-events:none;
+  filter:blur(9px);
 }
 
 .app-icon img{
   position:absolute;
-
   inset:0;
 
   width:100%;
@@ -357,24 +288,15 @@ button{
   object-fit:cover;
 }
 
-.app-icon .emoji{
+.emoji{
   position:relative;
-
   z-index:2;
 }
 
-.app:active .app-icon{
-  transform:scale(.89);
-
-  filter:brightness(.9);
-}
-
 .app-name{
-  margin-top:7px;
+  margin-top:6px;
 
-  padding:0 2px;
-
-  font-size:12px;
+  font-size:11.5px;
 
   white-space:nowrap;
 
@@ -383,19 +305,72 @@ button{
   text-overflow:ellipsis;
 
   text-shadow:
-  0 2px 5px
-  rgba(0,0,0,.78);
+  0 1px 4px
+  rgba(0,0,0,.85);
 }
 
 
-/* =========================================================
-   PAGE DOTS
-========================================================= */
+/* =====================================================
+   EDIT MODE
+===================================================== */
 
-.page-dots{
+.editing .app{
+  animation:
+  wiggle .18s
+  infinite
+  alternate;
+}
+
+@keyframes wiggle{
+
+  from{
+    transform:rotate(-1.1deg);
+  }
+
+  to{
+    transform:rotate(1.1deg);
+  }
+
+}
+
+.delete-app{
+  display:none;
+
   position:absolute;
 
-  z-index:5;
+  left:2px;
+  top:-5px;
+
+  z-index:10;
+
+  width:23px;
+  height:23px;
+
+  border-radius:50%;
+
+  border:0;
+
+  background:
+  rgba(35,35,38,.9);
+
+  color:#fff;
+
+  font-size:18px;
+
+  line-height:20px;
+}
+
+.editing .delete-app{
+  display:block;
+}
+
+
+/* =====================================================
+   DOTS
+===================================================== */
+
+.dots{
+  position:absolute;
 
   left:0;
   right:0;
@@ -404,58 +379,54 @@ button{
   calc(
     env(safe-area-inset-bottom)
     +
-    108px
+    99px
   );
+
+  z-index:7;
 
   display:flex;
 
   justify-content:center;
 
   gap:7px;
-
-  pointer-events:none;
 }
 
-.page-dot{
+.dot{
   width:7px;
   height:7px;
 
   border-radius:50%;
 
   background:
-  rgba(255,255,255,.38);
-
-  transition:.2s;
+  rgba(255,255,255,.35);
 }
 
-.page-dot.active{
+.dot.active{
   background:#fff;
-
-  transform:scale(1.08);
 }
 
 
-/* =========================================================
+/* =====================================================
    DOCK
-========================================================= */
+===================================================== */
 
 .dock{
   position:absolute;
-
-  z-index:5;
 
   left:14px;
   right:14px;
 
   bottom:
   max(
-    10px,
+    9px,
     env(safe-area-inset-bottom)
   );
 
-  height:90px;
+  z-index:8;
 
-  border-radius:30px;
+  height:88px;
+
+  border-radius:28px;
 
   display:flex;
 
@@ -467,37 +438,32 @@ button{
   background:
   linear-gradient(
     145deg,
-    rgba(255,255,255,.23),
-    rgba(255,255,255,.07)
+    rgba(255,255,255,.24),
+    rgba(255,255,255,.08)
   );
 
   border:
   1px solid
-  rgba(255,255,255,.25);
+  rgba(255,255,255,.24);
 
   box-shadow:
-  0 12px 35px
-  rgba(0,0,0,.3),
-
-  inset 0 1px
-  rgba(255,255,255,.3);
+  0 11px 30px
+  rgba(0,0,0,.28);
 
   backdrop-filter:
-  blur(28px)
-  saturate(175%);
+  blur(26px)
+  saturate(180%);
 
   -webkit-backdrop-filter:
-  blur(28px)
-  saturate(175%);
+  blur(26px)
+  saturate(180%);
 }
 
 .dock .app-icon{
-  width:62px;
-  height:62px;
+  width:61px;
+  height:61px;
 
-  border-radius:18px;
-
-  font-size:28px;
+  border-radius:16px;
 }
 
 .dock .app-name{
@@ -505,9 +471,9 @@ button{
 }
 
 
-/* =========================================================
+/* =====================================================
    OVERLAY
-========================================================= */
+===================================================== */
 
 .overlay{
   display:none;
@@ -518,31 +484,7 @@ button{
 
   z-index:100;
 
-  background:
-  rgba(7,8,12,.72);
-
-  backdrop-filter:
-  blur(28px);
-
-  -webkit-backdrop-filter:
-  blur(28px);
-
-  overflow-y:auto;
-
-  padding:
-  calc(
-    env(safe-area-inset-top)
-    +
-    22px
-  )
-
-  16px
-
-  calc(
-    env(safe-area-inset-bottom)
-    +
-    24px
-  );
+  overflow:auto;
 }
 
 .overlay.show{
@@ -550,439 +492,105 @@ button{
 }
 
 
-/* =========================================================
-   SETTINGS
-========================================================= */
+/* =====================================================
+   SEARCH
+===================================================== */
 
-.panel{
-  max-width:440px;
-
-  margin:auto;
-
-  border-radius:28px;
-
-  padding:20px;
+#searchOverlay{
+  padding:
+  calc(
+    env(safe-area-inset-top)
+    +
+    22px
+  )
+  14px
+  20px;
 
   background:
-  rgba(34,34,41,.8);
-
-  border:
-  1px solid
-  rgba(255,255,255,.15);
-
-  box-shadow:
-  0 18px 50px
-  rgba(0,0,0,.42);
+  rgba(20,20,25,.75);
 
   backdrop-filter:
-  blur(25px);
+  blur(32px);
 
   -webkit-backdrop-filter:
-  blur(25px);
+  blur(32px);
 }
 
-.panel-title{
-  font-size:24px;
+.searchbox{
+  display:flex;
 
-  font-weight:700;
-
-  margin:
-  0 0 20px;
+  gap:8px;
 }
 
-.section-title{
-  margin:
-  22px
-  2px
-  10px;
+.searchbox input{
+  flex:1;
 
-  font-size:12px;
-
-  text-transform:uppercase;
-
-  letter-spacing:.75px;
-
-  opacity:.55;
-}
-
-.btn{
-  width:100%;
-
-  min-height:50px;
+  height:45px;
 
   border:0;
 
-  border-radius:15px;
+  border-radius:14px;
 
-  margin-top:10px;
+  padding:
+  0 14px;
 
-  background:#fff;
+  background:
+  rgba(255,255,255,.14);
 
-  color:#111;
-
-  font-weight:650;
-}
-
-.btn.secondary{
   color:#fff;
 
-  background:
-  rgba(255,255,255,.1);
+  outline:none;
+
+  font-size:16px;
 }
 
-.btn.danger{
-  color:#ffb3ad;
-
-  background:
-  rgba(255,59,48,.14);
-}
-
-
-/* =========================================================
-   WALLPAPERS
-========================================================= */
-
-.wallpaper-grid{
-  display:grid;
-
-  grid-template-columns:
-  repeat(3,1fr);
-
-  gap:10px;
-}
-
-.wallpaper{
-  aspect-ratio:9/16;
-
-  border-radius:15px;
-
-  background:
-  center/cover
-  no-repeat;
-
-  position:relative;
-
-  overflow:hidden;
-
-  border:
-  2px solid
-  transparent;
-}
-
-.wallpaper.selected{
-  border-color:#fff;
-}
-
-.wallpaper.selected::after{
-  content:"✓";
-
-  position:absolute;
-
-  right:6px;
-  top:6px;
-
-  width:24px;
-  height:24px;
-
-  border-radius:50%;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  background:#fff;
-
-  color:#111;
-
-  font-weight:800;
-}
-
-.mini-x{
-  position:absolute;
-
-  left:6px;
-  top:6px;
-
-  width:24px;
-  height:24px;
-
-  border-radius:50%;
-
+.search-cancel{
   border:0;
 
-  background:
-  rgba(0,0,0,.55);
+  background:none;
 
   color:#fff;
+
+  padding:
+  0 5px;
 }
 
+.search-results{
+  margin-top:20px;
+}
 
-/* =========================================================
-   SETTINGS ROW
-========================================================= */
-
-.page-row,
-.app-row{
-  min-height:58px;
-
+.search-item{
   display:flex;
-
-  gap:10px;
 
   align-items:center;
 
-  justify-content:
-  space-between;
+  gap:12px;
+
+  padding:
+  10px 4px;
 
   border-bottom:
   1px solid
   rgba(255,255,255,.08);
 }
 
-.row-left{
-  min-width:0;
-
-  flex:1;
-}
-
-.row-title{
-  white-space:nowrap;
-
-  overflow:hidden;
-
-  text-overflow:ellipsis;
-}
-
-.row-sub{
-  margin-top:3px;
-
-  font-size:12px;
-
-  opacity:.5;
-}
-
-.row-actions{
-  display:flex;
-
-  align-items:center;
-
-  gap:7px;
-}
-
-.small-btn{
-  border:0;
-
-  min-width:36px;
-
-  height:36px;
-
-  padding:
-  0 10px;
-
-  border-radius:11px;
-
-  background:
-  rgba(255,255,255,.1);
-
-  color:#fff;
-}
-
-.small-btn.red{
-  color:#ffb3ad;
-
-  background:
-  rgba(255,59,48,.15);
-}
-
-
-/* =========================================================
-   SWITCH
-========================================================= */
-
-.switch{
-  width:49px;
-  height:29px;
-
-  padding:3px;
-
-  border-radius:18px;
-
-  background:
-  rgba(255,255,255,.18);
-
-  transition:.2s;
-}
-
-.switch-knob{
-  width:23px;
-  height:23px;
-
-  border-radius:50%;
-
-  background:#fff;
-
-  transition:.2s;
-}
-
-.switch.on{
-  background:#34c759;
-}
-
-.switch.on
-.switch-knob{
-  transform:
-  translateX(20px);
-}
-
-
-/* =========================================================
-   FORM
-========================================================= */
-
-.form{
-  display:none;
-
-  margin-top:12px;
-
-  padding:14px;
-
-  border-radius:18px;
-
-  background:
-  rgba(255,255,255,.07);
-}
-
-.form.show{
-  display:block;
-}
-
-.input,
-.select,
-.textarea{
-  width:100%;
-
-  margin-top:10px;
-
-  border:
-  1px solid
-  rgba(255,255,255,.12);
-
-  border-radius:14px;
-
-  background:
-  rgba(255,255,255,.08);
-
-  color:#fff;
-
-  outline:none;
-}
-
-.input,
-.select{
+.search-item .app-icon{
+  width:48px;
   height:48px;
 
-  padding:
-  0 13px;
-}
+  margin:0;
 
-.textarea{
-  min-height:100px;
-
-  padding:
-  12px 13px;
-
-  resize:vertical;
-}
-
-.select option{
-  color:#111;
-}
-
-.icon-pick{
-  display:grid;
-
-  grid-template-columns:
-  repeat(6,1fr);
-
-  gap:8px;
-
-  margin-top:10px;
-}
-
-.icon-choice{
-  height:44px;
-
-  border-radius:11px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
+  border-radius:12px;
 
   font-size:23px;
-
-  background:
-  rgba(255,255,255,.07);
-
-  border:
-  1px solid
-  transparent;
-}
-
-.icon-choice.selected{
-  border-color:#fff;
-
-  background:
-  rgba(255,255,255,.16);
-}
-
-.custom-icon-preview{
-  width:72px;
-  height:72px;
-
-  margin-top:10px;
-
-  border-radius:18px;
-
-  overflow:hidden;
-
-  display:none;
-
-  background:
-  rgba(255,255,255,.08);
-}
-
-.custom-icon-preview.show{
-  display:block;
-}
-
-.custom-icon-preview img{
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
 }
 
 
-/* =========================================================
-   BUILTIN APPS
-========================================================= */
+/* =====================================================
+   SETTINGS / SYSTEM APP
+===================================================== */
 
-#builtinOverlay{
-  padding:0;
-
-  background:#f2f2f7;
-
-  color:#111;
-
-  backdrop-filter:none;
-
-  -webkit-backdrop-filter:none;
-}
-
-.builtin-shell{
+.system-shell{
   position:absolute;
 
   inset:0;
@@ -996,75 +604,78 @@ button{
   flex-direction:column;
 }
 
-.builtin-top{
+.system-top{
+  min-height:64px;
+
   padding:
   calc(
     env(safe-area-inset-top)
     +
     10px
   )
-
   16px
   10px;
-
-  min-height:64px;
 
   display:flex;
 
   align-items:flex-end;
 
-  gap:10px;
+  gap:12px;
 
   background:
-  rgba(248,248,250,.92);
+  rgba(248,248,250,.96);
 
   border-bottom:
   1px solid
-  #d8d8dc;
+  #d4d4d9;
 }
 
-.back-btn{
+.system-back{
   border:0;
 
   background:none;
 
-  padding:0;
-
   color:#007aff;
+
+  padding:0;
 
   font-size:16px;
 }
 
-.builtin-title{
-  font-size:20px;
+.system-title{
+  font-size:21px;
 
   font-weight:700;
 }
 
-.builtin-body{
+.system-body{
   flex:1;
 
-  overflow-y:auto;
+  overflow:auto;
 
-  padding:14px;
+  padding:
+  18px
+  14px
+  calc(
+    env(safe-area-inset-bottom)
+    +
+    25px
+  );
 }
 
-.card{
-  border-radius:16px;
+.settings-group{
+  overflow:hidden;
+
+  border-radius:14px;
 
   background:#fff;
 
-  padding:14px;
-
-  margin-bottom:10px;
-
-  box-shadow:
-  0 1px 2px
-  rgba(0,0,0,.04);
+  margin-bottom:18px;
 }
 
-.chat-row,
-.contact-row{
+.settings-row{
+  min-height:54px;
+
   display:flex;
 
   align-items:center;
@@ -1072,206 +683,390 @@ button{
   gap:12px;
 
   padding:
-  12px 4px;
+  8px
+  13px;
 
   border-bottom:
   1px solid
   #ececf0;
 }
 
-.avatar{
-  width:48px;
+.settings-row:last-child{
+  border-bottom:0;
+}
+
+.settings-icon{
+  width:31px;
+  height:31px;
+
+  border-radius:8px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:#6574d9;
+
+  color:#fff;
+
+  font-size:18px;
+}
+
+.settings-main{
+  flex:1;
+}
+
+.settings-small{
+  font-size:12px;
+
+  color:#8a8a90;
+
+  margin-top:2px;
+}
+
+.chevron{
+  color:#b3b3b8;
+
+  font-size:22px;
+}
+
+.switch{
+  width:49px;
+  height:29px;
+
+  padding:3px;
+
+  border-radius:20px;
+
+  background:#d6d6db;
+}
+
+.switch.on{
+  background:#34c759;
+}
+
+.switch-knob{
+  width:23px;
+  height:23px;
+
+  border-radius:50%;
+
+  background:#fff;
+
+  box-shadow:
+  0 1px 4px
+  rgba(0,0,0,.2);
+
+  transition:.2s;
+}
+
+.switch.on .switch-knob{
+  transform:
+  translateX(20px);
+}
+
+
+/* =====================================================
+   WALLPAPERS SETTINGS
+===================================================== */
+
+.wallpaper-grid{
+  display:grid;
+
+  grid-template-columns:
+  repeat(3,1fr);
+
+  gap:10px;
+}
+
+.wallpaper{
+  aspect-ratio:9/16;
+
+  border-radius:13px;
+
+  background:
+  center/cover
+  no-repeat;
+
+  border:
+  2px solid transparent;
+
+  position:relative;
+}
+
+.wallpaper.selected{
+  border-color:#007aff;
+}
+
+.wallpaper-x{
+  position:absolute;
+
+  left:5px;
+  top:5px;
+
+  width:24px;
+  height:24px;
+
+  border:0;
+
+  border-radius:50%;
+
+  background:
+  rgba(0,0,0,.55);
+
+  color:#fff;
+}
+
+
+/* =====================================================
+   BUTTONS / FORMS
+===================================================== */
+
+.primary{
+  width:100%;
+
+  min-height:48px;
+
+  border:0;
+
+  border-radius:13px;
+
+  background:#007aff;
+
+  color:#fff;
+
+  font-weight:600;
+
+  margin-top:10px;
+}
+
+.secondary{
+  width:100%;
+
+  min-height:48px;
+
+  border:0;
+
+  border-radius:13px;
+
+  background:#fff;
+
+  color:#007aff;
+
+  margin-top:10px;
+}
+
+.field{
+  width:100%;
+
   height:48px;
+
+  margin-top:10px;
+
+  padding:
+  0 13px;
+
+  border:
+  1px solid
+  #d8d8dc;
+
+  border-radius:13px;
+
+  background:#fff;
+
+  color:#111;
+
+  outline:none;
+}
+
+textarea.field{
+  height:110px;
+
+  padding:
+  12px 13px;
+}
+
+.icon-picker{
+  display:grid;
+
+  grid-template-columns:
+  repeat(6,1fr);
+
+  gap:8px;
+
+  margin-top:12px;
+}
+
+.icon-choice{
+  height:44px;
+
+  border-radius:11px;
+
+  background:#fff;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:23px;
+
+  border:
+  2px solid transparent;
+}
+
+.icon-choice.selected{
+  border-color:#007aff;
+}
+
+
+/* =====================================================
+   BUILTIN SIMPLE APPS
+===================================================== */
+
+.card{
+  background:#fff;
+
+  border-radius:15px;
+
+  margin-bottom:12px;
+
+  padding:14px;
+}
+
+.list-row{
+  min-height:58px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  border-bottom:
+  1px solid
+  #ececf0;
+}
+
+.list-row:last-child{
+  border-bottom:0;
+}
+
+.avatar{
+  width:47px;
+  height:47px;
 
   border-radius:50%;
 
   background:
   linear-gradient(
     145deg,
-    #7aa7ff,
-    #836dff
+    #7c9cff,
+    #735fe5
   );
-
-  color:#fff;
 
   display:flex;
 
   align-items:center;
-
   justify-content:center;
 
-  font-weight:700;
+  color:#fff;
 
-  overflow:hidden;
+  font-weight:700;
 }
 
-.chat-main{
+.list-main{
   flex:1;
 
   min-width:0;
 }
 
-.chat-name{
+.list-title{
   font-weight:650;
 }
 
-.chat-last{
+.list-sub{
   margin-top:3px;
 
-  color:#74747a;
-
-  font-size:14px;
+  color:#7c7c82;
 
   white-space:nowrap;
 
   overflow:hidden;
 
   text-overflow:ellipsis;
+
+  font-size:14px;
 }
 
-.bubble{
-  max-width:78%;
 
-  padding:
-  9px 12px;
+/* =====================================================
+   CATALOG
+===================================================== */
 
-  border-radius:17px;
-
-  margin:
-  7px 0;
-
-  line-height:1.35;
-
-  font-size:15px;
-}
-
-.bubble.in{
-  background:#e9e9ee;
-
-  margin-right:auto;
-}
-
-.bubble.out{
-  background:#2f80ff;
-
-  color:#fff;
-
-  margin-left:auto;
-}
-
-.compose{
-  display:flex;
-
-  gap:8px;
-
-  padding:
-  10px
-  12px
-  calc(
-    env(safe-area-inset-bottom)
-    +
-    8px
-  );
-
-  background:#f8f8fa;
-
-  border-top:
-  1px solid
-  #dddde2;
-}
-
-.compose input{
-  flex:1;
-
-  height:42px;
-
-  border:
-  1px solid
-  #d7d7dc;
-
-  border-radius:21px;
-
-  padding:
-  0 14px;
-
+.catalog-card{
   background:#fff;
 
-  color:#111;
-}
+  border-radius:16px;
 
-.compose button{
-  width:42px;
-  height:42px;
+  padding:14px;
 
-  border-radius:50%;
+  margin-bottom:11px;
 
-  border:0;
-
-  background:#007aff;
-
-  color:#fff;
-}
-
-.social-post{
-  background:#fff;
-
-  margin-bottom:14px;
-
-  border-radius:15px;
-
-  overflow:hidden;
-}
-
-.social-head{
   display:flex;
 
   align-items:center;
 
-  gap:10px;
-
-  padding:12px;
+  gap:12px;
 }
 
-.social-img{
-  width:100%;
+.catalog-icon{
+  width:58px;
+  height:58px;
 
-  aspect-ratio:1/1;
+  border-radius:14px;
 
-  object-fit:cover;
+  background:
+  linear-gradient(
+    145deg,
+    #4c8cff,
+    #7667e7
+  );
 
-  background:#ddd;
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  color:#fff;
+
+  font-size:27px;
 }
 
-.social-text{
-  padding:12px;
-
-  line-height:1.35;
+.catalog-main{
+  flex:1;
 }
 
-.note-item{
-  background:#fff;
+.catalog-install{
+  border:0;
 
-  border-radius:13px;
+  border-radius:17px;
 
-  padding:13px;
+  padding:
+  7px 14px;
 
-  margin-bottom:9px;
+  color:#007aff;
+
+  background:#e9e9ee;
+
+  font-weight:700;
 }
 
 
-/* =========================================================
-   IN APP BROWSER
-========================================================= */
-
-#browserOverlay{
-  padding:0;
-
-  background:#000;
-
-  backdrop-filter:none;
-
-  -webkit-backdrop-filter:none;
-}
+/* =====================================================
+   BROWSER
+===================================================== */
 
 .browser-shell{
   position:absolute;
@@ -1286,7 +1081,7 @@ button{
 }
 
 .browser-top{
-  min-height:58px;
+  min-height:60px;
 
   padding:
   calc(
@@ -1294,7 +1089,6 @@ button{
     +
     8px
   )
-
   12px
   8px;
 
@@ -1302,53 +1096,38 @@ button{
 
   align-items:flex-end;
 
-  gap:10px;
+  gap:8px;
 
   background:
-  rgba(20,20,22,.96);
-
-  border-bottom:
-  1px solid
-  rgba(255,255,255,.1);
-
-  color:#fff;
+  rgba(24,24,26,.96);
 }
 
-.browser-back,
-.browser-close{
-  border:0;
-
-  background:
-  rgba(255,255,255,.1);
-
-  color:#fff;
-
+.browser-button{
   height:38px;
 
-  min-width:44px;
-
-  padding:
-  0 12px;
+  border:0;
 
   border-radius:12px;
 
-  font-size:16px;
+  background:
+  rgba(255,255,255,.12);
+
+  color:#fff;
+
+  padding:
+  0 12px;
 }
 
 .browser-title{
   flex:1;
 
-  min-width:0;
-
   text-align:center;
-
-  white-space:nowrap;
 
   overflow:hidden;
 
   text-overflow:ellipsis;
 
-  font-weight:650;
+  white-space:nowrap;
 }
 
 .browser-frame{
@@ -1361,24 +1140,8 @@ button{
   background:#fff;
 }
 
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-.muted{
-  opacity:.55;
-
-  font-size:13px;
-}
-
-.hidden{
-  display:none !important;
-}
-
 </style>
 </head>
-
 
 <body>
 
@@ -1386,49 +1149,25 @@ button{
 <div id="home">
 
   <div
-  class="hero"
-  id="secretHotspot">
-
-    <div
-    class="hero-time"
-    id="heroTime">
-
-      11:01
-
-    </div>
-
-    <div
-    class="hero-date"
-    id="heroDate">
-    </div>
-
+  class="admin-hotspot"
+  id="adminHotspot">
   </div>
 
-
-  <button
-  class="secret-corner"
-  id="secretCorner"
-  aria-label="settings">
-  </button>
-
-
   <div
-  class="pages-viewport"
+  class="pages"
   id="pagesViewport">
 
     <div
-    class="pages-track"
-    id="pagesTrack">
+    class="track"
+    id="track">
     </div>
 
   </div>
 
-
   <div
-  class="page-dots"
-  id="pageDots">
+  class="dots"
+  id="dots">
   </div>
-
 
   <div
   class="dock"
@@ -1438,206 +1177,17 @@ button{
 </div>
 
 
-
-<!-- SETTINGS -->
-
 <div
 class="overlay"
-id="settingsOverlay">
-
-  <div class="panel">
-
-    <div class="panel-title">
-      Настройки
-    </div>
-
-
-    <div class="section-title">
-      Обои
-    </div>
-
-    <div
-    class="wallpaper-grid"
-    id="wallpaperGrid">
-    </div>
-
-    <input
-    id="wallpaperInput"
-    type="file"
-    accept="image/*"
-    hidden>
-
-    <button
-    class="btn"
-    onclick="
-    document
-    .getElementById('wallpaperInput')
-    .click()
-    ">
-
-      ＋ Добавить обои
-
-    </button>
-
-
-    <div class="section-title">
-      Страницы
-    </div>
-
-    <div
-    id="pageSettings">
-    </div>
-
-    <button
-    class="btn"
-    onclick="addPage()">
-
-      ＋ Добавить страницу
-
-    </button>
-
-
-    <div class="section-title">
-      Приложения
-    </div>
-
-    <div
-    id="appSettings">
-    </div>
-
-
-    <button
-    class="btn"
-    onclick="toggleAppForm()">
-
-      ＋ Добавить приложение
-
-    </button>
-
-
-    <div
-    class="form"
-    id="appForm">
-
-
-      <input
-      class="input"
-      id="newAppTitle"
-      placeholder="Название">
-
-
-      <select
-      class="select"
-      id="newAppPage">
-      </select>
-
-
-      <select
-      class="select"
-      id="newAppType"
-      onchange="updateTypeFields()">
-
-        <option value="url">
-          Открыть ссылку / приложение
-        </option>
-
-        <option value="messages">
-          Встроенные сообщения
-        </option>
-
-        <option value="contacts">
-          Встроенные контакты
-        </option>
-
-        <option value="social">
-          Встроенная лента
-        </option>
-
-        <option value="notes">
-          Встроенные заметки
-        </option>
-
-      </select>
-
-
-      <input
-      class="input"
-      id="newAppUrl"
-      placeholder="https://... или URL-схема">
-
-
-      <div class="section-title">
-        Значок
-      </div>
-
-
-      <div
-      class="icon-pick"
-      id="emojiPicker">
-      </div>
-
-
-      <input
-      id="iconFileInput"
-      type="file"
-      accept="image/*"
-      hidden>
-
-
-      <button
-      class="btn secondary"
-      onclick="
-      document
-      .getElementById('iconFileInput')
-      .click()
-      ">
-
-        Выбрать свою иконку
-
-      </button>
-
-
-      <div
-      class="custom-icon-preview"
-      id="customIconPreview">
-      </div>
-
-
-      <button
-      class="btn"
-      onclick="addApp()">
-
-        Добавить
-
-      </button>
-
-    </div>
-
-
-    <button
-    class="btn secondary"
-    onclick="closeSettings()">
-
-      Готово
-
-    </button>
-
-  </div>
-
+id="searchOverlay">
 </div>
 
 
-
-<!-- BUILTIN -->
-
 <div
 class="overlay"
-id="builtinOverlay">
+id="systemOverlay">
 </div>
 
-
-
-<!-- BROWSER -->
 
 <div
 class="overlay"
@@ -1645,267 +1195,220 @@ id="browserOverlay">
 </div>
 
 
+<input
+type="file"
+id="wallpaperInput"
+accept="image/*"
+hidden>
+
+
+<input
+type="file"
+id="iconInput"
+accept="image/*"
+hidden>
+
 
 <script>
 
-
-/* =========================================================
-   ICONS
-========================================================= */
-
-const emojiChoices = [
-
-  "🎵","📅","💬","🎮",
-  "📊","📝","🖼️","🗺️",
-
-  "🌐","📞","📷","🧮",
-  "📁","📚","✉️","🚗",
-
-  "🎬","📺","☁️","⭐",
-  "👤","📸","🎧","⚙️"
-
-];
-
-
-/* =========================================================
-   DEFAULT
-========================================================= */
+/* =====================================================
+   STATE
+===================================================== */
 
 const defaultState = {
 
   currentPage:0,
 
-  pages:[
+  editing:false,
 
-    {
-      id:"page_1",
-      name:"Страница 1"
-    }
-
-  ],
-
-
-  apps:[
-
-
-    {
-      id:"music",
-
-      title:"Музыка",
-
-      icon:"🎵",
-
-      iconImage:null,
-
-      type:"url",
-
-      url:
-      "https://madenjanna-ui.github.io/Music-edition/",
-
-      pageId:"page_1",
-
-      enabled:true,
-
-      removable:false
-    },
-
-
-    {
-      id:"games",
-
-      title:"Игры",
-
-      icon:"🎮",
-
-      iconImage:null,
-
-      type:"url",
-
-      url:
-      "https://madenjanna-ui.github.io/Avtoslalom/",
-
-      pageId:"page_1",
-
-      enabled:true,
-
-      removable:false
-    },
-
-
-    {
-      id:"messages",
-
-      title:"Сообщения",
-
-      icon:"💬",
-
-      iconImage:null,
-
-      type:"messages",
-
-      url:"",
-
-      pageId:"page_1",
-
-      enabled:true,
-
-      removable:true
-    },
-
-
-    {
-      id:"contacts",
-
-      title:"Контакты",
-
-      icon:"👤",
-
-      iconImage:null,
-
-      type:"contacts",
-
-      url:"",
-
-      pageId:"page_1",
-
-      enabled:true,
-
-      removable:true
-    },
-
-
-    {
-      id:"social",
-
-      title:"Лента",
-
-      icon:"📸",
-
-      iconImage:null,
-
-      type:"social",
-
-      url:"",
-
-      pageId:"page_1",
-
-      enabled:true,
-
-      removable:true
-    },
-
-
-    {
-      id:"notes",
-
-      title:"Заметки",
-
-      icon:"📝",
-
-      iconImage:null,
-
-      type:"notes",
-
-      url:"",
-
-      pageId:"page_1",
-
-      enabled:true,
-
-      removable:true
-    }
-
-  ],
-
-
-  dock:[
-
-
-    {
-      id:"dock_phone",
-
-      title:"Телефон",
-
-      icon:"📞",
-
-      type:"url",
-
-      url:"tel:",
-
-      iconImage:null
-    },
-
-
-    {
-      id:"dock_web",
-
-      title:"Интернет",
-
-      icon:"🌐",
-
-      type:"url",
-
-      url:
-      "https://www.google.com/",
-
-      iconImage:null
-    },
-
-
-    {
-      id:"dock_camera",
-
-      title:"Камера",
-
-      icon:"📷",
-
-      type:"url",
-
-      url:"camera:",
-
-      iconImage:null
-    },
-
-
-    {
-      id:"dock_calc",
-
-      title:"Калькулятор",
-
-      icon:"🧮",
-
-      type:"url",
-
-      url:"calc:",
-
-      iconImage:null
-    }
-
-  ],
-
+  currentWallpaper:null,
 
   wallpapers:[],
 
-  currentWallpaper:null
+  pages:[
+
+    {
+      id:"p1",
+      name:"Главная"
+    },
+
+    {
+      id:"p2",
+      name:"Вторая"
+    }
+
+  ],
+
+  apps:[
+
+    {
+      id:"messages",
+      title:"Сообщения",
+      icon:"💬",
+      image:null,
+      pageId:"p1",
+      type:"messages",
+      removable:false
+    },
+
+    {
+      id:"contacts",
+      title:"Контакты",
+      icon:"👤",
+      image:null,
+      pageId:"p1",
+      type:"contacts",
+      removable:false
+    },
+
+    {
+      id:"photos",
+      title:"Фото",
+      icon:"🖼️",
+      image:null,
+      pageId:"p1",
+      type:"photos",
+      removable:false
+    },
+
+    {
+      id:"camera",
+      title:"Камера",
+      icon:"📷",
+      image:null,
+      pageId:"p1",
+      type:"url",
+      url:"camera:",
+      removable:false
+    },
+
+    {
+      id:"music",
+      title:"Музыка",
+      icon:"🎵",
+      image:null,
+      pageId:"p1",
+      type:"url",
+      url:
+      "https://madenjanna-ui.github.io/Music-edition/",
+      removable:false
+    },
+
+    {
+      id:"notes",
+      title:"Заметки",
+      icon:"📝",
+      image:null,
+      pageId:"p1",
+      type:"notes",
+      removable:false
+    },
+
+    {
+      id:"calculator",
+      title:"Калькулятор",
+      icon:"🧮",
+      image:null,
+      pageId:"p1",
+      type:"calculator",
+      removable:false
+    },
+
+    {
+      id:"settings",
+      title:"Настройки",
+      icon:"⚙️",
+      image:null,
+      pageId:"p1",
+      type:"settings",
+      removable:false
+    },
+
+    {
+      id:"catalog",
+      title:"Приложения",
+      icon:"🅰️",
+      image:null,
+      pageId:"p2",
+      type:"catalog",
+      removable:false
+    },
+
+    {
+      id:"games",
+      title:"Игры",
+      icon:"🎮",
+      image:null,
+      pageId:"p2",
+      type:"url",
+      url:
+      "https://madenjanna-ui.github.io/Avtoslalom/",
+      removable:false
+    },
+
+    {
+      id:"social",
+      title:"Лента",
+      icon:"📸",
+      image:null,
+      pageId:"p2",
+      type:"social",
+      removable:false
+    },
+
+    {
+      id:"web",
+      title:"Интернет",
+      icon:"🌐",
+      image:null,
+      pageId:"p2",
+      type:"url",
+      url:
+      "https://www.google.com/",
+      removable:false
+    }
+
+  ],
+
+  dock:[
+
+    {
+      id:"phone",
+      title:"Телефон",
+      icon:"📞",
+      type:"url",
+      url:"tel:"
+    },
+
+    {
+      id:"dockMessages",
+      title:"Сообщения",
+      icon:"💬",
+      type:"messages"
+    },
+
+    {
+      id:"dockMusic",
+      title:"Музыка",
+      icon:"🎵",
+      type:"url",
+      url:
+      "https://madenjanna-ui.github.io/Music-edition/"
+    },
+
+    {
+      id:"dockWeb",
+      title:"Интернет",
+      icon:"🌐",
+      type:"url",
+      url:
+      "https://www.google.com/"
+    }
+
+  ]
 
 };
 
-
-let state =
-loadState();
-
-
-let selectedEmoji =
-"⭐";
-
-
-let selectedCustomIcon =
-null;
-
-
-/* =========================================================
-   STORAGE
-========================================================= */
 
 function cloneDefault(){
 
@@ -1922,88 +1425,25 @@ function loadState(){
 
   try{
 
-    const raw =
-    localStorage.getItem(
-      "guestDesktopV3"
+    const saved =
+    JSON.parse(
+      localStorage.getItem(
+        "iosGuestV4"
+      )
     );
 
 
-    if(!raw){
+    if(!saved){
 
       return cloneDefault();
 
     }
 
 
-    const saved =
-    JSON.parse(raw);
-
-
-    saved.pages =
-    Array.isArray(saved.pages)
-    &&
-    saved.pages.length
-
-    ?
-
-    saved.pages
-
-    :
-
-    cloneDefault().pages;
-
-
-    saved.apps =
-    Array.isArray(saved.apps)
-
-    ?
-
-    saved.apps
-
-    :
-
-    cloneDefault().apps;
-
-
-    saved.dock =
-    Array.isArray(saved.dock)
-
-    ?
-
-    saved.dock
-
-    :
-
-    cloneDefault().dock;
-
-
-    saved.wallpapers =
-    Array.isArray(saved.wallpapers)
-
-    ?
-
-    saved.wallpapers
-
-    :
-
-    [];
-
-
-    saved.currentPage =
-    Number.isInteger(
-      saved.currentPage
-    )
-
-    ?
-
-    saved.currentPage
-
-    :
-
-    0;
-
-
-    return saved;
+    return Object.assign(
+      cloneDefault(),
+      saved
+    );
 
   }
 
@@ -2016,129 +1456,43 @@ function loadState(){
 }
 
 
-function saveState(){
+let state =
+loadState();
+
+
+function save(){
 
   try{
 
     localStorage.setItem(
 
-      "guestDesktopV3",
+      "iosGuestV4",
 
       JSON.stringify(state)
 
     );
-
-
-    return true;
 
   }
 
   catch(error){
 
     alert(
-      "Не удалось сохранить данные."
+      "Недостаточно памяти."
     );
-
-
-    return false;
 
   }
 
 }
 
 
-/* =========================================================
-   TIME
-========================================================= */
-
-function updateClock(){
-
-  const now =
-  new Date();
-
-
-  document
-  .getElementById(
-    "heroTime"
-  )
-  .textContent =
-
-  now.toLocaleTimeString(
-
-    "ru-RU",
-
-    {
-
-      hour:"2-digit",
-
-      minute:"2-digit"
-
-    }
-
-  );
-
-
-  let date =
-
-  now.toLocaleDateString(
-
-    "ru-RU",
-
-    {
-
-      weekday:"long",
-
-      day:"numeric",
-
-      month:"long"
-
-    }
-
-  );
-
-
-  date =
-
-  date.charAt(0)
-  .toUpperCase()
-
-  +
-
-  date.slice(1);
-
-
-  document
-  .getElementById(
-    "heroDate"
-  )
-  .textContent =
-  date;
-
-}
-
-
-updateClock();
-
-
-setInterval(
-
-  updateClock,
-
-  10000
-
-);
-
-
-/* =========================================================
+/* =====================================================
    WALLPAPER
-========================================================= */
+===================================================== */
 
 function applyWallpaper(){
 
   const home =
-
-  document
-  .getElementById(
+  document.getElementById(
     "home"
   );
 
@@ -2149,7 +1503,6 @@ function applyWallpaper(){
 
     home.style
     .backgroundImage =
-
     `url("${state.currentWallpaper}")`;
 
   }
@@ -2159,48 +1512,40 @@ function applyWallpaper(){
     home.style
     .backgroundImage =
 
-    "linear-gradient(160deg,#53657a,#263548 50%,#0b1119)";
+    "linear-gradient(160deg,#4b5f7b,#26354a 50%,#0c121c)";
 
   }
 
 }
 
 
-/* =========================================================
-   IMAGE COMPRESSION
-========================================================= */
-
 function compressImage(
-  dataUrl,
-  maxW,
-  maxH,
+  source,
+  maxWidth,
+  maxHeight,
   quality,
   callback
 ){
 
-  const img =
+  const image =
   new Image();
 
 
-  img.onload =
-  ()=>{
-
+  image.onload = ()=>{
 
     let width =
-    img.width;
-
+    image.width;
 
     let height =
-    img.height;
+    image.height;
 
 
     const ratio =
-
     Math.min(
 
-      maxW / width,
+      maxWidth / width,
 
-      maxH / height,
+      maxHeight / height,
 
       1
 
@@ -2208,35 +1553,19 @@ function compressImage(
 
 
     width =
-
-    Math.max(
-
-      1,
-
-      Math.round(
-        width * ratio
-      )
-
+    Math.round(
+      width * ratio
     );
 
 
     height =
-
-    Math.max(
-
-      1,
-
-      Math.round(
-        height * ratio
-      )
-
+    Math.round(
+      height * ratio
     );
 
 
     const canvas =
-
-    document
-    .createElement(
+    document.createElement(
       "canvas"
     );
 
@@ -2244,22 +1573,15 @@ function compressImage(
     canvas.width =
     width;
 
-
     canvas.height =
     height;
 
 
-    const ctx =
-
     canvas
-    .getContext(
-      "2d"
-    );
+    .getContext("2d")
+    .drawImage(
 
-
-    ctx.drawImage(
-
-      img,
+      image,
 
       0,
       0,
@@ -2285,321 +1607,31 @@ function compressImage(
   };
 
 
-  img.src =
-  dataUrl;
+  image.src =
+  source;
 
 }
 
 
-/* =========================================================
-   WALLPAPER INPUT
-========================================================= */
-
-document
-.getElementById(
-  "wallpaperInput"
-)
-.addEventListener(
-  "change",
-  function(){
-
-
-    const file =
-
-    this.files
-    &&
-    this.files[0];
-
-
-    if(!file){
-
-      return;
-
-    }
-
-
-    const reader =
-
-    new FileReader();
-
-
-    reader.onload =
-    event =>{
-
-
-      compressImage(
-
-        event.target.result,
-
-        1179,
-
-        2556,
-
-        .8,
-
-        compressed =>{
-
-
-          const item = {
-
-            id:
-            "wall_"
-            +
-            Date.now(),
-
-            image:
-            compressed
-
-          };
-
-
-          state.wallpapers
-          .push(item);
-
-
-          state.currentWallpaper =
-          compressed;
-
-
-          if(
-            saveState()
-          ){
-
-            applyWallpaper();
-
-            renderWallpaperSettings();
-
-          }
-
-          else{
-
-            state.wallpapers
-            .pop();
-
-          }
-
-        }
-
-      );
-
-    };
-
-
-    reader.readAsDataURL(
-      file
-    );
-
-
-    this.value="";
-
-  }
-);
-
-
-/* =========================================================
-   WALLPAPER SETTINGS
-========================================================= */
-
-function renderWallpaperSettings(){
-
-  const box =
-
-  document
-  .getElementById(
-    "wallpaperGrid"
-  );
-
-
-  box.innerHTML =
-  "";
-
-
-  if(
-    !state.wallpapers.length
-  ){
-
-    box.innerHTML = `
-
-      <div
-      class="muted"
-      style="
-      grid-column:1/-1;
-      padding:12px 0;
-      ">
-
-        Обои пока не добавлены
-
-      </div>
-
-    `;
-
-
-    return;
-
-  }
-
-
-  state.wallpapers
-  .forEach(
-    wallpaper =>{
-
-
-      const element =
-
-      document
-      .createElement(
-        "div"
-      );
-
-
-      element.className =
-
-      "wallpaper"
-
-      +
-
-      (
-        state.currentWallpaper
-        ===
-        wallpaper.image
-
-        ?
-
-        " selected"
-
-        :
-
-        ""
-      );
-
-
-      element.style
-      .backgroundImage =
-
-      `url("${wallpaper.image}")`;
-
-
-      element.onclick =
-      ()=>{
-
-
-        state.currentWallpaper =
-        wallpaper.image;
-
-
-        saveState();
-
-        applyWallpaper();
-
-        renderWallpaperSettings();
-
-      };
-
-
-      const del =
-
-      document
-      .createElement(
-        "button"
-      );
-
-
-      del.className =
-      "mini-x";
-
-
-      del.textContent =
-      "×";
-
-
-      del.onclick =
-      event =>{
-
-
-        event.stopPropagation();
-
-
-        const wasCurrent =
-
-        state.currentWallpaper
-        ===
-        wallpaper.image;
-
-
-        state.wallpapers =
-
-        state.wallpapers
-        .filter(
-
-          item =>
-          item.id
-          !==
-          wallpaper.id
-
-        );
-
-
-        if(
-          wasCurrent
-        ){
-
-          state.currentWallpaper =
-
-          state.wallpapers[0]
-          ?.image
-
-          ||
-
-          null;
-
-        }
-
-
-        saveState();
-
-        applyWallpaper();
-
-        renderWallpaperSettings();
-
-      };
-
-
-      element
-      .appendChild(
-        del
-      );
-
-
-      box
-      .appendChild(
-        element
-      );
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   ICON
-========================================================= */
+/* =====================================================
+   APP ICON
+===================================================== */
 
 function iconHTML(app){
 
   if(
-    app.iconImage
+    app.image
   ){
 
     return `
 
-      <div class="app-icon">
+    <div class="app-icon">
 
-        <img
-        src="${app.iconImage}"
-        alt="">
+      <img
+      src="${app.image}"
+      alt="">
 
-      </div>
+    </div>
 
     `;
 
@@ -2608,39 +1640,35 @@ function iconHTML(app){
 
   return `
 
-    <div class="app-icon">
+  <div class="app-icon">
 
-      <span class="emoji">
+    <span class="emoji">
 
-        ${
-          escapeHTML(
-            app.icon
-            ||
-            "⭐"
-          )
-        }
+      ${
+        safe(
+          app.icon
+          ||
+          "⭐"
+        )
+      }
 
-      </span>
+    </span>
 
-    </div>
+  </div>
 
   `;
 
 }
 
 
-/* =========================================================
+/* =====================================================
    APP ELEMENT
-========================================================= */
+===================================================== */
 
-function createAppElement(
-  app
-){
+function createApp(app){
 
   const element =
-
-  document
-  .createElement(
+  document.createElement(
     "div"
   );
 
@@ -2651,15 +1679,38 @@ function createAppElement(
 
   element.innerHTML = `
 
+    ${
+      app.removable
+      !==
+      false
+
+      ?
+
+      `
+
+      <button
+      class="delete-app">
+
+        −
+
+      </button>
+
+      `
+
+      :
+
+      ""
+    }
+
+
     ${iconHTML(app)}
+
 
     <div class="app-name">
 
       ${
-        escapeHTML(
+        safe(
           app.title
-          ||
-          ""
         )
       }
 
@@ -2668,8 +1719,51 @@ function createAppElement(
   `;
 
 
-  element.onclick =
-  ()=>{
+  const del =
+  element.querySelector(
+    ".delete-app"
+  );
+
+
+  if(
+    del
+  ){
+
+    del.onclick = event =>{
+
+      event.stopPropagation();
+
+
+      state.apps =
+      state.apps.filter(
+
+        item =>
+        item.id
+        !==
+        app.id
+
+      );
+
+
+      save();
+
+      render();
+
+    };
+
+  }
+
+
+  element.onclick = ()=>{
+
+    if(
+      state.editing
+    ){
+
+      return;
+
+    }
+
 
     openApp(app);
 
@@ -2681,70 +1775,26 @@ function createAppElement(
 }
 
 
-/* =========================================================
-   DESKTOP
-========================================================= */
+/* =====================================================
+   RENDER HOME
+===================================================== */
 
-function renderDesktop(){
-
-  if(
-    !state.pages.length
-  ){
-
-    state.pages.push({
-
-      id:
-      "page_"
-      +
-      Date.now(),
-
-      name:
-      "Страница 1"
-
-    });
-
-  }
-
-
-  state.currentPage =
-
-  Math.max(
-
-    0,
-
-    Math.min(
-
-      state.currentPage,
-
-      state.pages.length
-      -
-      1
-
-    )
-
-  );
-
+function render(){
 
   const track =
-
-  document
-  .getElementById(
-    "pagesTrack"
+  document.getElementById(
+    "track"
   );
 
 
   const dots =
-
-  document
-  .getElementById(
-    "pageDots"
+  document.getElementById(
+    "dots"
   );
 
 
   const dock =
-
-  document
-  .getElementById(
+  document.getElementById(
     "dock"
   );
 
@@ -2752,10 +1802,8 @@ function renderDesktop(){
   track.innerHTML =
   "";
 
-
   dots.innerHTML =
   "";
-
 
   dock.innerHTML =
   "";
@@ -2771,9 +1819,7 @@ function renderDesktop(){
 
 
       const pageElement =
-
-      document
-      .createElement(
+      document.createElement(
         "section"
       );
 
@@ -2783,15 +1829,13 @@ function renderDesktop(){
 
 
       const grid =
-
-      document
-      .createElement(
+      document.createElement(
         "div"
       );
 
 
       grid.className =
-      "app-grid";
+      "grid";
 
 
       state.apps
@@ -2799,11 +1843,6 @@ function renderDesktop(){
       .filter(
 
         app =>
-
-        app.enabled !== false
-
-        &&
-
         app.pageId
         ===
         page.id
@@ -2814,13 +1853,8 @@ function renderDesktop(){
 
         app =>{
 
-          grid
-          .appendChild(
-
-            createAppElement(
-              app
-            )
-
+          grid.appendChild(
+            createApp(app)
           );
 
         }
@@ -2841,19 +1875,14 @@ function renderDesktop(){
 
 
       const dot =
-
-      document
-      .createElement(
-        "span"
+      document.createElement(
+        "div"
       );
 
 
       dot.className =
-
-      "page-dot"
-
+      "dot"
       +
-
       (
         index
         ===
@@ -2884,13 +1913,8 @@ function renderDesktop(){
 
     app =>{
 
-      dock
-      .appendChild(
-
-        createAppElement(
-          app
-        )
-
+      dock.appendChild(
+        createApp(app)
       );
 
     }
@@ -2898,26 +1922,54 @@ function renderDesktop(){
   );
 
 
-  updatePagePosition(
-    false
+  document
+  .getElementById(
+    "home"
+  )
+  .classList
+  .toggle(
+
+    "editing",
+
+    state.editing
+
   );
+
+
+  updatePage(false);
 
 }
 
 
-/* =========================================================
-   PAGE POSITION
-========================================================= */
+/* =====================================================
+   PAGE
+===================================================== */
 
-function updatePagePosition(
+function updatePage(
   animate=true
 ){
 
-  const track =
+  state.currentPage =
+  Math.max(
 
-  document
-  .getElementById(
-    "pagesTrack"
+    0,
+
+    Math.min(
+
+      state.currentPage,
+
+      state.pages.length
+      -
+      1
+
+    )
+
+  );
+
+
+  const track =
+  document.getElementById(
+    "track"
   );
 
 
@@ -2941,16 +1993,10 @@ function updatePagePosition(
   `translateX(-${state.currentPage * 100}%)`;
 
 
-  [
-
-    ...
-    document
-    .querySelectorAll(
-      ".page-dot"
-    )
-
-  ]
-
+  document
+  .querySelectorAll(
+    ".dot"
+  )
   .forEach(
 
     (
@@ -2973,47 +2019,24 @@ function updatePagePosition(
 
   );
 
-
-  setTimeout(
-
-    ()=>{
-
-      track.style
-      .transition =
-
-      "transform .32s cubic-bezier(.22,.7,.18,1)";
-
-    },
-
-    0
-
-  );
-
 }
 
 
-/* =========================================================
-   SWIPE
-========================================================= */
+/* =====================================================
+   SWIPE PAGE + SEARCH
+===================================================== */
 
 const viewport =
-
-document
-.getElementById(
+document.getElementById(
   "pagesViewport"
 );
 
 
-let touchStartX =
+let sx =
 0;
 
-
-let touchStartY =
+let sy =
 0;
-
-
-let touching =
-false;
 
 
 viewport
@@ -3023,29 +2046,11 @@ viewport
 
   event =>{
 
-
-    if(
-      !event.touches
-      ?.length
-    ){
-
-      return;
-
-    }
-
-
-    touching =
-    true;
-
-
-    touchStartX =
-
+    sx =
     event.touches[0]
     .clientX;
 
-
-    touchStartY =
-
+    sy =
     event.touches[0]
     .clientY;
 
@@ -3066,46 +2071,43 @@ viewport
   event =>{
 
 
-    if(
-      !touching
-    ){
-
-      return;
-
-    }
-
-
-    touching =
-    false;
-
-
     const touch =
-
-    event.changedTouches
-    ?.[0];
-
-
-    if(
-      !touch
-    ){
-
-      return;
-
-    }
+    event.changedTouches[0];
 
 
     const dx =
-
     touch.clientX
     -
-    touchStartX;
+    sx;
 
 
     const dy =
-
     touch.clientY
     -
-    touchStartY;
+    sy;
+
+
+    /* swipe down = search */
+
+    if(
+
+      dy
+      >
+      90
+
+      &&
+
+      Math.abs(dy)
+      >
+      Math.abs(dx)
+
+    ){
+
+      openSearch();
+
+      return;
+
+    }
 
 
     if(
@@ -3147,6 +2149,7 @@ viewport
 
     }
 
+
     else if(
 
       dx
@@ -3165,18 +2168,10 @@ viewport
 
     }
 
-    else{
 
-      return;
+    save();
 
-    }
-
-
-    saveState();
-
-    updatePagePosition(
-      true
-    );
+    updatePage(true);
 
   },
 
@@ -3187,24 +2182,105 @@ viewport
 );
 
 
-/* =========================================================
-   OPEN APP
-========================================================= */
+/* =====================================================
+   LONG PRESS EMPTY SPACE
+===================================================== */
 
-function openApp(app){
+let editTimer;
 
-  if(
-    !app
-  ){
 
-    return;
+viewport
+.addEventListener(
+
+  "pointerdown",
+
+  event =>{
+
+
+    if(
+      event.target.closest(
+        ".app"
+      )
+    ){
+
+      return;
+
+    }
+
+
+    editTimer =
+    setTimeout(
+
+      ()=>{
+
+        state.editing =
+        true;
+
+        save();
+
+        render();
+
+      },
+
+      900
+
+    );
 
   }
 
+);
+
+
+[
+  "pointerup",
+  "pointermove",
+  "pointercancel"
+]
+.forEach(
+
+  name =>{
+
+    viewport.addEventListener(
+
+      name,
+
+      ()=>{
+
+        clearTimeout(
+          editTimer
+        );
+
+      }
+
+    );
+
+  }
+
+);
+
+
+/* =====================================================
+   OPEN APP
+===================================================== */
+
+function openApp(app){
 
   switch(
     app.type
   ){
+
+    case "settings":
+
+      openSettings();
+
+      break;
+
+
+    case "catalog":
+
+      openCatalog();
+
+      break;
 
 
     case "messages":
@@ -3221,9 +2297,9 @@ function openApp(app){
       break;
 
 
-    case "social":
+    case "photos":
 
-      openSocial();
+      openPhotos();
 
       break;
 
@@ -3235,482 +2311,932 @@ function openApp(app){
       break;
 
 
-    default:
+    case "calculator":
 
+      openCalculator();
+
+      break;
+
+
+    case "social":
+
+      openSocial();
+
+      break;
+
+
+    case "url":
 
       if(
-
-        app.url
-
-        &&
-
-        app.url
-        !==
-        "#"
-
+        /^https?:\/\//i
+        .test(app.url)
       ){
 
+        openBrowser(
 
-        if(
+          app.url,
 
-          /^https?:\/\//i
-          .test(
-            app.url
-          )
+          app.title
 
-        ){
-
-          openInAppBrowser(
-
-            app.url,
-
-            app.title
-            ||
-            "Приложение"
-
-          );
-
-        }
-
-        else{
-
-          window.location.href =
-          app.url;
-
-        }
+        );
 
       }
+
+      else{
+
+        window.location.href =
+        app.url;
+
+      }
+
+      break;
 
   }
 
 }
 
 
-/* =========================================================
-   BROWSER
-========================================================= */
+/* =====================================================
+   SYSTEM SHELL
+===================================================== */
 
-function openInAppBrowser(
-  url,
-  title="Приложение"
+function showSystem(
+  title,
+  content,
+  backFunction="closeSystem()"
 ){
 
   const overlay =
-
-  document
-  .getElementById(
-    "browserOverlay"
+  document.getElementById(
+    "systemOverlay"
   );
 
 
   overlay.innerHTML = `
 
-    <div class="browser-shell">
+  <div class="system-shell">
 
 
-      <div class="browser-top">
+    <div class="system-top">
 
 
-        <button
-        class="browser-back"
-        onclick="browserBack()">
+      <button
+      class="system-back"
+      onclick="${backFunction}">
 
-          ‹ Назад
+        ‹ Назад
 
-        </button>
-
-
-        <div class="browser-title">
-
-          ${
-            escapeHTML(
-              title
-            )
-          }
-
-        </div>
+      </button>
 
 
-        <button
-        class="browser-close"
-        onclick="closeInAppBrowser()">
+      <div class="system-title">
 
-          ✕
-
-        </button>
-
+        ${safe(title)}
 
       </div>
 
 
-      <iframe
+    </div>
 
-      class="browser-frame"
 
-      id="browserFrame"
+    <div class="system-body">
 
-      src="${escapeAttr(url)}"
-
-      allow="
-      autoplay;
-      fullscreen;
-      clipboard-read;
-      clipboard-write
-      ">
-
-      </iframe>
-
+      ${content}
 
     </div>
+
+
+  </div>
 
   `;
 
 
-  overlay.classList
-  .add(
+  overlay.classList.add(
     "show"
   );
 
 }
 
 
-/* =========================================================
-   BROWSER BACK
-========================================================= */
+function closeSystem(){
 
-function browserBack(){
+  const overlay =
+  document.getElementById(
+    "systemOverlay"
+  );
 
-  const frame =
 
-  document
-  .getElementById(
-    "browserFrame"
+  overlay.classList.remove(
+    "show"
+  );
+
+
+  overlay.innerHTML =
+  "";
+
+}
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+function openSettings(){
+
+  state.editing =
+  false;
+
+  save();
+
+  render();
+
+
+  showSystem(
+
+    "Настройки",
+
+    `
+
+    <div class="settings-group">
+
+
+      <div
+      class="settings-row"
+      onclick="openWallpaperSettings()">
+
+
+        <div class="settings-icon">
+
+          🖼️
+
+        </div>
+
+
+        <div class="settings-main">
+
+          Обои
+
+        </div>
+
+
+        <div class="chevron">
+
+          ›
+
+        </div>
+
+
+      </div>
+
+
+      <div
+      class="settings-row"
+      onclick="openPageSettings()">
+
+
+        <div class="settings-icon">
+
+          ▦
+
+        </div>
+
+
+        <div class="settings-main">
+
+          Рабочие столы
+
+        </div>
+
+
+        <div class="chevron">
+
+          ›
+
+        </div>
+
+
+      </div>
+
+
+      <div
+      class="settings-row"
+      onclick="openAppSettings()">
+
+
+        <div class="settings-icon">
+
+          ◉
+
+        </div>
+
+
+        <div class="settings-main">
+
+          Приложения
+
+        </div>
+
+
+        <div class="chevron">
+
+          ›
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+    <div class="settings-group">
+
+
+      <div
+      class="settings-row"
+      onclick="startEditing()">
+
+
+        <div class="settings-icon">
+
+          ✦
+
+        </div>
+
+
+        <div class="settings-main">
+
+          Изменить экран
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+    `
+
+  );
+
+}
+
+
+/* =====================================================
+   WALLPAPERS
+===================================================== */
+
+function openWallpaperSettings(){
+
+  let wallpapers =
+  "";
+
+
+  state.wallpapers
+  .forEach(
+
+    item =>{
+
+      wallpapers += `
+
+      <div
+      class="wallpaper
+      ${
+        state.currentWallpaper
+        ===
+        item.image
+
+        ?
+
+        "selected"
+
+        :
+
+        ""
+      }"
+
+      style="
+      background-image:
+      url('${item.image}')
+      "
+
+      onclick="
+      selectWallpaper('${item.id}')
+      ">
+
+
+        <button
+        class="wallpaper-x"
+
+        onclick="
+        event.stopPropagation();
+        deleteWallpaper('${item.id}')
+        ">
+
+          ×
+
+        </button>
+
+
+      </div>
+
+      `;
+
+    }
+
+  );
+
+
+  showSystem(
+
+    "Обои",
+
+    `
+
+    <div
+    class="wallpaper-grid">
+
+      ${wallpapers}
+
+    </div>
+
+
+    <button
+    class="primary"
+
+    onclick="
+    document
+    .getElementById('wallpaperInput')
+    .click()
+    ">
+
+      Добавить фото
+
+    </button>
+
+    `,
+
+    "openSettings()"
+
+  );
+
+}
+
+
+document
+.getElementById(
+  "wallpaperInput"
+)
+.addEventListener(
+
+  "change",
+
+  function(){
+
+
+    const file =
+    this.files[0];
+
+
+    if(
+      !file
+    ){
+
+      return;
+
+    }
+
+
+    const reader =
+    new FileReader();
+
+
+    reader.onload =
+    event =>{
+
+
+      compressImage(
+
+        event.target.result,
+
+        1179,
+
+        2556,
+
+        .8,
+
+        image =>{
+
+
+          const id =
+          "wall_"
+          +
+          Date.now();
+
+
+          state.wallpapers
+          .push({
+
+            id:id,
+
+            image:image
+
+          });
+
+
+          state.currentWallpaper =
+          image;
+
+
+          save();
+
+          applyWallpaper();
+
+          openWallpaperSettings();
+
+        }
+
+      );
+
+    };
+
+
+    reader.readAsDataURL(
+      file
+    );
+
+
+    this.value =
+    "";
+
+  }
+
+);
+
+
+function selectWallpaper(id){
+
+  const item =
+  state.wallpapers
+  .find(
+
+    wall =>
+    wall.id
+    ===
+    id
+
   );
 
 
   if(
-    !frame
+    !item
   ){
-
-    closeInAppBrowser();
 
     return;
 
   }
 
 
-  try{
-
-    if(
-
-      frame.contentWindow
-      .history
-      .length
-      >
-      1
-
-    ){
-
-      frame.contentWindow
-      .history
-      .back();
+  state.currentWallpaper =
+  item.image;
 
 
-      return;
+  save();
 
-    }
+  applyWallpaper();
 
-  }
-
-  catch(error){
-
-  }
-
-
-  closeInAppBrowser();
+  openWallpaperSettings();
 
 }
 
 
-/* =========================================================
-   CLOSE BROWSER
-========================================================= */
+function deleteWallpaper(id){
 
-function closeInAppBrowser(){
+  const item =
+  state.wallpapers
+  .find(
 
-  const overlay =
+    wall =>
+    wall.id
+    ===
+    id
 
-  document
-  .getElementById(
-    "browserOverlay"
   );
 
 
-  overlay.classList
-  .remove(
-    "show"
+  state.wallpapers =
+  state.wallpapers
+  .filter(
+
+    wall =>
+    wall.id
+    !==
+    id
+
   );
 
 
-  overlay.innerHTML =
-  "";
+  if(
+
+    item
+
+    &&
+
+    state.currentWallpaper
+    ===
+    item.image
+
+  ){
+
+    state.currentWallpaper =
+    state.wallpapers[0]
+    ?.image
+
+    ||
+
+    null;
+
+  }
+
+
+  save();
+
+  applyWallpaper();
+
+  openWallpaperSettings();
 
 }
 
 
-/* =========================================================
-   CHATS DATA
-========================================================= */
+/* =====================================================
+   PAGE SETTINGS
+===================================================== */
 
-const sampleChats = [
+function openPageSettings(){
 
-  {
+  let html = `
 
-    id:"c1",
-
-    name:"Анна",
-
-    last:
-    "Хорошо, тогда вечером 😊",
-
-    messages:[
-
-      {
-        side:"in",
-        text:
-        "Привет! Ты сегодня свободен?"
-      },
-
-      {
-        side:"out",
-        text:
-        "После шести да."
-      },
-
-      {
-        side:"in",
-        text:
-        "Хорошо, тогда вечером 😊"
-      }
-
-    ]
-
-  },
-
-
-  {
-
-    id:"c2",
-
-    name:"Максим",
-
-    last:
-    "Фото получил 👍",
-
-    messages:[
-
-      {
-        side:"out",
-        text:
-        "Отправил тебе фото."
-      },
-
-      {
-        side:"in",
-        text:
-        "Фото получил 👍"
-      }
-
-    ]
-
-  },
-
-
-  {
-
-    id:"c3",
-
-    name:"Семья",
-
-    last:
-    "Встречаемся в 19:00",
-
-    messages:[
-
-      {
-        side:"in",
-        text:
-        "Встречаемся в 19:00"
-      },
-
-      {
-        side:"out",
-        text:
-        "Отлично."
-      }
-
-    ]
-
-  }
-
-];
-
-
-/* =========================================================
-   SHOW BUILTIN
-========================================================= */
-
-function showBuiltin(
-  title,
-  bodyHtml
-){
-
-  const overlay =
-
-  document
-  .getElementById(
-    "builtinOverlay"
-  );
-
-
-  overlay.innerHTML = `
-
-    <div class="builtin-shell">
-
-
-      <div class="builtin-top">
-
-
-        <button
-        class="back-btn"
-        onclick="closeBuiltin()">
-
-          ‹ Назад
-
-        </button>
-
-
-        <div class="builtin-title">
-
-          ${
-            escapeHTML(
-              title
-            )
-          }
-
-        </div>
-
-
-      </div>
-
-
-      <div class="builtin-body">
-
-        ${bodyHtml}
-
-      </div>
-
-
-    </div>
+  <div class="settings-group">
 
   `;
 
 
-  overlay.classList
-  .add(
-    "show"
-  );
+  state.pages
+  .forEach(
 
-}
+    (
+      page,
+      index
+    ) =>{
 
+      html += `
 
-/* =========================================================
-   CLOSE BUILTIN
-========================================================= */
-
-function closeBuiltin(){
-
-  const overlay =
-
-  document
-  .getElementById(
-    "builtinOverlay"
-  );
+      <div class="settings-row">
 
 
-  overlay.classList
-  .remove(
-    "show"
-  );
+        <div class="settings-main">
 
+          ${safe(page.name)}
 
-  overlay.innerHTML =
-  "";
+          <div class="settings-small">
 
-}
+            ${
+              state.apps
+              .filter(
 
+                app =>
+                app.pageId
+                ===
+                page.id
 
-/* =========================================================
-   MESSAGES
-========================================================= */
+              )
+              .length
+            }
 
-function openMessages(){
+            приложений
 
-  const rows =
-
-  sampleChats
-  .map(
-
-    chat =>`
-
-      <div
-      class="chat-row"
-      onclick="
-      openChat('${chat.id}')
-      ">
-
-
-        <div class="avatar">
-
-          ${
-            escapeHTML(
-              chat.name
-              .charAt(0)
-            )
-          }
+          </div>
 
         </div>
 
 
-        <div class="chat-main">
+        ${
+          state.pages.length
+          >
+          1
+
+          ?
+
+          `
+
+          <button
+          onclick="
+          removePage('${page.id}')
+          "
+          style="
+          border:0;
+          background:none;
+          color:#ff3b30;
+          ">
+
+            Удалить
+
+          </button>
+
+          `
+
+          :
+
+          ""
+        }
 
 
-          <div class="chat-name">
+      </div>
+
+      `;
+
+    }
+
+  );
+
+
+  html += `
+
+  </div>
+
+
+  <button
+  class="primary"
+  onclick="addPage()">
+
+    Добавить страницу
+
+  </button>
+
+  `;
+
+
+  showSystem(
+
+    "Рабочие столы",
+
+    html,
+
+    "openSettings()"
+
+  );
+
+}
+
+
+function addPage(){
+
+  state.pages
+  .push({
+
+    id:
+    "p_"
+    +
+    Date.now(),
+
+    name:
+    "Страница "
+    +
+    (
+      state.pages.length
+      +
+      1
+    )
+
+  });
+
+
+  state.currentPage =
+  state.pages.length
+  -
+  1;
+
+
+  save();
+
+  render();
+
+  openPageSettings();
+
+}
+
+
+function removePage(id){
+
+  if(
+    state.pages.length
+    <=
+    1
+  ){
+
+    return;
+
+  }
+
+
+  const target =
+  state.pages
+  .find(
+
+    page =>
+    page.id
+    !==
+    id
+
+  );
+
+
+  state.apps
+  .forEach(
+
+    app =>{
+
+      if(
+        app.pageId
+        ===
+        id
+      ){
+
+        app.pageId =
+        target.id;
+
+      }
+
+    }
+
+  );
+
+
+  state.pages =
+  state.pages
+  .filter(
+
+    page =>
+    page.id
+    !==
+    id
+
+  );
+
+
+  state.currentPage =
+  0;
+
+
+  save();
+
+  render();
+
+  openPageSettings();
+
+}
+
+
+/* =====================================================
+   APP SETTINGS
+===================================================== */
+
+function openAppSettings(){
+
+  let html = `
+
+  <div class="settings-group">
+
+  `;
+
+
+  state.apps
+  .forEach(
+
+    app =>{
+
+      const page =
+      state.pages
+      .find(
+
+        item =>
+        item.id
+        ===
+        app.pageId
+
+      );
+
+
+      html += `
+
+      <div class="settings-row">
+
+
+        <div
+        class="settings-icon">
+
+          ${safe(app.icon)}
+
+        </div>
+
+
+        <div class="settings-main">
+
+          ${safe(app.title)}
+
+          <div class="settings-small">
 
             ${
-              escapeHTML(
-                chat.name
+              safe(
+                page
+                ?.name
+                ||
+                ""
               )
             }
 
           </div>
-
-
-          <div class="chat-last">
-
-            ${
-              escapeHTML(
-                chat.last
-              )
-            }
-
-          </div>
-
 
         </div>
 
 
       </div>
+
+      `;
+
+    }
+
+  );
+
+
+  html += `
+
+  </div>
+
+
+  <button
+  class="primary"
+  onclick="openAddApp()">
+
+    Добавить приложение
+
+  </button>
+
+  `;
+
+
+  showSystem(
+
+    "Приложения",
+
+    html,
+
+    "openSettings()"
+
+  );
+
+}
+
+
+/* =====================================================
+   ADD APP
+===================================================== */
+
+const emojiList = [
+
+"💬","📷","🎵","🎮",
+"🌐","📅","📊","📝",
+"👤","🗺️","📚","📁",
+"⭐","🎧","🎬","🚗",
+"☁️","📸","☎️","⚙️"
+
+];
+
+
+let selectedIcon =
+"⭐";
+
+
+let selectedImage =
+null;
+
+
+function openAddApp(){
+
+  let pageOptions =
+  state.pages
+  .map(
+
+    page =>`
+
+    <option
+    value="${page.id}">
+
+      ${safe(page.name)}
+
+    </option>
 
     `
 
@@ -3718,187 +3244,218 @@ function openMessages(){
   .join("");
 
 
-  showBuiltin(
+  let icons =
+  emojiList
+  .map(
 
-    "Сообщения",
+    icon =>`
 
-    `
+    <div
+    class="
+    icon-choice
+    ${
+      icon
+      ===
+      selectedIcon
 
-      <div class="card">
+      ?
 
-        ${rows}
+      "selected"
 
-      </div>
+      :
 
-    `
+      ""
+    }
+    "
 
-  );
+    onclick="
+    selectIcon('${icon}')
+    ">
 
-}
-
-
-/* =========================================================
-   OPEN CHAT
-========================================================= */
-
-function openChat(id){
-
-  const chat =
-
-  sampleChats
-  .find(
-
-    item =>
-    item.id
-    ===
-    id
-
-  );
-
-
-  if(
-    !chat
-  ){
-
-    return;
-
-  }
-
-
-  const overlay =
-
-  document
-  .getElementById(
-    "builtinOverlay"
-  );
-
-
-  overlay.innerHTML = `
-
-    <div class="builtin-shell">
-
-
-      <div class="builtin-top">
-
-
-        <button
-        class="back-btn"
-        onclick="openMessages()">
-
-          ‹ Чаты
-
-        </button>
-
-
-        <div class="builtin-title">
-
-          ${
-            escapeHTML(
-              chat.name
-            )
-          }
-
-        </div>
-
-
-      </div>
-
-
-      <div
-      class="builtin-body"
-      id="chatBody">
-
-
-        ${
-
-
-          chat.messages
-          .map(
-
-            message =>`
-
-              <div
-              class="
-              bubble
-              ${message.side}
-              ">
-
-                ${
-                  escapeHTML(
-                    message.text
-                  )
-                }
-
-              </div>
-
-            `
-
-          )
-          .join("")
-
-
-        }
-
-
-      </div>
-
-
-      <div class="compose">
-
-
-        <input
-        id="chatInput"
-        placeholder="Сообщение">
-
-
-        <button
-        onclick="
-        sendLocalMessage('${chat.id}')
-        ">
-
-          ↑
-
-        </button>
-
-
-      </div>
-
+      ${icon}
 
     </div>
 
-  `;
+    `
+
+  )
+  .join("");
 
 
-  overlay.classList
-  .add(
-    "show"
+  showSystem(
+
+    "Добавить",
+
+    `
+
+    <input
+    class="field"
+    id="addTitle"
+    placeholder="Название">
+
+
+    <input
+    class="field"
+    id="addUrl"
+    placeholder="https://... или URL-схема">
+
+
+    <select
+    class="field"
+    id="addPage">
+
+      ${pageOptions}
+
+    </select>
+
+
+    <div class="icon-picker">
+
+      ${icons}
+
+    </div>
+
+
+    <button
+    class="secondary"
+    onclick="
+    document
+    .getElementById('iconInput')
+    .click()
+    ">
+
+      Выбрать изображение значка
+
+    </button>
+
+
+    <button
+    class="primary"
+    onclick="saveNewApp()">
+
+      Добавить
+
+    </button>
+
+    `,
+
+    "openAppSettings()"
+
   );
 
 }
 
 
-/* =========================================================
-   SEND MESSAGE
-========================================================= */
+function selectIcon(icon){
 
-function sendLocalMessage(id){
+  selectedIcon =
+  icon;
 
-  const input =
+  selectedImage =
+  null;
 
+  openAddApp();
+
+}
+
+
+document
+.getElementById(
+  "iconInput"
+)
+.addEventListener(
+
+  "change",
+
+  function(){
+
+
+    const file =
+    this.files[0];
+
+
+    if(
+      !file
+    ){
+
+      return;
+
+    }
+
+
+    const reader =
+    new FileReader();
+
+
+    reader.onload =
+    event =>{
+
+
+      compressImage(
+
+        event.target.result,
+
+        400,
+
+        400,
+
+        .86,
+
+        image =>{
+
+          selectedImage =
+          image;
+
+        }
+
+      );
+
+    };
+
+
+    reader.readAsDataURL(
+      file
+    );
+
+
+    this.value =
+    "";
+
+  }
+
+);
+
+
+function saveNewApp(){
+
+  const title =
   document
   .getElementById(
-    "chatInput"
-  );
-
-
-  const text =
-
-  input.value
+    "addTitle"
+  )
+  .value
   .trim();
 
 
+  const url =
+  document
+  .getElementById(
+    "addUrl"
+  )
+  .value
+  .trim();
+
+
+  const pageId =
+  document
+  .getElementById(
+    "addPage"
+  )
+  .value;
+
+
   if(
-    !text
+    !title
   ){
 
     return;
@@ -3906,153 +3463,315 @@ function sendLocalMessage(id){
   }
 
 
-  const chat =
-
-  sampleChats
-  .find(
-
-    item =>
-    item.id
-    ===
-    id
-
-  );
-
-
-  if(
-    !chat
-  ){
-
-    return;
-
-  }
-
-
-  chat.messages
+  state.apps
   .push({
 
-    side:"out",
+    id:
+    "app_"
+    +
+    Date.now(),
 
-    text:text
+    title:title,
+
+    icon:
+    selectedIcon,
+
+    image:
+    selectedImage,
+
+    pageId:
+    pageId,
+
+    type:"url",
+
+    url:url,
+
+    removable:true
 
   });
 
 
-  chat.last =
-  text;
+  selectedIcon =
+  "⭐";
 
 
-  input.value =
-  "";
+  selectedImage =
+  null;
 
 
-  openChat(id);
+  save();
+
+  render();
+
+  openAppSettings();
 
 }
 
 
-/* =========================================================
+/* =====================================================
+   CATALOG
+===================================================== */
+
+function openCatalog(){
+
+  showSystem(
+
+    "Приложения",
+
+    `
+
+    <div class="catalog-card">
+
+      <div class="catalog-icon">
+
+        🎮
+
+      </div>
+
+      <div class="catalog-main">
+
+        <b>Игры</b>
+
+        <div class="settings-small">
+
+          Игровой раздел
+
+        </div>
+
+      </div>
+
+      <button
+      class="catalog-install"
+      onclick="
+      closeSystem();
+      openApp(
+        state.apps.find(
+          a=>a.id==='games'
+        )
+      )
+      ">
+
+        Открыть
+
+      </button>
+
+    </div>
+
+
+    <div class="catalog-card">
+
+      <div class="catalog-icon">
+
+        🎵
+
+      </div>
+
+      <div class="catalog-main">
+
+        <b>Музыка</b>
+
+        <div class="settings-small">
+
+          Музыкальный каталог
+
+        </div>
+
+      </div>
+
+      <button
+      class="catalog-install"
+      onclick="
+      closeSystem();
+      openApp(
+        state.apps.find(
+          a=>a.id==='music'
+        )
+      )
+      ">
+
+        Открыть
+
+      </button>
+
+    </div>
+
+
+    <div class="catalog-card">
+
+      <div class="catalog-icon">
+
+        📝
+
+      </div>
+
+      <div class="catalog-main">
+
+        <b>Заметки</b>
+
+        <div class="settings-small">
+
+          Локальные заметки
+
+        </div>
+
+      </div>
+
+      <button
+      class="catalog-install"
+      onclick="
+      openNotes()
+      ">
+
+        Открыть
+
+      </button>
+
+    </div>
+
+    `
+
+  );
+
+}
+
+
+/* =====================================================
+   MESSAGES
+===================================================== */
+
+const chats = [
+
+{
+  name:"Анна",
+  last:"До вечера 😊"
+},
+
+{
+  name:"Максим",
+  last:"Да, получил"
+},
+
+{
+  name:"Семья",
+  last:"Встречаемся в 19:00"
+}
+
+];
+
+
+function openMessages(){
+
+  const html = `
+
+  <div class="card">
+
+  ${
+    chats.map(
+
+      item =>`
+
+      <div class="list-row">
+
+        <div class="avatar">
+
+          ${safe(item.name[0])}
+
+        </div>
+
+        <div class="list-main">
+
+          <div class="list-title">
+
+            ${safe(item.name)}
+
+          </div>
+
+          <div class="list-sub">
+
+            ${safe(item.last)}
+
+          </div>
+
+        </div>
+
+      </div>
+
+      `
+
+    )
+    .join("")
+  }
+
+  </div>
+
+  `;
+
+
+  showSystem(
+    "Сообщения",
+    html
+  );
+
+}
+
+
+/* =====================================================
    CONTACTS
-========================================================= */
+===================================================== */
 
 function openContacts(){
 
   const contacts = [
 
-    [
-      "Анна",
-      "+7 900 000-00-01"
-    ],
-
-    [
-      "Максим",
-      "+7 900 000-00-02"
-    ],
-
-    [
-      "Ирина",
-      "+7 900 000-00-03"
-    ],
-
-    [
-      "Сергей",
-      "+7 900 000-00-04"
-    ]
+    "Анна",
+    "Максим",
+    "Ирина",
+    "Сергей",
+    "Александр"
 
   ];
 
 
-  showBuiltin(
+  showSystem(
 
     "Контакты",
 
     `
 
-      <div class="card">
+    <div class="card">
 
+      ${
+        contacts.map(
 
-        ${
+          name =>`
 
+          <div class="list-row">
 
-          contacts
-          .map(
+            <div class="avatar">
 
-            contact =>`
+              ${name[0]}
 
-              <div class="contact-row">
+            </div>
 
+            <div class="list-main">
 
-                <div class="avatar">
+              <div class="list-title">
 
-                  ${
-                    escapeHTML(
-                      contact[0][0]
-                    )
-                  }
-
-                </div>
-
-
-                <div class="chat-main">
-
-
-                  <div class="chat-name">
-
-                    ${
-                      escapeHTML(
-                        contact[0]
-                      )
-                    }
-
-                  </div>
-
-
-                  <div class="chat-last">
-
-                    ${
-                      escapeHTML(
-                        contact[1]
-                      )
-                    }
-
-                  </div>
-
-
-                </div>
-
+                ${name}
 
               </div>
 
-            `
+            </div>
 
-          )
-          .join("")
+          </div>
 
+          `
 
-        }
+        )
+        .join("")
+      }
 
-
-      </div>
+    </div>
 
     `
 
@@ -4061,188 +3780,48 @@ function openContacts(){
 }
 
 
-/* =========================================================
-   SOCIAL
-========================================================= */
+/* =====================================================
+   PHOTOS
+===================================================== */
 
-function openSocial(){
+function openPhotos(){
 
-  const image1 =
+  showSystem(
 
-  "data:image/svg+xml;charset=utf-8,"
-
-  +
-
-  encodeURIComponent(`
-
-  <svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="900"
-  height="900">
-
-    <defs>
-
-      <linearGradient
-      id="g"
-      x1="0"
-      y1="0"
-      x2="1"
-      y2="1">
-
-        <stop
-        stop-color="#ffb36b"/>
-
-        <stop
-        offset="1"
-        stop-color="#6c63ff"/>
-
-      </linearGradient>
-
-    </defs>
-
-    <rect
-    width="100%"
-    height="100%"
-    fill="url(#g)"/>
-
-    <circle
-    cx="450"
-    cy="360"
-    r="160"
-    fill="rgba(255,255,255,.25)"/>
-
-  </svg>
-
-  `);
-
-
-  const image2 =
-
-  "data:image/svg+xml;charset=utf-8,"
-
-  +
-
-  encodeURIComponent(`
-
-  <svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="900"
-  height="900">
-
-    <rect
-    width="100%"
-    height="100%"
-    fill="#18283d"/>
-
-    <circle
-    cx="680"
-    cy="220"
-    r="90"
-    fill="#f6d365"/>
-
-    <path
-    d="
-    M0 620
-    Q250 450 470 620
-    T900 560
-    V900
-    H0Z
-    "
-    fill="#2f5d50"/>
-
-  </svg>
-
-  `);
-
-
-  showBuiltin(
-
-    "Лента",
+    "Фото",
 
     `
 
-      <div class="social-post">
+    <div
+    style="
+    display:grid;
+    grid-template-columns:
+    repeat(3,1fr);
+    gap:3px;
+    ">
 
-        <div class="social-head">
+      ${
+        state.wallpapers
+        .map(
 
-          <div class="avatar">
-            A
-          </div>
+          wall =>`
 
-          <div>
+          <img
+          src="${wall.image}"
 
-            <b>
-              anna_photo
-            </b>
+          style="
+          width:100%;
+          aspect-ratio:1/1;
+          object-fit:cover;
+          ">
 
-            <div class="muted">
-              Сегодня
-            </div>
+          `
 
-          </div>
+        )
+        .join("")
+      }
 
-        </div>
-
-
-        <img
-        class="social-img"
-        src="${image1}"
-        alt="">
-
-
-        <div class="social-text">
-
-          <b>
-            anna_photo
-          </b>
-
-          Отличный вечер ✨
-
-        </div>
-
-      </div>
-
-
-      <div class="social-post">
-
-        <div class="social-head">
-
-          <div class="avatar">
-            M
-          </div>
-
-          <div>
-
-            <b>
-              max_travel
-            </b>
-
-            <div class="muted">
-              Вчера
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <img
-        class="social-img"
-        src="${image2}"
-        alt="">
-
-
-        <div class="social-text">
-
-          <b>
-            max_travel
-          </b>
-
-          Наконец-то выбрались за город.
-
-        </div>
-
-      </div>
+    </div>
 
     `
 
@@ -4251,19 +3830,17 @@ function openSocial(){
 }
 
 
-/* =========================================================
+/* =====================================================
    NOTES
-========================================================= */
+===================================================== */
 
 function openNotes(){
 
   const notes =
-
   JSON.parse(
 
-    localStorage
-    .getItem(
-      "guestDesktopNotes"
+    localStorage.getItem(
+      "v4Notes"
     )
 
     ||
@@ -4273,109 +3850,80 @@ function openNotes(){
   );
 
 
-  const list =
-
-  notes.length
-
-  ?
-
-  notes
-  .map(
-
-    (
-      note,
-      index
-    ) =>`
-
-      <div
-      class="note-item"
-      onclick="
-      editNote(${index})
-      ">
-
-        <b>
-
-          ${
-            escapeHTML(
-              note.title
-              ||
-              "Заметка"
-            )
-          }
-
-        </b>
-
-
-        <div
-        class="muted"
-        style="
-        margin-top:5px;
-        ">
-
-          ${
-            escapeHTML(
-
-              (
-                note.text
-                ||
-                ""
-              )
-              .slice(
-                0,
-                80
-              )
-
-            )
-          }
-
-        </div>
-
-      </div>
-
-    `
-
-  )
-  .join("")
-
-  :
-
-  `
-
-    <div class="muted">
-
-      Заметок пока нет
-
-    </div>
-
-  `;
-
-
-  showBuiltin(
+  showSystem(
 
     "Заметки",
 
     `
 
-      <button
+    <button
+    class="primary"
+    onclick="newNote()">
 
-      class="btn"
+      Новая заметка
 
-      style="
-      margin:0 0 12px;
-      background:#007aff;
-      color:#fff;
-      "
-
-      onclick="
-      editNote(-1)
-      ">
-
-        ＋ Новая заметка
-
-      </button>
+    </button>
 
 
-      ${list}
+    <div
+    style="
+    margin-top:15px;
+    ">
+
+      ${
+        notes.length
+
+        ?
+
+        notes.map(
+
+          (
+            note,
+            index
+          ) =>`
+
+          <div
+          class="card"
+          onclick="editNote(${index})">
+
+            <b>
+
+              ${safe(note.title)}
+
+            </b>
+
+            <div class="settings-small">
+
+              ${safe(note.text.slice(0,80))}
+
+            </div>
+
+          </div>
+
+          `
+
+        )
+        .join("")
+
+        :
+
+        `
+
+        <div
+        style="
+        color:#8a8a90;
+        text-align:center;
+        padding:30px;
+        ">
+
+          Нет заметок
+
+        </div>
+
+        `
+      }
+
+    </div>
 
     `
 
@@ -4384,19 +3932,20 @@ function openNotes(){
 }
 
 
-/* =========================================================
-   EDIT NOTE
-========================================================= */
+function newNote(){
+
+  editNote(-1);
+
+}
+
 
 function editNote(index){
 
   const notes =
-
   JSON.parse(
 
-    localStorage
-    .getItem(
-      "guestDesktopNotes"
+    localStorage.getItem(
+      "v4Notes"
     )
 
     ||
@@ -4407,7 +3956,6 @@ function editNote(index){
 
 
   const note =
-
   index
   >=
   0
@@ -4419,165 +3967,54 @@ function editNote(index){
   :
 
   {
-
     title:"",
-
     text:""
-
   };
 
 
-  const overlay =
+  showSystem(
 
-  document
-  .getElementById(
-    "builtinOverlay"
+    "Заметка",
+
+    `
+
+    <input
+    class="field"
+    id="noteTitle"
+    placeholder="Название"
+    value="${attr(note.title)}">
+
+
+    <textarea
+    class="field"
+    id="noteText"
+    placeholder="Текст">${safe(note.text)}</textarea>
+
+
+    <button
+    class="primary"
+    onclick="saveNote(${index})">
+
+      Сохранить
+
+    </button>
+
+    `,
+
+    "openNotes()"
+
   );
-
-
-  overlay.innerHTML = `
-
-    <div class="builtin-shell">
-
-
-      <div class="builtin-top">
-
-
-        <button
-        class="back-btn"
-        onclick="openNotes()">
-
-          ‹ Заметки
-
-        </button>
-
-
-        <div class="builtin-title">
-
-          ${
-            index
-            >=
-            0
-
-            ?
-
-            "Редактирование"
-
-            :
-
-            "Новая заметка"
-          }
-
-        </div>
-
-
-      </div>
-
-
-      <div class="builtin-body">
-
-
-        <input
-
-        class="input"
-
-        style="
-        background:#fff;
-        color:#111;
-        border-color:#ddd;
-        "
-
-        id="noteTitle"
-
-        placeholder="Название"
-
-        value="${
-          escapeAttr(
-            note.title
-          )
-        }">
-
-
-        <textarea
-
-        class="textarea"
-
-        style="
-        background:#fff;
-        color:#111;
-        border-color:#ddd;
-        "
-
-        id="noteText"
-
-        placeholder="Текст">${
-          escapeHTML(
-            note.text
-          )
-        }</textarea>
-
-
-        <button
-
-        class="btn"
-
-        style="
-        background:#007aff;
-        color:#fff;
-        "
-
-        onclick="
-        saveNote(${index})
-        ">
-
-          Сохранить
-
-        </button>
-
-
-      </div>
-
-
-    </div>
-
-  `;
 
 }
 
 
-/* =========================================================
-   SAVE NOTE
-========================================================= */
-
 function saveNote(index){
 
-  const title =
-
-  document
-  .getElementById(
-    "noteTitle"
-  )
-  .value
-  .trim();
-
-
-  const text =
-
-  document
-  .getElementById(
-    "noteText"
-  )
-  .value
-  .trim();
-
-
   const notes =
-
   JSON.parse(
 
-    localStorage
-    .getItem(
-      "guestDesktopNotes"
+    localStorage.getItem(
+      "v4Notes"
     )
 
     ||
@@ -4589,9 +4026,19 @@ function saveNote(index){
 
   const note = {
 
-    title:title,
+    title:
+    document
+    .getElementById(
+      "noteTitle"
+    )
+    .value,
 
-    text:text
+    text:
+    document
+    .getElementById(
+      "noteText"
+    )
+    .value
 
   };
 
@@ -4618,7 +4065,7 @@ function saveNote(index){
 
   localStorage.setItem(
 
-    "guestDesktopNotes",
+    "v4Notes",
 
     JSON.stringify(
       notes
@@ -4632,936 +4079,101 @@ function saveNote(index){
 }
 
 
-/* =========================================================
-   SETTINGS ENTRY
-========================================================= */
+/* =====================================================
+   CALCULATOR
+===================================================== */
 
-let longPressTimer =
-null;
+function openCalculator(){
 
+  showSystem(
 
-const hotspot =
+    "Калькулятор",
 
-document
-.getElementById(
-  "secretHotspot"
-);
+    `
 
+    <div
+    style="
+    background:#111;
+    padding:18px;
+    border-radius:22px;
+    ">
 
-const secretCorner =
+      <input
 
-document
-.getElementById(
-  "secretCorner"
-);
+      id="calcDisplay"
 
+      value=""
 
-function startLongPress(
-  event
-){
+      readonly
 
-  if(
-
-    event
-
-    &&
-
-    event.cancelable
-
-  ){
-
-    event.preventDefault();
-
-  }
+      style="
+      width:100%;
+      height:80px;
+      border:0;
+      background:#111;
+      color:#fff;
+      text-align:right;
+      font-size:38px;
+      outline:none;
+      ">
 
 
-  clearTimeout(
-    longPressTimer
-  );
+      <div
 
+      style="
+      display:grid;
+      grid-template-columns:
+      repeat(4,1fr);
+      gap:9px;
+      ">
 
-  longPressTimer =
+        ${calcButtons()}
 
-  setTimeout(
+      </div>
 
-    ()=>{
+    </div>
 
-      openSettings();
-
-    },
-
-    1200
+    `
 
   );
 
 }
 
 
-function cancelLongPress(){
+function calcButtons(){
 
-  clearTimeout(
-    longPressTimer
-  );
+  return [
 
-}
+    "7","8","9","÷",
+    "4","5","6","×",
+    "1","2","3","−",
+    "0",".","=","+",
+    "C"
 
+  ]
 
-function bindLongPress(
-  element
-){
-
-  if(
-    !element
-  ){
-
-    return;
-
-  }
-
-
-  element
-  .addEventListener(
-
-    "pointerdown",
-
-    startLongPress
-
-  );
-
-
-  element
-  .addEventListener(
-
-    "pointerup",
-
-    cancelLongPress
-
-  );
-
-
-  element
-  .addEventListener(
-
-    "pointercancel",
-
-    cancelLongPress
-
-  );
-
-
-  element
-  .addEventListener(
-
-    "pointerleave",
-
-    cancelLongPress
-
-  );
-
-
-  element
-  .addEventListener(
-
-    "contextmenu",
-
-    event =>{
-
-      event.preventDefault();
-
-    }
-
-  );
-
-}
-
-
-bindLongPress(
-  hotspot
-);
-
-
-bindLongPress(
-  secretCorner
-);
-
-
-/* =========================================================
-   SECOND SECRET METHOD
-========================================================= */
-
-let secretTapCount =
-0;
-
-
-let secretTapTimer =
-null;
-
-
-document
-.getElementById(
-  "heroDate"
-)
-.addEventListener(
-
-  "click",
-
-  ()=>{
-
-
-    secretTapCount++;
-
-
-    clearTimeout(
-      secretTapTimer
-    );
-
-
-    if(
-      secretTapCount
-      >=
-      4
-    ){
-
-      secretTapCount =
-      0;
-
-
-      openSettings();
-
-
-      return;
-
-    }
-
-
-    secretTapTimer =
-
-    setTimeout(
-
-      ()=>{
-
-        secretTapCount =
-        0;
-
-      },
-
-      900
-
-    );
-
-  }
-
-);
-
-
-/* =========================================================
-   OPEN SETTINGS
-========================================================= */
-
-function openSettings(){
-
-  renderSettings();
-
-
-  document
-  .getElementById(
-    "settingsOverlay"
-  )
-  .classList
-  .add(
-    "show"
-  );
-
-}
-
-
-/* =========================================================
-   CLOSE SETTINGS
-========================================================= */
-
-function closeSettings(){
-
-  document
-  .getElementById(
-    "settingsOverlay"
-  )
-  .classList
-  .remove(
-    "show"
-  );
-
-}
-
-
-/* =========================================================
-   PAGE SETTINGS
-========================================================= */
-
-function renderPageSettings(){
-
-  const box =
-
-  document
-  .getElementById(
-    "pageSettings"
-  );
-
-
-  box.innerHTML =
-  "";
-
-
-  state.pages
-  .forEach(
-
-    (
-      page,
-      index
-    ) =>{
-
-
-      const row =
-
-      document
-      .createElement(
-        "div"
-      );
-
-
-      row.className =
-      "page-row";
-
-
-      row.innerHTML = `
-
-        <div class="row-left">
-
-
-          <div class="row-title">
-
-            ${
-              escapeHTML(
-                page.name
-              )
-            }
-
-          </div>
-
-
-          <div class="row-sub">
-
-            ${
-              state.apps
-              .filter(
-
-                app =>
-                app.pageId
-                ===
-                page.id
-
-              )
-              .length
-            }
-
-            прилож.
-
-          </div>
-
-
-        </div>
-
-
-        <div class="row-actions">
-
-
-          <button
-          class="small-btn"
-          ${index === 0 ? "disabled" : ""}>
-
-            ←
-
-          </button>
-
-
-          <button
-          class="small-btn"
-          ${
-            index
-            ===
-            state.pages.length
-            -
-            1
-
-            ?
-
-            "disabled"
-
-            :
-
-            ""
-          }>
-
-            →
-
-          </button>
-
-
-          <button
-          class="small-btn red"
-          ${
-            state.pages.length
-            ===
-            1
-
-            ?
-
-            "disabled"
-
-            :
-
-            ""
-          }>
-
-            ×
-
-          </button>
-
-
-        </div>
-
-      `;
-
-
-      const buttons =
-
-      row
-      .querySelectorAll(
-        "button"
-      );
-
-
-      buttons[0]
-      .onclick =
-      ()=>{
-
-
-        if(
-          index
-          <=
-          0
-        ){
-
-          return;
-
-        }
-
-
-        [
-
-          state.pages[index - 1],
-
-          state.pages[index]
-
-        ]
-
-        =
-
-        [
-
-          state.pages[index],
-
-          state.pages[index - 1]
-
-        ];
-
-
-        state.currentPage =
-        index - 1;
-
-
-        saveState();
-
-        renderDesktop();
-
-        renderSettings();
-
-      };
-
-
-      buttons[1]
-      .onclick =
-      ()=>{
-
-
-        if(
-
-          index
-          >=
-          state.pages.length
-          -
-          1
-
-        ){
-
-          return;
-
-        }
-
-
-        [
-
-          state.pages[index + 1],
-
-          state.pages[index]
-
-        ]
-
-        =
-
-        [
-
-          state.pages[index],
-
-          state.pages[index + 1]
-
-        ];
-
-
-        state.currentPage =
-        index + 1;
-
-
-        saveState();
-
-        renderDesktop();
-
-        renderSettings();
-
-      };
-
-
-      buttons[2]
-      .onclick =
-      ()=>{
-
-
-        if(
-          state.pages.length
-          ===
-          1
-        ){
-
-          return;
-
-        }
-
-
-        const firstOther =
-
-        state.pages
-        .find(
-
-          item =>
-          item.id
-          !==
-          page.id
-
-        );
-
-
-        state.apps
-        .forEach(
-
-          app =>{
-
-
-            if(
-              app.pageId
-              ===
-              page.id
-            ){
-
-              app.pageId =
-              firstOther.id;
-
-            }
-
-          }
-
-        );
-
-
-        state.pages =
-
-        state.pages
-        .filter(
-
-          item =>
-          item.id
-          !==
-          page.id
-
-        );
-
-
-        state.currentPage =
-
-        Math.min(
-
-          state.currentPage,
-
-          state.pages.length
-          -
-          1
-
-        );
-
-
-        saveState();
-
-        renderDesktop();
-
-        renderSettings();
-
-      };
-
-
-      box
-      .appendChild(
-        row
-      );
-
-    }
-
-  );
-
-}
-
-
-/* =========================================================
-   ADD PAGE
-========================================================= */
-
-function addPage(){
-
-  const number =
-
-  state.pages.length
-  +
-  1;
-
-
-  state.pages
-  .push({
-
-    id:
-    "page_"
-    +
-    Date.now(),
-
-    name:
-    "Страница "
-    +
-    number
-
-  });
-
-
-  state.currentPage =
-
-  state.pages.length
-  -
-  1;
-
-
-  saveState();
-
-  renderDesktop();
-
-  renderSettings();
-
-}
-
-
-/* =========================================================
-   APP SETTINGS
-========================================================= */
-
-function renderAppSettings(){
-
-  const box =
-
-  document
-  .getElementById(
-    "appSettings"
-  );
-
-
-  box.innerHTML =
-  "";
-
-
-  state.apps
-  .forEach(
-
-    app =>{
-
-
-      const pageName =
-
-      state.pages
-      .find(
-
-        page =>
-        page.id
-        ===
-        app.pageId
-
-      )
-      ?.name
-
-      ||
-
-      "";
-
-
-      const row =
-
-      document
-      .createElement(
-        "div"
-      );
-
-
-      row.className =
-      "app-row";
-
-
-      row.innerHTML = `
-
-        <div class="row-left">
-
-
-          <div class="row-title">
-
-            ${
-              app.iconImage
-
-              ?
-
-              "🖼️"
-
-              :
-
-              escapeHTML(
-                app.icon
-                ||
-                "⭐"
-              )
-            }
-
-            ${
-              escapeHTML(
-                app.title
-              )
-            }
-
-          </div>
-
-
-          <div class="row-sub">
-
-            ${
-              escapeHTML(
-                pageName
-              )
-            }
-
-          </div>
-
-
-        </div>
-
-
-        <div class="row-actions">
-
-
-          <div
-          class="
-          switch
-          ${
-            app.enabled !== false
-            ?
-            "on"
-            :
-            ""
-          }
-          ">
-
-            <div
-            class="switch-knob">
-            </div>
-
-          </div>
-
-
-          ${
-            app.removable !== false
-
-            ?
-
-            `
-
-              <button
-              class="small-btn red">
-
-                ×
-
-              </button>
-
-            `
-
-            :
-
-            ""
-          }
-
-
-        </div>
-
-      `;
-
-
-      const switchElement =
-
-      row
-      .querySelector(
-        ".switch"
-      );
-
-
-      switchElement.onclick =
-      ()=>{
-
-
-        app.enabled =
-
-        app.enabled
-        ===
-        false
-
-        ?
-
-        true
-
-        :
-
-        false;
-
-
-        saveState();
-
-        renderDesktop();
-
-        renderSettings();
-
-      };
-
-
-      const deleteButton =
-
-      row
-      .querySelector(
-        ".small-btn.red"
-      );
-
-
-      if(
-        deleteButton
-      ){
-
-        deleteButton.onclick =
-        ()=>{
-
-
-          if(
-
-            confirm(
-              `Удалить «${app.title}»?`
-            )
-
-          ){
-
-
-            state.apps =
-
-            state.apps
-            .filter(
-
-              item =>
-              item.id
-              !==
-              app.id
-
-            );
-
-
-            saveState();
-
-            renderDesktop();
-
-            renderSettings();
-
-          }
-
-        };
-
-      }
-
-
-      box
-      .appendChild(
-        row
-      );
-
-    }
-
-  );
-
-}
-
-
-/* =========================================================
-   PAGE SELECT
-========================================================= */
-
-function renderPageSelect(){
-
-  const select =
-
-  document
-  .getElementById(
-    "newAppPage"
-  );
-
-
-  select.innerHTML =
-
-  state.pages
   .map(
 
-    page =>`
+    value =>`
 
-      <option
-      value="${escapeAttr(page.id)}">
+    <button
 
-        ${
-          escapeHTML(
-            page.name
-          )
-        }
+    onclick="
+    calcPress('${value}')
+    "
 
-      </option>
+    style="
+    height:58px;
+    border:0;
+    border-radius:50%;
+    background:#333;
+    color:#fff;
+    font-size:22px;
+    ">
+
+      ${value}
+
+    </button>
 
     `
 
@@ -5571,486 +4183,568 @@ function renderPageSelect(){
 }
 
 
-/* =========================================================
-   EMOJI PICKER
-========================================================= */
+function calcPress(value){
 
-function renderEmojiPicker(){
-
-  const box =
-
+  const display =
   document
   .getElementById(
-    "emojiPicker"
+    "calcDisplay"
   );
 
 
-  box.innerHTML =
-  "";
+  if(
+    value
+    ===
+    "C"
+  ){
+
+    display.value =
+    "";
+
+    return;
+
+  }
 
 
-  emojiChoices
-  .forEach(
+  if(
+    value
+    ===
+    "="
+  ){
 
-    icon =>{
+    try{
 
+      let expression =
+      display.value
 
-      const element =
+      .replaceAll(
+        "×",
+        "*"
+      )
 
-      document
-      .createElement(
-        "div"
+      .replaceAll(
+        "÷",
+        "/"
+      )
+
+      .replaceAll(
+        "−",
+        "-"
       );
 
 
-      element.className =
+      display.value =
+      Function(
 
-      "icon-choice"
+        `"use strict";return (${expression})`
 
-      +
-
-      (
-        icon
-        ===
-        selectedEmoji
-
-        ?
-
-        " selected"
-
-        :
-
-        ""
-      );
-
-
-      element.textContent =
-      icon;
-
-
-      element.onclick =
-      ()=>{
-
-
-        selectedEmoji =
-        icon;
-
-
-        selectedCustomIcon =
-        null;
-
-
-        document
-        .getElementById(
-          "customIconPreview"
-        )
-        .classList
-        .remove(
-          "show"
-        );
-
-
-        renderEmojiPicker();
-
-      };
-
-
-      box
-      .appendChild(
-        element
-      );
+      )();
 
     }
+
+    catch(error){
+
+      display.value =
+      "Ошибка";
+
+    }
+
+
+    return;
+
+  }
+
+
+  display.value +=
+  value;
+
+}
+
+
+/* =====================================================
+   SOCIAL
+===================================================== */
+
+function openSocial(){
+
+  showSystem(
+
+    "Лента",
+
+    `
+
+    <div class="card">
+
+      <b>anna_photo</b>
+
+      <div
+      style="
+      margin-top:10px;
+      aspect-ratio:1/1;
+      border-radius:12px;
+      background:
+      linear-gradient(
+        145deg,
+        #f0a260,
+        #715ad8
+      );
+      ">
+      </div>
+
+      <div
+      style="
+      margin-top:10px;
+      ">
+
+        Отличный вечер ✨
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <b>max_travel</b>
+
+      <div
+      style="
+      margin-top:10px;
+      aspect-ratio:1/1;
+      border-radius:12px;
+      background:
+      linear-gradient(
+        160deg,
+        #214d47,
+        #102339
+      );
+      ">
+      </div>
+
+      <div
+      style="
+      margin-top:10px;
+      ">
+
+        Наконец-то выбрались за город.
+
+      </div>
+
+    </div>
+
+    `
 
   );
 
 }
 
 
-/* =========================================================
-   APP FORM
-========================================================= */
+/* =====================================================
+   BROWSER
+===================================================== */
 
-function toggleAppForm(){
+function openBrowser(
+  url,
+  title
+){
 
-  document
-  .getElementById(
-    "appForm"
-  )
-  .classList
-  .toggle(
+  const overlay =
+  document.getElementById(
+    "browserOverlay"
+  );
+
+
+  overlay.innerHTML = `
+
+  <div class="browser-shell">
+
+
+    <div class="browser-top">
+
+
+      <button
+      class="browser-button"
+      onclick="closeBrowser()">
+
+        ‹
+
+      </button>
+
+
+      <div class="browser-title">
+
+        ${safe(title)}
+
+      </div>
+
+
+      <button
+      class="browser-button"
+      onclick="closeBrowser()">
+
+        ✕
+
+      </button>
+
+
+    </div>
+
+
+    <iframe
+
+    class="browser-frame"
+
+    src="${attr(url)}"
+
+    allow="
+    autoplay;
+    fullscreen
+    ">
+
+    </iframe>
+
+
+  </div>
+
+  `;
+
+
+  overlay.classList.add(
+    "show"
+  );
+
+}
+
+
+function closeBrowser(){
+
+  const overlay =
+  document.getElementById(
+    "browserOverlay"
+  );
+
+
+  overlay.classList.remove(
     "show"
   );
 
 
-  renderPageSelect();
-
-  renderEmojiPicker();
-
-  updateTypeFields();
+  overlay.innerHTML =
+  "";
 
 }
 
 
-/* =========================================================
-   APP TYPE
-========================================================= */
+/* =====================================================
+   SEARCH
+===================================================== */
 
-function updateTypeFields(){
+function openSearch(){
 
-  const type =
-
-  document
-  .getElementById(
-    "newAppType"
-  )
-  .value;
+  const overlay =
+  document.getElementById(
+    "searchOverlay"
+  );
 
 
-  document
-  .getElementById(
-    "newAppUrl"
-  )
-  .style
-  .display =
+  overlay.innerHTML = `
 
-  type
-  ===
-  "url"
+  <div class="searchbox">
 
-  ?
+    <input
+    id="searchInput"
+    placeholder="Поиск"
+    autofocus
+    oninput="runSearch()">
 
-  "block"
+    <button
+    class="search-cancel"
+    onclick="closeSearch()">
 
-  :
+      Отмена
 
-  "none";
+    </button>
+
+  </div>
+
+
+  <div
+  class="search-results"
+  id="searchResults">
+  </div>
+
+  `;
+
+
+  overlay.classList.add(
+    "show"
+  );
+
+
+  setTimeout(
+
+    ()=>{
+
+      document
+      .getElementById(
+        "searchInput"
+      )
+      ?.focus();
+
+    },
+
+    150
+
+  );
+
+
+  runSearch();
 
 }
 
 
-/* =========================================================
-   ICON FILE
-========================================================= */
+function runSearch(){
+
+  const input =
+  document
+  .getElementById(
+    "searchInput"
+  );
+
+
+  if(
+    !input
+  ){
+
+    return;
+
+  }
+
+
+  const query =
+  input.value
+  .trim()
+  .toLowerCase();
+
+
+  const results =
+  state.apps
+  .filter(
+
+    app =>
+    !query
+
+    ||
+
+    app.title
+    .toLowerCase()
+    .includes(
+      query
+    )
+
+  );
+
+
+  document
+  .getElementById(
+    "searchResults"
+  )
+  .innerHTML =
+
+  results
+  .map(
+
+    app =>`
+
+    <div
+    class="search-item"
+
+    onclick="
+    closeSearch();
+    launchById('${app.id}')
+    ">
+
+      ${iconHTML(app)}
+
+      <div>
+
+        ${safe(app.title)}
+
+      </div>
+
+    </div>
+
+    `
+
+  )
+  .join("");
+
+}
+
+
+function launchById(id){
+
+  const app =
+  state.apps
+  .find(
+
+    item =>
+    item.id
+    ===
+    id
+
+  );
+
+
+  if(
+    app
+  ){
+
+    openApp(app);
+
+  }
+
+}
+
+
+function closeSearch(){
+
+  const overlay =
+  document.getElementById(
+    "searchOverlay"
+  );
+
+
+  overlay.classList.remove(
+    "show"
+  );
+
+
+  overlay.innerHTML =
+  "";
+
+}
+
+
+/* =====================================================
+   EDIT
+===================================================== */
+
+function startEditing(){
+
+  closeSystem();
+
+  state.editing =
+  true;
+
+  save();
+
+  render();
+
+}
+
+
+/* tap dock area to finish edit */
 
 document
 .getElementById(
-  "iconFileInput"
+  "dock"
 )
 .addEventListener(
 
-  "change",
+  "dblclick",
 
-  function(){
-
-
-    const file =
-
-    this.files
-    &&
-    this.files[0];
-
+  ()=>{
 
     if(
-      !file
+      state.editing
     ){
 
-      return;
+      state.editing =
+      false;
+
+      save();
+
+      render();
 
     }
-
-
-    const reader =
-
-    new FileReader();
-
-
-    reader.onload =
-    event =>{
-
-
-      compressImage(
-
-        event.target.result,
-
-        512,
-
-        512,
-
-        .86,
-
-        compressed =>{
-
-
-          selectedCustomIcon =
-          compressed;
-
-
-          const preview =
-
-          document
-          .getElementById(
-            "customIconPreview"
-          );
-
-
-          preview.innerHTML = `
-
-            <img
-            src="${compressed}"
-            alt="">
-
-          `;
-
-
-          preview.classList
-          .add(
-            "show"
-          );
-
-
-          document
-          .querySelectorAll(
-            ".icon-choice"
-          )
-          .forEach(
-
-            item =>{
-
-              item.classList
-              .remove(
-                "selected"
-              );
-
-            }
-
-          );
-
-        }
-
-      );
-
-    };
-
-
-    reader.readAsDataURL(
-      file
-    );
-
-
-    this.value="";
 
   }
 
 );
 
 
-/* =========================================================
-   ADD APP
-========================================================= */
+/* =====================================================
+   HIDDEN ADMIN ENTRY
+   5 taps top-left
+===================================================== */
 
-function addApp(){
-
-  const title =
-
-  document
-  .getElementById(
-    "newAppTitle"
-  )
-  .value
-  .trim();
+let adminTaps =
+0;
 
 
-  const type =
-
-  document
-  .getElementById(
-    "newAppType"
-  )
-  .value;
+let adminTimer;
 
 
-  const pageId =
+document
+.getElementById(
+  "adminHotspot"
+)
+.addEventListener(
 
-  document
-  .getElementById(
-    "newAppPage"
-  )
-  .value;
+  "click",
 
-
-  const url =
-
-  document
-  .getElementById(
-    "newAppUrl"
-  )
-  .value
-  .trim();
+  ()=>{
 
 
-  if(
-    !title
-  ){
+    adminTaps++;
 
-    alert(
-      "Введите название."
+
+    clearTimeout(
+      adminTimer
     );
 
 
-    return;
+    if(
+      adminTaps
+      >=
+      5
+    ){
 
-  }
+      adminTaps =
+      0;
+
+      openSettings();
+
+      return;
+
+    }
 
 
-  if(
+    adminTimer =
+    setTimeout(
 
-    type
-    ===
-    "url"
+      ()=>{
 
-    &&
+        adminTaps =
+        0;
 
-    !url
+      },
 
-  ){
+      1200
 
-    alert(
-      "Введите ссылку или URL-схему."
     );
 
-
-    return;
-
   }
 
-
-  state.apps
-  .push({
-
-    id:
-    "app_"
-    +
-    Date.now(),
-
-    title:title,
-
-    icon:selectedEmoji,
-
-    iconImage:
-    selectedCustomIcon,
-
-    type:type,
-
-    url:
-    type
-    ===
-    "url"
-
-    ?
-
-    url
-
-    :
-
-    "",
-
-    pageId:
-    pageId,
-
-    enabled:true,
-
-    removable:true
-
-  });
+);
 
 
-  if(
-    !saveState()
-  ){
+/* =====================================================
+   SAFE TEXT
+===================================================== */
 
-    return;
-
-  }
-
-
-  document
-  .getElementById(
-    "newAppTitle"
-  )
-  .value =
-  "";
-
-
-  document
-  .getElementById(
-    "newAppUrl"
-  )
-  .value =
-  "";
-
-
-  selectedEmoji =
-  "⭐";
-
-
-  selectedCustomIcon =
-  null;
-
-
-  document
-  .getElementById(
-    "customIconPreview"
-  )
-  .classList
-  .remove(
-    "show"
-  );
-
-
-  renderDesktop();
-
-  renderSettings();
-
-
-  document
-  .getElementById(
-    "appForm"
-  )
-  .classList
-  .remove(
-    "show"
-  );
-
-}
-
-
-/* =========================================================
-   SETTINGS RENDER
-========================================================= */
-
-function renderSettings(){
-
-  renderWallpaperSettings();
-
-  renderPageSettings();
-
-  renderAppSettings();
-
-  renderPageSelect();
-
-  renderEmojiPicker();
-
-  updateTypeFields();
-
-}
-
-
-/* =========================================================
-   SAFE HTML
-========================================================= */
-
-function escapeHTML(text){
+function safe(text){
 
   return String(
     text
@@ -6086,11 +4780,9 @@ function escapeHTML(text){
 }
 
 
-function escapeAttr(text){
+function attr(text){
 
-  return escapeHTML(
-    text
-  )
+  return safe(text)
   .replaceAll(
     "`",
     "&#096;"
@@ -6099,18 +4791,15 @@ function escapeAttr(text){
 }
 
 
-/* =========================================================
+/* =====================================================
    START
-========================================================= */
+===================================================== */
 
 applyWallpaper();
 
-renderDesktop();
-
-renderSettings();
+render();
 
 </script>
-
 
 </body>
 </html>
