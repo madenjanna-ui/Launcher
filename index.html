@@ -2,7 +2,6 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport"
 content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 
@@ -13,14 +12,12 @@ content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,vie
 <title>Home</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
     margin:0;
     width:100%;
     height:100%;
@@ -40,50 +37,26 @@ body{
     width:100%;
     height:100dvh;
     overflow:hidden;
-
-    background-image:url("wallpapers/wall1.jpg");
-    background-position:center;
-    background-size:cover;
-    background-repeat:no-repeat;
-
-    transition:background-image .3s ease;
+    background:url("wallpapers/wall1.jpg") center/cover no-repeat;
+    transition:.3s;
 }
 
 .home::before{
     content:"";
     position:absolute;
     inset:0;
-
-    background:
-    linear-gradient(
-        180deg,
-        rgba(0,0,0,.08),
-        rgba(0,0,0,.04) 45%,
-        rgba(0,0,0,.30)
-    );
-
+    background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.04) 45%,rgba(0,0,0,.32));
     pointer-events:none;
 }
 
-/* =========================
-   STATUS
-========================= */
-
 .status{
     height:54px;
-
-    padding:
-    max(13px,env(safe-area-inset-top))
-    22px
-    0;
-
+    padding:max(13px,env(safe-area-inset-top)) 22px 0;
     position:relative;
     z-index:5;
-
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-
     font-size:15px;
     font-weight:650;
 }
@@ -91,7 +64,6 @@ body{
 .status-right{
     display:flex;
     gap:7px;
-    align-items:center;
 }
 
 #clock{
@@ -99,18 +71,10 @@ body{
     -webkit-user-select:none;
 }
 
-/* =========================
-   DATE
-========================= */
-
 .date-area{
     position:relative;
     z-index:2;
-
-    padding:
-    15px
-    24px
-    0;
+    padding:15px 24px 0;
 }
 
 .big-time{
@@ -118,38 +82,23 @@ body{
     font-weight:300;
     line-height:1;
     letter-spacing:-2px;
-
-    text-shadow:
-    0 2px 12px rgba(0,0,0,.35);
+    text-shadow:0 2px 12px rgba(0,0,0,.35);
 }
 
 .date{
     margin-top:7px;
     font-size:15px;
     opacity:.86;
-
-    text-shadow:
-    0 2px 8px rgba(0,0,0,.45);
+    text-shadow:0 2px 8px rgba(0,0,0,.45);
 }
-
-/* =========================
-   APPS
-========================= */
 
 .apps{
     position:relative;
     z-index:2;
-
-    padding:
-    34px
-    20px
-    130px;
-
+    padding:34px 20px 130px;
     display:grid;
     grid-template-columns:repeat(4,1fr);
-
-    column-gap:15px;
-    row-gap:24px;
+    gap:24px 15px;
 }
 
 .app{
@@ -161,163 +110,102 @@ body{
 .icon{
     width:min(17vw,70px);
     height:min(17vw,70px);
-
     margin:auto;
-
     border-radius:19px;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     font-size:32px;
-
     position:relative;
     overflow:hidden;
 
     background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.34),
-        rgba(255,255,255,.10)
-    );
+    linear-gradient(145deg,rgba(255,255,255,.36),rgba(255,255,255,.09));
 
-    border:
-    1px solid rgba(255,255,255,.32);
+    border:1px solid rgba(255,255,255,.30);
 
     box-shadow:
     0 12px 28px rgba(0,0,0,.22),
     inset 0 1px 1px rgba(255,255,255,.65),
     inset 0 -1px 1px rgba(255,255,255,.10);
 
-    backdrop-filter:
-    blur(18px)
-    saturate(160%);
+    backdrop-filter:blur(18px) saturate(170%);
+    -webkit-backdrop-filter:blur(18px) saturate(170%);
 
-    -webkit-backdrop-filter:
-    blur(18px)
-    saturate(160%);
-
-    transition:
-    transform .12s ease,
-    filter .12s ease;
+    transition:.12s;
 }
 
 .icon::before{
     content:"";
-
     position:absolute;
-
     top:-35%;
     left:-15%;
-
     width:80%;
     height:70%;
-
     border-radius:50%;
-
-    background:
-    rgba(255,255,255,.23);
-
+    background:rgba(255,255,255,.22);
     filter:blur(8px);
-
     transform:rotate(-15deg);
-
     pointer-events:none;
 }
 
 .app:active .icon{
     transform:scale(.89);
-    filter:brightness(.88);
 }
 
 .name{
     margin-top:7px;
-
     font-size:12px;
     font-weight:500;
-
-    text-shadow:
-    0 2px 5px rgba(0,0,0,.75);
+    text-shadow:0 2px 5px rgba(0,0,0,.75);
 }
-
-/* =========================
-   DOCK
-========================= */
 
 .dock{
     position:absolute;
-
     z-index:3;
-
     left:16px;
     right:16px;
-
-    bottom:
-    calc(10px + env(safe-area-inset-bottom));
-
+    bottom:calc(10px + env(safe-area-inset-bottom));
     height:90px;
-
     border-radius:30px;
-
     display:flex;
     align-items:center;
     justify-content:space-around;
 
     background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.22),
-        rgba(255,255,255,.08)
-    );
+    linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.08));
 
-    border:
-    1px solid rgba(255,255,255,.25);
+    border:1px solid rgba(255,255,255,.25);
 
     box-shadow:
     0 12px 35px rgba(0,0,0,.30),
     inset 0 1px rgba(255,255,255,.30);
 
-    backdrop-filter:
-    blur(28px)
-    saturate(170%);
-
-    -webkit-backdrop-filter:
-    blur(28px)
-    saturate(170%);
+    backdrop-filter:blur(28px) saturate(170%);
+    -webkit-backdrop-filter:blur(28px) saturate(170%);
 }
 
 .dock .icon{
     width:62px;
     height:62px;
-
     border-radius:18px;
-
     font-size:29px;
 }
 
-/* =========================
-   SETTINGS OVERLAY
-========================= */
-
 .settings-overlay{
     display:none;
-
     position:absolute;
     inset:0;
-
     z-index:100;
-
-    background:
-    rgba(7,8,12,.72);
+    background:rgba(7,8,12,.72);
 
     backdrop-filter:blur(28px);
     -webkit-backdrop-filter:blur(28px);
 
     padding:
-    calc(env(safe-area-inset-top) + 30px)
+    calc(env(safe-area-inset-top) + 25px)
     18px
-    calc(env(safe-area-inset-bottom) + 22px);
+    calc(env(safe-area-inset-bottom) + 25px);
 
     overflow-y:auto;
 }
@@ -329,19 +217,11 @@ body{
 .settings-card{
     max-width:430px;
     margin:auto;
-
     padding:22px;
-
     border-radius:28px;
-
-    background:
-    rgba(35,35,42,.72);
-
-    border:
-    1px solid rgba(255,255,255,.16);
-
-    box-shadow:
-    0 20px 50px rgba(0,0,0,.4);
+    background:rgba(35,35,42,.78);
+    border:1px solid rgba(255,255,255,.16);
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
 
     backdrop-filter:blur(25px);
     -webkit-backdrop-filter:blur(25px);
@@ -350,52 +230,31 @@ body{
 .settings-title{
     font-size:23px;
     font-weight:700;
-
     margin-bottom:22px;
 }
 
 .section-title{
     font-size:13px;
-
     text-transform:uppercase;
-
     letter-spacing:.7px;
-
     opacity:.55;
-
-    margin:
-    22px
-    2px
-    10px;
+    margin:22px 2px 10px;
 }
-
-/* =========================
-   WALLPAPERS
-========================= */
 
 .wallpapers{
     display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:10px;
 }
 
 .wallpaper{
     aspect-ratio:9/16;
-
     border-radius:16px;
-
     background-position:center;
     background-size:cover;
-
-    border:
-    2px solid transparent;
-
+    border:2px solid transparent;
     position:relative;
     overflow:hidden;
-
     cursor:pointer;
 }
 
@@ -405,66 +264,61 @@ body{
 
 .wallpaper.selected::after{
     content:"✓";
-
     position:absolute;
-
     right:7px;
     top:7px;
-
     width:24px;
     height:24px;
-
     border-radius:50%;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     background:white;
     color:#111;
-
     font-weight:700;
 }
 
-/* =========================
-   SETTINGS ROWS
-========================= */
-
 .setting-row{
-    min-height:55px;
-
+    min-height:58px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-
-    border-bottom:
-    1px solid rgba(255,255,255,.08);
-
+    gap:10px;
+    border-bottom:1px solid rgba(255,255,255,.08);
     font-size:16px;
+}
+
+.setting-left{
+    min-width:0;
+    flex:1;
+}
+
+.setting-name{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.setting-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
 
 .switch{
     width:49px;
     height:29px;
-
     border-radius:20px;
-
-    background:
-    rgba(255,255,255,.18);
-
+    background:rgba(255,255,255,.18);
     padding:3px;
-
     transition:.2s;
 }
 
 .switch-knob{
     width:23px;
     height:23px;
-
     border-radius:50%;
-
     background:white;
-
     transition:.2s;
 }
 
@@ -476,133 +330,137 @@ body{
     transform:translateX(20px);
 }
 
-/* =========================
-   BUTTONS
-========================= */
+.delete-btn{
+    border:0;
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    color:white;
+    background:rgba(255,59,48,.22);
+    font-size:18px;
+}
 
 .settings-button{
     width:100%;
     height:52px;
-
-    margin-top:20px;
-
+    margin-top:14px;
     border:0;
-
     border-radius:16px;
-
     font-size:16px;
     font-weight:600;
-
-    background:
-    rgba(255,255,255,.94);
-
+    background:rgba(255,255,255,.94);
     color:#111;
 }
 
 .secondary{
-    background:
-    rgba(255,255,255,.10);
-
+    background:rgba(255,255,255,.10);
     color:white;
 }
 
+.add-form{
+    display:none;
+    margin-top:12px;
+    padding:15px;
+    border-radius:18px;
+    background:rgba(255,255,255,.07);
+}
+
+.add-form.show{
+    display:block;
+}
+
+.input{
+    width:100%;
+    height:48px;
+    margin-top:10px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:14px;
+    background:rgba(255,255,255,.08);
+    color:white;
+    font-size:16px;
+    padding:0 14px;
+    outline:none;
+}
+
+.input::placeholder{
+    color:rgba(255,255,255,.45);
+}
+
+.icon-options{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:8px;
+    margin-top:12px;
+}
+
+.icon-option{
+    height:45px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    background:rgba(255,255,255,.08);
+    border:1px solid transparent;
+}
+
+.icon-option.selected{
+    border-color:white;
+    background:rgba(255,255,255,.18);
+}
+
+.form-hint{
+    margin-top:9px;
+    font-size:12px;
+    line-height:1.4;
+    opacity:.55;
+}
+
+.empty{
+    padding:15px 0;
+    font-size:14px;
+    opacity:.55;
+}
 </style>
 </head>
 
 <body>
 
-<div
-class="home"
-id="home">
-
-    <!-- STATUS -->
+<div class="home" id="home">
 
     <div class="status">
-
-        <div id="clock">
-            09:41
-        </div>
+        <div id="clock">09:41</div>
 
         <div class="status-right">
             <span>●●●</span>
             <span>⌁</span>
             <span>100%</span>
         </div>
-
     </div>
-
-
-    <!-- DATE -->
 
     <div class="date-area">
-
-        <div
-        class="big-time"
-        id="bigTime">
-            09:41
-        </div>
-
-        <div
-        class="date"
-        id="date">
-        </div>
-
+        <div class="big-time" id="bigTime">09:41</div>
+        <div class="date" id="date"></div>
     </div>
 
-
-    <!-- APPS -->
-
-    <div
-    class="apps"
-    id="appsContainer">
-    </div>
-
-
-    <!-- DOCK -->
+    <div class="apps" id="appsContainer"></div>
 
     <div class="dock">
 
-        <div
-        class="app"
-        onclick="openApp('phone')">
-
-            <div class="icon">
-                📞
-            </div>
-
+        <div class="app" onclick="openURL('tel:')">
+            <div class="icon">📞</div>
         </div>
 
-
-        <div
-        class="app"
-        onclick="openApp('browser')">
-
-            <div class="icon">
-                🌐
-            </div>
-
+        <div class="app" onclick="openURL('https://www.google.com/')">
+            <div class="icon">🌐</div>
         </div>
 
-
-        <div
-        class="app"
-        onclick="openApp('camera')">
-
-            <div class="icon">
-                📷
-            </div>
-
+        <div class="app" onclick="openURL('camera:')">
+            <div class="icon">📷</div>
         </div>
 
-
-        <div
-        class="app"
-        onclick="openApp('calculator')">
-
-            <div class="icon">
-                🧮
-            </div>
-
+        <div class="app" onclick="openURL('calc:')">
+            <div class="icon">🧮</div>
         </div>
 
     </div>
@@ -610,11 +468,7 @@ id="home">
 </div>
 
 
-<!-- SETTINGS -->
-
-<div
-class="settings-overlay"
-id="settingsOverlay">
+<div class="settings-overlay" id="settingsOverlay">
 
     <div class="settings-card">
 
@@ -622,39 +476,28 @@ id="settingsOverlay">
             Настройки
         </div>
 
-
         <div class="section-title">
             Обои
         </div>
-
 
         <div class="wallpapers">
 
             <div
             class="wallpaper"
             data-wallpaper="wallpapers/wall1.jpg"
-            style="
-            background-image:
-            url('wallpapers/wall1.jpg')
-            ">
+            style="background-image:url('wallpapers/wall1.jpg')">
             </div>
 
             <div
             class="wallpaper"
             data-wallpaper="wallpapers/wall2.jpg"
-            style="
-            background-image:
-            url('wallpapers/wall2.jpg')
-            ">
+            style="background-image:url('wallpapers/wall2.jpg')">
             </div>
 
             <div
             class="wallpaper"
             data-wallpaper="wallpapers/wall3.jpg"
-            style="
-            background-image:
-            url('wallpapers/wall3.jpg')
-            ">
+            style="background-image:url('wallpapers/wall3.jpg')">
             </div>
 
         </div>
@@ -664,17 +507,45 @@ id="settingsOverlay">
             Приложения
         </div>
 
+        <div id="appSettings"></div>
 
-        <div id="appSettings">
+
+        <button class="settings-button" onclick="toggleAddForm()">
+            ＋ Добавить приложение
+        </button>
+
+
+        <div class="add-form" id="addForm">
+
+            <input
+            class="input"
+            id="newTitle"
+            placeholder="Название">
+
+            <input
+            class="input"
+            id="newUrl"
+            placeholder="Ссылка или URL-схема">
+
+            <div class="section-title">
+                Значок
+            </div>
+
+            <div class="icon-options" id="iconOptions"></div>
+
+            <div class="form-hint">
+                Примеры: https://..., tg://, tel:, maps://
+            </div>
+
+            <button class="settings-button" onclick="addApp()">
+                Добавить
+            </button>
+
         </div>
 
 
-        <button
-        class="settings-button secondary"
-        onclick="closeSettings()">
-
+        <button class="settings-button secondary" onclick="closeSettings()">
             Готово
-
         </button>
 
     </div>
@@ -684,319 +555,345 @@ id="settingsOverlay">
 
 <script>
 
-/* =========================
-   APPLICATIONS
-========================= */
-
-const apps = [
-
+const defaultApps = [
 {
     id:"music",
     title:"Музыка",
     icon:"🎵",
-
-    url:
-    "https://madenjanna-ui.github.io/Music-edition/",
-
-    enabled:true
+    url:"https://madenjanna-ui.github.io/Music-edition/",
+    enabled:true,
+    removable:false
 },
-
 {
     id:"planner",
     title:"Планер",
     icon:"📅",
-
     url:"#",
-
-    enabled:true
+    enabled:true,
+    removable:false
 },
-
 {
     id:"family",
     title:"Сообщения",
     icon:"💬",
-
     url:"#",
-
-    enabled:true
+    enabled:true,
+    removable:false
 },
-
 {
     id:"games",
     title:"Игры",
     icon:"🎮",
-
-    url:
-    "https://madenjanna-ui.github.io/Avtoslalom/",
-
-    enabled:true
+    url:"https://madenjanna-ui.github.io/Avtoslalom/",
+    enabled:true,
+    removable:false
 },
-
 {
     id:"journal",
     title:"Журнал",
     icon:"📊",
-
     url:"#",
-
-    enabled:true
+    enabled:true,
+    removable:false
 },
-
 {
     id:"notes",
     title:"Заметки",
     icon:"📝",
-
     url:"#",
-
-    enabled:true
+    enabled:true,
+    removable:false
 },
-
 {
     id:"photos",
     title:"Фото",
     icon:"🖼️",
-
     url:"#",
-
-    enabled:true
+    enabled:true,
+    removable:false
 },
-
 {
     id:"maps",
     title:"Карты",
     icon:"🗺️",
-
-    url:
-    "https://maps.apple.com/",
-
-    enabled:true
+    url:"https://maps.apple.com/",
+    enabled:true,
+    removable:false
 }
-
 ];
 
 
-/* =========================
-   SYSTEM LINKS
-========================= */
-
-const systemApps = {
-
-    phone:"tel:",
-
-    browser:
-    "https://www.google.com/",
-
-    camera:"camera:",
-
-    calculator:"calc:"
-
-};
+const iconChoices = [
+"🎵","📅","💬","🎮","📝","📊",
+"📷","🖼️","🌐","🗺️","📞","🧮",
+"📁","🎬","📺","☁️","📚","💳",
+"🚗","✉️","⌚","🏠","🔎","⭐"
+];
 
 
-/* =========================
-   LOAD SETTINGS
-========================= */
+let selectedIcon = "⭐";
 
-const savedApps =
-JSON.parse(
-    localStorage.getItem(
-        "launcherApps"
-    ) || "{}"
+
+let apps = JSON.parse(
+    localStorage.getItem("launcherFullApps") || "null"
 );
 
-
-apps.forEach(app=>{
-
-    if(
-        savedApps[app.id]
-        !== undefined
-    ){
-
-        app.enabled =
-        savedApps[app.id];
-
-    }
-
-});
+if(!apps){
+    apps = defaultApps;
+    saveFullApps();
+}
 
 
 const savedWallpaper =
-localStorage.getItem(
-    "launcherWallpaper"
-)
+localStorage.getItem("launcherWallpaper")
 ||
 "wallpapers/wall1.jpg";
 
 
-document
-.getElementById("home")
-.style.backgroundImage =
+document.getElementById("home").style.backgroundImage =
 `url("${savedWallpaper}")`;
 
 
-/* =========================
-   RENDER APPS
-========================= */
+function saveFullApps(){
+    localStorage.setItem(
+        "launcherFullApps",
+        JSON.stringify(apps)
+    );
+}
+
 
 function renderApps(){
 
     const container =
-    document.getElementById(
-        "appsContainer"
-    );
+    document.getElementById("appsContainer");
 
-
-    container.innerHTML="";
-
+    container.innerHTML = "";
 
     apps
     .filter(app=>app.enabled)
     .forEach(app=>{
 
-        const el =
-        document.createElement(
-            "div"
-        );
+        const el = document.createElement("div");
 
+        el.className = "app";
 
-        el.className="app";
-
-
-        el.innerHTML=`
-
-            <div class="icon">
-                ${app.icon}
-            </div>
-
-            <div class="name">
-                ${app.title}
-            </div>
-
+        el.innerHTML = `
+            <div class="icon">${app.icon}</div>
+            <div class="name">${escapeHTML(app.title)}</div>
         `;
 
-
-        el.onclick=()=>{
-
-            openURL(
-                app.url
-            );
-
-        };
-
+        el.onclick = ()=>openURL(app.url);
 
         container.appendChild(el);
-
     });
-
 }
 
-
-/* =========================
-   APP SETTINGS
-========================= */
 
 function renderSettings(){
 
     const box =
-    document.getElementById(
-        "appSettings"
-    );
+    document.getElementById("appSettings");
 
+    box.innerHTML = "";
 
-    box.innerHTML="";
-
+    if(!apps.length){
+        box.innerHTML =
+        `<div class="empty">Нет приложений</div>`;
+        return;
+    }
 
     apps.forEach(app=>{
 
-        const row =
-        document.createElement(
-            "div"
-        );
+        const row = document.createElement("div");
 
+        row.className = "setting-row";
 
-        row.className=
-        "setting-row";
-
-
-        row.innerHTML=`
-
-            <span>
-                ${app.icon}
-                ${app.title}
-            </span>
-
-            <div
-            class="switch
-            ${app.enabled ? "on" : ""}"
-            >
-
-                <div
-                class="switch-knob">
+        row.innerHTML = `
+            <div class="setting-left">
+                <div class="setting-name">
+                    ${app.icon} ${escapeHTML(app.title)}
                 </div>
-
             </div>
 
+            <div class="setting-actions">
+
+                <div class="switch ${app.enabled ? "on" : ""}">
+                    <div class="switch-knob"></div>
+                </div>
+
+                ${
+                    app.removable
+                    ?
+                    `<button class="delete-btn">×</button>`
+                    :
+                    ""
+                }
+
+            </div>
         `;
 
+        const switchEl =
+        row.querySelector(".switch");
 
-        row.onclick=()=>{
+        switchEl.onclick = e=>{
+            e.stopPropagation();
 
-            app.enabled=
-            !app.enabled;
+            app.enabled = !app.enabled;
 
-
-            saveApps();
-
+            saveFullApps();
             renderApps();
-
             renderSettings();
-
         };
 
 
+        const deleteBtn =
+        row.querySelector(".delete-btn");
+
+        if(deleteBtn){
+
+            deleteBtn.onclick = e=>{
+
+                e.stopPropagation();
+
+                if(confirm(
+                    `Удалить «${app.title}»?`
+                )){
+                    apps = apps.filter(
+                        item=>item.id !== app.id
+                    );
+
+                    saveFullApps();
+                    renderApps();
+                    renderSettings();
+                }
+            };
+        }
+
         box.appendChild(row);
-
     });
-
 }
 
 
-/* =========================
-   SAVE
-========================= */
+function renderIconOptions(){
 
-function saveApps(){
+    const box =
+    document.getElementById("iconOptions");
 
-    const state={};
+    box.innerHTML = "";
+
+    iconChoices.forEach(icon=>{
+
+        const item =
+        document.createElement("div");
+
+        item.className =
+        "icon-option"
+        +
+        (
+            icon === selectedIcon
+            ?
+            " selected"
+            :
+            ""
+        );
+
+        item.textContent = icon;
+
+        item.onclick = ()=>{
+
+            selectedIcon = icon;
+
+            renderIconOptions();
+        };
+
+        box.appendChild(item);
+    });
+}
 
 
-    apps.forEach(app=>{
+function toggleAddForm(){
 
-        state[app.id]=
-        app.enabled;
+    document
+    .getElementById("addForm")
+    .classList.toggle("show");
+}
+
+
+function addApp(){
+
+    const title =
+    document
+    .getElementById("newTitle")
+    .value
+    .trim();
+
+    const url =
+    document
+    .getElementById("newUrl")
+    .value
+    .trim();
+
+
+    if(!title){
+
+        alert("Введите название приложения.");
+
+        return;
+    }
+
+
+    if(!url){
+
+        alert("Введите ссылку или URL-схему.");
+
+        return;
+    }
+
+
+    apps.push({
+
+        id:
+        "custom_"
+        +
+        Date.now(),
+
+        title:title,
+
+        icon:selectedIcon,
+
+        url:url,
+
+        enabled:true,
+
+        removable:true
 
     });
 
 
-    localStorage.setItem(
-        "launcherApps",
-        JSON.stringify(state)
-    );
+    saveFullApps();
 
-}
+    renderApps();
+
+    renderSettings();
 
 
-/* =========================
-   OPEN APP
-========================= */
+    document
+    .getElementById("newTitle")
+    .value = "";
 
-function openApp(id){
 
-    openURL(
-        systemApps[id]
-    );
+    document
+    .getElementById("newUrl")
+    .value = "";
 
+
+    selectedIcon = "⭐";
+
+    renderIconOptions();
+
+    document
+    .getElementById("addForm")
+    .classList.remove("show");
 }
 
 
@@ -1005,51 +902,36 @@ function openURL(url){
     if(
         !url
         ||
-        url==="#"
+        url === "#"
     ){
-
         return;
-
     }
 
-
-    window.location.href=url;
-
+    window.location.href = url;
 }
 
 
-/* =========================
-   WALLPAPER
-========================= */
-
 document
-.querySelectorAll(
-    ".wallpaper"
-)
+.querySelectorAll(".wallpaper")
 .forEach(item=>{
 
-    item.onclick=()=>{
+    item.onclick = ()=>{
 
         const wallpaper =
         item.dataset.wallpaper;
-
 
         document
         .getElementById("home")
         .style.backgroundImage =
         `url("${wallpaper}")`;
 
-
         localStorage.setItem(
             "launcherWallpaper",
             wallpaper
         );
 
-
         updateWallpaperSelection();
-
     };
-
 });
 
 
@@ -1062,33 +944,21 @@ function updateWallpaperSelection(){
     ||
     "wallpapers/wall1.jpg";
 
-
     document
-    .querySelectorAll(
-        ".wallpaper"
-    )
+    .querySelectorAll(".wallpaper")
     .forEach(item=>{
 
         item.classList.toggle(
             "selected",
-            item.dataset.wallpaper
-            === current
+            item.dataset.wallpaper === current
         );
-
     });
-
 }
 
 
-/* =========================
-   CLOCK
-========================= */
-
 function updateClock(){
 
-    const now =
-    new Date();
-
+    const now = new Date();
 
     const time =
     now.toLocaleTimeString(
@@ -1099,15 +969,13 @@ function updateClock(){
         }
     );
 
-
     document
     .getElementById("clock")
-    .textContent=time;
-
+    .textContent = time;
 
     document
     .getElementById("bigTime")
-    .textContent=time;
+    .textContent = time;
 
 
     let date =
@@ -1120,16 +988,14 @@ function updateClock(){
         }
     );
 
-
     date =
     date.charAt(0).toUpperCase()
-    +date.slice(1);
-
+    +
+    date.slice(1);
 
     document
     .getElementById("date")
-    .textContent=date;
-
+    .textContent = date;
 }
 
 
@@ -1141,15 +1007,8 @@ setInterval(
 );
 
 
-/* =========================
-   HIDDEN SETTINGS
-========================= */
-
 const clock =
-document.getElementById(
-    "clock"
-);
-
+document.getElementById("clock");
 
 let pressTimer;
 
@@ -1158,12 +1017,11 @@ clock.addEventListener(
     "touchstart",
     ()=>{
 
-        pressTimer=
+        pressTimer =
         setTimeout(
             openSettings,
             1700
         );
-
     }
 );
 
@@ -1171,11 +1029,7 @@ clock.addEventListener(
 clock.addEventListener(
     "touchend",
     ()=>{
-
-        clearTimeout(
-            pressTimer
-        );
-
+        clearTimeout(pressTimer);
     }
 );
 
@@ -1183,61 +1037,46 @@ clock.addEventListener(
 clock.addEventListener(
     "touchmove",
     ()=>{
-
-        clearTimeout(
-            pressTimer
-        );
-
+        clearTimeout(pressTimer);
     }
 );
 
 
 function openSettings(){
 
-    if(
-        navigator.vibrate
-    ){
-
-        navigator.vibrate(30);
-
-    }
-
-
     renderSettings();
+
+    renderIconOptions();
 
     updateWallpaperSelection();
 
-
     document
-    .getElementById(
-        "settingsOverlay"
-    )
-    .classList.add(
-        "show"
-    );
-
+    .getElementById("settingsOverlay")
+    .classList.add("show");
 }
 
 
 function closeSettings(){
 
     document
-    .getElementById(
-        "settingsOverlay"
-    )
-    .classList.remove(
-        "show"
-    );
-
+    .getElementById("settingsOverlay")
+    .classList.remove("show");
 }
 
 
-/* =========================
-   START
-========================= */
+function escapeHTML(text){
+
+    return text
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
 
 renderApps();
-
+renderIconOptions();
 updateWallpaperSelection();
 
 </script>
