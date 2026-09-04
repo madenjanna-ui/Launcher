@@ -1255,7 +1255,323 @@ select.field{
 
   background:#fff;
 }
+/* =========================================================
+   V4.3 TELEGRAM / MAX
+========================================================= */
 
+.msg-list{
+  flex:1;
+  overflow-y:auto;
+  background:#fff;
+}
+
+.msg-row{
+  min-height:74px;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:8px 12px;
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.msg-avatar{
+  width:55px;
+  height:55px;
+  flex:0 0 55px;
+  border-radius:50%;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:19px;
+  font-weight:700;
+  background:linear-gradient(145deg,#86a7e9,#5b77d0);
+}
+
+.msg-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.msg-center{
+  flex:1;
+  min-width:0;
+}
+
+.msg-name-row{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.msg-name{
+  flex:1;
+  min-width:0;
+  font-weight:650;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.msg-last{
+  margin-top:4px;
+  font-size:14px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.msg-time{
+  font-size:12px;
+  white-space:nowrap;
+}
+
+.unread{
+  min-width:21px;
+  height:21px;
+  padding:0 6px;
+  border-radius:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:12px;
+  font-weight:700;
+  margin-left:auto;
+  margin-top:5px;
+}
+
+.pin{
+  font-size:12px;
+  opacity:.42;
+}
+
+/* TELEGRAM */
+
+.telegram-shell{
+  background:#fff;
+}
+
+.telegram-top{
+  min-height:64px;
+  padding:
+    calc(env(safe-area-inset-top) + 9px)
+    14px
+    10px;
+
+  display:flex;
+  align-items:flex-end;
+  gap:12px;
+
+  background:#fff;
+  color:#111;
+
+  border-bottom:1px solid #e9e9ed;
+}
+
+.telegram-title{
+  flex:1;
+  font-size:21px;
+  font-weight:700;
+  text-align:center;
+}
+
+.telegram-action{
+  border:0;
+  background:none;
+  color:#168acd;
+  font-size:16px;
+  padding:0;
+}
+
+.telegram .msg-last{
+  color:#85858b;
+}
+
+.telegram .msg-time{
+  color:#8e8e93;
+}
+
+.telegram .unread{
+  background:#2aabee;
+}
+
+.telegram-chat{
+  background:
+    linear-gradient(
+      rgba(228,235,239,.88),
+      rgba(228,235,239,.88)
+    );
+}
+
+.telegram-chat .chat-bubble.in{
+  background:#fff;
+  border-radius:17px 17px 17px 5px;
+  box-shadow:0 1px 1px rgba(0,0,0,.06);
+}
+
+.telegram-chat .chat-bubble.out{
+  background:#d9fdd3;
+  color:#111;
+  border-radius:17px 17px 5px 17px;
+}
+
+/* MAX */
+
+.max-shell{
+  background:#f6f6f8;
+}
+
+.max-top{
+  min-height:66px;
+  padding:
+    calc(env(safe-area-inset-top) + 9px)
+    15px
+    10px;
+
+  display:flex;
+  align-items:flex-end;
+  gap:10px;
+
+  color:#111;
+  background:#f7f7fa;
+
+  border-bottom:1px solid #e5e5eb;
+}
+
+.max-logo{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-1px;
+}
+
+.max-logo span{
+  color:#5552f6;
+}
+
+.max-action{
+  border:0;
+  background:none;
+  color:#5552f6;
+  font-size:17px;
+}
+
+.max .msg-last{
+  color:#7f7f86;
+}
+
+.max .msg-time{
+  color:#99999f;
+}
+
+.max .unread{
+  background:#5a57f7;
+}
+
+.max-chat{
+  background:#f4f4f7;
+}
+
+.max-chat .chat-bubble.in{
+  background:#fff;
+  color:#111;
+}
+
+.max-chat .chat-bubble.out{
+  background:#6662f5;
+  color:#fff;
+}
+
+/* CHAT HEADER */
+
+.real-chat-top{
+  min-height:65px;
+
+  padding:
+    calc(env(safe-area-inset-top) + 7px)
+    12px
+    7px;
+
+  display:flex;
+  align-items:flex-end;
+  gap:8px;
+
+  background:rgba(250,250,252,.97);
+
+  border-bottom:1px solid #dddde2;
+
+  color:#111;
+}
+
+.real-chat-back{
+  border:0;
+  background:none;
+  color:#168acd;
+  font-size:16px;
+  padding:0 5px 6px 0;
+}
+
+.real-chat-person{
+  flex:1;
+  min-width:0;
+  text-align:center;
+}
+
+.real-chat-name{
+  font-weight:700;
+}
+
+.real-chat-status{
+  font-size:11px;
+  color:#929298;
+  margin-top:1px;
+}
+
+/* GENERATOR */
+
+.generator-card{
+  background:#fff;
+  padding:14px;
+  border-radius:15px;
+  margin-bottom:12px;
+}
+
+.generator-title{
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.generator-note{
+  color:#85858a;
+  font-size:13px;
+  line-height:1.4;
+}
+
+.generator-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:12px;
+}
+
+.generator-buttons button{
+  min-height:45px;
+  border:0;
+  border-radius:12px;
+  font-weight:600;
+}
+
+.gen-main{
+  background:#007aff;
+  color:#fff;
+}
+
+.gen-secondary{
+  background:#ededf2;
+  color:#111;
+}
 </style>
 </head>
 
@@ -6640,7 +6956,1468 @@ function closeBrowser(){
   render();
 
 })();
+/* =========================================================
+   V4.3 CHAT ENGINE
+========================================================= */
 
+const chatPeople = [
+  "Александр","Андрей","Антон","Вадим","Виктор",
+  "Дмитрий","Евгений","Игорь","Илья","Максим",
+  "Михаил","Николай","Олег","Роман","Сергей",
+  "Анна","Виктория","Елена","Ирина","Катя",
+  "Марина","Наташа","Ольга","Света","Татьяна"
+];
+
+const chatGroups = [
+  "Семья",
+  "Друзья",
+  "Работа",
+  "Наши",
+  "Поездка",
+  "Выходные",
+  "Дом",
+  "Ребята"
+];
+
+const normalMessages = [
+  "Хорошо 👍",
+  "Договорились",
+  "Уже еду",
+  "Буду чуть позже",
+  "Во сколько?",
+  "Отлично 😊",
+  "Спасибо!",
+  "Посмотрел",
+  "Да, всё нормально",
+  "Тогда вечером",
+  "Я уже здесь",
+  "Напиши, когда будешь",
+  "Хорошая идея",
+  "Понял 👍",
+  "Давай",
+  "Позвоню позже",
+  "Сейчас посмотрю",
+  "Отправил",
+  "Получил, спасибо",
+  "До завтра",
+  "Всё готово",
+  "Мы выехали",
+  "Ждём вас",
+  "Как доберётесь — напишите",
+  "Фото классное 😄",
+  "Увидел",
+  "Не забудь",
+  "Конечно",
+  "Без проблем"
+];
+
+const conversationStarts = [
+  "Привет! Как дела?",
+  "Ты сегодня занят?",
+  "Вы уже выехали?",
+  "Посмотри, пожалуйста",
+  "Во сколько встречаемся?",
+  "Доброе утро!",
+  "Как добрались?",
+  "Ты видел сообщение?",
+  "Есть минутка?",
+  "Что решили?"
+];
+
+
+function randomItem(array){
+
+  return array[
+    Math.floor(
+      Math.random() * array.length
+    )
+  ];
+
+}
+
+
+function randomInt(min,max){
+
+  return Math.floor(
+    Math.random() * (max-min+1)
+  ) + min;
+
+}
+
+
+function randomTime(){
+
+  const now =
+  new Date();
+
+  const minutesAgo =
+  randomInt(3,4000);
+
+  const date =
+  new Date(
+    now.getTime()
+    -
+    minutesAgo*60000
+  );
+
+
+  const today =
+  now.toDateString();
+
+
+  if(
+    date.toDateString()
+    ===
+    today
+  ){
+
+    return date.toLocaleTimeString(
+      "ru-RU",
+      {
+        hour:"2-digit",
+        minute:"2-digit"
+      }
+    );
+
+  }
+
+
+  const yesterday =
+  new Date(
+    now.getTime()
+    -
+    86400000
+  );
+
+
+  if(
+    date.toDateString()
+    ===
+    yesterday.toDateString()
+  ){
+
+    return "вчера";
+
+  }
+
+
+  return date.toLocaleDateString(
+    "ru-RU",
+    {
+      day:"2-digit",
+      month:"2-digit"
+    }
+  );
+
+}
+
+
+function buildConversation(){
+
+  const messages = [];
+
+  const count =
+  randomInt(5,18);
+
+
+  messages.push({
+    side:"in",
+    text:randomItem(
+      conversationStarts
+    ),
+    photoId:null
+  });
+
+
+  for(
+    let i=1;
+    i<count;
+    i++
+  ){
+
+    messages.push({
+
+      side:
+        Math.random() > .48
+        ?
+        "out"
+        :
+        "in",
+
+      text:
+        randomItem(
+          normalMessages
+        ),
+
+      photoId:null
+
+    });
+
+  }
+
+
+  return messages;
+
+}
+
+
+/* =========================================================
+   CREATE RANDOM CHAT SYSTEM
+========================================================= */
+
+function generateChatSystem(
+  kind,
+  amount=20
+){
+
+  const used =
+  new Set();
+
+
+  const chats =
+  [];
+
+
+  for(
+    let i=0;
+    i<amount;
+    i++
+  ){
+
+    let name;
+
+
+    if(
+      Math.random() < .16
+    ){
+
+      name =
+      randomItem(
+        chatGroups
+      );
+
+    }
+
+    else{
+
+      do{
+
+        name =
+        randomItem(
+          chatPeople
+        );
+
+      }
+
+      while(
+        used.has(name)
+        &&
+        used.size
+        <
+        chatPeople.length
+      );
+
+    }
+
+
+    used.add(name);
+
+
+    const messages =
+    buildConversation();
+
+
+    const last =
+    messages[
+      messages.length-1
+    ];
+
+
+    chats.push({
+
+      id:
+        kind
+        +
+        "_auto_"
+        +
+        Date.now()
+        +
+        "_"
+        +
+        i,
+
+      name:name,
+
+      avatarId:null,
+
+      messages:messages,
+
+      last:
+        last.text
+        ||
+        "Фото",
+
+      time:
+        randomTime(),
+
+      unread:
+        Math.random() < .35
+        ?
+        randomInt(1,8)
+        :
+        0,
+
+      pinned:
+        Math.random() < .12
+
+    });
+
+  }
+
+
+  state.chats[kind] =
+  chats;
+
+
+  saveState();
+
+
+  openChatAdmin(
+    kind,
+    kind === "telegram"
+    ?
+    "Telegram"
+    :
+    "MAX"
+  );
+
+}
+
+
+/* =========================================================
+   ADD RANDOM ACTIVITY
+========================================================= */
+
+function addRandomActivity(
+  kind
+){
+
+  const chats =
+  state.chats[kind]
+  ||
+  [];
+
+
+  if(
+    !chats.length
+  ){
+
+    generateChatSystem(
+      kind,
+      15
+    );
+
+    return;
+
+  }
+
+
+  const amount =
+  randomInt(
+    3,
+    Math.min(
+      8,
+      chats.length
+    )
+  );
+
+
+  const shuffled =
+  [...chats]
+  .sort(
+    ()=>Math.random()-.5
+  );
+
+
+  shuffled
+  .slice(
+    0,
+    amount
+  )
+  .forEach(
+
+    chat=>{
+
+
+      const incoming =
+      Math.random() > .25;
+
+
+      const text =
+      randomItem(
+        normalMessages
+      );
+
+
+      chat.messages.push({
+
+        side:
+          incoming
+          ?
+          "in"
+          :
+          "out",
+
+        text:text,
+
+        photoId:null
+
+      });
+
+
+      chat.last =
+      text;
+
+
+      chat.time =
+      new Date()
+      .toLocaleTimeString(
+        "ru-RU",
+        {
+          hour:"2-digit",
+          minute:"2-digit"
+        }
+      );
+
+
+      if(
+        incoming
+      ){
+
+        chat.unread =
+        (
+          chat.unread
+          ||
+          0
+        )
+        +
+        1;
+
+      }
+
+    }
+
+  );
+
+
+  /* свежие чаты вверх */
+
+  state.chats[kind] =
+  shuffled;
+
+
+  saveState();
+
+
+  openChatAdmin(
+
+    kind,
+
+    kind === "telegram"
+    ?
+    "Telegram"
+    :
+    "MAX"
+
+  );
+
+}
+
+
+/* =========================================================
+   REPLACE ADMIN CHAT SCREEN
+========================================================= */
+
+function openChatAdmin(
+  kind,
+  title
+){
+
+  const chats =
+  state.chats[kind]
+  ||
+  [];
+
+
+  let html = `
+
+    <div class="generator-card">
+
+      <div class="generator-title">
+        Активность
+      </div>
+
+      <div class="generator-note">
+
+        Генератор работает локально.
+        Он не подключается к настоящему
+        Telegram или MAX.
+
+      </div>
+
+      <div class="generator-buttons">
+
+        <button
+        class="gen-main"
+        onclick="
+          generateChatSystem(
+            '${kind}',
+            20
+          )
+        ">
+
+          Создать 20 чатов
+
+        </button>
+
+        <button
+        class="gen-secondary"
+        onclick="
+          addRandomActivity(
+            '${kind}'
+          )
+        ">
+
+          Новая активность
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="admin-section-title">
+
+      Чаты
+
+    </div>
+
+  `;
+
+
+  chats.forEach(
+
+    chat=>{
+
+      html += `
+
+        <div class="admin-entry">
+
+          <div class="admin-row">
+
+            <div
+            class="avatar"
+            data-avatar-id="${chat.avatarId || ""}">
+
+              ${safe(chat.name[0] || "?")}
+
+            </div>
+
+            <div class="list-main">
+
+              <div class="list-title">
+
+                ${safe(chat.name)}
+
+              </div>
+
+              <div class="list-sub">
+
+                ${safe(chat.last || "")}
+
+              </div>
+
+            </div>
+
+            <button
+
+            style="
+              border:0;
+              background:none;
+              color:#007aff;
+            "
+
+            onclick="
+              editChat(
+                '${kind}',
+                '${chat.id}'
+              )
+            ">
+
+              Изм.
+
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }
+
+  );
+
+
+  html += `
+
+    <button
+    class="primary"
+    onclick="
+      editChat(
+        '${kind}',
+        ''
+      )
+    ">
+
+      Добавить чат вручную
+
+    </button>
+
+  `;
+
+
+  showSystem(
+
+    title,
+
+    html,
+
+    "openContentSettings()"
+
+  );
+
+
+  hydrateAvatars();
+
+}
+
+
+/* =========================================================
+   TELEGRAM LIST
+========================================================= */
+
+async function openTelegram(){
+
+  const chats =
+  state.chats.telegram
+  ||
+  [];
+
+
+  let rows =
+  "";
+
+
+  for(
+    const chat
+    of chats
+  ){
+
+    let avatar =
+    safe(
+      chat.name[0]
+      ||
+      "?"
+    );
+
+
+    if(
+      chat.avatarId
+    ){
+
+      const url =
+      await assetUrl(
+        chat.avatarId
+      );
+
+
+      if(url){
+
+        avatar =
+        `<img src="${url}">`;
+
+      }
+
+    }
+
+
+    rows += `
+
+      <div
+      class="msg-row telegram"
+
+      onclick="
+        openTelegramChat(
+          '${chat.id}'
+        )
+      ">
+
+        <div class="msg-avatar">
+
+          ${avatar}
+
+        </div>
+
+
+        <div class="msg-center">
+
+
+          <div class="msg-name-row">
+
+            <div class="msg-name">
+
+              ${safe(chat.name)}
+
+            </div>
+
+            ${
+              chat.pinned
+              ?
+              `<span class="pin">📌</span>`
+              :
+              ""
+            }
+
+            <div class="msg-time">
+
+              ${safe(chat.time || "")}
+
+            </div>
+
+          </div>
+
+
+          <div
+          style="
+            display:flex;
+            align-items:center;
+            gap:6px;
+          ">
+
+            <div
+            class="msg-last"
+            style="flex:1">
+
+              ${safe(chat.last || "")}
+
+            </div>
+
+            ${
+              chat.unread
+              ?
+              `
+              <div class="unread">
+                ${chat.unread}
+              </div>
+              `
+              :
+              ""
+            }
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    `;
+
+  }
+
+
+  const overlay =
+  document.getElementById(
+    "chatOverlay"
+  );
+
+
+  overlay.innerHTML = `
+
+    <div
+    class="chat-shell telegram-shell">
+
+      <div class="telegram-top">
+
+        <button
+        class="telegram-action"
+        onclick="closeChat()">
+
+          Назад
+
+        </button>
+
+        <div class="telegram-title">
+
+          Чаты
+
+        </div>
+
+        <button
+        class="telegram-action">
+
+          ✎
+
+        </button>
+
+      </div>
+
+      <div class="msg-list">
+
+        ${rows}
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  overlay.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   MAX LIST
+========================================================= */
+
+async function openMax(){
+
+  const chats =
+  state.chats.max
+  ||
+  [];
+
+
+  let rows =
+  "";
+
+
+  for(
+    const chat
+    of chats
+  ){
+
+    let avatar =
+    safe(
+      chat.name[0]
+      ||
+      "?"
+    );
+
+
+    if(
+      chat.avatarId
+    ){
+
+      const url =
+      await assetUrl(
+        chat.avatarId
+      );
+
+
+      if(url){
+
+        avatar =
+        `<img src="${url}">`;
+
+      }
+
+    }
+
+
+    rows += `
+
+      <div
+      class="msg-row max"
+
+      onclick="
+        openMaxChat(
+          '${chat.id}'
+        )
+      ">
+
+        <div
+        class="msg-avatar"
+        style="
+          background:
+          linear-gradient(
+            145deg,
+            #7c77ff,
+            #4c48e3
+          );
+        ">
+
+          ${avatar}
+
+        </div>
+
+
+        <div class="msg-center">
+
+          <div class="msg-name-row">
+
+            <div class="msg-name">
+
+              ${safe(chat.name)}
+
+            </div>
+
+            ${
+              chat.pinned
+              ?
+              `<span class="pin">📌</span>`
+              :
+              ""
+            }
+
+            <div class="msg-time">
+
+              ${safe(chat.time || "")}
+
+            </div>
+
+          </div>
+
+
+          <div
+          style="
+            display:flex;
+            align-items:center;
+            gap:6px;
+          ">
+
+            <div
+            class="msg-last"
+            style="flex:1">
+
+              ${safe(chat.last || "")}
+
+            </div>
+
+            ${
+              chat.unread
+              ?
+              `
+              <div class="unread">
+                ${chat.unread}
+              </div>
+              `
+              :
+              ""
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  const overlay =
+  document.getElementById(
+    "chatOverlay"
+  );
+
+
+  overlay.innerHTML = `
+
+    <div class="chat-shell max-shell">
+
+      <div class="max-top">
+
+        <button
+        class="max-action"
+        onclick="closeChat()">
+
+          ‹
+
+        </button>
+
+        <div
+        class="max-logo"
+        style="flex:1">
+
+          M<span>AX</span>
+
+        </div>
+
+        <button class="max-action">
+
+          ＋
+
+        </button>
+
+      </div>
+
+      <div class="msg-list">
+
+        ${rows}
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  overlay.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   TELEGRAM CHAT
+========================================================= */
+
+async function openTelegramChat(id){
+
+  await openStyledChat(
+    "telegram",
+    id,
+    "telegram"
+  );
+
+}
+
+
+/* =========================================================
+   MAX CHAT
+========================================================= */
+
+async function openMaxChat(id){
+
+  await openStyledChat(
+    "max",
+    id,
+    "max"
+  );
+
+}
+
+
+/* =========================================================
+   SHARED CHAT RENDERER
+========================================================= */
+
+async function openStyledChat(
+  kind,
+  id,
+  style
+){
+
+  const chat =
+  state.chats[kind]
+  .find(
+    item =>
+    item.id === id
+  );
+
+
+  if(!chat){
+    return;
+  }
+
+
+  chat.unread =
+  0;
+
+
+  saveState();
+
+
+  let messages =
+  "";
+
+
+  for(
+    const message
+    of chat.messages
+  ){
+
+
+    if(
+      message.photoId
+    ){
+
+      const url =
+      await assetUrl(
+        message.photoId
+      );
+
+
+      if(url){
+
+        messages += `
+
+          <img
+          class="
+            chat-photo
+            ${message.side}
+          "
+          src="${url}">
+
+        `;
+
+      }
+
+    }
+
+
+    if(
+      message.text
+    ){
+
+      messages += `
+
+        <div
+        class="
+          chat-bubble
+          ${message.side}
+        ">
+
+          ${safe(message.text)}
+
+        </div>
+
+      `;
+
+    }
+
+  }
+
+
+  const overlay =
+  document.getElementById(
+    "chatOverlay"
+  );
+
+
+  const backFunction =
+    kind === "telegram"
+    ?
+    "openTelegram()"
+    :
+    "openMax()";
+
+
+  overlay.innerHTML = `
+
+    <div
+    class="
+      chat-shell
+      ${style}-chat
+    ">
+
+
+      <div class="real-chat-top">
+
+        <button
+        class="real-chat-back"
+        onclick="${backFunction}">
+
+          ‹ Назад
+
+        </button>
+
+        <div class="real-chat-person">
+
+          <div class="real-chat-name">
+
+            ${safe(chat.name)}
+
+          </div>
+
+          <div class="real-chat-status">
+
+            ${
+              kind === "telegram"
+              ?
+              "был(а) недавно"
+              :
+              "в сети"
+            }
+
+          </div>
+
+        </div>
+
+        <div style="width:42px"></div>
+
+      </div>
+
+
+      <div
+      class="chat-body"
+      id="styledChatBody">
+
+        ${messages}
+
+      </div>
+
+
+      <div class="compose">
+
+        <input
+        id="styledMessage"
+        placeholder="Сообщение">
+
+        <button
+        onclick="
+          sendStyledMessage(
+            '${kind}',
+            '${id}'
+          )
+        ">
+
+          ↑
+
+        </button>
+
+      </div>
+
+
+    </div>
+
+  `;
+
+
+  overlay.classList.add(
+    "show"
+  );
+
+
+  setTimeout(
+    ()=>{
+
+      const body =
+      document.getElementById(
+        "styledChatBody"
+      );
+
+
+      if(body){
+
+        body.scrollTop =
+        body.scrollHeight;
+
+      }
+
+    },
+    0
+  );
+
+}
+
+
+/* =========================================================
+   SEND
+========================================================= */
+
+function sendStyledMessage(
+  kind,
+  id
+){
+
+  const input =
+  document.getElementById(
+    "styledMessage"
+  );
+
+
+  const text =
+  input.value.trim();
+
+
+  if(!text){
+    return;
+  }
+
+
+  const chat =
+  state.chats[kind]
+  .find(
+    item =>
+    item.id === id
+  );
+
+
+  chat.messages.push({
+
+    side:"out",
+    text:text,
+    photoId:null
+
+  });
+
+
+  chat.last =
+  text;
+
+
+  chat.time =
+  new Date()
+  .toLocaleTimeString(
+    "ru-RU",
+    {
+      hour:"2-digit",
+      minute:"2-digit"
+    }
+  );
+
+
+  saveState();
+
+
+  openStyledChat(
+    kind,
+    id,
+    kind
+  );
+
+}
+
+
+/* =========================================================
+   OVERRIDE APP ROUTING
+========================================================= */
+
+const oldOpenApp =
+openApp;
+
+
+openApp =
+function(app){
+
+  if(
+    app.type === "telegram"
+  ){
+
+    openTelegram();
+
+    return;
+
+  }
+
+
+  if(
+    app.type === "max"
+  ){
+
+    openMax();
+
+    return;
+
+  }
+
+
+  oldOpenApp(app);
+
+};
+
+
+/* =========================================================
+   MIGRATE EXISTING CHATS
+========================================================= */
+
+function upgradeExistingChats(){
+
+  [
+    "telegram",
+    "max"
+  ]
+  .forEach(
+
+    kind=>{
+
+      const chats =
+      state.chats[kind]
+      ||
+      [];
+
+
+      chats.forEach(
+
+        chat=>{
+
+          if(
+            chat.time
+            ===
+            undefined
+          ){
+
+            chat.time =
+            randomTime();
+
+          }
+
+
+          if(
+            chat.unread
+            ===
+            undefined
+          ){
+
+            chat.unread =
+            Math.random() < .25
+            ?
+            randomInt(1,5)
+            :
+            0;
+
+          }
+
+
+          if(
+            chat.pinned
+            ===
+            undefined
+          ){
+
+            chat.pinned =
+            false;
+
+          }
+
+        }
+
+      );
+
+    }
+
+  );
+
+
+  saveState();
+
+}
+
+
+upgradeExistingChats();
+
+render();
 </script>
 
 </body>
