@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -13,6 +14,11 @@ content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,vie
 <title>Home</title>
 
 <style>
+
+/* =========================================================
+   BASE
+========================================================= */
+
 :root{
   --app-height:100dvh;
 }
@@ -22,14 +28,20 @@ content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,vie
   -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
   margin:0;
   width:100%;
   height:100%;
   overflow:hidden;
-  overscroll-behavior:none;
   background:#000;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+
+  font-family:
+  -apple-system,
+  BlinkMacSystemFont,
+  "SF Pro Display",
+  "Segoe UI",
+  sans-serif;
 }
 
 body{
@@ -38,55 +50,75 @@ body{
   color:#fff;
 }
 
-button,input,select,textarea{
+button,
+input,
+textarea,
+select{
   font:inherit;
 }
 
-/* ================================
+button{
+  -webkit-appearance:none;
+  appearance:none;
+}
+
+
+/* =========================================================
    HOME
-================================ */
+========================================================= */
 
 #home{
   position:absolute;
   inset:0;
+
   width:100%;
   height:var(--app-height);
+
   overflow:hidden;
 
   background:
-    linear-gradient(160deg,#495a70,#263448 52%,#0d121a);
+    linear-gradient(
+      160deg,
+      #4c5e79,
+      #26364b 50%,
+      #0d121a
+    );
 
-  background-size:cover;
   background-position:center;
+  background-size:cover;
   background-repeat:no-repeat;
 }
 
 #home::after{
   content:"";
+
   position:absolute;
   inset:0;
+
   pointer-events:none;
 
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.02),
+      rgba(0,0,0,.01),
       rgba(0,0,0,.02) 65%,
       rgba(0,0,0,.22)
     );
 }
 
-/* ================================
-   SECRET ADMIN ENTRY
-================================ */
+
+/* =========================================================
+   SECRET ADMIN AREA
+========================================================= */
 
 #adminHotspot{
   position:absolute;
+
   top:0;
   left:0;
 
-  width:70px;
-  height:70px;
+  width:72px;
+  height:72px;
 
   z-index:999;
 
@@ -97,39 +129,56 @@ button,input,select,textarea{
   -webkit-touch-callout:none;
 }
 
-/* ================================
+
+/* =========================================================
    PAGES
-================================ */
+========================================================= */
 
 .pages{
   position:absolute;
+
   z-index:2;
 
   left:0;
   right:0;
 
-  top:calc(env(safe-area-inset-top) + 18px);
+  top:
+    calc(
+      env(safe-area-inset-top)
+      +
+      18px
+    );
 
-  bottom:calc(env(safe-area-inset-bottom) + 120px);
+  bottom:
+    calc(
+      env(safe-area-inset-bottom)
+      +
+      120px
+    );
 
   overflow:hidden;
 }
 
 .track{
   display:flex;
+
   width:100%;
   height:100%;
 
   transition:
-    transform .32s cubic-bezier(.22,.7,.18,1);
+    transform .32s
+    cubic-bezier(.22,.7,.18,1);
 }
 
 .page{
   flex:0 0 100%;
+
   width:100%;
   height:100%;
 
-  padding:22px 18px;
+  padding:
+    22px
+    18px;
 
   overflow-y:auto;
 
@@ -142,18 +191,22 @@ button,input,select,textarea{
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
 
   column-gap:12px;
   row-gap:23px;
 }
 
-/* ================================
-   ICONS
-================================ */
+
+/* =========================================================
+   APP ICON
+========================================================= */
 
 .app{
   position:relative;
+
   min-width:0;
 
   text-align:center;
@@ -170,13 +223,13 @@ button,input,select,textarea{
 
   margin:auto;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
   overflow:hidden;
 
   border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
   font-size:31px;
 
@@ -187,36 +240,29 @@ button,input,select,textarea{
       rgba(255,255,255,.10)
     );
 
-  border:1px solid rgba(255,255,255,.28);
+  border:
+    1px solid
+    rgba(255,255,255,.28);
 
   box-shadow:
-    0 9px 24px rgba(0,0,0,.23),
-    inset 0 1px 1px rgba(255,255,255,.58);
+    0 9px 24px
+    rgba(0,0,0,.23),
 
-  backdrop-filter:blur(17px) saturate(175%);
-  -webkit-backdrop-filter:blur(17px) saturate(175%);
-}
+    inset 0 1px 1px
+    rgba(255,255,255,.58);
 
-.app-icon::before{
-  content:"";
+  backdrop-filter:
+    blur(17px)
+    saturate(175%);
 
-  position:absolute;
-
-  top:-35%;
-  left:-15%;
-
-  width:85%;
-  height:70%;
-
-  border-radius:50%;
-
-  background:rgba(255,255,255,.18);
-
-  filter:blur(8px);
+  -webkit-backdrop-filter:
+    blur(17px)
+    saturate(175%);
 }
 
 .app-icon img{
   position:absolute;
+
   inset:0;
 
   width:100%;
@@ -244,21 +290,189 @@ button,input,select,textarea{
   text-overflow:ellipsis;
 
   text-shadow:
-    0 1px 5px rgba(0,0,0,.8);
+    0 1px 5px
+    rgba(0,0,0,.8);
 }
 
-/* ================================
+
+/* =========================================================
+   BRAND ICONS
+========================================================= */
+
+.brand-icon{
+  position:absolute;
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#fff;
+
+  font-weight:800;
+}
+
+.brand-telegram{
+  background:
+    linear-gradient(
+      145deg,
+      #37ace9,
+      #138bce
+    );
+
+  font-size:31px;
+}
+
+.brand-instagram{
+  background:
+    radial-gradient(
+      circle at 30% 100%,
+      #ffd56b 0 18%,
+      #ff6b65 36%,
+      #c13584 61%,
+      #405de6 100%
+    );
+
+  font-size:30px;
+}
+
+.brand-max{
+  background:
+    linear-gradient(
+      145deg,
+      #6963ff,
+      #3430dd
+    );
+
+  font-size:27px;
+}
+
+
+/* =========================================================
+   DOTS
+========================================================= */
+
+.dots{
+  position:absolute;
+
+  z-index:8;
+
+  left:0;
+  right:0;
+
+  bottom:
+    calc(
+      env(safe-area-inset-bottom)
+      +
+      101px
+    );
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:7px;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,.36);
+}
+
+.dot.active{
+  background:#fff;
+}
+
+
+/* =========================================================
+   DOCK
+========================================================= */
+
+.dock{
+  position:absolute;
+
+  z-index:8;
+
+  left:14px;
+  right:14px;
+
+  bottom:
+    max(
+      9px,
+      env(safe-area-inset-bottom)
+    );
+
+  height:88px;
+
+  border-radius:29px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:
+    space-around;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.24),
+      rgba(255,255,255,.08)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.25);
+
+  box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.28);
+
+  backdrop-filter:
+    blur(27px)
+    saturate(180%);
+
+  -webkit-backdrop-filter:
+    blur(27px)
+    saturate(180%);
+}
+
+.dock .app-icon{
+  width:61px;
+  height:61px;
+
+  border-radius:17px;
+}
+
+.dock .app-name{
+  display:none;
+}
+
+
+/* =========================================================
    EDIT MODE
-================================ */
+========================================================= */
 
 .editing .app{
   animation:
-    wiggle .18s infinite alternate;
+    wiggle .18s
+    infinite
+    alternate;
 }
 
 @keyframes wiggle{
-  from{transform:rotate(-1deg)}
-  to{transform:rotate(1deg)}
+  from{
+    transform:rotate(-1deg);
+  }
+
+  to{
+    transform:rotate(1deg);
+  }
 }
 
 .delete-app{
@@ -277,7 +491,8 @@ button,input,select,textarea{
   border:0;
   border-radius:50%;
 
-  background:rgba(35,35,38,.94);
+  background:
+    rgba(35,35,38,.94);
 
   color:#fff;
 
@@ -295,119 +510,45 @@ button,input,select,textarea{
 
   z-index:50;
 
-  top:calc(env(safe-area-inset-top) + 8px);
+  top:
+    calc(
+      env(safe-area-inset-top)
+      +
+      8px
+    );
+
   right:14px;
 
   height:36px;
 
-  padding:0 17px;
+  padding:
+    0 17px;
 
   border:0;
   border-radius:18px;
 
-  background:rgba(255,255,255,.92);
+  background:
+    rgba(255,255,255,.93);
 
   color:#007aff;
 
   font-weight:700;
-
-  box-shadow:0 3px 14px rgba(0,0,0,.16);
 }
 
 .editing .edit-done{
   display:block;
 }
 
-/* ================================
-   PAGE DOTS
-================================ */
 
-.dots{
-  position:absolute;
-
-  z-index:8;
-
-  left:0;
-  right:0;
-
-  bottom:calc(env(safe-area-inset-bottom) + 101px);
-
-  display:flex;
-  justify-content:center;
-
-  gap:7px;
-}
-
-.dot{
-  width:7px;
-  height:7px;
-
-  border-radius:50%;
-
-  background:rgba(255,255,255,.36);
-}
-
-.dot.active{
-  background:#fff;
-}
-
-/* ================================
-   DOCK
-================================ */
-
-.dock{
-  position:absolute;
-
-  z-index:8;
-
-  left:14px;
-  right:14px;
-
-  bottom:max(9px,env(safe-area-inset-bottom));
-
-  height:88px;
-
-  border-radius:29px;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-around;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.24),
-      rgba(255,255,255,.08)
-    );
-
-  border:1px solid rgba(255,255,255,.25);
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.28);
-
-  backdrop-filter:blur(27px) saturate(180%);
-  -webkit-backdrop-filter:blur(27px) saturate(180%);
-}
-
-.dock .app-icon{
-  width:61px;
-  height:61px;
-
-  border-radius:17px;
-}
-
-.dock .app-name{
-  display:none;
-}
-
-/* ================================
-   OVERLAYS
-================================ */
+/* =========================================================
+   OVERLAY
+========================================================= */
 
 .overlay{
   display:none;
 
   position:absolute;
+
   inset:0;
 
   z-index:1000;
@@ -419,15 +560,18 @@ button,input,select,textarea{
   display:block;
 }
 
-/* ================================
-   SETTINGS STYLE
-================================ */
+
+/* =========================================================
+   SYSTEM SCREEN
+========================================================= */
 
 .system-shell{
   position:absolute;
+
   inset:0;
 
   display:flex;
+
   flex-direction:column;
 
   background:#f2f2f7;
@@ -439,22 +583,32 @@ button,input,select,textarea{
   min-height:64px;
 
   padding:
-    calc(env(safe-area-inset-top) + 10px)
+    calc(
+      env(safe-area-inset-top)
+      +
+      10px
+    )
+
     16px
     10px;
 
   display:flex;
+
   align-items:flex-end;
 
   gap:12px;
 
-  background:rgba(248,248,250,.96);
+  background:
+    rgba(248,248,250,.97);
 
-  border-bottom:1px solid #d7d7dc;
+  border-bottom:
+    1px solid
+    #d7d7dc;
 }
 
 .system-back{
   border:0;
+
   background:none;
 
   padding:0;
@@ -466,6 +620,7 @@ button,input,select,textarea{
 
 .system-title{
   font-size:21px;
+
   font-weight:700;
 }
 
@@ -477,10 +632,20 @@ button,input,select,textarea{
   padding:
     18px
     14px
-    calc(env(safe-area-inset-bottom) + 25px);
+    calc(
+      env(safe-area-inset-bottom)
+      +
+      25px
+    );
 }
 
-.settings-group{
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+.settings-group,
+.card{
   overflow:hidden;
 
   margin-bottom:18px;
@@ -490,20 +655,25 @@ button,input,select,textarea{
   background:#fff;
 }
 
-.settings-row{
+.settings-row,
+.list-row{
   min-height:56px;
 
   display:flex;
+
   align-items:center;
 
   gap:12px;
 
-  padding:8px 13px;
+  padding:
+    8px 13px;
 
-  border-bottom:1px solid #ececf0;
+  border-bottom:
+    1px solid #ececf0;
 }
 
-.settings-row:last-child{
+.settings-row:last-child,
+.list-row:last-child{
   border-bottom:0;
 }
 
@@ -524,16 +694,28 @@ button,input,select,textarea{
   font-size:18px;
 }
 
-.settings-main{
+.settings-main,
+.list-main{
   flex:1;
+
+  min-width:0;
 }
 
-.settings-small{
+.settings-small,
+.list-sub{
   margin-top:2px;
 
   color:#89898f;
 
   font-size:12px;
+}
+
+.list-sub{
+  font-size:14px;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
 .chevron{
@@ -542,14 +724,16 @@ button,input,select,textarea{
   font-size:22px;
 }
 
-/* ================================
+
+/* =========================================================
    BUTTONS
-================================ */
+========================================================= */
 
 .primary,
 .secondary,
 .danger{
   width:100%;
+
   min-height:48px;
 
   margin-top:10px;
@@ -560,6 +744,7 @@ button,input,select,textarea{
 
 .primary{
   background:#007aff;
+
   color:#fff;
 
   font-weight:650;
@@ -567,47 +752,105 @@ button,input,select,textarea{
 
 .secondary{
   background:#fff;
+
   color:#007aff;
 }
 
 .danger{
   background:#fff;
+
   color:#ff3b30;
 }
 
-/* ================================
+
+/* =========================================================
    FIELDS
-================================ */
+========================================================= */
 
 .field{
   width:100%;
-  height:48px;
+
+  min-height:48px;
 
   margin-top:10px;
 
-  padding:0 13px;
+  padding:
+    0 13px;
 
-  border:1px solid #d7d7dc;
+  border:
+    1px solid
+    #d7d7dc;
+
   border-radius:13px;
 
   background:#fff;
+
   color:#111;
 
   outline:none;
+}
+
+textarea.field{
+  height:120px;
+
+  padding-top:12px;
 }
 
 select.field{
   appearance:auto;
 }
 
-/* ================================
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.avatar{
+  width:47px;
+  height:47px;
+
+  border-radius:50%;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #7c9cff,
+      #735fe5
+    );
+
+  color:#fff;
+
+  font-weight:700;
+}
+
+.avatar img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+}
+
+.list-title{
+  font-weight:650;
+}
+
+
+/* =========================================================
    WALLPAPERS
-================================ */
+========================================================= */
 
 .wallpaper-grid{
   display:grid;
 
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:
+    repeat(3,1fr);
 
   gap:10px;
 }
@@ -619,7 +862,9 @@ select.field{
 
   overflow:hidden;
 
-  border:2px solid transparent;
+  border:
+    2px solid transparent;
+
   border-radius:14px;
 
   background-position:center;
@@ -642,164 +887,363 @@ select.field{
   border:0;
   border-radius:50%;
 
-  background:rgba(0,0,0,.55);
+  background:
+    rgba(0,0,0,.55);
 
   color:#fff;
 }
 
-/* ================================
-   ICON PICKER
-================================ */
 
-.icon-picker{
-  display:grid;
+/* =========================================================
+   CHAT
+========================================================= */
 
-  grid-template-columns:repeat(6,1fr);
+.chat-shell{
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
+
+  flex-direction:column;
+
+  background:#f2f2f7;
+
+  color:#111;
+}
+
+.chat-list{
+  flex:1;
+
+  overflow-y:auto;
+
+  padding:
+    8px
+    12px
+    calc(
+      env(safe-area-inset-bottom)
+      +
+      16px
+    );
+}
+
+.chat-body{
+  flex:1;
+
+  overflow-y:auto;
+
+  padding:14px;
+}
+
+.chat-bubble{
+  max-width:79%;
+
+  padding:
+    9px 12px;
+
+  border-radius:18px;
+
+  margin:
+    7px 0;
+
+  line-height:1.35;
+}
+
+.chat-bubble.in{
+  background:#e5e5ea;
+
+  margin-right:auto;
+}
+
+.chat-bubble.out{
+  background:#2f80ff;
+
+  color:#fff;
+
+  margin-left:auto;
+}
+
+.chat-photo{
+  display:block;
+
+  max-width:230px;
+
+  width:72%;
+
+  border-radius:16px;
+
+  margin:
+    8px 0;
+}
+
+.chat-photo.out{
+  margin-left:auto;
+}
+
+.chat-photo.in{
+  margin-right:auto;
+}
+
+.compose{
+  display:flex;
 
   gap:8px;
 
-  margin-top:12px;
+  padding:
+    10px
+    12px
+    calc(
+      env(safe-area-inset-bottom)
+      +
+      8px
+    );
+
+  background:#f8f8fa;
+
+  border-top:
+    1px solid
+    #dddde2;
 }
 
-.icon-choice{
-  height:45px;
+.compose input{
+  flex:1;
 
-  border:2px solid transparent;
-  border-radius:11px;
+  height:42px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  border:
+    1px solid
+    #d7d7dc;
+
+  border-radius:21px;
+
+  padding:
+    0 14px;
 
   background:#fff;
+
+  color:#111;
+}
+
+.compose button{
+  height:42px;
+
+  min-width:42px;
+
+  border:0;
+  border-radius:21px;
+
+  background:#007aff;
+
+  color:#fff;
+
+  padding:
+    0 13px;
+}
+
+
+/* =========================================================
+   SOCIAL
+========================================================= */
+
+.social-shell{
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
+
+  flex-direction:column;
+
+  background:#fff;
+
+  color:#111;
+}
+
+.social-top{
+  padding:
+    calc(
+      env(safe-area-inset-top)
+      +
+      10px
+    )
+    14px
+    10px;
+
+  font-size:21px;
+
+  font-weight:800;
+
+  border-bottom:
+    1px solid #eee;
+}
+
+.social-close{
+  float:right;
+
+  border:0;
+
+  background:none;
+
+  font-size:20px;
+}
+
+.stories{
+  display:flex;
+
+  gap:12px;
+
+  padding:12px;
+
+  overflow-x:auto;
+
+  border-bottom:
+    1px solid #eee;
+}
+
+.story{
+  min-width:62px;
+
+  text-align:center;
+
+  font-size:11px;
+}
+
+.story-ring{
+  width:58px;
+  height:58px;
+
+  padding:2px;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffb34f,
+      #ff375f,
+      #804cff
+    );
+}
+
+.story-ring .avatar{
+  width:54px;
+  height:54px;
+
+  border:
+    2px solid #fff;
+}
+
+.social-feed{
+  flex:1;
+
+  overflow-y:auto;
+
+  padding-bottom:
+    calc(
+      env(safe-area-inset-bottom)
+      +
+      14px
+    );
+}
+
+.post{
+  background:#fff;
+
+  border-bottom:
+    1px solid #eee;
+}
+
+.post-head{
+  display:flex;
+
+  align-items:center;
+
+  gap:9px;
+
+  padding:
+    10px 12px;
+}
+
+.post-img{
+  width:100%;
+
+  aspect-ratio:1/1;
+
+  object-fit:cover;
+
+  background:#ddd;
+}
+
+.post-actions{
+  padding:
+    9px 12px;
 
   font-size:23px;
 }
 
-.icon-choice.selected{
-  border-color:#007aff;
+.post-caption{
+  padding:
+    0
+    12px
+    14px;
+
+  line-height:1.35;
 }
 
-/* ================================
-   LISTS
-================================ */
 
-.card{
-  padding:14px;
+/* =========================================================
+   ADMIN CONTENT
+========================================================= */
 
-  margin-bottom:12px;
+.admin-section-title{
+  margin:
+    20px 2px 8px;
 
-  border-radius:15px;
+  font-size:13px;
+
+  color:#777;
+
+  text-transform:uppercase;
+}
+
+.admin-entry{
+  margin-bottom:10px;
+
+  padding:12px;
+
+  border-radius:14px;
 
   background:#fff;
 }
 
-.list-row{
-  min-height:58px;
-
+.admin-row{
   display:flex;
+
+  gap:10px;
+
   align-items:center;
-
-  gap:12px;
-
-  border-bottom:1px solid #ececf0;
 }
 
-.list-row:last-child{
-  border-bottom:0;
+.admin-row .avatar{
+  width:42px;
+  height:42px;
 }
 
-.avatar{
-  width:47px;
-  height:47px;
 
-  border-radius:50%;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:
-    linear-gradient(145deg,#7c9cff,#735fe5);
-
-  color:#fff;
-
-  font-weight:700;
-}
-
-.list-main{
-  flex:1;
-
-  min-width:0;
-}
-
-.list-title{
-  font-weight:650;
-}
-
-.list-sub{
-  margin-top:3px;
-
-  color:#77777d;
-
-  font-size:14px;
-
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-/* ================================
+/* =========================================================
    BROWSER
-================================ */
+========================================================= */
 
 .browser-shell{
   position:absolute;
+
   inset:0;
 
   display:flex;
+
   flex-direction:column;
 
   background:#000;
-}
-
-.browser-top{
-  min-height:60px;
-
-  padding:
-    calc(env(safe-area-inset-top) + 8px)
-    12px
-    8px;
-
-  display:flex;
-  align-items:flex-end;
-
-  gap:8px;
-
-  background:rgba(24,24,26,.97);
-}
-
-.browser-button{
-  height:38px;
-
-  padding:0 12px;
-
-  border:0;
-  border-radius:12px;
-
-  background:rgba(255,255,255,.12);
-
-  color:#fff;
-}
-
-.browser-title{
-  flex:1;
-
-  text-align:center;
-
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
 }
 
 .browser-frame{
@@ -812,81 +1256,12 @@ select.field{
   background:#fff;
 }
 
-/* ================================
-   SEARCH
-================================ */
-
-#searchOverlay{
-  padding:
-    calc(env(safe-area-inset-top) + 18px)
-    14px
-    20px;
-
-  background:rgba(20,20,24,.73);
-
-  backdrop-filter:blur(32px);
-  -webkit-backdrop-filter:blur(32px);
-}
-
-.search-line{
-  display:flex;
-
-  gap:8px;
-}
-
-.search-input{
-  flex:1;
-
-  height:45px;
-
-  border:0;
-  border-radius:14px;
-
-  padding:0 14px;
-
-  background:rgba(255,255,255,.16);
-
-  color:#fff;
-
-  outline:none;
-}
-
-.search-cancel{
-  border:0;
-
-  background:none;
-
-  color:#fff;
-}
-
-.search-results{
-  margin-top:18px;
-}
-
-.search-item{
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-
-  padding:10px 3px;
-
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.search-item .app-icon{
-  width:48px;
-  height:48px;
-
-  margin:0;
-
-  border-radius:12px;
-}
 </style>
 </head>
 
+
 <body>
+
 
 <div id="home">
 
@@ -898,27 +1273,86 @@ select.field{
     Готово
   </button>
 
-  <div class="pages" id="pagesViewport">
-    <div class="track" id="track"></div>
+  <div
+    class="pages"
+    id="pagesViewport">
+
+    <div
+      class="track"
+      id="track">
+    </div>
+
   </div>
 
-  <div class="dots" id="dots"></div>
+  <div
+    class="dots"
+    id="dots">
+  </div>
 
-  <div class="dock" id="dock"></div>
+  <div
+    class="dock"
+    id="dock">
+  </div>
 
 </div>
 
-<div class="overlay" id="systemOverlay"></div>
-<div class="overlay" id="browserOverlay"></div>
-<div class="overlay" id="searchOverlay"></div>
 
-<input type="file" id="wallpaperInput" accept="image/*" hidden>
-<input type="file" id="iconInput" accept="image/*" hidden>
+<div
+  class="overlay"
+  id="systemOverlay">
+</div>
+
+<div
+  class="overlay"
+  id="chatOverlay">
+</div>
+
+<div
+  class="overlay"
+  id="socialOverlay">
+</div>
+
+<div
+  class="overlay"
+  id="browserOverlay">
+</div>
+
+
+<input
+  type="file"
+  id="wallpaperInput"
+  accept="image/*"
+  hidden>
+
+<input
+  type="file"
+  id="iconInput"
+  accept="image/*"
+  hidden>
+
+<input
+  type="file"
+  id="avatarInput"
+  accept="image/*"
+  hidden>
+
+<input
+  type="file"
+  id="chatPhotoInput"
+  accept="image/*"
+  hidden>
+
+<input
+  type="file"
+  id="postPhotoInput"
+  accept="image/*"
+  hidden>
+
 
 <script>
 
 /* =========================================================
-   VIEWPORT FIX
+   VIEWPORT
 ========================================================= */
 
 function fixViewport(){
@@ -926,7 +1360,9 @@ function fixViewport(){
   document.documentElement.style
   .setProperty(
     "--app-height",
-    window.innerHeight + "px"
+    window.innerHeight
+    +
+    "px"
   );
 
 }
@@ -940,69 +1376,19 @@ window.addEventListener(
 
 window.addEventListener(
   "orientationchange",
-  ()=>setTimeout(fixViewport,200)
+  ()=>setTimeout(
+    fixViewport,
+    200
+  )
 );
 
 
 /* =========================================================
-   CLEAN OLD HEAVY STORAGE
-========================================================= */
-
-function cleanupOldStorage(){
-
-  const cleanupFlag =
-  "v41_cleanup_done";
-
-  if(
-    localStorage.getItem(cleanupFlag)
-  ){
-    return;
-  }
-
-  const oldKeys = [
-
-    "guestDesktopV3",
-    "iosGuestV4",
-
-    "launcherWallpapers",
-    "launcherCurrentWallpaper",
-
-    "launcherWallpaper",
-    "launcherFullApps"
-
-  ];
-
-  oldKeys.forEach(
-    key=>{
-
-      try{
-        localStorage.removeItem(key);
-      }catch(e){}
-
-    }
-  );
-
-  try{
-    localStorage.setItem(
-      cleanupFlag,
-      "1"
-    );
-  }catch(e){}
-
-}
-
-cleanupOldStorage();
-
-
-/* =========================================================
-   INDEXED DB
+   DATABASE
 ========================================================= */
 
 const DB_NAME =
-"GuestDesktopAssets";
-
-const DB_VERSION =
-1;
+"GuestDesktopV42";
 
 const STORE =
 "assets";
@@ -1019,7 +1405,7 @@ function openDB(){
       const request =
       indexedDB.open(
         DB_NAME,
-        DB_VERSION
+        1
       );
 
 
@@ -1028,6 +1414,7 @@ function openDB(){
 
         const db =
         event.target.result;
+
 
         if(
           !db.objectStoreNames
@@ -1240,303 +1627,7 @@ async function assetUrl(id){
 
 
 /* =========================================================
-   DEFAULT STATE
-========================================================= */
-
-const DEFAULT_STATE = {
-
-  currentPage:0,
-
-  editing:false,
-
-  currentWallpaperId:null,
-
-  wallpapers:[],
-
-  pages:[
-
-    {
-      id:"page1",
-      name:"Главная"
-    },
-
-    {
-      id:"page2",
-      name:"Вторая"
-    }
-
-  ],
-
-  apps:[
-
-    {
-      id:"messages",
-      title:"Сообщения",
-      icon:"💬",
-      imageId:null,
-      pageId:"page1",
-      type:"messages",
-      removable:false
-    },
-
-    {
-      id:"contacts",
-      title:"Контакты",
-      icon:"👤",
-      imageId:null,
-      pageId:"page1",
-      type:"contacts",
-      removable:false
-    },
-
-    {
-      id:"photos",
-      title:"Фото",
-      icon:"🖼️",
-      imageId:null,
-      pageId:"page1",
-      type:"photos",
-      removable:false
-    },
-
-    {
-      id:"camera",
-      title:"Камера",
-      icon:"📷",
-      imageId:null,
-      pageId:"page1",
-      type:"url",
-      url:"camera:",
-      removable:false
-    },
-
-    {
-      id:"music",
-      title:"Музыка",
-      icon:"🎵",
-      imageId:null,
-      pageId:"page1",
-      type:"url",
-      url:
-      "https://madenjanna-ui.github.io/Music-edition/",
-      removable:false
-    },
-
-    {
-      id:"notes",
-      title:"Заметки",
-      icon:"📝",
-      imageId:null,
-      pageId:"page1",
-      type:"notes",
-      removable:false
-    },
-
-    {
-      id:"calculator",
-      title:"Калькулятор",
-      icon:"🧮",
-      imageId:null,
-      pageId:"page1",
-      type:"calculator",
-      removable:false
-    },
-
-    {
-      id:"settings",
-      title:"Настройки",
-      icon:"⚙️",
-      imageId:null,
-      pageId:"page1",
-      type:"settings",
-      removable:false
-    },
-
-    {
-      id:"catalog",
-      title:"Приложения",
-      icon:"🅰️",
-      imageId:null,
-      pageId:"page2",
-      type:"catalog",
-      removable:false
-    },
-
-    {
-      id:"games",
-      title:"Игры",
-      icon:"🎮",
-      imageId:null,
-      pageId:"page2",
-      type:"url",
-      url:
-      "https://madenjanna-ui.github.io/Avtoslalom/",
-      removable:false
-    },
-
-    {
-      id:"web",
-      title:"Интернет",
-      icon:"🌐",
-      imageId:null,
-      pageId:"page2",
-      type:"url",
-      url:
-      "https://www.google.com/",
-      removable:false
-    }
-
-  ],
-
-  dock:[
-
-    {
-      id:"phone",
-      title:"Телефон",
-      icon:"📞",
-      imageId:null,
-      type:"url",
-      url:"tel:"
-    },
-
-    {
-      id:"dockMessages",
-      title:"Сообщения",
-      icon:"💬",
-      imageId:null,
-      type:"messages"
-    },
-
-    {
-      id:"dockMusic",
-      title:"Музыка",
-      icon:"🎵",
-      imageId:null,
-      type:"url",
-      url:
-      "https://madenjanna-ui.github.io/Music-edition/"
-    },
-
-    {
-      id:"dockWeb",
-      title:"Интернет",
-      icon:"🌐",
-      imageId:null,
-      type:"url",
-      url:
-      "https://www.google.com/"
-    }
-
-  ]
-
-};
-
-
-function cloneDefault(){
-
-  return JSON.parse(
-    JSON.stringify(
-      DEFAULT_STATE
-    )
-  );
-
-}
-
-
-function loadState(){
-
-  try{
-
-    const raw =
-    localStorage.getItem(
-      "iosGuestV41"
-    );
-
-
-    if(!raw){
-      return cloneDefault();
-    }
-
-
-    return Object.assign(
-      cloneDefault(),
-      JSON.parse(raw)
-    );
-
-  }catch(e){
-
-    return cloneDefault();
-
-  }
-
-}
-
-
-let state =
-loadState();
-
-
-function saveState(){
-
-  try{
-
-    localStorage.setItem(
-      "iosGuestV41",
-      JSON.stringify(state)
-    );
-
-  }catch(e){
-
-    alert(
-      "Не удалось сохранить настройки."
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   WALLPAPER
-========================================================= */
-
-async function applyWallpaper(){
-
-  const home =
-  document.getElementById(
-    "home"
-  );
-
-
-  if(
-    !state.currentWallpaperId
-  ){
-
-    home.style.backgroundImage =
-    "linear-gradient(160deg,#495a70,#263448 52%,#0d121a)";
-
-    return;
-  }
-
-
-  const url =
-  await assetUrl(
-    state.currentWallpaperId
-  );
-
-
-  if(url){
-
-    home.style.backgroundImage =
-    `url("${url}")`;
-
-  }
-
-}
-
-
-/* =========================================================
-   IMAGE COMPRESS TO BLOB
+   COMPRESS IMAGE
 ========================================================= */
 
 function compressFile(
@@ -1566,26 +1657,35 @@ function compressFile(
         image.onload =
         ()=>{
 
-          let w =
+          let width =
           image.width;
 
-          let h =
+          let height =
           image.height;
 
 
           const ratio =
           Math.min(
-            maxWidth/w,
-            maxHeight/h,
+
+            maxWidth / width,
+
+            maxHeight / height,
+
             1
+
           );
 
 
-          w =
-          Math.round(w*ratio);
+          width =
+          Math.round(
+            width * ratio
+          );
 
-          h =
-          Math.round(h*ratio);
+
+          height =
+          Math.round(
+            height * ratio
+          );
 
 
           const canvas =
@@ -1595,35 +1695,49 @@ function compressFile(
 
 
           canvas.width =
-          w;
+          width;
 
           canvas.height =
-          h;
+          height;
 
 
           canvas
           .getContext("2d")
           .drawImage(
+
             image,
+
             0,
             0,
-            w,
-            h
+
+            width,
+            height
+
           );
 
 
           canvas.toBlob(
+
             blob=>{
 
               if(blob){
+
                 resolve(blob);
-              }else{
+
+              }
+
+              else{
+
                 reject();
+
               }
 
             },
+
             "image/jpeg",
+
             quality
+
           );
 
         };
@@ -1654,19 +1768,638 @@ function compressFile(
 
 
 /* =========================================================
+   DEFAULT STATE
+========================================================= */
+
+const DEFAULT_STATE = {
+
+  currentPage:0,
+
+  editing:false,
+
+  currentWallpaperId:null,
+
+  wallpapers:[],
+
+
+  pages:[
+
+    {
+      id:"page1",
+      name:"Главная"
+    },
+
+    {
+      id:"page2",
+      name:"Вторая"
+    }
+
+  ],
+
+
+  apps:[
+
+    {
+      id:"telegram",
+      title:"Telegram",
+      brand:"telegram",
+      pageId:"page1",
+      type:"telegram",
+      removable:false
+    },
+
+    {
+      id:"instagram",
+      title:"Instagram",
+      brand:"instagram",
+      pageId:"page1",
+      type:"instagram",
+      removable:false
+    },
+
+    {
+      id:"max",
+      title:"MAX",
+      brand:"max",
+      pageId:"page1",
+      type:"max",
+      removable:false
+    },
+
+    {
+      id:"music",
+      title:"Музыка",
+      icon:"🎵",
+      pageId:"page1",
+      type:"url",
+      url:
+      "https://madenjanna-ui.github.io/Music-edition/",
+      removable:false
+    },
+
+    {
+      id:"games",
+      title:"Игры",
+      icon:"🎮",
+      pageId:"page2",
+      type:"url",
+      url:
+      "https://madenjanna-ui.github.io/Avtoslalom/",
+      removable:false
+    },
+
+    {
+      id:"photos",
+      title:"Фото",
+      icon:"🖼️",
+      pageId:"page2",
+      type:"photos",
+      removable:false
+    },
+
+    {
+      id:"notes",
+      title:"Заметки",
+      icon:"📝",
+      pageId:"page2",
+      type:"notes",
+      removable:false
+    },
+
+    {
+      id:"settings",
+      title:"Настройки",
+      icon:"⚙️",
+      pageId:"page2",
+      type:"settings",
+      removable:false
+    }
+
+  ],
+
+
+  dock:[
+
+    {
+      id:"phone",
+      title:"Телефон",
+      icon:"📞",
+      type:"url",
+      url:"tel:"
+    },
+
+    {
+      id:"dockTelegram",
+      title:"Telegram",
+      brand:"telegram",
+      type:"telegram"
+    },
+
+    {
+      id:"dockMusic",
+      title:"Музыка",
+      icon:"🎵",
+      type:"url",
+      url:
+      "https://madenjanna-ui.github.io/Music-edition/"
+    },
+
+    {
+      id:"dockWeb",
+      title:"Интернет",
+      icon:"🌐",
+      type:"url",
+      url:
+      "https://www.google.com/"
+    }
+
+  ],
+
+
+  chats:{
+
+    telegram:[
+
+      {
+        id:"tg1",
+        name:"Анна",
+        avatarId:null,
+        last:"Смотри фото 😊",
+
+        messages:[
+
+          {
+            side:"in",
+            text:"Привет! Как дела?",
+            photoId:null
+          },
+
+          {
+            side:"out",
+            text:"Отлично. А у тебя?",
+            photoId:null
+          },
+
+          {
+            side:"in",
+            text:"Смотри фото 😊",
+            photoId:null
+          }
+
+        ]
+      },
+
+      {
+        id:"tg2",
+        name:"Семья",
+        avatarId:null,
+        last:"Встречаемся вечером",
+
+        messages:[
+
+          {
+            side:"in",
+            text:"Встречаемся вечером",
+            photoId:null
+          },
+
+          {
+            side:"out",
+            text:"Хорошо 👍",
+            photoId:null
+          }
+
+        ]
+      }
+
+    ],
+
+
+    max:[
+
+      {
+        id:"max1",
+        name:"Максим",
+        avatarId:null,
+        last:"Получил, спасибо",
+
+        messages:[
+
+          {
+            side:"in",
+            text:"Файл получил, спасибо",
+            photoId:null
+          },
+
+          {
+            side:"out",
+            text:"Отлично",
+            photoId:null
+          }
+
+        ]
+      },
+
+      {
+        id:"max2",
+        name:"Работа",
+        avatarId:null,
+        last:"Завтра к 9:00",
+
+        messages:[
+
+          {
+            side:"in",
+            text:"Завтра к 9:00",
+            photoId:null
+          },
+
+          {
+            side:"out",
+            text:"Буду",
+            photoId:null
+          }
+
+        ]
+      }
+
+    ]
+
+  },
+
+
+  stories:[
+
+    {
+      id:"story1",
+      name:"Анна",
+      avatarId:null
+    },
+
+    {
+      id:"story2",
+      name:"Max",
+      avatarId:null
+    },
+
+    {
+      id:"story3",
+      name:"Travel",
+      avatarId:null
+    }
+
+  ],
+
+
+  posts:[
+
+    {
+      id:"post1",
+      user:"anna_photo",
+      avatarId:null,
+      imageId:null,
+      caption:"Отличный вечер ✨"
+    },
+
+    {
+      id:"post2",
+      user:"max_travel",
+      avatarId:null,
+      imageId:null,
+      caption:"Наконец-то выбрались за город."
+    }
+
+  ]
+
+};
+
+
+/* =========================================================
+   LOAD STATE
+========================================================= */
+
+function cloneDefault(){
+
+  return JSON.parse(
+    JSON.stringify(
+      DEFAULT_STATE
+    )
+  );
+
+}
+
+
+function loadState(){
+
+  try{
+
+    const raw =
+    localStorage.getItem(
+      "iosGuestV42"
+    );
+
+
+    if(!raw){
+
+      return cloneDefault();
+
+    }
+
+
+    const saved =
+    JSON.parse(raw);
+
+
+    const base =
+    cloneDefault();
+
+
+    return {
+
+      ...base,
+
+      ...saved,
+
+      pages:
+        saved.pages
+        ||
+        base.pages,
+
+      apps:
+        saved.apps
+        ||
+        base.apps,
+
+      dock:
+        saved.dock
+        ||
+        base.dock,
+
+      chats:{
+        ...base.chats,
+        ...(
+          saved.chats
+          ||
+          {}
+        )
+      },
+
+      stories:
+        saved.stories
+        ||
+        base.stories,
+
+      posts:
+        saved.posts
+        ||
+        base.posts
+
+    };
+
+  }
+
+  catch(error){
+
+    return cloneDefault();
+
+  }
+
+}
+
+
+let state =
+loadState();
+
+
+function saveState(){
+
+  try{
+
+    localStorage.setItem(
+
+      "iosGuestV42",
+
+      JSON.stringify(state)
+
+    );
+
+  }
+
+  catch(error){
+
+    alert(
+      "Не удалось сохранить настройки."
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   SAFE TEXT
+========================================================= */
+
+function safe(text){
+
+  return String(
+    text
+    ??
+    ""
+  )
+
+  .replaceAll(
+    "&",
+    "&amp;"
+  )
+
+  .replaceAll(
+    "<",
+    "&lt;"
+  )
+
+  .replaceAll(
+    ">",
+    "&gt;"
+  )
+
+  .replaceAll(
+    '"',
+    "&quot;"
+  )
+
+  .replaceAll(
+    "'",
+    "&#039;"
+  );
+
+}
+
+
+function attr(text){
+
+  return safe(text)
+  .replaceAll(
+    "`",
+    "&#096;"
+  );
+
+}
+
+
+/* =========================================================
+   WALLPAPER
+========================================================= */
+
+async function applyWallpaper(){
+
+  const home =
+  document.getElementById(
+    "home"
+  );
+
+
+  if(
+    !state.currentWallpaperId
+  ){
+
+    home.style.backgroundImage =
+
+      "linear-gradient(160deg,#4c5e79,#26364b 50%,#0d121a)";
+
+
+    return;
+
+  }
+
+
+  const url =
+  await assetUrl(
+    state.currentWallpaperId
+  );
+
+
+  if(url){
+
+    home.style.backgroundImage =
+    `url("${url}")`;
+
+  }
+
+}
+
+
+/* =========================================================
    ICON HTML
 ========================================================= */
 
 function iconHTML(app){
 
+  if(
+    app.imageId
+  ){
+
+    return `
+
+      <div
+      class="app-icon"
+      data-image-id="${app.imageId}">
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    app.brand === "telegram"
+  ){
+
+    return `
+
+      <div class="app-icon">
+
+        <div
+        class="
+        brand-icon
+        brand-telegram
+        ">
+
+          ➤
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    app.brand === "instagram"
+  ){
+
+    return `
+
+      <div class="app-icon">
+
+        <div
+        class="
+        brand-icon
+        brand-instagram
+        ">
+
+          ◎
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    app.brand === "max"
+  ){
+
+    return `
+
+      <div class="app-icon">
+
+        <div
+        class="
+        brand-icon
+        brand-max
+        ">
+
+          M
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
   return `
 
-    <div
-    class="app-icon"
-    data-image-id="${app.imageId || ""}">
+    <div class="app-icon">
 
       <span class="emoji">
-        ${safe(app.icon || "⭐")}
+
+        ${
+          safe(
+            app.icon
+            ||
+            "⭐"
+          )
+        }
+
       </span>
 
     </div>
@@ -1676,25 +2409,35 @@ function iconHTML(app){
 }
 
 
+/* =========================================================
+   HYDRATE IMAGES
+========================================================= */
+
 async function hydrateImages(){
 
   const nodes =
-  document
-  .querySelectorAll(
+  document.querySelectorAll(
     "[data-image-id]"
   );
 
 
   for(
-    const node of nodes
+    const node
+    of nodes
   ){
 
     const id =
     node.dataset.imageId;
 
 
-    if(!id){
+    if(
+      !id
+      ||
+      node.querySelector("img")
+    ){
+
       continue;
+
     }
 
 
@@ -1702,11 +2445,7 @@ async function hydrateImages(){
     await assetUrl(id);
 
 
-    if(
-      url
-      &&
-      !node.querySelector("img")
-    ){
+    if(url){
 
       const img =
       document.createElement(
@@ -1718,7 +2457,9 @@ async function hydrateImages(){
       url;
 
 
-      node.appendChild(img);
+      node.appendChild(
+        img
+      );
 
     }
 
@@ -1728,10 +2469,10 @@ async function hydrateImages(){
 
 
 /* =========================================================
-   APP ELEMENT
+   CREATE APP
 ========================================================= */
 
-function createAppElement(app){
+function createApp(app){
 
   const element =
   document.createElement(
@@ -1747,51 +2488,66 @@ function createAppElement(app){
 
     ${
       app.removable !== false
+
       ?
+
       `
-      <button
-      class="delete-app">
+      <button class="delete-app">
         −
       </button>
       `
+
       :
+
       ""
     }
 
+
     ${iconHTML(app)}
 
+
     <div class="app-name">
+
       ${safe(app.title)}
+
     </div>
 
   `;
 
 
-  const del =
+  const deleteButton =
   element.querySelector(
     ".delete-app"
   );
 
 
-  if(del){
+  if(
+    deleteButton
+  ){
 
-    del.onclick =
+    deleteButton.onclick =
     async event=>{
 
       event.stopPropagation();
 
 
-      if(app.imageId){
+      if(
+        app.imageId
+      ){
+
         await deleteAsset(
           app.imageId
         );
+
       }
 
 
       state.apps =
       state.apps.filter(
-        item=>
+
+        item =>
         item.id !== app.id
+
       );
 
 
@@ -1807,9 +2563,14 @@ function createAppElement(app){
   element.onclick =
   ()=>{
 
-    if(state.editing){
+    if(
+      state.editing
+    ){
+
       return;
+
     }
+
 
     openApp(app);
 
@@ -1832,10 +2593,12 @@ function render(){
     "track"
   );
 
+
   const dots =
   document.getElementById(
     "dots"
   );
+
 
   const dock =
   document.getElementById(
@@ -1855,20 +2618,29 @@ function render(){
 
   state.currentPage =
   Math.max(
+
     0,
+
     Math.min(
+
       state.currentPage,
-      state.pages.length-1
+
+      state.pages.length
+      -
+      1
+
     )
+
   );
 
 
-  state.pages
-  .forEach(
+  state.pages.forEach(
+
     (
       page,
       index
     )=>{
+
 
       const pageElement =
       document.createElement(
@@ -1891,18 +2663,24 @@ function render(){
 
 
       state.apps
+
       .filter(
-        app=>
+
+        app =>
         app.pageId === page.id
+
       )
+
       .forEach(
+
         app=>{
 
           grid.appendChild(
-            createAppElement(app)
+            createApp(app)
           );
 
         }
+
       );
 
 
@@ -1923,32 +2701,37 @@ function render(){
 
 
       dot.className =
-      "dot"
-      +
-      (
-        index === state.currentPage
-        ?
-        " active"
-        :
-        ""
-      );
+
+        "dot"
+
+        +
+
+        (
+          index === state.currentPage
+          ?
+          " active"
+          :
+          ""
+        );
 
 
       dots.appendChild(dot);
 
     }
+
   );
 
 
-  state.dock
-  .forEach(
+  state.dock.forEach(
+
     app=>{
 
       dock.appendChild(
-        createAppElement(app)
+        createApp(app)
       );
 
     }
+
   );
 
 
@@ -1957,8 +2740,11 @@ function render(){
     "home"
   )
   .classList.toggle(
+
     "editing",
+
     state.editing
+
   );
 
 
@@ -1984,15 +2770,21 @@ function updatePage(
 
 
   track.style.transition =
-  animate
-  ?
-  "transform .32s cubic-bezier(.22,.7,.18,1)"
-  :
-  "none";
+
+    animate
+
+    ?
+
+    "transform .32s cubic-bezier(.22,.7,.18,1)"
+
+    :
+
+    "none";
 
 
   track.style.transform =
-  `translateX(-${state.currentPage*100}%)`;
+
+    `translateX(-${state.currentPage * 100}%)`;
 
 
   document
@@ -2000,17 +2792,22 @@ function updatePage(
     ".dot"
   )
   .forEach(
+
     (
       dot,
       index
     )=>{
 
       dot.classList.toggle(
+
         "active",
+
         index === state.currentPage
+
       );
 
     }
+
   );
 
 }
@@ -2026,80 +2823,90 @@ document.getElementById(
 );
 
 
-let touchX =
+let startX =
 0;
 
-let touchY =
+
+let startY =
 0;
 
 
 viewport.addEventListener(
+
   "touchstart",
+
   event=>{
 
-    touchX =
+    startX =
     event.touches[0]
     .clientX;
 
-    touchY =
+
+    startY =
     event.touches[0]
     .clientY;
 
   },
+
   {
     passive:true
   }
+
 );
 
 
 viewport.addEventListener(
+
   "touchend",
+
   event=>{
+
 
     const touch =
     event.changedTouches[0];
 
 
     const dx =
-    touch.clientX-touchX;
+    touch.clientX
+    -
+    startX;
 
 
     const dy =
-    touch.clientY-touchY;
+    touch.clientY
+    -
+    startY;
 
 
     if(
-      dy > 90
-      &&
-      Math.abs(dy)
-      >
-      Math.abs(dx)
-    ){
 
-      openSearch();
+      Math.abs(dx) < 45
 
-      return;
-    }
-
-
-    if(
-      Math.abs(dx)<45
       ||
+
       Math.abs(dx)
       <
       Math.abs(dy)
+
     ){
 
       return;
+
     }
 
 
     if(
+
       dx < 0
+
       &&
+
       state.currentPage
       <
-      state.pages.length-1
+      state.pages.length
+      -
+      1
+
     ){
 
       state.currentPage++;
@@ -2108,9 +2915,13 @@ viewport.addEventListener(
 
 
     else if(
+
       dx > 0
+
       &&
+
       state.currentPage > 0
+
     ){
 
       state.currentPage--;
@@ -2123,9 +2934,11 @@ viewport.addEventListener(
     updatePage(true);
 
   },
+
   {
     passive:true
   }
+
 );
 
 
@@ -2137,34 +2950,44 @@ let editTimer;
 
 
 viewport.addEventListener(
+
   "pointerdown",
+
   event=>{
+
 
     if(
       event.target.closest(
         ".app"
       )
     ){
+
       return;
+
     }
 
 
     editTimer =
     setTimeout(
+
       ()=>{
 
         state.editing =
         true;
+
 
         saveState();
 
         render();
 
       },
+
       900
+
     );
 
   }
+
 );
 
 
@@ -2174,14 +2997,21 @@ viewport.addEventListener(
   "pointercancel"
 ]
 .forEach(
-  name=>{
+
+  eventName=>{
 
     viewport.addEventListener(
-      name,
-      ()=>clearTimeout(editTimer)
+
+      eventName,
+
+      ()=>clearTimeout(
+        editTimer
+      )
+
     );
 
   }
+
 );
 
 
@@ -2189,6 +3019,7 @@ function finishEditing(){
 
   state.editing =
   false;
+
 
   saveState();
 
@@ -2211,7 +3042,7 @@ let adminTimer =
 null;
 
 
-function startAdminPress(
+function startAdmin(
   event
 ){
 
@@ -2231,6 +3062,7 @@ function startAdminPress(
 
   adminTimer =
   setTimeout(
+
     ()=>{
 
       if(
@@ -2247,13 +3079,15 @@ function startAdminPress(
       openSettings();
 
     },
+
     1500
+
   );
 
 }
 
 
-function stopAdminPress(){
+function stopAdmin(){
 
   clearTimeout(
     adminTimer
@@ -2264,27 +3098,34 @@ function stopAdminPress(){
 
 adminHotspot.addEventListener(
   "pointerdown",
-  startAdminPress
+  startAdmin
 );
+
 
 adminHotspot.addEventListener(
   "pointerup",
-  stopAdminPress
+  stopAdmin
 );
+
 
 adminHotspot.addEventListener(
   "pointercancel",
-  stopAdminPress
+  stopAdmin
 );
+
 
 adminHotspot.addEventListener(
   "pointerleave",
-  stopAdminPress
+  stopAdmin
 );
 
+
 adminHotspot.addEventListener(
+
   "contextmenu",
+
   event=>event.preventDefault()
+
 );
 
 
@@ -2294,54 +3135,88 @@ adminHotspot.addEventListener(
 
 function openApp(app){
 
-  switch(app.type){
+  switch(
+    app.type
+  ){
+
+
+    case "telegram":
+
+      openMessenger(
+        "telegram",
+        "Telegram"
+      );
+
+      break;
+
+
+    case "max":
+
+      openMessenger(
+        "max",
+        "MAX"
+      );
+
+      break;
+
+
+    case "instagram":
+
+      openInstagram();
+
+      break;
+
 
     case "settings":
+
       openSettings();
+
       break;
 
-    case "messages":
-      openMessages();
-      break;
-
-    case "contacts":
-      openContacts();
-      break;
 
     case "photos":
+
       openPhotos();
+
       break;
+
 
     case "notes":
+
       openNotes();
+
       break;
 
-    case "calculator":
-      openCalculator();
-      break;
-
-    case "catalog":
-      openCatalog();
-      break;
 
     case "url":
 
+
       if(
+
         /^https?:\/\//i
-        .test(app.url)
+        .test(
+          app.url
+        )
+
       ){
 
         openBrowser(
+
           app.url,
+
           app.title
+
         );
 
-      }else{
+      }
+
+      else{
 
         window.location.href =
         app.url;
 
       }
+
 
       break;
 
@@ -2370,23 +3245,35 @@ function showSystem(
 
     <div class="system-shell">
 
+
       <div class="system-top">
+
 
         <button
         class="system-back"
         onclick="${back}">
+
           ‹ Назад
+
         </button>
 
+
         <div class="system-title">
+
           ${safe(title)}
+
         </div>
 
+
       </div>
 
+
       <div class="system-body">
+
         ${body}
+
       </div>
+
 
     </div>
 
@@ -2420,13 +3307,14 @@ function closeSystem(){
 
 
 /* =========================================================
-   SETTINGS HOME
+   SETTINGS
 ========================================================= */
 
 function openSettings(){
 
   state.editing =
   false;
+
 
   saveState();
 
@@ -2441,21 +3329,49 @@ function openSettings(){
 
       <div class="settings-group">
 
+
         <div
         class="settings-row"
         onclick="openWallpaperSettings()">
+
 
           <div class="settings-icon">
             🖼️
           </div>
 
+
           <div class="settings-main">
             Обои
           </div>
 
+
           <div class="chevron">
             ›
           </div>
+
+
+        </div>
+
+
+        <div
+        class="settings-row"
+        onclick="openContentSettings()">
+
+
+          <div class="settings-icon">
+            💬
+          </div>
+
+
+          <div class="settings-main">
+            Содержимое
+          </div>
+
+
+          <div class="chevron">
+            ›
+          </div>
+
 
         </div>
 
@@ -2464,57 +3380,71 @@ function openSettings(){
         class="settings-row"
         onclick="openPageSettings()">
 
+
           <div class="settings-icon">
             ▦
           </div>
+
 
           <div class="settings-main">
             Рабочие столы
           </div>
 
+
           <div class="chevron">
             ›
           </div>
+
 
         </div>
 
 
         <div
         class="settings-row"
-        onclick="openAppsSettings()">
+        onclick="openAppSettings()">
+
 
           <div class="settings-icon">
             ◉
           </div>
 
+
           <div class="settings-main">
             Приложения
           </div>
+
 
           <div class="chevron">
             ›
           </div>
 
+
         </div>
+
 
       </div>
 
 
       <div class="settings-group">
 
+
         <div
         class="settings-row"
-        onclick="startEditing()">
+        onclick="startEditingFromSettings()">
+
 
           <div class="settings-icon">
             ✦
           </div>
 
+
           <div class="settings-main">
             Изменить экран
           </div>
 
+
         </div>
+
 
       </div>
 
@@ -2525,12 +3455,14 @@ function openSettings(){
 }
 
 
-function startEditing(){
+function startEditingFromSettings(){
 
   closeSystem();
 
+
   state.editing =
   true;
+
 
   saveState();
 
@@ -2570,35 +3502,49 @@ async function openWallpaperSettings(){
       <div
 
       class="
-      wallpaper
-      ${
-        state.currentWallpaperId
-        ===
-        wallpaper.id
-        ?
-        "selected"
-        :
-        ""
-      }
+        wallpaper
+        ${
+          state.currentWallpaperId
+          ===
+          wallpaper.id
+
+          ?
+
+          "selected"
+
+          :
+
+          ""
+        }
       "
 
       style="
-      background-image:
-      url('${url}')
+        background-image:
+        url('${url}')
       "
 
       onclick="
-      selectWallpaper('${wallpaper.id}')
+        selectWallpaper(
+          '${wallpaper.id}'
+        )
       ">
 
+
         <button
+
         class="wallpaper-delete"
+
         onclick="
-        event.stopPropagation();
-        removeWallpaper('${wallpaper.id}')
+          event.stopPropagation();
+          removeWallpaper(
+            '${wallpaper.id}'
+          )
         ">
+
           ×
+
         </button>
+
 
       </div>
 
@@ -2614,34 +3560,51 @@ async function openWallpaperSettings(){
   html += `
 
     <button
+
     class="primary"
+
     onclick="
-    document
-    .getElementById('wallpaperInput')
-    .click()
+      document
+      .getElementById(
+        'wallpaperInput'
+      )
+      .click()
     ">
+
       Добавить фото
+
     </button>
 
   `;
 
 
   showSystem(
+
     "Обои",
+
     html,
+
     "openSettings()"
+
   );
 
 }
 
+
+/* =========================================================
+   WALLPAPER INPUT
+========================================================= */
 
 document
 .getElementById(
   "wallpaperInput"
 )
 .addEventListener(
+
   "change",
+
   async function(){
+
 
     const file =
     this.files[0];
@@ -2654,12 +3617,18 @@ document
 
     try{
 
+
       const blob =
       await compressFile(
+
         file,
+
         1179,
+
         2556,
-        .8
+
+        .80
+
       );
 
 
@@ -2675,8 +3644,7 @@ document
       );
 
 
-      state.wallpapers
-      .push({
+      state.wallpapers.push({
         id:id
       });
 
@@ -2686,6 +3654,7 @@ document
 
 
       saveState();
+
 
       await applyWallpaper();
 
@@ -2706,6 +3675,7 @@ document
     "";
 
   }
+
 );
 
 
@@ -2714,7 +3684,9 @@ async function selectWallpaper(id){
   state.currentWallpaperId =
   id;
 
+
   saveState();
+
 
   await applyWallpaper();
 
@@ -2728,23 +3700,12 @@ async function removeWallpaper(id){
   await deleteAsset(id);
 
 
-  if(
-    assetUrls.has(id)
-  ){
-
-    URL.revokeObjectURL(
-      assetUrls.get(id)
-    );
-
-    assetUrls.delete(id);
-
-  }
-
-
   state.wallpapers =
   state.wallpapers.filter(
-    item=>
+
+    item =>
     item.id !== id
+
   );
 
 
@@ -2755,15 +3716,20 @@ async function removeWallpaper(id){
   ){
 
     state.currentWallpaperId =
-    state.wallpapers[0]
-    ?.id
-    ||
-    null;
+
+      state.wallpapers[0]
+      ?.
+      id
+
+      ||
+
+      null;
 
   }
 
 
   saveState();
+
 
   await applyWallpaper();
 
@@ -2773,7 +3739,1979 @@ async function removeWallpaper(id){
 
 
 /* =========================================================
-   PAGE SETTINGS
+   CONTENT SETTINGS
+========================================================= */
+
+function openContentSettings(){
+
+  showSystem(
+
+    "Содержимое",
+
+    `
+
+      <div class="settings-group">
+
+
+        <div
+        class="settings-row"
+        onclick="
+          openChatAdmin(
+            'telegram',
+            'Telegram'
+          )
+        ">
+
+
+          <div class="settings-icon">
+            ➤
+          </div>
+
+
+          <div class="settings-main">
+            Telegram
+          </div>
+
+
+          <div class="chevron">
+            ›
+          </div>
+
+
+        </div>
+
+
+        <div
+        class="settings-row"
+        onclick="
+          openChatAdmin(
+            'max',
+            'MAX'
+          )
+        ">
+
+
+          <div class="settings-icon">
+            M
+          </div>
+
+
+          <div class="settings-main">
+            MAX
+          </div>
+
+
+          <div class="chevron">
+            ›
+          </div>
+
+
+        </div>
+
+
+        <div
+        class="settings-row"
+        onclick="openInstagramAdmin()">
+
+
+          <div class="settings-icon">
+            ◎
+          </div>
+
+
+          <div class="settings-main">
+            Лента
+          </div>
+
+
+          <div class="chevron">
+            ›
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    `,
+
+    "openSettings()"
+
+  );
+
+}
+
+
+/* =========================================================
+   CHAT ADMIN
+========================================================= */
+
+function openChatAdmin(
+  kind,
+  title
+){
+
+  const chats =
+  state.chats[kind]
+  ||
+  [];
+
+
+  let html = `
+
+    <div class="admin-section-title">
+
+      ${safe(title)} — чаты
+
+    </div>
+
+  `;
+
+
+  chats.forEach(
+
+    chat=>{
+
+      html += `
+
+        <div class="admin-entry">
+
+
+          <div class="admin-row">
+
+
+            <div
+            class="avatar"
+            data-avatar-id="${chat.avatarId || ""}">
+
+              ${safe(chat.name[0] || "?")}
+
+            </div>
+
+
+            <div class="list-main">
+
+
+              <div class="list-title">
+
+                ${safe(chat.name)}
+
+              </div>
+
+
+              <div class="list-sub">
+
+                ${safe(chat.last || "")}
+
+              </div>
+
+
+            </div>
+
+
+            <button
+
+            style="
+              border:0;
+              background:none;
+              color:#007aff;
+            "
+
+            onclick="
+              editChat(
+                '${kind}',
+                '${chat.id}'
+              )
+            ">
+
+              Изм.
+
+            </button>
+
+
+          </div>
+
+
+        </div>
+
+      `;
+
+    }
+
+  );
+
+
+  html += `
+
+    <button
+
+    class="primary"
+
+    onclick="
+      editChat(
+        '${kind}',
+        ''
+      )
+    ">
+
+      Добавить чат
+
+    </button>
+
+  `;
+
+
+  showSystem(
+
+    title,
+
+    html,
+
+    "openContentSettings()"
+
+  );
+
+
+  hydrateAvatars();
+
+}
+
+
+/* =========================================================
+   AVATAR HYDRATION
+========================================================= */
+
+async function hydrateAvatars(){
+
+  const nodes =
+  document.querySelectorAll(
+    "[data-avatar-id]"
+  );
+
+
+  for(
+    const node
+    of nodes
+  ){
+
+    const id =
+    node.dataset.avatarId;
+
+
+    if(!id){
+      continue;
+    }
+
+
+    const url =
+    await assetUrl(id);
+
+
+    if(url){
+
+      node.innerHTML =
+      `<img src="${url}">`;
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   EDIT CHAT
+========================================================= */
+
+function editChat(
+  kind,
+  id
+){
+
+  const chats =
+  state.chats[kind]
+  ||
+  [];
+
+
+  const chat =
+
+    chats.find(
+      item =>
+      item.id === id
+    )
+
+    ||
+
+    {
+      id:"",
+      name:"",
+      last:"",
+      messages:[],
+      avatarId:null
+    };
+
+
+  showSystem(
+
+    id
+    ?
+    "Чат"
+    :
+    "Новый чат",
+
+    `
+
+      <input
+      class="field"
+      id="chatName"
+      placeholder="Имя"
+      value="${attr(chat.name)}">
+
+
+      <input
+      class="field"
+      id="chatLast"
+      placeholder="Последняя строка"
+      value="${attr(chat.last)}">
+
+
+      <button
+      class="secondary"
+      onclick="
+        chooseAvatar()
+      ">
+
+        Выбрать аватар
+
+      </button>
+
+
+      <button
+      class="primary"
+      onclick="
+        saveChatMeta(
+          '${kind}',
+          '${id}'
+        )
+      ">
+
+        Сохранить
+
+      </button>
+
+
+      ${
+        id
+
+        ?
+
+        `
+
+        <button
+
+        class="secondary"
+
+        onclick="
+          editMessagesAdmin(
+            '${kind}',
+            '${id}'
+          )
+        ">
+
+          Сообщения и фото
+
+        </button>
+
+        `
+
+        :
+
+        ""
+      }
+
+    `,
+
+    `openChatAdmin(
+      '${kind}',
+      '${kind === "telegram" ? "Telegram" : "MAX"}'
+    )`
+
+  );
+
+}
+
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+let pendingAvatarBlob =
+null;
+
+
+function chooseAvatar(){
+
+  document
+  .getElementById(
+    "avatarInput"
+  )
+  .click();
+
+}
+
+
+document
+.getElementById(
+  "avatarInput"
+)
+.addEventListener(
+
+  "change",
+
+  async function(){
+
+
+    const file =
+    this.files[0];
+
+
+    if(file){
+
+      pendingAvatarBlob =
+      await compressFile(
+
+        file,
+
+        500,
+
+        500,
+
+        .84
+
+      );
+
+    }
+
+
+    this.value =
+    "";
+
+  }
+
+);
+
+
+async function saveChatMeta(
+  kind,
+  id
+){
+
+  const chats =
+  state.chats[kind]
+  ||
+  [];
+
+
+  let chat =
+  chats.find(
+    item =>
+    item.id === id
+  );
+
+
+  if(!chat){
+
+    chat = {
+
+      id:
+        kind
+        +
+        "_"
+        +
+        Date.now(),
+
+      name:"",
+
+      last:"",
+
+      messages:[],
+
+      avatarId:null
+
+    };
+
+
+    chats.push(chat);
+
+  }
+
+
+  chat.name =
+  document
+  .getElementById(
+    "chatName"
+  )
+  .value
+  .trim()
+
+  ||
+
+  "Контакт";
+
+
+  chat.last =
+  document
+  .getElementById(
+    "chatLast"
+  )
+  .value
+  .trim();
+
+
+  if(
+    pendingAvatarBlob
+  ){
+
+    const avatarId =
+    "avatar_"
+    +
+    Date.now();
+
+
+    await saveAsset(
+
+      avatarId,
+
+      pendingAvatarBlob
+
+    );
+
+
+    chat.avatarId =
+    avatarId;
+
+
+    pendingAvatarBlob =
+    null;
+
+  }
+
+
+  state.chats[kind] =
+  chats;
+
+
+  saveState();
+
+
+  openChatAdmin(
+
+    kind,
+
+    kind === "telegram"
+    ?
+    "Telegram"
+    :
+    "MAX"
+
+  );
+
+}
+
+
+/* =========================================================
+   MESSAGE ADMIN
+========================================================= */
+
+function editMessagesAdmin(
+  kind,
+  id
+){
+
+  const chat =
+  state.chats[kind]
+  .find(
+
+    item =>
+    item.id === id
+
+  );
+
+
+  if(!chat){
+    return;
+  }
+
+
+  const list =
+  chat.messages
+  .map(
+
+    (
+      message,
+      index
+    )=>`
+
+      <div class="settings-row">
+
+
+        <div class="settings-main">
+
+          ${
+            message.photoId
+
+            ?
+
+            "📷 Фото"
+
+            :
+
+            safe(
+              message.text
+              ||
+              ""
+            )
+          }
+
+        </div>
+
+
+        <div class="settings-small">
+
+          ${
+            message.side
+            ===
+            "out"
+
+            ?
+
+            "исходящее"
+
+            :
+
+            "входящее"
+          }
+
+        </div>
+
+
+        <button
+
+        style="
+          border:0;
+          background:none;
+          color:#ff3b30;
+        "
+
+        onclick="
+          deleteMessage(
+            '${kind}',
+            '${id}',
+            ${index}
+          )
+        ">
+
+          ×
+
+        </button>
+
+
+      </div>
+
+    `
+
+  )
+  .join("");
+
+
+  showSystem(
+
+    chat.name,
+
+    `
+
+      <div class="settings-group">
+
+        ${list}
+
+      </div>
+
+
+      <select
+      class="field"
+      id="messageSide">
+
+        <option value="in">
+          Входящее
+        </option>
+
+        <option value="out">
+          Исходящее
+        </option>
+
+      </select>
+
+
+      <textarea
+      class="field"
+      id="messageText"
+      placeholder="Текст">
+      </textarea>
+
+
+      <button
+      class="secondary"
+      onclick="
+        chooseChatPhoto()
+      ">
+
+        Добавить фото
+
+      </button>
+
+
+      <button
+      class="primary"
+      onclick="
+        addAdminMessage(
+          '${kind}',
+          '${id}'
+        )
+      ">
+
+        Добавить сообщение
+
+      </button>
+
+    `,
+
+    `openChatAdmin(
+      '${kind}',
+      '${kind === "telegram" ? "Telegram" : "MAX"}'
+    )`
+
+  );
+
+}
+
+
+/* =========================================================
+   CHAT PHOTO
+========================================================= */
+
+let pendingChatPhotoBlob =
+null;
+
+
+function chooseChatPhoto(){
+
+  document
+  .getElementById(
+    "chatPhotoInput"
+  )
+  .click();
+
+}
+
+
+document
+.getElementById(
+  "chatPhotoInput"
+)
+.addEventListener(
+
+  "change",
+
+  async function(){
+
+
+    const file =
+    this.files[0];
+
+
+    if(file){
+
+      pendingChatPhotoBlob =
+      await compressFile(
+
+        file,
+
+        1200,
+
+        1200,
+
+        .82
+
+      );
+
+    }
+
+
+    this.value =
+    "";
+
+  }
+
+);
+
+
+async function addAdminMessage(
+  kind,
+  id
+){
+
+  const chat =
+  state.chats[kind]
+  .find(
+
+    item =>
+    item.id === id
+
+  );
+
+
+  if(!chat){
+    return;
+  }
+
+
+  const message = {
+
+    side:
+      document
+      .getElementById(
+        "messageSide"
+      )
+      .value,
+
+    text:
+      document
+      .getElementById(
+        "messageText"
+      )
+      .value
+      .trim(),
+
+    photoId:null
+
+  };
+
+
+  if(
+    pendingChatPhotoBlob
+  ){
+
+    const photoId =
+    "chatphoto_"
+    +
+    Date.now();
+
+
+    await saveAsset(
+
+      photoId,
+
+      pendingChatPhotoBlob
+
+    );
+
+
+    message.photoId =
+    photoId;
+
+
+    pendingChatPhotoBlob =
+    null;
+
+  }
+
+
+  if(
+    !message.text
+    &&
+    !message.photoId
+  ){
+
+    return;
+
+  }
+
+
+  chat.messages.push(
+    message
+  );
+
+
+  chat.last =
+
+    message.photoId
+    ?
+    "Фото"
+    :
+    message.text;
+
+
+  saveState();
+
+
+  editMessagesAdmin(
+    kind,
+    id
+  );
+
+}
+
+
+function deleteMessage(
+  kind,
+  id,
+  index
+){
+
+  const chat =
+  state.chats[kind]
+  .find(
+
+    item =>
+    item.id === id
+
+  );
+
+
+  if(!chat){
+    return;
+  }
+
+
+  chat.messages.splice(
+    index,
+    1
+  );
+
+
+  saveState();
+
+
+  editMessagesAdmin(
+    kind,
+    id
+  );
+
+}
+
+
+/* =========================================================
+   INSTAGRAM ADMIN
+========================================================= */
+
+function openInstagramAdmin(){
+
+  let html =
+  "";
+
+
+  state.posts.forEach(
+
+    post=>{
+
+      html += `
+
+        <div class="admin-entry">
+
+
+          <b>
+            ${safe(post.user)}
+          </b>
+
+
+          <div class="settings-small">
+
+            ${safe(post.caption)}
+
+          </div>
+
+
+          <button
+
+          class="secondary"
+
+          onclick="
+            editPost(
+              '${post.id}'
+            )
+          ">
+
+            Изменить
+
+          </button>
+
+
+        </div>
+
+      `;
+
+    }
+
+  );
+
+
+  html += `
+
+    <button
+
+    class="primary"
+
+    onclick="
+      editPost('')
+    ">
+
+      Добавить публикацию
+
+    </button>
+
+  `;
+
+
+  showSystem(
+
+    "Лента",
+
+    html,
+
+    "openContentSettings()"
+
+  );
+
+}
+
+
+/* =========================================================
+   POST EDITOR
+========================================================= */
+
+function editPost(id){
+
+  const post =
+
+    state.posts.find(
+      item =>
+      item.id === id
+    )
+
+    ||
+
+    {
+      id:"",
+      user:"",
+      caption:"",
+      avatarId:null,
+      imageId:null
+    };
+
+
+  showSystem(
+
+    id
+    ?
+    "Публикация"
+    :
+    "Новая публикация",
+
+    `
+
+      <input
+      class="field"
+      id="postUser"
+      placeholder="Имя профиля"
+      value="${attr(post.user)}">
+
+
+      <textarea
+      class="field"
+      id="postCaption"
+      placeholder="Подпись">${safe(post.caption)}</textarea>
+
+
+      <button
+      class="secondary"
+      onclick="
+        choosePostPhoto()
+      ">
+
+        Выбрать фото публикации
+
+      </button>
+
+
+      <button
+      class="primary"
+      onclick="
+        savePost(
+          '${id}'
+        )
+      ">
+
+        Сохранить
+
+      </button>
+
+    `,
+
+    "openInstagramAdmin()"
+
+  );
+
+}
+
+
+/* =========================================================
+   POST PHOTO
+========================================================= */
+
+let pendingPostBlob =
+null;
+
+
+function choosePostPhoto(){
+
+  document
+  .getElementById(
+    "postPhotoInput"
+  )
+  .click();
+
+}
+
+
+document
+.getElementById(
+  "postPhotoInput"
+)
+.addEventListener(
+
+  "change",
+
+  async function(){
+
+
+    const file =
+    this.files[0];
+
+
+    if(file){
+
+      pendingPostBlob =
+      await compressFile(
+
+        file,
+
+        1400,
+
+        1400,
+
+        .84
+
+      );
+
+    }
+
+
+    this.value =
+    "";
+
+  }
+
+);
+
+
+async function savePost(id){
+
+  let post =
+  state.posts.find(
+
+    item =>
+    item.id === id
+
+  );
+
+
+  if(!post){
+
+    post = {
+
+      id:
+        "post_"
+        +
+        Date.now(),
+
+      user:"",
+
+      caption:"",
+
+      avatarId:null,
+
+      imageId:null
+
+    };
+
+
+    state.posts.unshift(
+      post
+    );
+
+  }
+
+
+  post.user =
+  document
+  .getElementById(
+    "postUser"
+  )
+  .value
+  .trim()
+
+  ||
+
+  "profile";
+
+
+  post.caption =
+  document
+  .getElementById(
+    "postCaption"
+  )
+  .value
+  .trim();
+
+
+  if(
+    pendingPostBlob
+  ){
+
+    const imageId =
+    "postimage_"
+    +
+    Date.now();
+
+
+    await saveAsset(
+
+      imageId,
+
+      pendingPostBlob
+
+    );
+
+
+    post.imageId =
+    imageId;
+
+
+    pendingPostBlob =
+    null;
+
+  }
+
+
+  saveState();
+
+  openInstagramAdmin();
+
+}
+
+
+/* =========================================================
+   TELEGRAM / MAX
+========================================================= */
+
+async function openMessenger(
+  kind,
+  title
+){
+
+  const chats =
+  state.chats[kind]
+  ||
+  [];
+
+
+  let rows =
+  "";
+
+
+  for(
+    const chat
+    of chats
+  ){
+
+    let avatar =
+    safe(
+      chat.name[0]
+      ||
+      "?"
+    );
+
+
+    if(
+      chat.avatarId
+    ){
+
+      const url =
+      await assetUrl(
+        chat.avatarId
+      );
+
+
+      if(url){
+
+        avatar =
+        `<img src="${url}">`;
+
+      }
+
+    }
+
+
+    rows += `
+
+      <div
+      class="list-row"
+      onclick="
+        openChat(
+          '${kind}',
+          '${chat.id}',
+          '${title}'
+        )
+      ">
+
+
+        <div class="avatar">
+
+          ${avatar}
+
+        </div>
+
+
+        <div class="list-main">
+
+
+          <div class="list-title">
+
+            ${safe(chat.name)}
+
+          </div>
+
+
+          <div class="list-sub">
+
+            ${safe(chat.last || "")}
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    `;
+
+  }
+
+
+  const overlay =
+  document.getElementById(
+    "chatOverlay"
+  );
+
+
+  overlay.innerHTML = `
+
+    <div class="chat-shell">
+
+
+      <div class="system-top">
+
+
+        <button
+        class="system-back"
+        onclick="closeChat()">
+
+          ‹ Назад
+
+        </button>
+
+
+        <div class="system-title">
+
+          ${safe(title)}
+
+        </div>
+
+
+      </div>
+
+
+      <div class="chat-list">
+
+
+        <div class="card">
+
+          ${rows}
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  `;
+
+
+  overlay.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   OPEN CHAT
+========================================================= */
+
+async function openChat(
+  kind,
+  id,
+  title
+){
+
+  const chat =
+  state.chats[kind]
+  .find(
+
+    item =>
+    item.id === id
+
+  );
+
+
+  if(!chat){
+    return;
+  }
+
+
+  let messages =
+  "";
+
+
+  for(
+    const message
+    of chat.messages
+  ){
+
+
+    if(
+      message.photoId
+    ){
+
+      const url =
+      await assetUrl(
+        message.photoId
+      );
+
+
+      if(url){
+
+        messages += `
+
+          <img
+
+          class="
+            chat-photo
+            ${message.side}
+          "
+
+          src="${url}">
+
+        `;
+
+      }
+
+    }
+
+
+    if(
+      message.text
+    ){
+
+      messages += `
+
+        <div
+        class="
+          chat-bubble
+          ${message.side}
+        ">
+
+          ${safe(message.text)}
+
+        </div>
+
+      `;
+
+    }
+
+  }
+
+
+  const overlay =
+  document.getElementById(
+    "chatOverlay"
+  );
+
+
+  overlay.innerHTML = `
+
+    <div class="chat-shell">
+
+
+      <div class="system-top">
+
+
+        <button
+        class="system-back"
+        onclick="
+          openMessenger(
+            '${kind}',
+            '${title}'
+          )
+        ">
+
+          ‹ Чаты
+
+        </button>
+
+
+        <div class="system-title">
+
+          ${safe(chat.name)}
+
+        </div>
+
+
+      </div>
+
+
+      <div
+      class="chat-body"
+      id="liveChatBody">
+
+        ${messages}
+
+      </div>
+
+
+      <div class="compose">
+
+
+        <input
+        id="liveMessage"
+        placeholder="Сообщение">
+
+
+        <button
+        onclick="
+          sendLiveMessage(
+            '${kind}',
+            '${id}',
+            '${title}'
+          )
+        ">
+
+          ↑
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+  `;
+
+
+  overlay.classList.add(
+    "show"
+  );
+
+
+  setTimeout(
+    ()=>{
+
+      const body =
+      document.getElementById(
+        "liveChatBody"
+      );
+
+
+      if(body){
+
+        body.scrollTop =
+        body.scrollHeight;
+
+      }
+
+    },
+    0
+  );
+
+}
+
+
+/* =========================================================
+   LIVE MESSAGE
+========================================================= */
+
+function sendLiveMessage(
+  kind,
+  id,
+  title
+){
+
+  const input =
+  document.getElementById(
+    "liveMessage"
+  );
+
+
+  const text =
+  input.value
+  .trim();
+
+
+  if(!text){
+    return;
+  }
+
+
+  const chat =
+  state.chats[kind]
+  .find(
+
+    item =>
+    item.id === id
+
+  );
+
+
+  if(!chat){
+    return;
+  }
+
+
+  chat.messages.push({
+
+    side:"out",
+
+    text:text,
+
+    photoId:null
+
+  });
+
+
+  chat.last =
+  text;
+
+
+  saveState();
+
+
+  openChat(
+    kind,
+    id,
+    title
+  );
+
+}
+
+
+function closeChat(){
+
+  const overlay =
+  document.getElementById(
+    "chatOverlay"
+  );
+
+
+  overlay.classList.remove(
+    "show"
+  );
+
+
+  overlay.innerHTML =
+  "";
+
+}
+
+
+/* =========================================================
+   INSTAGRAM VIEW
+========================================================= */
+
+async function openInstagram(){
+
+  const overlay =
+  document.getElementById(
+    "socialOverlay"
+  );
+
+
+  let storiesHtml =
+  "";
+
+
+  for(
+    const story
+    of state.stories
+  ){
+
+    let avatar =
+    safe(
+      story.name[0]
+      ||
+      "?"
+    );
+
+
+    if(
+      story.avatarId
+    ){
+
+      const url =
+      await assetUrl(
+        story.avatarId
+      );
+
+
+      if(url){
+
+        avatar =
+        `<img src="${url}">`;
+
+      }
+
+    }
+
+
+    storiesHtml += `
+
+      <div class="story">
+
+
+        <div class="story-ring">
+
+
+          <div class="avatar">
+
+            ${avatar}
+
+          </div>
+
+
+        </div>
+
+
+        <div>
+          ${safe(story.name)}
+        </div>
+
+
+      </div>
+
+    `;
+
+  }
+
+
+  let postsHtml =
+  "";
+
+
+  for(
+    const post
+    of state.posts
+  ){
+
+    let imageHtml = `
+
+      <div
+
+      class="post-img"
+
+      style="
+        background:
+          linear-gradient(
+            145deg,
+            #efb267,
+            #7556da
+          );
+      ">
+
+      </div>
+
+    `;
+
+
+    if(
+      post.imageId
+    ){
+
+      const url =
+      await assetUrl(
+        post.imageId
+      );
+
+
+      if(url){
+
+        imageHtml = `
+
+          <img
+          class="post-img"
+          src="${url}">
+
+        `;
+
+      }
+
+    }
+
+
+    postsHtml += `
+
+      <div class="post">
+
+
+        <div class="post-head">
+
+
+          <div class="avatar">
+
+            ${safe(post.user[0] || "?")}
+
+          </div>
+
+
+          <b>
+            ${safe(post.user)}
+          </b>
+
+
+        </div>
+
+
+        ${imageHtml}
+
+
+        <div class="post-actions">
+
+          ♡　💬　⌁
+
+        </div>
+
+
+        <div class="post-caption">
+
+          <b>
+            ${safe(post.user)}
+          </b>
+
+          ${safe(post.caption)}
+
+        </div>
+
+
+      </div>
+
+    `;
+
+  }
+
+
+  overlay.innerHTML = `
+
+    <div class="social-shell">
+
+
+      <div class="social-top">
+
+        Instagram
+
+
+        <button
+        class="social-close"
+        onclick="closeSocial()">
+
+          ✕
+
+        </button>
+
+
+      </div>
+
+
+      <div class="stories">
+
+        ${storiesHtml}
+
+      </div>
+
+
+      <div class="social-feed">
+
+        ${postsHtml}
+
+      </div>
+
+
+    </div>
+
+  `;
+
+
+  overlay.classList.add(
+    "show"
+  );
+
+}
+
+
+function closeSocial(){
+
+  const overlay =
+  document.getElementById(
+    "socialOverlay"
+  );
+
+
+  overlay.classList.remove(
+    "show"
+  );
+
+
+  overlay.innerHTML =
+  "";
+
+}
+
+
+/* =========================================================
+   PAGES SETTINGS
 ========================================================= */
 
 function openPageSettings(){
@@ -2782,59 +5720,82 @@ function openPageSettings(){
   `<div class="settings-group">`;
 
 
-  state.pages
-  .forEach(
-    (
-      page,
-      index
-    )=>{
+  state.pages.forEach(
+
+    page=>{
+
 
       const count =
       state.apps.filter(
-        app=>
+
+        app =>
         app.pageId === page.id
-      ).length;
+
+      )
+      .length;
 
 
       html += `
 
         <div class="settings-row">
 
+
           <div class="settings-main">
+
 
             ${safe(page.name)}
 
+
             <div class="settings-small">
-              ${count} прилож.
+
+              ${count}
+              прилож.
+
             </div>
+
 
           </div>
 
+
           ${
             state.pages.length > 1
+
             ?
+
             `
+
             <button
+
             style="
-            border:0;
-            background:none;
-            color:#ff3b30;
+              border:0;
+              background:none;
+              color:#ff3b30;
             "
+
             onclick="
-            removePage('${page.id}')
+              removePage(
+                '${page.id}'
+              )
             ">
+
               Удалить
+
             </button>
+
             `
+
             :
+
             ""
           }
+
 
         </div>
 
       `;
 
     }
+
   );
 
 
@@ -2847,16 +5808,22 @@ function openPageSettings(){
     <button
     class="primary"
     onclick="addPage()">
+
       Добавить страницу
+
     </button>
 
   `;
 
 
   showSystem(
+
     "Рабочие столы",
+
     html,
+
     "openSettings()"
+
   );
 
 }
@@ -2867,24 +5834,26 @@ function addPage(){
   state.pages.push({
 
     id:
-    "page_"
-    +
-    Date.now(),
+      "page_"
+      +
+      Date.now(),
 
     name:
-    "Страница "
-    +
-    (
-      state.pages.length
+      "Страница "
       +
-      1
-    )
+      (
+        state.pages.length
+        +
+        1
+      )
 
   });
 
 
   state.currentPage =
-  state.pages.length-1;
+  state.pages.length
+  -
+  1;
 
 
   saveState();
@@ -2901,18 +5870,23 @@ function removePage(id){
   if(
     state.pages.length <= 1
   ){
+
     return;
+
   }
 
 
   const target =
   state.pages.find(
-    item=>
-    item.id !== id
+
+    page =>
+    page.id !== id
+
   );
 
 
   state.apps.forEach(
+
     app=>{
 
       if(
@@ -2925,13 +5899,16 @@ function removePage(id){
       }
 
     }
+
   );
 
 
   state.pages =
   state.pages.filter(
-    item=>
-    item.id !== id
+
+    page =>
+    page.id !== id
+
   );
 
 
@@ -2949,55 +5926,55 @@ function removePage(id){
 
 
 /* =========================================================
-   APPLICATION SETTINGS
+   APP SETTINGS
 ========================================================= */
 
-function openAppsSettings(){
+function openAppSettings(){
 
   let html =
   `<div class="settings-group">`;
 
 
-  state.apps
-  .forEach(
+  state.apps.forEach(
+
     app=>{
+
+      const page =
+      state.pages.find(
+
+        item =>
+        item.id === app.pageId
+
+      );
+
 
       html += `
 
         <div class="settings-row">
 
-          <div class="settings-icon">
-            ${safe(app.icon)}
-          </div>
 
           <div class="settings-main">
 
+
             ${safe(app.title)}
+
 
             <div class="settings-small">
 
-              ${
-                safe(
-                  state.pages
-                  .find(
-                    page=>
-                    page.id === app.pageId
-                  )
-                  ?.name
-                  ||
-                  ""
-                )
-              }
+              ${safe(page?.name || "")}
 
             </div>
 
+
           </div>
+
 
         </div>
 
       `;
 
     }
+
   );
 
 
@@ -3010,41 +5987,30 @@ function openAppsSettings(){
     <button
     class="primary"
     onclick="openAddApp()">
+
       Добавить приложение
+
     </button>
 
   `;
 
 
   showSystem(
+
     "Приложения",
+
     html,
+
     "openSettings()"
+
   );
 
 }
 
 
 /* =========================================================
-   ADD APPLICATION
+   ADD APP
 ========================================================= */
-
-const icons = [
-
-  "💬","📷","🎵","🎮",
-  "🌐","📅","📊","📝",
-
-  "👤","🗺️","📚","📁",
-  "⭐","🎧","🎬","🚗",
-
-  "☁️","📸","☎️","⚙️"
-
-];
-
-
-let selectedIcon =
-"⭐";
-
 
 let pendingIconBlob =
 null;
@@ -3053,44 +6019,21 @@ null;
 function openAddApp(){
 
   const pageOptions =
-  state.pages.map(
+  state.pages
+  .map(
+
     page=>`
 
       <option value="${page.id}">
+
         ${safe(page.name)}
+
       </option>
 
     `
-  ).join("");
 
-
-  const iconHtml =
-  icons.map(
-    icon=>`
-
-      <div
-
-      class="
-      icon-choice
-      ${
-        icon === selectedIcon
-        ?
-        "selected"
-        :
-        ""
-      }
-      "
-
-      onclick="
-      selectEmoji('${icon}')
-      ">
-
-        ${icon}
-
-      </div>
-
-    `
-  ).join("");
+  )
+  .join("");
 
 
   showSystem(
@@ -3101,65 +6044,53 @@ function openAddApp(){
 
       <input
       class="field"
-      id="newTitle"
+      id="newAppTitle"
       placeholder="Название">
 
 
       <input
       class="field"
-      id="newUrl"
+      id="newAppUrl"
       placeholder="https://... или URL-схема">
 
 
       <select
       class="field"
-      id="newPage">
+      id="newAppPage">
 
         ${pageOptions}
 
       </select>
 
 
-      <div class="icon-picker">
-        ${iconHtml}
-      </div>
-
-
       <button
       class="secondary"
       onclick="
-      document
-      .getElementById('iconInput')
-      .click()
+        document
+        .getElementById(
+          'iconInput'
+        )
+        .click()
       ">
+
         Выбрать свою иконку
+
       </button>
 
 
       <button
       class="primary"
       onclick="saveNewApp()">
+
         Добавить
+
       </button>
 
     `,
 
-    "openAppsSettings()"
+    "openAppSettings()"
 
   );
-
-}
-
-
-function selectEmoji(icon){
-
-  selectedIcon =
-  icon;
-
-  pendingIconBlob =
-  null;
-
-  openAddApp();
 
 }
 
@@ -3169,32 +6100,29 @@ document
   "iconInput"
 )
 .addEventListener(
+
   "change",
+
   async function(){
+
 
     const file =
     this.files[0];
 
 
-    if(!file){
-      return;
-    }
-
-
-    try{
+    if(file){
 
       pendingIconBlob =
       await compressFile(
+
         file,
+
         400,
+
         400,
+
         .86
-      );
 
-    }catch(error){
-
-      alert(
-        "Не удалось обработать иконку."
       );
 
     }
@@ -3204,6 +6132,7 @@ document
     "";
 
   }
+
 );
 
 
@@ -3212,32 +6141,20 @@ async function saveNewApp(){
   const title =
   document
   .getElementById(
-    "newTitle"
+    "newAppTitle"
   )
   .value
   .trim();
-
-
-  const url =
-  document
-  .getElementById(
-    "newUrl"
-  )
-  .value
-  .trim();
-
-
-  const pageId =
-  document
-  .getElementById(
-    "newPage"
-  )
-  .value;
 
 
   if(!title){
-    alert("Введите название.");
+
+    alert(
+      "Введите название."
+    );
+
     return;
+
   }
 
 
@@ -3256,9 +6173,16 @@ async function saveNewApp(){
 
 
     await saveAsset(
+
       imageId,
+
       pendingIconBlob
+
     );
+
+
+    pendingIconBlob =
+    null;
 
   }
 
@@ -3266,154 +6190,43 @@ async function saveNewApp(){
   state.apps.push({
 
     id:
-    "app_"
-    +
-    Date.now(),
+      "app_"
+      +
+      Date.now(),
 
     title:title,
 
-    icon:selectedIcon,
+    icon:"⭐",
 
     imageId:imageId,
 
-    pageId:pageId,
+    pageId:
+      document
+      .getElementById(
+        "newAppPage"
+      )
+      .value,
 
     type:"url",
 
-    url:url,
+    url:
+      document
+      .getElementById(
+        "newAppUrl"
+      )
+      .value
+      .trim(),
 
     removable:true
 
   });
 
 
-  selectedIcon =
-  "⭐";
-
-
-  pendingIconBlob =
-  null;
-
-
   saveState();
 
   render();
 
-  openAppsSettings();
-
-}
-
-
-/* =========================================================
-   MESSAGES
-========================================================= */
-
-function openMessages(){
-
-  const people = [
-
-    ["Анна","До вечера 😊"],
-    ["Максим","Да, получил"],
-    ["Семья","Встречаемся в 19:00"]
-
-  ];
-
-
-  showSystem(
-
-    "Сообщения",
-
-    `
-
-      <div class="card">
-
-        ${
-          people.map(
-            person=>`
-
-              <div class="list-row">
-
-                <div class="avatar">
-                  ${person[0][0]}
-                </div>
-
-                <div class="list-main">
-
-                  <div class="list-title">
-                    ${person[0]}
-                  </div>
-
-                  <div class="list-sub">
-                    ${person[1]}
-                  </div>
-
-                </div>
-
-              </div>
-
-            `
-          ).join("")
-        }
-
-      </div>
-
-    `
-
-  );
-
-}
-
-
-/* =========================================================
-   CONTACTS
-========================================================= */
-
-function openContacts(){
-
-  const contacts = [
-
-    "Анна",
-    "Максим",
-    "Ирина",
-    "Сергей",
-    "Александр"
-
-  ];
-
-
-  showSystem(
-
-    "Контакты",
-
-    `
-
-      <div class="card">
-
-        ${
-          contacts.map(
-            name=>`
-
-              <div class="list-row">
-
-                <div class="avatar">
-                  ${name[0]}
-                </div>
-
-                <div class="list-title">
-                  ${name}
-                </div>
-
-              </div>
-
-            `
-          ).join("")
-        }
-
-      </div>
-
-    `
-
-  );
+  openAppSettings();
 
 }
 
@@ -3429,13 +6242,13 @@ async function openPhotos(){
 
 
   for(
-    const item
+    const wallpaper
     of state.wallpapers
   ){
 
     const url =
     await assetUrl(
-      item.id
+      wallpaper.id
     );
 
 
@@ -3448,9 +6261,9 @@ async function openPhotos(){
         src="${url}"
 
         style="
-        width:100%;
-        aspect-ratio:1/1;
-        object-fit:cover;
+          width:100%;
+          aspect-ratio:1/1;
+          object-fit:cover;
         ">
 
       `;
@@ -3469,10 +6282,10 @@ async function openPhotos(){
       <div
 
       style="
-      display:grid;
-      grid-template-columns:
-      repeat(3,1fr);
-      gap:3px;
+        display:grid;
+        grid-template-columns:
+          repeat(3,1fr);
+        gap:3px;
       ">
 
         ${images}
@@ -3494,12 +6307,63 @@ function openNotes(){
 
   const notes =
   JSON.parse(
+
     localStorage.getItem(
-      "v41Notes"
+      "v42Notes"
     )
+
     ||
+
     "[]"
+
   );
+
+
+  const list =
+  notes
+  .map(
+
+    (
+      note,
+      index
+    )=>`
+
+      <div
+      class="card"
+      onclick="
+        editNote(
+          ${index}
+        )
+      ">
+
+        <b>
+          ${safe(note.title)}
+        </b>
+
+        <div class="settings-small">
+
+          ${
+            safe(
+              (
+                note.text
+                ||
+                ""
+              )
+              .slice(
+                0,
+                80
+              )
+            )
+          }
+
+        </div>
+
+      </div>
+
+    `
+
+  )
+  .join("");
 
 
   showSystem(
@@ -3511,60 +6375,15 @@ function openNotes(){
       <button
       class="primary"
       onclick="editNote(-1)">
+
         Новая заметка
+
       </button>
 
 
       <div style="margin-top:15px">
 
-        ${
-          notes.length
-          ?
-          notes.map(
-            (
-              note,
-              index
-            )=>`
-
-              <div
-              class="card"
-              onclick="
-              editNote(${index})
-              ">
-
-                <b>
-                  ${safe(note.title)}
-                </b>
-
-                <div class="settings-small">
-
-                  ${
-                    safe(
-                      note.text.slice(
-                        0,
-                        80
-                      )
-                    )
-                  }
-
-                </div>
-
-              </div>
-
-            `
-          ).join("")
-          :
-          `
-          <div
-          style="
-          color:#888;
-          text-align:center;
-          padding:30px;
-          ">
-            Нет заметок
-          </div>
-          `
-        }
+        ${list}
 
       </div>
 
@@ -3579,23 +6398,32 @@ function editNote(index){
 
   const notes =
   JSON.parse(
+
     localStorage.getItem(
-      "v41Notes"
+      "v42Notes"
     )
+
     ||
+
     "[]"
+
   );
 
 
   const note =
-  index >= 0
-  ?
-  notes[index]
-  :
-  {
-    title:"",
-    text:""
-  };
+
+    index >= 0
+
+    ?
+
+    notes[index]
+
+    :
+
+    {
+      title:"",
+      text:""
+    };
 
 
   showSystem(
@@ -3614,16 +6442,19 @@ function editNote(index){
       <textarea
       class="field"
       id="noteText"
-      style="height:140px;padding-top:12px"
       placeholder="Текст">${safe(note.text)}</textarea>
 
 
       <button
       class="primary"
       onclick="
-      saveNote(${index})
+        saveNote(
+          ${index}
+        )
       ">
+
         Сохранить
+
       </button>
 
     `,
@@ -3639,295 +6470,65 @@ function saveNote(index){
 
   const notes =
   JSON.parse(
+
     localStorage.getItem(
-      "v41Notes"
+      "v42Notes"
     )
+
     ||
+
     "[]"
+
   );
 
 
   const note = {
 
     title:
-    document
-    .getElementById(
-      "noteTitle"
-    )
-    .value,
+      document
+      .getElementById(
+        "noteTitle"
+      )
+      .value,
 
     text:
-    document
-    .getElementById(
-      "noteText"
-    )
-    .value
+      document
+      .getElementById(
+        "noteText"
+      )
+      .value
 
   };
 
 
-  if(index>=0){
+  if(
+    index >= 0
+  ){
 
     notes[index] =
     note;
 
-  }else{
+  }
 
-    notes.unshift(note);
+  else{
+
+    notes.unshift(
+      note
+    );
 
   }
 
 
   localStorage.setItem(
-    "v41Notes",
+
+    "v42Notes",
+
     JSON.stringify(notes)
+
   );
 
 
   openNotes();
-
-}
-
-
-/* =========================================================
-   CALCULATOR
-========================================================= */
-
-function openCalculator(){
-
-  const buttons = [
-
-    "7","8","9","÷",
-    "4","5","6","×",
-    "1","2","3","−",
-    "0",".","=","+",
-    "C"
-
-  ].map(
-    item=>`
-
-      <button
-
-      onclick="
-      calculatorPress('${item}')
-      "
-
-      style="
-      height:58px;
-      border:0;
-      border-radius:50%;
-      background:#333;
-      color:#fff;
-      font-size:22px;
-      ">
-
-        ${item}
-
-      </button>
-
-    `
-  ).join("");
-
-
-  showSystem(
-
-    "Калькулятор",
-
-    `
-
-      <div
-      style="
-      padding:18px;
-      border-radius:22px;
-      background:#111;
-      ">
-
-        <input
-
-        id="calculatorDisplay"
-
-        readonly
-
-        style="
-        width:100%;
-        height:78px;
-        border:0;
-        outline:none;
-        background:#111;
-        color:#fff;
-        text-align:right;
-        font-size:38px;
-        ">
-
-
-        <div
-
-        style="
-        display:grid;
-        grid-template-columns:
-        repeat(4,1fr);
-        gap:9px;
-        ">
-
-          ${buttons}
-
-        </div>
-
-      </div>
-
-    `
-
-  );
-
-}
-
-
-function calculatorPress(value){
-
-  const display =
-  document
-  .getElementById(
-    "calculatorDisplay"
-  );
-
-
-  if(value==="C"){
-
-    display.value =
-    "";
-
-    return;
-  }
-
-
-  if(value==="="){
-
-    try{
-
-      const expression =
-      display.value
-
-      .replaceAll(
-        "×",
-        "*"
-      )
-
-      .replaceAll(
-        "÷",
-        "/"
-      )
-
-      .replaceAll(
-        "−",
-        "-"
-      );
-
-
-      display.value =
-      Function(
-        `"use strict";return (${expression})`
-      )();
-
-    }catch(e){
-
-      display.value =
-      "Ошибка";
-
-    }
-
-
-    return;
-
-  }
-
-
-  display.value +=
-  value;
-
-}
-
-
-/* =========================================================
-   APP CATALOG
-========================================================= */
-
-function openCatalog(){
-
-  showSystem(
-
-    "Приложения",
-
-    `
-
-      <div class="card">
-
-        <div class="list-row">
-
-          <div class="avatar">
-            🎵
-          </div>
-
-          <div class="list-main">
-
-            <div class="list-title">
-              Музыка
-            </div>
-
-            <div class="list-sub">
-              Музыкальная библиотека
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="list-row">
-
-          <div class="avatar">
-            🎮
-          </div>
-
-          <div class="list-main">
-
-            <div class="list-title">
-              Игры
-            </div>
-
-            <div class="list-sub">
-              Игровой раздел
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="list-row">
-
-          <div class="avatar">
-            📝
-          </div>
-
-          <div class="list-main">
-
-            <div class="list-title">
-              Заметки
-            </div>
-
-            <div class="list-sub">
-              Локальные записи
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    `
-
-  );
 
 }
 
@@ -3942,8 +6543,7 @@ function openBrowser(
 ){
 
   const overlay =
-  document
-  .getElementById(
+  document.getElementById(
     "browserOverlay"
   );
 
@@ -3952,25 +6552,32 @@ function openBrowser(
 
     <div class="browser-shell">
 
-      <div class="browser-top">
+
+      <div
+
+      class="system-top"
+
+      style="
+        background:#1b1b1e;
+        color:#fff;
+      ">
+
 
         <button
-        class="browser-button"
+        class="system-back"
         onclick="closeBrowser()">
-          ‹
+
+          ‹ Назад
+
         </button>
 
 
-        <div class="browser-title">
+        <div class="system-title">
+
           ${safe(title)}
+
         </div>
 
-
-        <button
-        class="browser-button"
-        onclick="closeBrowser()">
-          ✕
-        </button>
 
       </div>
 
@@ -3982,11 +6589,12 @@ function openBrowser(
       src="${attr(url)}"
 
       allow="
-      autoplay;
-      fullscreen
+        autoplay;
+        fullscreen
       ">
 
       </iframe>
+
 
     </div>
 
@@ -4003,8 +6611,7 @@ function openBrowser(
 function closeBrowser(){
 
   const overlay =
-  document
-  .getElementById(
+  document.getElementById(
     "browserOverlay"
   );
 
@@ -4016,222 +6623,6 @@ function closeBrowser(){
 
   overlay.innerHTML =
   "";
-
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-function openSearch(){
-
-  const overlay =
-  document
-  .getElementById(
-    "searchOverlay"
-  );
-
-
-  overlay.innerHTML = `
-
-    <div class="search-line">
-
-      <input
-      class="search-input"
-      id="searchInput"
-      placeholder="Поиск"
-      oninput="runSearch()">
-
-
-      <button
-      class="search-cancel"
-      onclick="closeSearch()">
-        Отмена
-      </button>
-
-    </div>
-
-
-    <div
-    class="search-results"
-    id="searchResults">
-    </div>
-
-  `;
-
-
-  overlay.classList.add(
-    "show"
-  );
-
-
-  setTimeout(
-    ()=>{
-
-      document
-      .getElementById(
-        "searchInput"
-      )
-      ?.focus();
-
-    },
-    120
-  );
-
-
-  runSearch();
-
-}
-
-
-function runSearch(){
-
-  const input =
-  document
-  .getElementById(
-    "searchInput"
-  );
-
-
-  if(!input){
-    return;
-  }
-
-
-  const query =
-  input.value
-  .toLowerCase()
-  .trim();
-
-
-  const results =
-  state.apps.filter(
-    app=>
-    !query
-    ||
-    app.title
-    .toLowerCase()
-    .includes(query)
-  );
-
-
-  const box =
-  document
-  .getElementById(
-    "searchResults"
-  );
-
-
-  box.innerHTML =
-  results.map(
-    app=>`
-
-      <div
-      class="search-item"
-      onclick="
-      closeSearch();
-      launchAppById('${app.id}')
-      ">
-
-        ${iconHTML(app)}
-
-        <div>
-          ${safe(app.title)}
-        </div>
-
-      </div>
-
-    `
-  ).join("");
-
-
-  hydrateImages();
-
-}
-
-
-function launchAppById(id){
-
-  const app =
-  state.apps.find(
-    item=>
-    item.id === id
-  );
-
-
-  if(app){
-    openApp(app);
-  }
-
-}
-
-
-function closeSearch(){
-
-  const overlay =
-  document
-  .getElementById(
-    "searchOverlay"
-  );
-
-
-  overlay.classList.remove(
-    "show"
-  );
-
-
-  overlay.innerHTML =
-  "";
-
-}
-
-
-/* =========================================================
-   SAFE HTML
-========================================================= */
-
-function safe(text){
-
-  return String(
-    text ?? ""
-  )
-
-  .replaceAll(
-    "&",
-    "&amp;"
-  )
-
-  .replaceAll(
-    "<",
-    "&lt;"
-  )
-
-  .replaceAll(
-    ">",
-    "&gt;"
-  )
-
-  .replaceAll(
-    '"',
-    "&quot;"
-  )
-
-  .replaceAll(
-    "'",
-    "&#039;"
-  );
-
-}
-
-
-function attr(text){
-
-  return safe(text)
-  .replaceAll(
-    "`",
-    "&#096;"
-  );
 
 }
 
