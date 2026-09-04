@@ -13,11 +13,8 @@ content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,vie
 <title>Home</title>
 
 <style>
-
 :root{
-  --glass:rgba(255,255,255,.17);
-  --glassStrong:rgba(255,255,255,.25);
-  --line:rgba(255,255,255,.25);
+  --app-height:100dvh;
 }
 
 *{
@@ -25,154 +22,114 @@ content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,vie
   -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
   margin:0;
   width:100%;
   height:100%;
   overflow:hidden;
+  overscroll-behavior:none;
   background:#000;
-  color:#fff;
-
-  font-family:
-  -apple-system,
-  BlinkMacSystemFont,
-  "SF Pro Display",
-  "Segoe UI",
-  sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
 }
 
 body{
   position:fixed;
   inset:0;
+  color:#fff;
 }
 
-button,
-input,
-textarea,
-select{
+button,input,select,textarea{
   font:inherit;
 }
 
-button{
-  appearance:none;
-  -webkit-appearance:none;
-}
-
-
-/* =====================================================
+/* ================================
    HOME
-===================================================== */
+================================ */
 
 #home{
   position:absolute;
   inset:0;
-
   width:100%;
-  height:100%;
-
-  min-height:100svh;
-  min-height:100dvh;
-
+  height:var(--app-height);
   overflow:hidden;
 
   background:
-  linear-gradient(
-    160deg,
-    #4b5f7b,
-    #26354a 50%,
-    #0c121c
-  );
+    linear-gradient(160deg,#495a70,#263448 52%,#0d121a);
 
-  background-position:center;
   background-size:cover;
+  background-position:center;
   background-repeat:no-repeat;
 }
 
-#home::before{
+#home::after{
   content:"";
-
   position:absolute;
   inset:0;
-
   pointer-events:none;
 
   background:
-  linear-gradient(
-    180deg,
-    rgba(0,0,0,.01),
-    rgba(0,0,0,.02) 60%,
-    rgba(0,0,0,.22)
-  );
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.02),
+      rgba(0,0,0,.02) 65%,
+      rgba(0,0,0,.22)
+    );
 }
 
+/* ================================
+   SECRET ADMIN ENTRY
+================================ */
 
-/* =====================================================
-   INVISIBLE ADMIN HOTSPOT
-===================================================== */
-
-.admin-hotspot{
+#adminHotspot{
   position:absolute;
-
   top:0;
   left:0;
 
-  z-index:50;
+  width:70px;
+  height:70px;
 
-  width:55px;
-  height:55px;
+  z-index:999;
 
-  opacity:0;
+  background:transparent;
+
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-touch-callout:none;
 }
 
-
-/* =====================================================
+/* ================================
    PAGES
-===================================================== */
+================================ */
 
 .pages{
   position:absolute;
+  z-index:2;
 
   left:0;
   right:0;
 
-  top:
-  calc(
-    env(safe-area-inset-top)
-    +
-    18px
-  );
+  top:calc(env(safe-area-inset-top) + 18px);
 
-  bottom:
-  calc(
-    env(safe-area-inset-bottom)
-    +
-    120px
-  );
+  bottom:calc(env(safe-area-inset-bottom) + 120px);
 
   overflow:hidden;
 }
 
 .track{
+  display:flex;
+  width:100%;
   height:100%;
 
-  display:flex;
-
   transition:
-  transform .32s
-  cubic-bezier(.22,.7,.18,1);
+    transform .32s cubic-bezier(.22,.7,.18,1);
 }
 
 .page{
   flex:0 0 100%;
-
   width:100%;
   height:100%;
 
-  padding:
-  20px
-  18px
-  20px;
+  padding:22px 18px;
 
   overflow-y:auto;
 
@@ -183,80 +140,61 @@ button{
   display:none;
 }
 
-
-/* =====================================================
-   IOS-LIKE APP GRID
-===================================================== */
-
 .grid{
   display:grid;
-
-  grid-template-columns:
-  repeat(4,1fr);
+  grid-template-columns:repeat(4,1fr);
 
   column-gap:12px;
-
-  row-gap:22px;
-
-  align-content:start;
+  row-gap:23px;
 }
+
+/* ================================
+   ICONS
+================================ */
 
 .app{
   position:relative;
-
   min-width:0;
 
   text-align:center;
 
   user-select:none;
-
-  cursor:pointer;
+  -webkit-user-select:none;
 }
 
 .app-icon{
   position:relative;
 
-  width:min(16.8vw,68px);
-  height:min(16.8vw,68px);
+  width:min(17vw,70px);
+  height:min(17vw,70px);
 
   margin:auto;
 
-  border-radius:17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
   overflow:hidden;
 
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
+  border-radius:18px;
 
   font-size:31px;
 
   background:
-  linear-gradient(
-    145deg,
-    rgba(255,255,255,.32),
-    rgba(255,255,255,.08)
-  );
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.34),
+      rgba(255,255,255,.10)
+    );
 
-  border:
-  1px solid
-  rgba(255,255,255,.25);
+  border:1px solid rgba(255,255,255,.28);
 
   box-shadow:
-  0 8px 20px
-  rgba(0,0,0,.22),
+    0 9px 24px rgba(0,0,0,.23),
+    inset 0 1px 1px rgba(255,255,255,.58);
 
-  inset 0 1px 1px
-  rgba(255,255,255,.55);
-
-  backdrop-filter:
-  blur(16px)
-  saturate(175%);
-
-  -webkit-backdrop-filter:
-  blur(16px)
-  saturate(175%);
+  backdrop-filter:blur(17px) saturate(175%);
+  -webkit-backdrop-filter:blur(17px) saturate(175%);
 }
 
 .app-icon::before{
@@ -264,18 +202,17 @@ button{
 
   position:absolute;
 
-  left:-10%;
   top:-35%;
+  left:-15%;
 
   width:85%;
-  height:65%;
+  height:70%;
 
   border-radius:50%;
 
-  background:
-  rgba(255,255,255,.22);
+  background:rgba(255,255,255,.18);
 
-  filter:blur(9px);
+  filter:blur(8px);
 }
 
 .app-icon img{
@@ -296,41 +233,32 @@ button{
 .app-name{
   margin-top:6px;
 
-  font-size:11.5px;
+  padding:0 2px;
+
+  font-size:12px;
+
+  color:#fff;
 
   white-space:nowrap;
-
   overflow:hidden;
-
   text-overflow:ellipsis;
 
   text-shadow:
-  0 1px 4px
-  rgba(0,0,0,.85);
+    0 1px 5px rgba(0,0,0,.8);
 }
 
-
-/* =====================================================
+/* ================================
    EDIT MODE
-===================================================== */
+================================ */
 
 .editing .app{
   animation:
-  wiggle .18s
-  infinite
-  alternate;
+    wiggle .18s infinite alternate;
 }
 
 @keyframes wiggle{
-
-  from{
-    transform:rotate(-1.1deg);
-  }
-
-  to{
-    transform:rotate(1.1deg);
-  }
-
+  from{transform:rotate(-1deg)}
+  to{transform:rotate(1deg)}
 }
 
 .delete-app{
@@ -338,54 +266,73 @@ button{
 
   position:absolute;
 
-  left:2px;
-  top:-5px;
+  left:3px;
+  top:-6px;
 
-  z-index:10;
+  z-index:20;
 
-  width:23px;
-  height:23px;
-
-  border-radius:50%;
+  width:24px;
+  height:24px;
 
   border:0;
+  border-radius:50%;
 
-  background:
-  rgba(35,35,38,.9);
+  background:rgba(35,35,38,.94);
 
   color:#fff;
 
   font-size:18px;
-
-  line-height:20px;
 }
 
 .editing .delete-app{
   display:block;
 }
 
+.edit-done{
+  display:none;
 
-/* =====================================================
-   DOTS
-===================================================== */
+  position:absolute;
+
+  z-index:50;
+
+  top:calc(env(safe-area-inset-top) + 8px);
+  right:14px;
+
+  height:36px;
+
+  padding:0 17px;
+
+  border:0;
+  border-radius:18px;
+
+  background:rgba(255,255,255,.92);
+
+  color:#007aff;
+
+  font-weight:700;
+
+  box-shadow:0 3px 14px rgba(0,0,0,.16);
+}
+
+.editing .edit-done{
+  display:block;
+}
+
+/* ================================
+   PAGE DOTS
+================================ */
 
 .dots{
   position:absolute;
 
+  z-index:8;
+
   left:0;
   right:0;
 
-  bottom:
-  calc(
-    env(safe-area-inset-bottom)
-    +
-    99px
-  );
-
-  z-index:7;
+  bottom:calc(env(safe-area-inset-bottom) + 101px);
 
   display:flex;
-
   justify-content:center;
 
   gap:7px;
@@ -397,92 +344,73 @@ button{
 
   border-radius:50%;
 
-  background:
-  rgba(255,255,255,.35);
+  background:rgba(255,255,255,.36);
 }
 
 .dot.active{
   background:#fff;
 }
 
-
-/* =====================================================
+/* ================================
    DOCK
-===================================================== */
+================================ */
 
 .dock{
   position:absolute;
 
+  z-index:8;
+
   left:14px;
   right:14px;
 
-  bottom:
-  max(
-    9px,
-    env(safe-area-inset-bottom)
-  );
-
-  z-index:8;
+  bottom:max(9px,env(safe-area-inset-bottom));
 
   height:88px;
 
-  border-radius:28px;
+  border-radius:29px;
 
   display:flex;
-
   align-items:center;
-
-  justify-content:
-  space-around;
+  justify-content:space-around;
 
   background:
-  linear-gradient(
-    145deg,
-    rgba(255,255,255,.24),
-    rgba(255,255,255,.08)
-  );
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.24),
+      rgba(255,255,255,.08)
+    );
 
-  border:
-  1px solid
-  rgba(255,255,255,.24);
+  border:1px solid rgba(255,255,255,.25);
 
   box-shadow:
-  0 11px 30px
-  rgba(0,0,0,.28);
+    0 10px 30px rgba(0,0,0,.28);
 
-  backdrop-filter:
-  blur(26px)
-  saturate(180%);
-
-  -webkit-backdrop-filter:
-  blur(26px)
-  saturate(180%);
+  backdrop-filter:blur(27px) saturate(180%);
+  -webkit-backdrop-filter:blur(27px) saturate(180%);
 }
 
 .dock .app-icon{
   width:61px;
   height:61px;
 
-  border-radius:16px;
+  border-radius:17px;
 }
 
 .dock .app-name{
   display:none;
 }
 
-
-/* =====================================================
-   OVERLAY
-===================================================== */
+/* ================================
+   OVERLAYS
+================================ */
 
 .overlay{
   display:none;
 
   position:absolute;
-
   inset:0;
 
-  z-index:100;
+  z-index:1000;
 
   overflow:auto;
 }
@@ -491,204 +419,88 @@ button{
   display:block;
 }
 
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
-#searchOverlay{
-  padding:
-  calc(
-    env(safe-area-inset-top)
-    +
-    22px
-  )
-  14px
-  20px;
-
-  background:
-  rgba(20,20,25,.75);
-
-  backdrop-filter:
-  blur(32px);
-
-  -webkit-backdrop-filter:
-  blur(32px);
-}
-
-.searchbox{
-  display:flex;
-
-  gap:8px;
-}
-
-.searchbox input{
-  flex:1;
-
-  height:45px;
-
-  border:0;
-
-  border-radius:14px;
-
-  padding:
-  0 14px;
-
-  background:
-  rgba(255,255,255,.14);
-
-  color:#fff;
-
-  outline:none;
-
-  font-size:16px;
-}
-
-.search-cancel{
-  border:0;
-
-  background:none;
-
-  color:#fff;
-
-  padding:
-  0 5px;
-}
-
-.search-results{
-  margin-top:20px;
-}
-
-.search-item{
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-
-  padding:
-  10px 4px;
-
-  border-bottom:
-  1px solid
-  rgba(255,255,255,.08);
-}
-
-.search-item .app-icon{
-  width:48px;
-  height:48px;
-
-  margin:0;
-
-  border-radius:12px;
-
-  font-size:23px;
-}
-
-
-/* =====================================================
-   SETTINGS / SYSTEM APP
-===================================================== */
+/* ================================
+   SETTINGS STYLE
+================================ */
 
 .system-shell{
   position:absolute;
-
   inset:0;
+
+  display:flex;
+  flex-direction:column;
 
   background:#f2f2f7;
 
   color:#111;
-
-  display:flex;
-
-  flex-direction:column;
 }
 
 .system-top{
   min-height:64px;
 
   padding:
-  calc(
-    env(safe-area-inset-top)
-    +
-    10px
-  )
-  16px
-  10px;
+    calc(env(safe-area-inset-top) + 10px)
+    16px
+    10px;
 
   display:flex;
-
   align-items:flex-end;
 
   gap:12px;
 
-  background:
-  rgba(248,248,250,.96);
+  background:rgba(248,248,250,.96);
 
-  border-bottom:
-  1px solid
-  #d4d4d9;
+  border-bottom:1px solid #d7d7dc;
 }
 
 .system-back{
   border:0;
-
   background:none;
 
-  color:#007aff;
-
   padding:0;
+
+  color:#007aff;
 
   font-size:16px;
 }
 
 .system-title{
   font-size:21px;
-
   font-weight:700;
 }
 
 .system-body{
   flex:1;
 
-  overflow:auto;
+  overflow-y:auto;
 
   padding:
-  18px
-  14px
-  calc(
-    env(safe-area-inset-bottom)
-    +
-    25px
-  );
+    18px
+    14px
+    calc(env(safe-area-inset-bottom) + 25px);
 }
 
 .settings-group{
   overflow:hidden;
 
+  margin-bottom:18px;
+
   border-radius:14px;
 
   background:#fff;
-
-  margin-bottom:18px;
 }
 
 .settings-row{
-  min-height:54px;
+  min-height:56px;
 
   display:flex;
-
   align-items:center;
 
   gap:12px;
 
-  padding:
-  8px
-  13px;
+  padding:8px 13px;
 
-  border-bottom:
-  1px solid
-  #ececf0;
+  border-bottom:1px solid #ececf0;
 }
 
 .settings-row:last-child{
@@ -696,19 +508,18 @@ button{
 }
 
 .settings-icon{
-  width:31px;
-  height:31px;
+  width:32px;
+  height:32px;
 
   border-radius:8px;
 
   display:flex;
-
   align-items:center;
   justify-content:center;
 
-  background:#6574d9;
-
   color:#fff;
+
+  background:#6877d7;
 
   font-size:18px;
 }
@@ -718,180 +529,132 @@ button{
 }
 
 .settings-small{
-  font-size:12px;
-
-  color:#8a8a90;
-
   margin-top:2px;
+
+  color:#89898f;
+
+  font-size:12px;
 }
 
 .chevron{
-  color:#b3b3b8;
+  color:#b1b1b6;
 
   font-size:22px;
 }
 
-.switch{
-  width:49px;
-  height:29px;
+/* ================================
+   BUTTONS
+================================ */
 
-  padding:3px;
+.primary,
+.secondary,
+.danger{
+  width:100%;
+  min-height:48px;
 
-  border-radius:20px;
+  margin-top:10px;
 
-  background:#d6d6db;
+  border:0;
+  border-radius:13px;
 }
 
-.switch.on{
-  background:#34c759;
+.primary{
+  background:#007aff;
+  color:#fff;
+
+  font-weight:650;
 }
 
-.switch-knob{
-  width:23px;
-  height:23px;
+.secondary{
+  background:#fff;
+  color:#007aff;
+}
 
-  border-radius:50%;
+.danger{
+  background:#fff;
+  color:#ff3b30;
+}
+
+/* ================================
+   FIELDS
+================================ */
+
+.field{
+  width:100%;
+  height:48px;
+
+  margin-top:10px;
+
+  padding:0 13px;
+
+  border:1px solid #d7d7dc;
+  border-radius:13px;
 
   background:#fff;
+  color:#111;
 
-  box-shadow:
-  0 1px 4px
-  rgba(0,0,0,.2);
-
-  transition:.2s;
+  outline:none;
 }
 
-.switch.on .switch-knob{
-  transform:
-  translateX(20px);
+select.field{
+  appearance:auto;
 }
 
-
-/* =====================================================
-   WALLPAPERS SETTINGS
-===================================================== */
+/* ================================
+   WALLPAPERS
+================================ */
 
 .wallpaper-grid{
   display:grid;
 
-  grid-template-columns:
-  repeat(3,1fr);
+  grid-template-columns:repeat(3,1fr);
 
   gap:10px;
 }
 
 .wallpaper{
+  position:relative;
+
   aspect-ratio:9/16;
 
-  border-radius:13px;
+  overflow:hidden;
 
-  background:
-  center/cover
-  no-repeat;
+  border:2px solid transparent;
+  border-radius:14px;
 
-  border:
-  2px solid transparent;
-
-  position:relative;
+  background-position:center;
+  background-size:cover;
 }
 
 .wallpaper.selected{
   border-color:#007aff;
 }
 
-.wallpaper-x{
+.wallpaper-delete{
   position:absolute;
 
   left:5px;
   top:5px;
 
-  width:24px;
-  height:24px;
+  width:25px;
+  height:25px;
 
   border:0;
-
   border-radius:50%;
 
-  background:
-  rgba(0,0,0,.55);
+  background:rgba(0,0,0,.55);
 
   color:#fff;
 }
 
-
-/* =====================================================
-   BUTTONS / FORMS
-===================================================== */
-
-.primary{
-  width:100%;
-
-  min-height:48px;
-
-  border:0;
-
-  border-radius:13px;
-
-  background:#007aff;
-
-  color:#fff;
-
-  font-weight:600;
-
-  margin-top:10px;
-}
-
-.secondary{
-  width:100%;
-
-  min-height:48px;
-
-  border:0;
-
-  border-radius:13px;
-
-  background:#fff;
-
-  color:#007aff;
-
-  margin-top:10px;
-}
-
-.field{
-  width:100%;
-
-  height:48px;
-
-  margin-top:10px;
-
-  padding:
-  0 13px;
-
-  border:
-  1px solid
-  #d8d8dc;
-
-  border-radius:13px;
-
-  background:#fff;
-
-  color:#111;
-
-  outline:none;
-}
-
-textarea.field{
-  height:110px;
-
-  padding:
-  12px 13px;
-}
+/* ================================
+   ICON PICKER
+================================ */
 
 .icon-picker{
   display:grid;
 
-  grid-template-columns:
-  repeat(6,1fr);
+  grid-template-columns:repeat(6,1fr);
 
   gap:8px;
 
@@ -899,54 +662,47 @@ textarea.field{
 }
 
 .icon-choice{
-  height:44px;
+  height:45px;
 
+  border:2px solid transparent;
   border-radius:11px;
 
-  background:#fff;
-
   display:flex;
-
   align-items:center;
   justify-content:center;
 
-  font-size:23px;
+  background:#fff;
 
-  border:
-  2px solid transparent;
+  font-size:23px;
 }
 
 .icon-choice.selected{
   border-color:#007aff;
 }
 
-
-/* =====================================================
-   BUILTIN SIMPLE APPS
-===================================================== */
+/* ================================
+   LISTS
+================================ */
 
 .card{
-  background:#fff;
-
-  border-radius:15px;
+  padding:14px;
 
   margin-bottom:12px;
 
-  padding:14px;
+  border-radius:15px;
+
+  background:#fff;
 }
 
 .list-row{
   min-height:58px;
 
   display:flex;
-
   align-items:center;
 
   gap:12px;
 
-  border-bottom:
-  1px solid
-  #ececf0;
+  border-bottom:1px solid #ececf0;
 }
 
 .list-row:last-child{
@@ -959,17 +715,12 @@ textarea.field{
 
   border-radius:50%;
 
-  background:
-  linear-gradient(
-    145deg,
-    #7c9cff,
-    #735fe5
-  );
-
   display:flex;
-
   align-items:center;
   justify-content:center;
+
+  background:
+    linear-gradient(145deg,#7c9cff,#735fe5);
 
   color:#fff;
 
@@ -989,92 +740,24 @@ textarea.field{
 .list-sub{
   margin-top:3px;
 
-  color:#7c7c82;
-
-  white-space:nowrap;
-
-  overflow:hidden;
-
-  text-overflow:ellipsis;
+  color:#77777d;
 
   font-size:14px;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
-
-/* =====================================================
-   CATALOG
-===================================================== */
-
-.catalog-card{
-  background:#fff;
-
-  border-radius:16px;
-
-  padding:14px;
-
-  margin-bottom:11px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-}
-
-.catalog-icon{
-  width:58px;
-  height:58px;
-
-  border-radius:14px;
-
-  background:
-  linear-gradient(
-    145deg,
-    #4c8cff,
-    #7667e7
-  );
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  color:#fff;
-
-  font-size:27px;
-}
-
-.catalog-main{
-  flex:1;
-}
-
-.catalog-install{
-  border:0;
-
-  border-radius:17px;
-
-  padding:
-  7px 14px;
-
-  color:#007aff;
-
-  background:#e9e9ee;
-
-  font-weight:700;
-}
-
-
-/* =====================================================
+/* ================================
    BROWSER
-===================================================== */
+================================ */
 
 .browser-shell{
   position:absolute;
-
   inset:0;
 
   display:flex;
-
   flex-direction:column;
 
   background:#000;
@@ -1084,38 +767,29 @@ textarea.field{
   min-height:60px;
 
   padding:
-  calc(
-    env(safe-area-inset-top)
-    +
-    8px
-  )
-  12px
-  8px;
+    calc(env(safe-area-inset-top) + 8px)
+    12px
+    8px;
 
   display:flex;
-
   align-items:flex-end;
 
   gap:8px;
 
-  background:
-  rgba(24,24,26,.96);
+  background:rgba(24,24,26,.97);
 }
 
 .browser-button{
   height:38px;
 
-  border:0;
+  padding:0 12px;
 
+  border:0;
   border-radius:12px;
 
-  background:
-  rgba(255,255,255,.12);
+  background:rgba(255,255,255,.12);
 
   color:#fff;
-
-  padding:
-  0 12px;
 }
 
 .browser-title{
@@ -1123,11 +797,9 @@ textarea.field{
 
   text-align:center;
 
-  overflow:hidden;
-
-  text-overflow:ellipsis;
-
   white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
 .browser-frame{
@@ -1140,100 +812,456 @@ textarea.field{
   background:#fff;
 }
 
+/* ================================
+   SEARCH
+================================ */
+
+#searchOverlay{
+  padding:
+    calc(env(safe-area-inset-top) + 18px)
+    14px
+    20px;
+
+  background:rgba(20,20,24,.73);
+
+  backdrop-filter:blur(32px);
+  -webkit-backdrop-filter:blur(32px);
+}
+
+.search-line{
+  display:flex;
+
+  gap:8px;
+}
+
+.search-input{
+  flex:1;
+
+  height:45px;
+
+  border:0;
+  border-radius:14px;
+
+  padding:0 14px;
+
+  background:rgba(255,255,255,.16);
+
+  color:#fff;
+
+  outline:none;
+}
+
+.search-cancel{
+  border:0;
+
+  background:none;
+
+  color:#fff;
+}
+
+.search-results{
+  margin-top:18px;
+}
+
+.search-item{
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  padding:10px 3px;
+
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.search-item .app-icon{
+  width:48px;
+  height:48px;
+
+  margin:0;
+
+  border-radius:12px;
+}
 </style>
 </head>
 
 <body>
 
-
 <div id="home">
 
-  <div
-  class="admin-hotspot"
-  id="adminHotspot">
+  <div id="adminHotspot"></div>
+
+  <button
+    class="edit-done"
+    onclick="finishEditing()">
+    Готово
+  </button>
+
+  <div class="pages" id="pagesViewport">
+    <div class="track" id="track"></div>
   </div>
 
-  <div
-  class="pages"
-  id="pagesViewport">
+  <div class="dots" id="dots"></div>
 
-    <div
-    class="track"
-    id="track">
-    </div>
-
-  </div>
-
-  <div
-  class="dots"
-  id="dots">
-  </div>
-
-  <div
-  class="dock"
-  id="dock">
-  </div>
+  <div class="dock" id="dock"></div>
 
 </div>
 
+<div class="overlay" id="systemOverlay"></div>
+<div class="overlay" id="browserOverlay"></div>
+<div class="overlay" id="searchOverlay"></div>
 
-<div
-class="overlay"
-id="searchOverlay">
-</div>
-
-
-<div
-class="overlay"
-id="systemOverlay">
-</div>
-
-
-<div
-class="overlay"
-id="browserOverlay">
-</div>
-
-
-<input
-type="file"
-id="wallpaperInput"
-accept="image/*"
-hidden>
-
-
-<input
-type="file"
-id="iconInput"
-accept="image/*"
-hidden>
-
+<input type="file" id="wallpaperInput" accept="image/*" hidden>
+<input type="file" id="iconInput" accept="image/*" hidden>
 
 <script>
 
-/* =====================================================
-   STATE
-===================================================== */
+/* =========================================================
+   VIEWPORT FIX
+========================================================= */
 
-const defaultState = {
+function fixViewport(){
+
+  document.documentElement.style
+  .setProperty(
+    "--app-height",
+    window.innerHeight + "px"
+  );
+
+}
+
+fixViewport();
+
+window.addEventListener(
+  "resize",
+  fixViewport
+);
+
+window.addEventListener(
+  "orientationchange",
+  ()=>setTimeout(fixViewport,200)
+);
+
+
+/* =========================================================
+   CLEAN OLD HEAVY STORAGE
+========================================================= */
+
+function cleanupOldStorage(){
+
+  const cleanupFlag =
+  "v41_cleanup_done";
+
+  if(
+    localStorage.getItem(cleanupFlag)
+  ){
+    return;
+  }
+
+  const oldKeys = [
+
+    "guestDesktopV3",
+    "iosGuestV4",
+
+    "launcherWallpapers",
+    "launcherCurrentWallpaper",
+
+    "launcherWallpaper",
+    "launcherFullApps"
+
+  ];
+
+  oldKeys.forEach(
+    key=>{
+
+      try{
+        localStorage.removeItem(key);
+      }catch(e){}
+
+    }
+  );
+
+  try{
+    localStorage.setItem(
+      cleanupFlag,
+      "1"
+    );
+  }catch(e){}
+
+}
+
+cleanupOldStorage();
+
+
+/* =========================================================
+   INDEXED DB
+========================================================= */
+
+const DB_NAME =
+"GuestDesktopAssets";
+
+const DB_VERSION =
+1;
+
+const STORE =
+"assets";
+
+
+function openDB(){
+
+  return new Promise(
+    (
+      resolve,
+      reject
+    )=>{
+
+      const request =
+      indexedDB.open(
+        DB_NAME,
+        DB_VERSION
+      );
+
+
+      request.onupgradeneeded =
+      event=>{
+
+        const db =
+        event.target.result;
+
+        if(
+          !db.objectStoreNames
+          .contains(STORE)
+        ){
+
+          db.createObjectStore(
+            STORE,
+            {
+              keyPath:"id"
+            }
+          );
+
+        }
+
+      };
+
+
+      request.onsuccess =
+      ()=>resolve(
+        request.result
+      );
+
+
+      request.onerror =
+      ()=>reject(
+        request.error
+      );
+
+    }
+  );
+
+}
+
+
+async function saveAsset(
+  id,
+  blob
+){
+
+  const db =
+  await openDB();
+
+
+  return new Promise(
+    (
+      resolve,
+      reject
+    )=>{
+
+      const tx =
+      db.transaction(
+        STORE,
+        "readwrite"
+      );
+
+
+      tx.objectStore(STORE)
+      .put({
+        id:id,
+        blob:blob
+      });
+
+
+      tx.oncomplete =
+      ()=>resolve();
+
+
+      tx.onerror =
+      ()=>reject(
+        tx.error
+      );
+
+    }
+  );
+
+}
+
+
+async function getAsset(id){
+
+  if(!id){
+    return null;
+  }
+
+
+  const db =
+  await openDB();
+
+
+  return new Promise(
+    (
+      resolve,
+      reject
+    )=>{
+
+      const tx =
+      db.transaction(
+        STORE,
+        "readonly"
+      );
+
+
+      const request =
+      tx.objectStore(STORE)
+      .get(id);
+
+
+      request.onsuccess =
+      ()=>resolve(
+        request.result
+        ?.
+        blob
+        ||
+        null
+      );
+
+
+      request.onerror =
+      ()=>reject(
+        request.error
+      );
+
+    }
+  );
+
+}
+
+
+async function deleteAsset(id){
+
+  if(!id){
+    return;
+  }
+
+
+  const db =
+  await openDB();
+
+
+  return new Promise(
+    resolve=>{
+
+      const tx =
+      db.transaction(
+        STORE,
+        "readwrite"
+      );
+
+
+      tx.objectStore(STORE)
+      .delete(id);
+
+
+      tx.oncomplete =
+      ()=>resolve();
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   OBJECT URL CACHE
+========================================================= */
+
+const assetUrls =
+new Map();
+
+
+async function assetUrl(id){
+
+  if(!id){
+    return null;
+  }
+
+
+  if(
+    assetUrls.has(id)
+  ){
+
+    return assetUrls.get(id);
+
+  }
+
+
+  const blob =
+  await getAsset(id);
+
+
+  if(!blob){
+    return null;
+  }
+
+
+  const url =
+  URL.createObjectURL(blob);
+
+
+  assetUrls.set(
+    id,
+    url
+  );
+
+
+  return url;
+
+}
+
+
+/* =========================================================
+   DEFAULT STATE
+========================================================= */
+
+const DEFAULT_STATE = {
 
   currentPage:0,
 
   editing:false,
 
-  currentWallpaper:null,
+  currentWallpaperId:null,
 
   wallpapers:[],
 
   pages:[
 
     {
-      id:"p1",
+      id:"page1",
       name:"Главная"
     },
 
     {
-      id:"p2",
+      id:"page2",
       name:"Вторая"
     }
 
@@ -1245,8 +1273,8 @@ const defaultState = {
       id:"messages",
       title:"Сообщения",
       icon:"💬",
-      image:null,
-      pageId:"p1",
+      imageId:null,
+      pageId:"page1",
       type:"messages",
       removable:false
     },
@@ -1255,8 +1283,8 @@ const defaultState = {
       id:"contacts",
       title:"Контакты",
       icon:"👤",
-      image:null,
-      pageId:"p1",
+      imageId:null,
+      pageId:"page1",
       type:"contacts",
       removable:false
     },
@@ -1265,8 +1293,8 @@ const defaultState = {
       id:"photos",
       title:"Фото",
       icon:"🖼️",
-      image:null,
-      pageId:"p1",
+      imageId:null,
+      pageId:"page1",
       type:"photos",
       removable:false
     },
@@ -1275,8 +1303,8 @@ const defaultState = {
       id:"camera",
       title:"Камера",
       icon:"📷",
-      image:null,
-      pageId:"p1",
+      imageId:null,
+      pageId:"page1",
       type:"url",
       url:"camera:",
       removable:false
@@ -1286,8 +1314,8 @@ const defaultState = {
       id:"music",
       title:"Музыка",
       icon:"🎵",
-      image:null,
-      pageId:"p1",
+      imageId:null,
+      pageId:"page1",
       type:"url",
       url:
       "https://madenjanna-ui.github.io/Music-edition/",
@@ -1298,8 +1326,8 @@ const defaultState = {
       id:"notes",
       title:"Заметки",
       icon:"📝",
-      image:null,
-      pageId:"p1",
+      imageId:null,
+      pageId:"page1",
       type:"notes",
       removable:false
     },
@@ -1308,8 +1336,8 @@ const defaultState = {
       id:"calculator",
       title:"Калькулятор",
       icon:"🧮",
-      image:null,
-      pageId:"p1",
+      imageId:null,
+      pageId:"page1",
       type:"calculator",
       removable:false
     },
@@ -1318,8 +1346,8 @@ const defaultState = {
       id:"settings",
       title:"Настройки",
       icon:"⚙️",
-      image:null,
-      pageId:"p1",
+      imageId:null,
+      pageId:"page1",
       type:"settings",
       removable:false
     },
@@ -1328,8 +1356,8 @@ const defaultState = {
       id:"catalog",
       title:"Приложения",
       icon:"🅰️",
-      image:null,
-      pageId:"p2",
+      imageId:null,
+      pageId:"page2",
       type:"catalog",
       removable:false
     },
@@ -1338,8 +1366,8 @@ const defaultState = {
       id:"games",
       title:"Игры",
       icon:"🎮",
-      image:null,
-      pageId:"p2",
+      imageId:null,
+      pageId:"page2",
       type:"url",
       url:
       "https://madenjanna-ui.github.io/Avtoslalom/",
@@ -1347,21 +1375,11 @@ const defaultState = {
     },
 
     {
-      id:"social",
-      title:"Лента",
-      icon:"📸",
-      image:null,
-      pageId:"p2",
-      type:"social",
-      removable:false
-    },
-
-    {
       id:"web",
       title:"Интернет",
       icon:"🌐",
-      image:null,
-      pageId:"p2",
+      imageId:null,
+      pageId:"page2",
       type:"url",
       url:
       "https://www.google.com/",
@@ -1376,6 +1394,7 @@ const defaultState = {
       id:"phone",
       title:"Телефон",
       icon:"📞",
+      imageId:null,
       type:"url",
       url:"tel:"
     },
@@ -1384,6 +1403,7 @@ const defaultState = {
       id:"dockMessages",
       title:"Сообщения",
       icon:"💬",
+      imageId:null,
       type:"messages"
     },
 
@@ -1391,6 +1411,7 @@ const defaultState = {
       id:"dockMusic",
       title:"Музыка",
       icon:"🎵",
+      imageId:null,
       type:"url",
       url:
       "https://madenjanna-ui.github.io/Music-edition/"
@@ -1400,6 +1421,7 @@ const defaultState = {
       id:"dockWeb",
       title:"Интернет",
       icon:"🌐",
+      imageId:null,
       type:"url",
       url:
       "https://www.google.com/"
@@ -1414,7 +1436,7 @@ function cloneDefault(){
 
   return JSON.parse(
     JSON.stringify(
-      defaultState
+      DEFAULT_STATE
     )
   );
 
@@ -1425,29 +1447,23 @@ function loadState(){
 
   try{
 
-    const saved =
-    JSON.parse(
-      localStorage.getItem(
-        "iosGuestV4"
-      )
+    const raw =
+    localStorage.getItem(
+      "iosGuestV41"
     );
 
 
-    if(!saved){
-
+    if(!raw){
       return cloneDefault();
-
     }
 
 
     return Object.assign(
       cloneDefault(),
-      saved
+      JSON.parse(raw)
     );
 
-  }
-
-  catch(error){
+  }catch(e){
 
     return cloneDefault();
 
@@ -1460,24 +1476,19 @@ let state =
 loadState();
 
 
-function save(){
+function saveState(){
 
   try{
 
     localStorage.setItem(
-
-      "iosGuestV4",
-
+      "iosGuestV41",
       JSON.stringify(state)
-
     );
 
-  }
-
-  catch(error){
+  }catch(e){
 
     alert(
-      "Недостаточно памяти."
+      "Не удалось сохранить настройки."
     );
 
   }
@@ -1485,11 +1496,11 @@ function save(){
 }
 
 
-/* =====================================================
+/* =========================================================
    WALLPAPER
-===================================================== */
+========================================================= */
 
-function applyWallpaper(){
+async function applyWallpaper(){
 
   const home =
   document.getElementById(
@@ -1498,174 +1509,229 @@ function applyWallpaper(){
 
 
   if(
-    state.currentWallpaper
+    !state.currentWallpaperId
   ){
 
-    home.style
-    .backgroundImage =
-    `url("${state.currentWallpaper}")`;
+    home.style.backgroundImage =
+    "linear-gradient(160deg,#495a70,#263448 52%,#0d121a)";
 
+    return;
   }
 
-  else{
 
-    home.style
-    .backgroundImage =
+  const url =
+  await assetUrl(
+    state.currentWallpaperId
+  );
 
-    "linear-gradient(160deg,#4b5f7b,#26354a 50%,#0c121c)";
+
+  if(url){
+
+    home.style.backgroundImage =
+    `url("${url}")`;
 
   }
 
 }
 
 
-function compressImage(
-  source,
+/* =========================================================
+   IMAGE COMPRESS TO BLOB
+========================================================= */
+
+function compressFile(
+  file,
   maxWidth,
   maxHeight,
-  quality,
-  callback
+  quality=.82
 ){
 
-  const image =
-  new Image();
+  return new Promise(
+    (
+      resolve,
+      reject
+    )=>{
+
+      const reader =
+      new FileReader();
 
 
-  image.onload = ()=>{
+      reader.onload =
+      ()=>{
 
-    let width =
-    image.width;
-
-    let height =
-    image.height;
+        const image =
+        new Image();
 
 
-    const ratio =
-    Math.min(
+        image.onload =
+        ()=>{
 
-      maxWidth / width,
+          let w =
+          image.width;
 
-      maxHeight / height,
-
-      1
-
-    );
+          let h =
+          image.height;
 
 
-    width =
-    Math.round(
-      width * ratio
-    );
+          const ratio =
+          Math.min(
+            maxWidth/w,
+            maxHeight/h,
+            1
+          );
 
 
-    height =
-    Math.round(
-      height * ratio
-    );
+          w =
+          Math.round(w*ratio);
+
+          h =
+          Math.round(h*ratio);
 
 
-    const canvas =
-    document.createElement(
-      "canvas"
-    );
+          const canvas =
+          document.createElement(
+            "canvas"
+          );
 
 
-    canvas.width =
-    width;
+          canvas.width =
+          w;
 
-    canvas.height =
-    height;
-
-
-    canvas
-    .getContext("2d")
-    .drawImage(
-
-      image,
-
-      0,
-      0,
-
-      width,
-      height
-
-    );
+          canvas.height =
+          h;
 
 
-    callback(
-
-      canvas.toDataURL(
-
-        "image/jpeg",
-
-        quality
-
-      )
-
-    );
-
-  };
+          canvas
+          .getContext("2d")
+          .drawImage(
+            image,
+            0,
+            0,
+            w,
+            h
+          );
 
 
-  image.src =
-  source;
+          canvas.toBlob(
+            blob=>{
+
+              if(blob){
+                resolve(blob);
+              }else{
+                reject();
+              }
+
+            },
+            "image/jpeg",
+            quality
+          );
+
+        };
+
+
+        image.onerror =
+        reject;
+
+
+        image.src =
+        reader.result;
+
+      };
+
+
+      reader.onerror =
+      reject;
+
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
 
 }
 
 
-/* =====================================================
-   APP ICON
-===================================================== */
+/* =========================================================
+   ICON HTML
+========================================================= */
 
 function iconHTML(app){
 
-  if(
-    app.image
-  ){
-
-    return `
-
-    <div class="app-icon">
-
-      <img
-      src="${app.image}"
-      alt="">
-
-    </div>
-
-    `;
-
-  }
-
-
   return `
 
-  <div class="app-icon">
+    <div
+    class="app-icon"
+    data-image-id="${app.imageId || ""}">
 
-    <span class="emoji">
+      <span class="emoji">
+        ${safe(app.icon || "⭐")}
+      </span>
 
-      ${
-        safe(
-          app.icon
-          ||
-          "⭐"
-        )
-      }
-
-    </span>
-
-  </div>
+    </div>
 
   `;
 
 }
 
 
-/* =====================================================
-   APP ELEMENT
-===================================================== */
+async function hydrateImages(){
 
-function createApp(app){
+  const nodes =
+  document
+  .querySelectorAll(
+    "[data-image-id]"
+  );
+
+
+  for(
+    const node of nodes
+  ){
+
+    const id =
+    node.dataset.imageId;
+
+
+    if(!id){
+      continue;
+    }
+
+
+    const url =
+    await assetUrl(id);
+
+
+    if(
+      url
+      &&
+      !node.querySelector("img")
+    ){
+
+      const img =
+      document.createElement(
+        "img"
+      );
+
+
+      img.src =
+      url;
+
+
+      node.appendChild(img);
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   APP ELEMENT
+========================================================= */
+
+function createAppElement(app){
 
   const element =
   document.createElement(
@@ -1680,40 +1746,22 @@ function createApp(app){
   element.innerHTML = `
 
     ${
-      app.removable
-      !==
-      false
-
+      app.removable !== false
       ?
-
       `
-
       <button
       class="delete-app">
-
         −
-
       </button>
-
       `
-
       :
-
       ""
     }
 
-
     ${iconHTML(app)}
 
-
     <div class="app-name">
-
-      ${
-        safe(
-          app.title
-        )
-      }
-
+      ${safe(app.title)}
     </div>
 
   `;
@@ -1725,27 +1773,29 @@ function createApp(app){
   );
 
 
-  if(
-    del
-  ){
+  if(del){
 
-    del.onclick = event =>{
+    del.onclick =
+    async event=>{
 
       event.stopPropagation();
 
 
+      if(app.imageId){
+        await deleteAsset(
+          app.imageId
+        );
+      }
+
+
       state.apps =
       state.apps.filter(
-
-        item =>
-        item.id
-        !==
-        app.id
-
+        item=>
+        item.id !== app.id
       );
 
 
-      save();
+      saveState();
 
       render();
 
@@ -1754,16 +1804,12 @@ function createApp(app){
   }
 
 
-  element.onclick = ()=>{
+  element.onclick =
+  ()=>{
 
-    if(
-      state.editing
-    ){
-
+    if(state.editing){
       return;
-
     }
-
 
     openApp(app);
 
@@ -1775,9 +1821,9 @@ function createApp(app){
 }
 
 
-/* =====================================================
-   RENDER HOME
-===================================================== */
+/* =========================================================
+   RENDER DESKTOP
+========================================================= */
 
 function render(){
 
@@ -1786,12 +1832,10 @@ function render(){
     "track"
   );
 
-
   const dots =
   document.getElementById(
     "dots"
   );
-
 
   const dock =
   document.getElementById(
@@ -1809,14 +1853,22 @@ function render(){
   "";
 
 
+  state.currentPage =
+  Math.max(
+    0,
+    Math.min(
+      state.currentPage,
+      state.pages.length-1
+    )
+  );
+
+
   state.pages
   .forEach(
-
     (
       page,
       index
-    ) =>{
-
+    )=>{
 
       const pageElement =
       document.createElement(
@@ -1839,37 +1891,27 @@ function render(){
 
 
       state.apps
-
       .filter(
-
-        app =>
-        app.pageId
-        ===
-        page.id
-
+        app=>
+        app.pageId === page.id
       )
-
       .forEach(
-
-        app =>{
+        app=>{
 
           grid.appendChild(
-            createApp(app)
+            createAppElement(app)
           );
 
         }
-
       );
 
 
-      pageElement
-      .appendChild(
+      pageElement.appendChild(
         grid
       );
 
 
-      track
-      .appendChild(
+      track.appendChild(
         pageElement
       );
 
@@ -1884,41 +1926,29 @@ function render(){
       "dot"
       +
       (
-        index
-        ===
-        state.currentPage
-
+        index === state.currentPage
         ?
-
         " active"
-
         :
-
         ""
       );
 
 
-      dots
-      .appendChild(
-        dot
-      );
+      dots.appendChild(dot);
 
     }
-
   );
 
 
   state.dock
   .forEach(
-
-    app =>{
+    app=>{
 
       dock.appendChild(
-        createApp(app)
+        createAppElement(app)
       );
 
     }
-
   );
 
 
@@ -1926,46 +1956,26 @@ function render(){
   .getElementById(
     "home"
   )
-  .classList
-  .toggle(
-
+  .classList.toggle(
     "editing",
-
     state.editing
-
   );
 
 
   updatePage(false);
 
+  hydrateImages();
+
 }
 
 
-/* =====================================================
-   PAGE
-===================================================== */
+/* =========================================================
+   PAGE POSITION
+========================================================= */
 
 function updatePage(
   animate=true
 ){
-
-  state.currentPage =
-  Math.max(
-
-    0,
-
-    Math.min(
-
-      state.currentPage,
-
-      state.pages.length
-      -
-      1
-
-    )
-
-  );
-
 
   const track =
   document.getElementById(
@@ -1973,24 +1983,16 @@ function updatePage(
   );
 
 
-  track.style
-  .transition =
-
+  track.style.transition =
   animate
-
   ?
-
   "transform .32s cubic-bezier(.22,.7,.18,1)"
-
   :
-
   "none";
 
 
-  track.style
-  .transform =
-
-  `translateX(-${state.currentPage * 100}%)`;
+  track.style.transform =
+  `translateX(-${state.currentPage*100}%)`;
 
 
   document
@@ -1998,33 +2000,25 @@ function updatePage(
     ".dot"
   )
   .forEach(
-
     (
       dot,
       index
-    ) =>{
+    )=>{
 
-      dot.classList
-      .toggle(
-
+      dot.classList.toggle(
         "active",
-
-        index
-        ===
-        state.currentPage
-
+        index === state.currentPage
       );
 
     }
-
   );
 
 }
 
 
-/* =====================================================
-   SWIPE PAGE + SEARCH
-===================================================== */
+/* =========================================================
+   SWIPE
+========================================================= */
 
 const viewport =
 document.getElementById(
@@ -2032,117 +2026,80 @@ document.getElementById(
 );
 
 
-let sx =
+let touchX =
 0;
 
-let sy =
+let touchY =
 0;
 
 
-viewport
-.addEventListener(
-
+viewport.addEventListener(
   "touchstart",
+  event=>{
 
-  event =>{
-
-    sx =
+    touchX =
     event.touches[0]
     .clientX;
 
-    sy =
+    touchY =
     event.touches[0]
     .clientY;
 
   },
-
   {
     passive:true
   }
-
 );
 
 
-viewport
-.addEventListener(
-
+viewport.addEventListener(
   "touchend",
-
-  event =>{
-
+  event=>{
 
     const touch =
     event.changedTouches[0];
 
 
     const dx =
-    touch.clientX
-    -
-    sx;
+    touch.clientX-touchX;
 
 
     const dy =
-    touch.clientY
-    -
-    sy;
+    touch.clientY-touchY;
 
-
-    /* swipe down = search */
 
     if(
-
-      dy
-      >
-      90
-
+      dy > 90
       &&
-
       Math.abs(dy)
       >
       Math.abs(dx)
-
     ){
 
       openSearch();
 
       return;
-
     }
 
 
     if(
-
-      Math.abs(dx)
-      <
-      45
-
+      Math.abs(dx)<45
       ||
-
       Math.abs(dx)
       <
       Math.abs(dy)
-
     ){
 
       return;
-
     }
 
 
     if(
-
-      dx
-      <
-      0
-
+      dx < 0
       &&
-
       state.currentPage
       <
-      state.pages.length
-      -
-      1
-
+      state.pages.length-1
     ){
 
       state.currentPage++;
@@ -2151,17 +2108,9 @@ viewport
 
 
     else if(
-
-      dx
-      >
-      0
-
+      dx > 0
       &&
-
-      state.currentPage
-      >
-      0
-
+      state.currentPage > 0
     ){
 
       state.currentPage--;
@@ -2169,65 +2118,53 @@ viewport
     }
 
 
-    save();
+    saveState();
 
     updatePage(true);
 
   },
-
   {
     passive:true
   }
-
 );
 
 
-/* =====================================================
-   LONG PRESS EMPTY SPACE
-===================================================== */
+/* =========================================================
+   EDIT MODE
+========================================================= */
 
 let editTimer;
 
 
-viewport
-.addEventListener(
-
+viewport.addEventListener(
   "pointerdown",
-
-  event =>{
-
+  event=>{
 
     if(
       event.target.closest(
         ".app"
       )
     ){
-
       return;
-
     }
 
 
     editTimer =
     setTimeout(
-
       ()=>{
 
         state.editing =
         true;
 
-        save();
+        saveState();
 
         render();
 
       },
-
       900
-
     );
 
   }
-
 );
 
 
@@ -2237,93 +2174,155 @@ viewport
   "pointercancel"
 ]
 .forEach(
-
-  name =>{
+  name=>{
 
     viewport.addEventListener(
-
       name,
+      ()=>clearTimeout(editTimer)
+    );
 
-      ()=>{
+  }
+);
 
-        clearTimeout(
-          editTimer
+
+function finishEditing(){
+
+  state.editing =
+  false;
+
+  saveState();
+
+  render();
+
+}
+
+
+/* =========================================================
+   SECRET ADMIN LONG PRESS
+========================================================= */
+
+const adminHotspot =
+document.getElementById(
+  "adminHotspot"
+);
+
+
+let adminTimer =
+null;
+
+
+function startAdminPress(
+  event
+){
+
+  if(
+    event.cancelable
+  ){
+
+    event.preventDefault();
+
+  }
+
+
+  clearTimeout(
+    adminTimer
+  );
+
+
+  adminTimer =
+  setTimeout(
+    ()=>{
+
+      if(
+        navigator.vibrate
+      ){
+
+        navigator.vibrate(
+          30
         );
 
       }
 
-    );
-
-  }
-
-);
-
-
-/* =====================================================
-   OPEN APP
-===================================================== */
-
-function openApp(app){
-
-  switch(
-    app.type
-  ){
-
-    case "settings":
 
       openSettings();
 
+    },
+    1500
+  );
+
+}
+
+
+function stopAdminPress(){
+
+  clearTimeout(
+    adminTimer
+  );
+
+}
+
+
+adminHotspot.addEventListener(
+  "pointerdown",
+  startAdminPress
+);
+
+adminHotspot.addEventListener(
+  "pointerup",
+  stopAdminPress
+);
+
+adminHotspot.addEventListener(
+  "pointercancel",
+  stopAdminPress
+);
+
+adminHotspot.addEventListener(
+  "pointerleave",
+  stopAdminPress
+);
+
+adminHotspot.addEventListener(
+  "contextmenu",
+  event=>event.preventDefault()
+);
+
+
+/* =========================================================
+   OPEN APP
+========================================================= */
+
+function openApp(app){
+
+  switch(app.type){
+
+    case "settings":
+      openSettings();
       break;
-
-
-    case "catalog":
-
-      openCatalog();
-
-      break;
-
 
     case "messages":
-
       openMessages();
-
       break;
-
 
     case "contacts":
-
       openContacts();
-
       break;
-
 
     case "photos":
-
       openPhotos();
-
       break;
-
 
     case "notes":
-
       openNotes();
-
       break;
-
 
     case "calculator":
-
       openCalculator();
-
       break;
 
-
-    case "social":
-
-      openSocial();
-
+    case "catalog":
+      openCatalog();
       break;
-
 
     case "url":
 
@@ -2333,16 +2332,11 @@ function openApp(app){
       ){
 
         openBrowser(
-
           app.url,
-
           app.title
-
         );
 
-      }
-
-      else{
+      }else{
 
         window.location.href =
         app.url;
@@ -2356,14 +2350,14 @@ function openApp(app){
 }
 
 
-/* =====================================================
-   SYSTEM SHELL
-===================================================== */
+/* =========================================================
+   SYSTEM SCREEN
+========================================================= */
 
 function showSystem(
   title,
-  content,
-  backFunction="closeSystem()"
+  body,
+  back="closeSystem()"
 ){
 
   const overlay =
@@ -2374,39 +2368,27 @@ function showSystem(
 
   overlay.innerHTML = `
 
-  <div class="system-shell">
+    <div class="system-shell">
 
+      <div class="system-top">
 
-    <div class="system-top">
+        <button
+        class="system-back"
+        onclick="${back}">
+          ‹ Назад
+        </button>
 
-
-      <button
-      class="system-back"
-      onclick="${backFunction}">
-
-        ‹ Назад
-
-      </button>
-
-
-      <div class="system-title">
-
-        ${safe(title)}
+        <div class="system-title">
+          ${safe(title)}
+        </div>
 
       </div>
 
+      <div class="system-body">
+        ${body}
+      </div>
 
     </div>
-
-
-    <div class="system-body">
-
-      ${content}
-
-    </div>
-
-
-  </div>
 
   `;
 
@@ -2437,16 +2419,16 @@ function closeSystem(){
 }
 
 
-/* =====================================================
-   SETTINGS
-===================================================== */
+/* =========================================================
+   SETTINGS HOME
+========================================================= */
 
 function openSettings(){
 
   state.editing =
   false;
 
-  save();
+  saveState();
 
   render();
 
@@ -2457,125 +2439,84 @@ function openSettings(){
 
     `
 
-    <div class="settings-group">
+      <div class="settings-group">
+
+        <div
+        class="settings-row"
+        onclick="openWallpaperSettings()">
+
+          <div class="settings-icon">
+            🖼️
+          </div>
+
+          <div class="settings-main">
+            Обои
+          </div>
+
+          <div class="chevron">
+            ›
+          </div>
+
+        </div>
 
 
-      <div
-      class="settings-row"
-      onclick="openWallpaperSettings()">
+        <div
+        class="settings-row"
+        onclick="openPageSettings()">
 
+          <div class="settings-icon">
+            ▦
+          </div>
 
-        <div class="settings-icon">
+          <div class="settings-main">
+            Рабочие столы
+          </div>
 
-          🖼️
+          <div class="chevron">
+            ›
+          </div>
 
         </div>
 
 
-        <div class="settings-main">
+        <div
+        class="settings-row"
+        onclick="openAppsSettings()">
 
-          Обои
+          <div class="settings-icon">
+            ◉
+          </div>
+
+          <div class="settings-main">
+            Приложения
+          </div>
+
+          <div class="chevron">
+            ›
+          </div>
 
         </div>
-
-
-        <div class="chevron">
-
-          ›
-
-        </div>
-
 
       </div>
 
 
-      <div
-      class="settings-row"
-      onclick="openPageSettings()">
+      <div class="settings-group">
 
+        <div
+        class="settings-row"
+        onclick="startEditing()">
 
-        <div class="settings-icon">
+          <div class="settings-icon">
+            ✦
+          </div>
 
-          ▦
-
-        </div>
-
-
-        <div class="settings-main">
-
-          Рабочие столы
+          <div class="settings-main">
+            Изменить экран
+          </div>
 
         </div>
-
-
-        <div class="chevron">
-
-          ›
-
-        </div>
-
 
       </div>
-
-
-      <div
-      class="settings-row"
-      onclick="openAppSettings()">
-
-
-        <div class="settings-icon">
-
-          ◉
-
-        </div>
-
-
-        <div class="settings-main">
-
-          Приложения
-
-        </div>
-
-
-        <div class="chevron">
-
-          ›
-
-        </div>
-
-
-      </div>
-
-
-    </div>
-
-
-    <div class="settings-group">
-
-
-      <div
-      class="settings-row"
-      onclick="startEditing()">
-
-
-        <div class="settings-icon">
-
-          ✦
-
-        </div>
-
-
-        <div class="settings-main">
-
-          Изменить экран
-
-        </div>
-
-
-      </div>
-
-
-    </div>
 
     `
 
@@ -2584,102 +2525,111 @@ function openSettings(){
 }
 
 
-/* =====================================================
-   WALLPAPERS
-===================================================== */
+function startEditing(){
 
-function openWallpaperSettings(){
+  closeSystem();
 
-  let wallpapers =
-  "";
+  state.editing =
+  true;
+
+  saveState();
+
+  render();
+
+}
 
 
-  state.wallpapers
-  .forEach(
+/* =========================================================
+   WALLPAPER SETTINGS
+========================================================= */
 
-    item =>{
+async function openWallpaperSettings(){
 
-      wallpapers += `
+  let html =
+  `<div class="wallpaper-grid">`;
+
+
+  for(
+    const wallpaper
+    of state.wallpapers
+  ){
+
+    const url =
+    await assetUrl(
+      wallpaper.id
+    );
+
+
+    if(!url){
+      continue;
+    }
+
+
+    html += `
 
       <div
-      class="wallpaper
+
+      class="
+      wallpaper
       ${
-        state.currentWallpaper
+        state.currentWallpaperId
         ===
-        item.image
-
+        wallpaper.id
         ?
-
         "selected"
-
         :
-
         ""
-      }"
+      }
+      "
 
       style="
       background-image:
-      url('${item.image}')
+      url('${url}')
       "
 
       onclick="
-      selectWallpaper('${item.id}')
+      selectWallpaper('${wallpaper.id}')
       ">
 
-
         <button
-        class="wallpaper-x"
-
+        class="wallpaper-delete"
         onclick="
         event.stopPropagation();
-        deleteWallpaper('${item.id}')
+        removeWallpaper('${wallpaper.id}')
         ">
-
           ×
-
         </button>
-
 
       </div>
 
-      `;
+    `;
 
-    }
-
-  );
+  }
 
 
-  showSystem(
+  html +=
+  `</div>`;
 
-    "Обои",
 
-    `
-
-    <div
-    class="wallpaper-grid">
-
-      ${wallpapers}
-
-    </div>
-
+  html += `
 
     <button
     class="primary"
-
     onclick="
     document
     .getElementById('wallpaperInput')
     .click()
     ">
-
       Добавить фото
-
     </button>
 
-    `,
+  `;
 
+
+  showSystem(
+    "Обои",
+    html,
     "openSettings()"
-
   );
 
 }
@@ -2690,302 +2640,223 @@ document
   "wallpaperInput"
 )
 .addEventListener(
-
   "change",
-
-  function(){
-
+  async function(){
 
     const file =
     this.files[0];
 
 
-    if(
-      !file
-    ){
-
+    if(!file){
       return;
-
     }
 
 
-    const reader =
-    new FileReader();
+    try{
 
-
-    reader.onload =
-    event =>{
-
-
-      compressImage(
-
-        event.target.result,
-
+      const blob =
+      await compressFile(
+        file,
         1179,
-
         2556,
-
-        .8,
-
-        image =>{
-
-
-          const id =
-          "wall_"
-          +
-          Date.now();
-
-
-          state.wallpapers
-          .push({
-
-            id:id,
-
-            image:image
-
-          });
-
-
-          state.currentWallpaper =
-          image;
-
-
-          save();
-
-          applyWallpaper();
-
-          openWallpaperSettings();
-
-        }
-
+        .8
       );
 
-    };
+
+      const id =
+      "wall_"
+      +
+      Date.now();
 
 
-    reader.readAsDataURL(
-      file
-    );
+      await saveAsset(
+        id,
+        blob
+      );
+
+
+      state.wallpapers
+      .push({
+        id:id
+      });
+
+
+      state.currentWallpaperId =
+      id;
+
+
+      saveState();
+
+      await applyWallpaper();
+
+      await openWallpaperSettings();
+
+    }
+
+    catch(error){
+
+      alert(
+        "Не удалось добавить изображение."
+      );
+
+    }
 
 
     this.value =
     "";
 
   }
-
 );
 
 
-function selectWallpaper(id){
+async function selectWallpaper(id){
 
-  const item =
-  state.wallpapers
-  .find(
+  state.currentWallpaperId =
+  id;
 
-    wall =>
-    wall.id
-    ===
-    id
+  saveState();
 
-  );
+  await applyWallpaper();
 
-
-  if(
-    !item
-  ){
-
-    return;
-
-  }
-
-
-  state.currentWallpaper =
-  item.image;
-
-
-  save();
-
-  applyWallpaper();
-
-  openWallpaperSettings();
+  await openWallpaperSettings();
 
 }
 
 
-function deleteWallpaper(id){
+async function removeWallpaper(id){
 
-  const item =
-  state.wallpapers
-  .find(
+  await deleteAsset(id);
 
-    wall =>
-    wall.id
-    ===
-    id
 
-  );
+  if(
+    assetUrls.has(id)
+  ){
+
+    URL.revokeObjectURL(
+      assetUrls.get(id)
+    );
+
+    assetUrls.delete(id);
+
+  }
 
 
   state.wallpapers =
-  state.wallpapers
-  .filter(
-
-    wall =>
-    wall.id
-    !==
-    id
-
+  state.wallpapers.filter(
+    item=>
+    item.id !== id
   );
 
 
   if(
-
-    item
-
-    &&
-
-    state.currentWallpaper
+    state.currentWallpaperId
     ===
-    item.image
-
+    id
   ){
 
-    state.currentWallpaper =
+    state.currentWallpaperId =
     state.wallpapers[0]
-    ?.image
-
+    ?.id
     ||
-
     null;
 
   }
 
 
-  save();
+  saveState();
 
-  applyWallpaper();
+  await applyWallpaper();
 
-  openWallpaperSettings();
+  await openWallpaperSettings();
 
 }
 
 
-/* =====================================================
+/* =========================================================
    PAGE SETTINGS
-===================================================== */
+========================================================= */
 
 function openPageSettings(){
 
-  let html = `
-
-  <div class="settings-group">
-
-  `;
+  let html =
+  `<div class="settings-group">`;
 
 
   state.pages
   .forEach(
-
     (
       page,
       index
-    ) =>{
+    )=>{
+
+      const count =
+      state.apps.filter(
+        app=>
+        app.pageId === page.id
+      ).length;
+
 
       html += `
 
-      <div class="settings-row">
+        <div class="settings-row">
 
+          <div class="settings-main">
 
-        <div class="settings-main">
+            ${safe(page.name)}
 
-          ${safe(page.name)}
-
-          <div class="settings-small">
-
-            ${
-              state.apps
-              .filter(
-
-                app =>
-                app.pageId
-                ===
-                page.id
-
-              )
-              .length
-            }
-
-            приложений
+            <div class="settings-small">
+              ${count} прилож.
+            </div>
 
           </div>
 
+          ${
+            state.pages.length > 1
+            ?
+            `
+            <button
+            style="
+            border:0;
+            background:none;
+            color:#ff3b30;
+            "
+            onclick="
+            removePage('${page.id}')
+            ">
+              Удалить
+            </button>
+            `
+            :
+            ""
+          }
+
         </div>
-
-
-        ${
-          state.pages.length
-          >
-          1
-
-          ?
-
-          `
-
-          <button
-          onclick="
-          removePage('${page.id}')
-          "
-          style="
-          border:0;
-          background:none;
-          color:#ff3b30;
-          ">
-
-            Удалить
-
-          </button>
-
-          `
-
-          :
-
-          ""
-        }
-
-
-      </div>
 
       `;
 
     }
-
   );
+
+
+  html +=
+  `</div>`;
 
 
   html += `
 
-  </div>
-
-
-  <button
-  class="primary"
-  onclick="addPage()">
-
-    Добавить страницу
-
-  </button>
+    <button
+    class="primary"
+    onclick="addPage()">
+      Добавить страницу
+    </button>
 
   `;
 
 
   showSystem(
-
     "Рабочие столы",
-
     html,
-
     "openSettings()"
-
   );
 
 }
@@ -2993,11 +2864,10 @@ function openPageSettings(){
 
 function addPage(){
 
-  state.pages
-  .push({
+  state.pages.push({
 
     id:
-    "p_"
+    "page_"
     +
     Date.now(),
 
@@ -3014,12 +2884,10 @@ function addPage(){
 
 
   state.currentPage =
-  state.pages.length
-  -
-  1;
+  state.pages.length-1;
 
 
-  save();
+  saveState();
 
   render();
 
@@ -3031,37 +2899,24 @@ function addPage(){
 function removePage(id){
 
   if(
-    state.pages.length
-    <=
-    1
+    state.pages.length <= 1
   ){
-
     return;
-
   }
 
 
   const target =
-  state.pages
-  .find(
-
-    page =>
-    page.id
-    !==
-    id
-
+  state.pages.find(
+    item=>
+    item.id !== id
   );
 
 
-  state.apps
-  .forEach(
-
-    app =>{
+  state.apps.forEach(
+    app=>{
 
       if(
-        app.pageId
-        ===
-        id
+        app.pageId === id
       ){
 
         app.pageId =
@@ -3070,19 +2925,13 @@ function removePage(id){
       }
 
     }
-
   );
 
 
   state.pages =
-  state.pages
-  .filter(
-
-    page =>
-    page.id
-    !==
-    id
-
+  state.pages.filter(
+    item=>
+    item.id !== id
   );
 
 
@@ -3090,7 +2939,7 @@ function removePage(id){
   0;
 
 
-  save();
+  saveState();
 
   render();
 
@@ -3099,118 +2948,96 @@ function removePage(id){
 }
 
 
-/* =====================================================
-   APP SETTINGS
-===================================================== */
+/* =========================================================
+   APPLICATION SETTINGS
+========================================================= */
 
-function openAppSettings(){
+function openAppsSettings(){
 
-  let html = `
-
-  <div class="settings-group">
-
-  `;
+  let html =
+  `<div class="settings-group">`;
 
 
   state.apps
   .forEach(
-
-    app =>{
-
-      const page =
-      state.pages
-      .find(
-
-        item =>
-        item.id
-        ===
-        app.pageId
-
-      );
-
+    app=>{
 
       html += `
 
-      <div class="settings-row">
+        <div class="settings-row">
 
+          <div class="settings-icon">
+            ${safe(app.icon)}
+          </div>
 
-        <div
-        class="settings-icon">
+          <div class="settings-main">
 
-          ${safe(app.icon)}
+            ${safe(app.title)}
 
-        </div>
+            <div class="settings-small">
 
+              ${
+                safe(
+                  state.pages
+                  .find(
+                    page=>
+                    page.id === app.pageId
+                  )
+                  ?.name
+                  ||
+                  ""
+                )
+              }
 
-        <div class="settings-main">
-
-          ${safe(app.title)}
-
-          <div class="settings-small">
-
-            ${
-              safe(
-                page
-                ?.name
-                ||
-                ""
-              )
-            }
+            </div>
 
           </div>
 
         </div>
 
-
-      </div>
-
       `;
 
     }
-
   );
+
+
+  html +=
+  `</div>`;
 
 
   html += `
 
-  </div>
-
-
-  <button
-  class="primary"
-  onclick="openAddApp()">
-
-    Добавить приложение
-
-  </button>
+    <button
+    class="primary"
+    onclick="openAddApp()">
+      Добавить приложение
+    </button>
 
   `;
 
 
   showSystem(
-
     "Приложения",
-
     html,
-
     "openSettings()"
-
   );
 
 }
 
 
-/* =====================================================
-   ADD APP
-===================================================== */
+/* =========================================================
+   ADD APPLICATION
+========================================================= */
 
-const emojiList = [
+const icons = [
 
-"💬","📷","🎵","🎮",
-"🌐","📅","📊","📝",
-"👤","🗺️","📚","📁",
-"⭐","🎧","🎬","🚗",
-"☁️","📸","☎️","⚙️"
+  "💬","📷","🎵","🎮",
+  "🌐","📅","📊","📝",
+
+  "👤","🗺️","📚","📁",
+  "⭐","🎧","🎬","🚗",
+
+  "☁️","📸","☎️","⚙️"
 
 ];
 
@@ -3219,67 +3046,51 @@ let selectedIcon =
 "⭐";
 
 
-let selectedImage =
+let pendingIconBlob =
 null;
 
 
 function openAddApp(){
 
-  let pageOptions =
-  state.pages
-  .map(
+  const pageOptions =
+  state.pages.map(
+    page=>`
 
-    page =>`
-
-    <option
-    value="${page.id}">
-
-      ${safe(page.name)}
-
-    </option>
+      <option value="${page.id}">
+        ${safe(page.name)}
+      </option>
 
     `
-
-  )
-  .join("");
+  ).join("");
 
 
-  let icons =
-  emojiList
-  .map(
+  const iconHtml =
+  icons.map(
+    icon=>`
 
-    icon =>`
+      <div
 
-    <div
-    class="
-    icon-choice
-    ${
-      icon
-      ===
-      selectedIcon
+      class="
+      icon-choice
+      ${
+        icon === selectedIcon
+        ?
+        "selected"
+        :
+        ""
+      }
+      "
 
-      ?
+      onclick="
+      selectEmoji('${icon}')
+      ">
 
-      "selected"
+        ${icon}
 
-      :
-
-      ""
-    }
-    "
-
-    onclick="
-    selectIcon('${icon}')
-    ">
-
-      ${icon}
-
-    </div>
+      </div>
 
     `
-
-  )
-  .join("");
+  ).join("");
 
 
   showSystem(
@@ -3288,70 +3099,64 @@ function openAddApp(){
 
     `
 
-    <input
-    class="field"
-    id="addTitle"
-    placeholder="Название">
+      <input
+      class="field"
+      id="newTitle"
+      placeholder="Название">
 
 
-    <input
-    class="field"
-    id="addUrl"
-    placeholder="https://... или URL-схема">
+      <input
+      class="field"
+      id="newUrl"
+      placeholder="https://... или URL-схема">
 
 
-    <select
-    class="field"
-    id="addPage">
+      <select
+      class="field"
+      id="newPage">
 
-      ${pageOptions}
+        ${pageOptions}
 
-    </select>
-
-
-    <div class="icon-picker">
-
-      ${icons}
-
-    </div>
+      </select>
 
 
-    <button
-    class="secondary"
-    onclick="
-    document
-    .getElementById('iconInput')
-    .click()
-    ">
-
-      Выбрать изображение значка
-
-    </button>
+      <div class="icon-picker">
+        ${iconHtml}
+      </div>
 
 
-    <button
-    class="primary"
-    onclick="saveNewApp()">
+      <button
+      class="secondary"
+      onclick="
+      document
+      .getElementById('iconInput')
+      .click()
+      ">
+        Выбрать свою иконку
+      </button>
 
-      Добавить
 
-    </button>
+      <button
+      class="primary"
+      onclick="saveNewApp()">
+        Добавить
+      </button>
 
     `,
 
-    "openAppSettings()"
+    "openAppsSettings()"
 
   );
 
 }
 
 
-function selectIcon(icon){
+function selectEmoji(icon){
 
   selectedIcon =
   icon;
 
-  selectedImage =
+  pendingIconBlob =
   null;
 
   openAddApp();
@@ -3364,74 +3169,50 @@ document
   "iconInput"
 )
 .addEventListener(
-
   "change",
-
-  function(){
-
+  async function(){
 
     const file =
     this.files[0];
 
 
-    if(
-      !file
-    ){
-
+    if(!file){
       return;
-
     }
 
 
-    const reader =
-    new FileReader();
+    try{
 
-
-    reader.onload =
-    event =>{
-
-
-      compressImage(
-
-        event.target.result,
-
+      pendingIconBlob =
+      await compressFile(
+        file,
         400,
-
         400,
-
-        .86,
-
-        image =>{
-
-          selectedImage =
-          image;
-
-        }
-
+        .86
       );
 
-    };
+    }catch(error){
 
+      alert(
+        "Не удалось обработать иконку."
+      );
 
-    reader.readAsDataURL(
-      file
-    );
+    }
 
 
     this.value =
     "";
 
   }
-
 );
 
 
-function saveNewApp(){
+async function saveNewApp(){
 
   const title =
   document
   .getElementById(
-    "addTitle"
+    "newTitle"
   )
   .value
   .trim();
@@ -3440,7 +3221,7 @@ function saveNewApp(){
   const url =
   document
   .getElementById(
-    "addUrl"
+    "newUrl"
   )
   .value
   .trim();
@@ -3449,22 +3230,40 @@ function saveNewApp(){
   const pageId =
   document
   .getElementById(
-    "addPage"
+    "newPage"
   )
   .value;
 
 
+  if(!title){
+    alert("Введите название.");
+    return;
+  }
+
+
+  let imageId =
+  null;
+
+
   if(
-    !title
+    pendingIconBlob
   ){
 
-    return;
+    imageId =
+    "icon_"
+    +
+    Date.now();
+
+
+    await saveAsset(
+      imageId,
+      pendingIconBlob
+    );
 
   }
 
 
-  state.apps
-  .push({
+  state.apps.push({
 
     id:
     "app_"
@@ -3473,14 +3272,11 @@ function saveNewApp(){
 
     title:title,
 
-    icon:
-    selectedIcon,
+    icon:selectedIcon,
 
-    image:
-    selectedImage,
+    imageId:imageId,
 
-    pageId:
-    pageId,
+    pageId:pageId,
 
     type:"url",
 
@@ -3495,229 +3291,82 @@ function saveNewApp(){
   "⭐";
 
 
-  selectedImage =
+  pendingIconBlob =
   null;
 
 
-  save();
+  saveState();
 
   render();
 
-  openAppSettings();
+  openAppsSettings();
 
 }
 
 
-/* =====================================================
-   CATALOG
-===================================================== */
-
-function openCatalog(){
-
-  showSystem(
-
-    "Приложения",
-
-    `
-
-    <div class="catalog-card">
-
-      <div class="catalog-icon">
-
-        🎮
-
-      </div>
-
-      <div class="catalog-main">
-
-        <b>Игры</b>
-
-        <div class="settings-small">
-
-          Игровой раздел
-
-        </div>
-
-      </div>
-
-      <button
-      class="catalog-install"
-      onclick="
-      closeSystem();
-      openApp(
-        state.apps.find(
-          a=>a.id==='games'
-        )
-      )
-      ">
-
-        Открыть
-
-      </button>
-
-    </div>
-
-
-    <div class="catalog-card">
-
-      <div class="catalog-icon">
-
-        🎵
-
-      </div>
-
-      <div class="catalog-main">
-
-        <b>Музыка</b>
-
-        <div class="settings-small">
-
-          Музыкальный каталог
-
-        </div>
-
-      </div>
-
-      <button
-      class="catalog-install"
-      onclick="
-      closeSystem();
-      openApp(
-        state.apps.find(
-          a=>a.id==='music'
-        )
-      )
-      ">
-
-        Открыть
-
-      </button>
-
-    </div>
-
-
-    <div class="catalog-card">
-
-      <div class="catalog-icon">
-
-        📝
-
-      </div>
-
-      <div class="catalog-main">
-
-        <b>Заметки</b>
-
-        <div class="settings-small">
-
-          Локальные заметки
-
-        </div>
-
-      </div>
-
-      <button
-      class="catalog-install"
-      onclick="
-      openNotes()
-      ">
-
-        Открыть
-
-      </button>
-
-    </div>
-
-    `
-
-  );
-
-}
-
-
-/* =====================================================
+/* =========================================================
    MESSAGES
-===================================================== */
-
-const chats = [
-
-{
-  name:"Анна",
-  last:"До вечера 😊"
-},
-
-{
-  name:"Максим",
-  last:"Да, получил"
-},
-
-{
-  name:"Семья",
-  last:"Встречаемся в 19:00"
-}
-
-];
-
+========================================================= */
 
 function openMessages(){
 
-  const html = `
+  const people = [
 
-  <div class="card">
+    ["Анна","До вечера 😊"],
+    ["Максим","Да, получил"],
+    ["Семья","Встречаемся в 19:00"]
 
-  ${
-    chats.map(
-
-      item =>`
-
-      <div class="list-row">
-
-        <div class="avatar">
-
-          ${safe(item.name[0])}
-
-        </div>
-
-        <div class="list-main">
-
-          <div class="list-title">
-
-            ${safe(item.name)}
-
-          </div>
-
-          <div class="list-sub">
-
-            ${safe(item.last)}
-
-          </div>
-
-        </div>
-
-      </div>
-
-      `
-
-    )
-    .join("")
-  }
-
-  </div>
-
-  `;
+  ];
 
 
   showSystem(
+
     "Сообщения",
-    html
+
+    `
+
+      <div class="card">
+
+        ${
+          people.map(
+            person=>`
+
+              <div class="list-row">
+
+                <div class="avatar">
+                  ${person[0][0]}
+                </div>
+
+                <div class="list-main">
+
+                  <div class="list-title">
+                    ${person[0]}
+                  </div>
+
+                  <div class="list-sub">
+                    ${person[1]}
+                  </div>
+
+                </div>
+
+              </div>
+
+            `
+          ).join("")
+        }
+
+      </div>
+
+    `
+
   );
 
 }
 
 
-/* =====================================================
+/* =========================================================
    CONTACTS
-===================================================== */
+========================================================= */
 
 function openContacts(){
 
@@ -3738,40 +3387,29 @@ function openContacts(){
 
     `
 
-    <div class="card">
+      <div class="card">
 
-      ${
-        contacts.map(
+        ${
+          contacts.map(
+            name=>`
 
-          name =>`
+              <div class="list-row">
 
-          <div class="list-row">
+                <div class="avatar">
+                  ${name[0]}
+                </div>
 
-            <div class="avatar">
-
-              ${name[0]}
-
-            </div>
-
-            <div class="list-main">
-
-              <div class="list-title">
-
-                ${name}
+                <div class="list-title">
+                  ${name}
+                </div>
 
               </div>
 
-            </div>
+            `
+          ).join("")
+        }
 
-          </div>
-
-          `
-
-        )
-        .join("")
-      }
-
-    </div>
+      </div>
 
     `
 
@@ -3780,11 +3418,47 @@ function openContacts(){
 }
 
 
-/* =====================================================
+/* =========================================================
    PHOTOS
-===================================================== */
+========================================================= */
 
-function openPhotos(){
+async function openPhotos(){
+
+  let images =
+  "";
+
+
+  for(
+    const item
+    of state.wallpapers
+  ){
+
+    const url =
+    await assetUrl(
+      item.id
+    );
+
+
+    if(url){
+
+      images += `
+
+        <img
+
+        src="${url}"
+
+        style="
+        width:100%;
+        aspect-ratio:1/1;
+        object-fit:cover;
+        ">
+
+      `;
+
+    }
+
+  }
+
 
   showSystem(
 
@@ -3792,36 +3466,18 @@ function openPhotos(){
 
     `
 
-    <div
-    style="
-    display:grid;
-    grid-template-columns:
-    repeat(3,1fr);
-    gap:3px;
-    ">
+      <div
 
-      ${
-        state.wallpapers
-        .map(
+      style="
+      display:grid;
+      grid-template-columns:
+      repeat(3,1fr);
+      gap:3px;
+      ">
 
-          wall =>`
+        ${images}
 
-          <img
-          src="${wall.image}"
-
-          style="
-          width:100%;
-          aspect-ratio:1/1;
-          object-fit:cover;
-          ">
-
-          `
-
-        )
-        .join("")
-      }
-
-    </div>
+      </div>
 
     `
 
@@ -3830,23 +3486,19 @@ function openPhotos(){
 }
 
 
-/* =====================================================
+/* =========================================================
    NOTES
-===================================================== */
+========================================================= */
 
 function openNotes(){
 
   const notes =
   JSON.parse(
-
     localStorage.getItem(
-      "v4Notes"
+      "v41Notes"
     )
-
     ||
-
     "[]"
-
   );
 
 
@@ -3856,74 +3508,65 @@ function openNotes(){
 
     `
 
-    <button
-    class="primary"
-    onclick="newNote()">
-
-      Новая заметка
-
-    </button>
+      <button
+      class="primary"
+      onclick="editNote(-1)">
+        Новая заметка
+      </button>
 
 
-    <div
-    style="
-    margin-top:15px;
-    ">
+      <div style="margin-top:15px">
 
-      ${
-        notes.length
+        ${
+          notes.length
+          ?
+          notes.map(
+            (
+              note,
+              index
+            )=>`
 
-        ?
+              <div
+              class="card"
+              onclick="
+              editNote(${index})
+              ">
 
-        notes.map(
+                <b>
+                  ${safe(note.title)}
+                </b>
 
-          (
-            note,
-            index
-          ) =>`
+                <div class="settings-small">
 
-          <div
-          class="card"
-          onclick="editNote(${index})">
+                  ${
+                    safe(
+                      note.text.slice(
+                        0,
+                        80
+                      )
+                    )
+                  }
 
-            <b>
+                </div>
 
-              ${safe(note.title)}
+              </div>
 
-            </b>
-
-            <div class="settings-small">
-
-              ${safe(note.text.slice(0,80))}
-
-            </div>
-
-          </div>
-
+            `
+          ).join("")
+          :
           `
+          <div
+          style="
+          color:#888;
+          text-align:center;
+          padding:30px;
+          ">
+            Нет заметок
+          </div>
+          `
+        }
 
-        )
-        .join("")
-
-        :
-
-        `
-
-        <div
-        style="
-        color:#8a8a90;
-        text-align:center;
-        padding:30px;
-        ">
-
-          Нет заметок
-
-        </div>
-
-        `
-      }
-
-    </div>
+      </div>
 
     `
 
@@ -3932,40 +3575,23 @@ function openNotes(){
 }
 
 
-function newNote(){
-
-  editNote(-1);
-
-}
-
-
 function editNote(index){
 
   const notes =
   JSON.parse(
-
     localStorage.getItem(
-      "v4Notes"
+      "v41Notes"
     )
-
     ||
-
     "[]"
-
   );
 
 
   const note =
-  index
-  >=
-  0
-
+  index >= 0
   ?
-
   notes[index]
-
   :
-
   {
     title:"",
     text:""
@@ -3978,26 +3604,27 @@ function editNote(index){
 
     `
 
-    <input
-    class="field"
-    id="noteTitle"
-    placeholder="Название"
-    value="${attr(note.title)}">
+      <input
+      class="field"
+      id="noteTitle"
+      placeholder="Название"
+      value="${attr(note.title)}">
 
 
-    <textarea
-    class="field"
-    id="noteText"
-    placeholder="Текст">${safe(note.text)}</textarea>
+      <textarea
+      class="field"
+      id="noteText"
+      style="height:140px;padding-top:12px"
+      placeholder="Текст">${safe(note.text)}</textarea>
 
 
-    <button
-    class="primary"
-    onclick="saveNote(${index})">
-
-      Сохранить
-
-    </button>
+      <button
+      class="primary"
+      onclick="
+      saveNote(${index})
+      ">
+        Сохранить
+      </button>
 
     `,
 
@@ -4012,15 +3639,11 @@ function saveNote(index){
 
   const notes =
   JSON.parse(
-
     localStorage.getItem(
-      "v4Notes"
+      "v41Notes"
     )
-
     ||
-
     "[]"
-
   );
 
 
@@ -4043,34 +3666,21 @@ function saveNote(index){
   };
 
 
-  if(
-    index
-    >=
-    0
-  ){
+  if(index>=0){
 
     notes[index] =
     note;
 
-  }
+  }else{
 
-  else{
-
-    notes.unshift(
-      note
-    );
+    notes.unshift(note);
 
   }
 
 
   localStorage.setItem(
-
-    "v4Notes",
-
-    JSON.stringify(
-      notes
-    )
-
+    "v41Notes",
+    JSON.stringify(notes)
   );
 
 
@@ -4079,70 +3689,13 @@ function saveNote(index){
 }
 
 
-/* =====================================================
+/* =========================================================
    CALCULATOR
-===================================================== */
+========================================================= */
 
 function openCalculator(){
 
-  showSystem(
-
-    "Калькулятор",
-
-    `
-
-    <div
-    style="
-    background:#111;
-    padding:18px;
-    border-radius:22px;
-    ">
-
-      <input
-
-      id="calcDisplay"
-
-      value=""
-
-      readonly
-
-      style="
-      width:100%;
-      height:80px;
-      border:0;
-      background:#111;
-      color:#fff;
-      text-align:right;
-      font-size:38px;
-      outline:none;
-      ">
-
-
-      <div
-
-      style="
-      display:grid;
-      grid-template-columns:
-      repeat(4,1fr);
-      gap:9px;
-      ">
-
-        ${calcButtons()}
-
-      </div>
-
-    </div>
-
-    `
-
-  );
-
-}
-
-
-function calcButtons(){
-
-  return [
+  const buttons = [
 
     "7","8","9","÷",
     "4","5","6","×",
@@ -4150,71 +3703,108 @@ function calcButtons(){
     "0",".","=","+",
     "C"
 
-  ]
+  ].map(
+    item=>`
 
-  .map(
+      <button
 
-    value =>`
+      onclick="
+      calculatorPress('${item}')
+      "
 
-    <button
+      style="
+      height:58px;
+      border:0;
+      border-radius:50%;
+      background:#333;
+      color:#fff;
+      font-size:22px;
+      ">
 
-    onclick="
-    calcPress('${value}')
-    "
+        ${item}
 
-    style="
-    height:58px;
-    border:0;
-    border-radius:50%;
-    background:#333;
-    color:#fff;
-    font-size:22px;
-    ">
+      </button>
 
-      ${value}
+    `
+  ).join("");
 
-    </button>
+
+  showSystem(
+
+    "Калькулятор",
 
     `
 
-  )
-  .join("");
+      <div
+      style="
+      padding:18px;
+      border-radius:22px;
+      background:#111;
+      ">
+
+        <input
+
+        id="calculatorDisplay"
+
+        readonly
+
+        style="
+        width:100%;
+        height:78px;
+        border:0;
+        outline:none;
+        background:#111;
+        color:#fff;
+        text-align:right;
+        font-size:38px;
+        ">
+
+
+        <div
+
+        style="
+        display:grid;
+        grid-template-columns:
+        repeat(4,1fr);
+        gap:9px;
+        ">
+
+          ${buttons}
+
+        </div>
+
+      </div>
+
+    `
+
+  );
 
 }
 
 
-function calcPress(value){
+function calculatorPress(value){
 
   const display =
   document
   .getElementById(
-    "calcDisplay"
+    "calculatorDisplay"
   );
 
 
-  if(
-    value
-    ===
-    "C"
-  ){
+  if(value==="C"){
 
     display.value =
     "";
 
     return;
-
   }
 
 
-  if(
-    value
-    ===
-    "="
-  ){
+  if(value==="="){
 
     try{
 
-      let expression =
+      const expression =
       display.value
 
       .replaceAll(
@@ -4235,14 +3825,10 @@ function calcPress(value){
 
       display.value =
       Function(
-
         `"use strict";return (${expression})`
-
       )();
 
-    }
-
-    catch(error){
+    }catch(e){
 
       display.value =
       "Ошибка";
@@ -4261,76 +3847,83 @@ function calcPress(value){
 }
 
 
-/* =====================================================
-   SOCIAL
-===================================================== */
+/* =========================================================
+   APP CATALOG
+========================================================= */
 
-function openSocial(){
+function openCatalog(){
 
   showSystem(
 
-    "Лента",
+    "Приложения",
 
     `
 
-    <div class="card">
+      <div class="card">
 
-      <b>anna_photo</b>
+        <div class="list-row">
 
-      <div
-      style="
-      margin-top:10px;
-      aspect-ratio:1/1;
-      border-radius:12px;
-      background:
-      linear-gradient(
-        145deg,
-        #f0a260,
-        #715ad8
-      );
-      ">
+          <div class="avatar">
+            🎵
+          </div>
+
+          <div class="list-main">
+
+            <div class="list-title">
+              Музыка
+            </div>
+
+            <div class="list-sub">
+              Музыкальная библиотека
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="list-row">
+
+          <div class="avatar">
+            🎮
+          </div>
+
+          <div class="list-main">
+
+            <div class="list-title">
+              Игры
+            </div>
+
+            <div class="list-sub">
+              Игровой раздел
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="list-row">
+
+          <div class="avatar">
+            📝
+          </div>
+
+          <div class="list-main">
+
+            <div class="list-title">
+              Заметки
+            </div>
+
+            <div class="list-sub">
+              Локальные записи
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
-
-      <div
-      style="
-      margin-top:10px;
-      ">
-
-        Отличный вечер ✨
-
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <b>max_travel</b>
-
-      <div
-      style="
-      margin-top:10px;
-      aspect-ratio:1/1;
-      border-radius:12px;
-      background:
-      linear-gradient(
-        160deg,
-        #214d47,
-        #102339
-      );
-      ">
-      </div>
-
-      <div
-      style="
-      margin-top:10px;
-      ">
-
-        Наконец-то выбрались за город.
-
-      </div>
-
-    </div>
 
     `
 
@@ -4339,9 +3932,9 @@ function openSocial(){
 }
 
 
-/* =====================================================
+/* =========================================================
    BROWSER
-===================================================== */
+========================================================= */
 
 function openBrowser(
   url,
@@ -4349,62 +3942,53 @@ function openBrowser(
 ){
 
   const overlay =
-  document.getElementById(
+  document
+  .getElementById(
     "browserOverlay"
   );
 
 
   overlay.innerHTML = `
 
-  <div class="browser-shell">
+    <div class="browser-shell">
+
+      <div class="browser-top">
+
+        <button
+        class="browser-button"
+        onclick="closeBrowser()">
+          ‹
+        </button>
 
 
-    <div class="browser-top">
+        <div class="browser-title">
+          ${safe(title)}
+        </div>
 
 
-      <button
-      class="browser-button"
-      onclick="closeBrowser()">
-
-        ‹
-
-      </button>
-
-
-      <div class="browser-title">
-
-        ${safe(title)}
+        <button
+        class="browser-button"
+        onclick="closeBrowser()">
+          ✕
+        </button>
 
       </div>
 
 
-      <button
-      class="browser-button"
-      onclick="closeBrowser()">
+      <iframe
 
-        ✕
+      class="browser-frame"
 
-      </button>
+      src="${attr(url)}"
 
+      allow="
+      autoplay;
+      fullscreen
+      ">
+
+      </iframe>
 
     </div>
-
-
-    <iframe
-
-    class="browser-frame"
-
-    src="${attr(url)}"
-
-    allow="
-    autoplay;
-    fullscreen
-    ">
-
-    </iframe>
-
-
-  </div>
 
   `;
 
@@ -4419,7 +4003,8 @@ function openBrowser(
 function closeBrowser(){
 
   const overlay =
-  document.getElementById(
+  document
+  .getElementById(
     "browserOverlay"
   );
 
@@ -4435,43 +4020,43 @@ function closeBrowser(){
 }
 
 
-/* =====================================================
+/* =========================================================
    SEARCH
-===================================================== */
+========================================================= */
 
 function openSearch(){
 
   const overlay =
-  document.getElementById(
+  document
+  .getElementById(
     "searchOverlay"
   );
 
 
   overlay.innerHTML = `
 
-  <div class="searchbox">
+    <div class="search-line">
 
-    <input
-    id="searchInput"
-    placeholder="Поиск"
-    autofocus
-    oninput="runSearch()">
-
-    <button
-    class="search-cancel"
-    onclick="closeSearch()">
-
-      Отмена
-
-    </button>
-
-  </div>
+      <input
+      class="search-input"
+      id="searchInput"
+      placeholder="Поиск"
+      oninput="runSearch()">
 
 
-  <div
-  class="search-results"
-  id="searchResults">
-  </div>
+      <button
+      class="search-cancel"
+      onclick="closeSearch()">
+        Отмена
+      </button>
+
+    </div>
+
+
+    <div
+    class="search-results"
+    id="searchResults">
+    </div>
 
   `;
 
@@ -4482,7 +4067,6 @@ function openSearch(){
 
 
   setTimeout(
-
     ()=>{
 
       document
@@ -4492,9 +4076,7 @@ function openSearch(){
       ?.focus();
 
     },
-
-    150
-
+    120
   );
 
 
@@ -4512,96 +4094,74 @@ function runSearch(){
   );
 
 
-  if(
-    !input
-  ){
-
+  if(!input){
     return;
-
   }
 
 
   const query =
   input.value
-  .trim()
-  .toLowerCase();
+  .toLowerCase()
+  .trim();
 
 
   const results =
-  state.apps
-  .filter(
-
-    app =>
+  state.apps.filter(
+    app=>
     !query
-
     ||
-
     app.title
     .toLowerCase()
-    .includes(
-      query
-    )
-
+    .includes(query)
   );
 
 
+  const box =
   document
   .getElementById(
     "searchResults"
-  )
-  .innerHTML =
+  );
 
-  results
-  .map(
 
-    app =>`
+  box.innerHTML =
+  results.map(
+    app=>`
 
-    <div
-    class="search-item"
+      <div
+      class="search-item"
+      onclick="
+      closeSearch();
+      launchAppById('${app.id}')
+      ">
 
-    onclick="
-    closeSearch();
-    launchById('${app.id}')
-    ">
+        ${iconHTML(app)}
 
-      ${iconHTML(app)}
-
-      <div>
-
-        ${safe(app.title)}
+        <div>
+          ${safe(app.title)}
+        </div>
 
       </div>
 
-    </div>
-
     `
+  ).join("");
 
-  )
-  .join("");
+
+  hydrateImages();
 
 }
 
 
-function launchById(id){
+function launchAppById(id){
 
   const app =
-  state.apps
-  .find(
-
-    item =>
-    item.id
-    ===
-    id
-
+  state.apps.find(
+    item=>
+    item.id === id
   );
 
 
-  if(
-    app
-  ){
-
+  if(app){
     openApp(app);
-
   }
 
 }
@@ -4610,7 +4170,8 @@ function launchById(id){
 function closeSearch(){
 
   const overlay =
-  document.getElementById(
+  document
+  .getElementById(
     "searchOverlay"
   );
 
@@ -4626,130 +4187,14 @@ function closeSearch(){
 }
 
 
-/* =====================================================
-   EDIT
-===================================================== */
-
-function startEditing(){
-
-  closeSystem();
-
-  state.editing =
-  true;
-
-  save();
-
-  render();
-
-}
-
-
-/* tap dock area to finish edit */
-
-document
-.getElementById(
-  "dock"
-)
-.addEventListener(
-
-  "dblclick",
-
-  ()=>{
-
-    if(
-      state.editing
-    ){
-
-      state.editing =
-      false;
-
-      save();
-
-      render();
-
-    }
-
-  }
-
-);
-
-
-/* =====================================================
-   HIDDEN ADMIN ENTRY
-   5 taps top-left
-===================================================== */
-
-let adminTaps =
-0;
-
-
-let adminTimer;
-
-
-document
-.getElementById(
-  "adminHotspot"
-)
-.addEventListener(
-
-  "click",
-
-  ()=>{
-
-
-    adminTaps++;
-
-
-    clearTimeout(
-      adminTimer
-    );
-
-
-    if(
-      adminTaps
-      >=
-      5
-    ){
-
-      adminTaps =
-      0;
-
-      openSettings();
-
-      return;
-
-    }
-
-
-    adminTimer =
-    setTimeout(
-
-      ()=>{
-
-        adminTaps =
-        0;
-
-      },
-
-      1200
-
-    );
-
-  }
-
-);
-
-
-/* =====================================================
-   SAFE TEXT
-===================================================== */
+/* =========================================================
+   SAFE HTML
+========================================================= */
 
 function safe(text){
 
   return String(
-    text
-    ??
-    ""
+    text ?? ""
   )
 
   .replaceAll(
@@ -4791,13 +4236,19 @@ function attr(text){
 }
 
 
-/* =====================================================
+/* =========================================================
    START
-===================================================== */
+========================================================= */
 
-applyWallpaper();
+(async()=>{
 
-render();
+  await openDB();
+
+  await applyWallpaper();
+
+  render();
+
+})();
 
 </script>
 
