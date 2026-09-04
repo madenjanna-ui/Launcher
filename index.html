@@ -1,2798 +1,1762 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#111111">
-
+<meta name="theme-color" content="#000000">
 <title>Home</title>
 
 <style>
-
-/* =====================================================
-   BASE
-===================================================== */
+:root{
+  --glass: rgba(255,255,255,.18);
+  --glass2: rgba(255,255,255,.09);
+  --line: rgba(255,255,255,.28);
+  --text:#fff;
+}
 
 *{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
-    margin:0;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-
-    font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "Segoe UI",
-    sans-serif;
-
-    background:#111;
-    color:#fff;
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  min-height:100%;
+  overflow:hidden;
+  background:#000;
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
 }
 
 body{
-    position:fixed;
-    inset:0;
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
 }
 
+button,input,select,textarea{
+  font:inherit;
+}
 
-/* =====================================================
-   HOME SCREEN
-===================================================== */
+button{
+  -webkit-appearance:none;
+  appearance:none;
+}
 
-.home{
-    position:relative;
+/* ===== FULLSCREEN HOME ===== */
 
-    width:100%;
-    height:100dvh;
+#home{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  min-height:100svh;
+  min-height:100dvh;
+  overflow:hidden;
 
-    overflow:hidden;
+  background:
+    linear-gradient(160deg,#53657a,#263548 50%,#0b1119);
 
-    background:
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+
+#home::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
     linear-gradient(
-        160deg,
-        #53657a,
-        #263548 50%,
-        #0b1119
+      180deg,
+      rgba(0,0,0,.05),
+      rgba(0,0,0,.02) 45%,
+      rgba(0,0,0,.26)
     );
-
-    background-position:center;
-    background-size:cover;
-    background-repeat:no-repeat;
-
-    transition:
-    background-image .3s ease;
 }
 
+/* ===== TOP CLOCK ===== */
 
-/* мягкое затемнение фона */
-
-.home::before{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-    linear-gradient(
-        180deg,
-        rgba(0,0,0,.05),
-        rgba(0,0,0,.02) 45%,
-        rgba(0,0,0,.30)
-    );
-
-    pointer-events:none;
+.hero{
+  position:relative;
+  z-index:3;
+  padding:
+    calc(env(safe-area-inset-top) + 14px)
+    22px 8px;
+  user-select:none;
+  -webkit-user-select:none;
 }
 
-
-/* =====================================================
-   STATUS
-===================================================== */
-
-.status{
-
-    position:relative;
-    z-index:5;
-
-    height:55px;
-
-    padding:
-    max(14px,env(safe-area-inset-top))
-    23px
-    0;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-
-    font-size:15px;
-    font-weight:650;
+.hero-time{
+  font-size:58px;
+  line-height:.95;
+  font-weight:250;
+  letter-spacing:-3px;
+  text-shadow:0 2px 14px rgba(0,0,0,.35);
 }
 
-.status-right{
-    display:flex;
-    align-items:center;
-    gap:7px;
+.hero-date{
+  margin-top:8px;
+  font-size:16px;
+  opacity:.92;
+  text-shadow:0 2px 8px rgba(0,0,0,.4);
 }
 
-#clock{
-    user-select:none;
-    -webkit-user-select:none;
+/* ===== PAGES ===== */
+
+.pages-viewport{
+  position:absolute;
+  z-index:2;
+  left:0;
+  right:0;
+  top:calc(env(safe-area-inset-top) + 130px);
+  bottom:calc(env(safe-area-inset-bottom) + 132px);
+  overflow:hidden;
+  touch-action:pan-y;
 }
 
-
-/* =====================================================
-   CLOCK / DATE
-===================================================== */
-
-.date-area{
-
-    position:relative;
-    z-index:2;
-
-    padding:
-    15px
-    24px
-    0;
+.pages-track{
+  height:100%;
+  display:flex;
+  transition:transform .32s cubic-bezier(.22,.7,.18,1);
+  will-change:transform;
 }
 
-.big-time{
-
-    font-size:47px;
-
-    font-weight:300;
-
-    line-height:1;
-
-    letter-spacing:-2px;
-
-    text-shadow:
-    0 2px 12px rgba(0,0,0,.35);
+.page{
+  flex:0 0 100%;
+  width:100%;
+  height:100%;
+  padding:18px 18px 12px;
+  overflow-y:auto;
+  scrollbar-width:none;
 }
 
-.date{
-
-    margin-top:7px;
-
-    font-size:15px;
-
-    opacity:.88;
-
-    text-shadow:
-    0 2px 8px rgba(0,0,0,.50);
+.page::-webkit-scrollbar{
+  display:none;
 }
 
-
-/* =====================================================
-   APP GRID
-===================================================== */
-
-.apps{
-
-    position:relative;
-    z-index:2;
-
-    padding:
-    34px
-    20px
-    135px;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    column-gap:15px;
-    row-gap:25px;
-
-    overflow-y:auto;
-
-    max-height:
-    calc(100dvh - 170px);
-
-    scrollbar-width:none;
+.app-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px 12px;
+  align-content:start;
 }
 
-.apps::-webkit-scrollbar{
-    display:none;
-}
-
+/* ===== APP ICON ===== */
 
 .app{
-
-    text-align:center;
-
-    user-select:none;
-
-    cursor:pointer;
+  min-width:0;
+  text-align:center;
+  user-select:none;
+  cursor:pointer;
 }
 
+.app-icon{
+  width:min(17vw,72px);
+  height:min(17vw,72px);
+  margin:auto;
+  border-radius:20px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
 
-/* =====================================================
-   GLASS ICON
-===================================================== */
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.34),rgba(255,255,255,.08));
 
-.icon{
+  border:1px solid rgba(255,255,255,.28);
 
-    width:min(17vw,70px);
-    height:min(17vw,70px);
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.25),
+    inset 0 1px 1px rgba(255,255,255,.65),
+    inset 0 -1px 1px rgba(255,255,255,.08);
 
-    margin:auto;
+  backdrop-filter:blur(18px) saturate(170%);
+  -webkit-backdrop-filter:blur(18px) saturate(170%);
 
-    position:relative;
-
-    overflow:hidden;
-
-    border-radius:19px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:32px;
-
-    background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.35),
-        rgba(255,255,255,.10)
-    );
-
-    border:
-    1px solid
-    rgba(255,255,255,.30);
-
-    box-shadow:
-
-    0 12px 28px
-    rgba(0,0,0,.23),
-
-    inset 0 1px 1px
-    rgba(255,255,255,.65),
-
-    inset 0 -1px 1px
-    rgba(255,255,255,.09);
-
-    backdrop-filter:
-    blur(18px)
-    saturate(170%);
-
-    -webkit-backdrop-filter:
-    blur(18px)
-    saturate(170%);
-
-    transition:
-    transform .12s ease,
-    filter .12s ease;
+  transition:transform .12s ease,filter .12s ease;
 }
 
-
-/* стеклянный блик */
-
-.icon::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:-35%;
-    left:-15%;
-
-    width:80%;
-    height:70%;
-
-    border-radius:50%;
-
-    background:
-    rgba(255,255,255,.22);
-
-    filter:blur(8px);
-
-    transform:
-    rotate(-15deg);
-
-    pointer-events:none;
+.app-icon::before{
+  content:"";
+  position:absolute;
+  top:-30%;
+  left:-15%;
+  width:85%;
+  height:65%;
+  border-radius:50%;
+  background:rgba(255,255,255,.2);
+  filter:blur(8px);
+  transform:rotate(-12deg);
+  pointer-events:none;
 }
 
-
-.app:active .icon{
-
-    transform:
-    scale(.89);
-
-    filter:
-    brightness(.88);
+.app-icon img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-
-.name{
-
-    margin-top:7px;
-
-    font-size:12px;
-    font-weight:500;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-    text-shadow:
-    0 2px 5px
-    rgba(0,0,0,.75);
+.app-icon .emoji{
+  position:relative;
+  z-index:2;
 }
 
+.app:active .app-icon{
+  transform:scale(.89);
+  filter:brightness(.9);
+}
 
-/* =====================================================
-   DOCK
-===================================================== */
+.app-name{
+  margin-top:7px;
+  padding:0 2px;
+  font-size:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  text-shadow:0 2px 5px rgba(0,0,0,.78);
+}
+
+/* ===== PAGE DOTS ===== */
+
+.page-dots{
+  position:absolute;
+  z-index:5;
+  left:0;
+  right:0;
+  bottom:calc(env(safe-area-inset-bottom) + 108px);
+  display:flex;
+  justify-content:center;
+  gap:7px;
+  pointer-events:none;
+}
+
+.page-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:rgba(255,255,255,.38);
+  transition:.2s;
+}
+
+.page-dot.active{
+  background:#fff;
+  transform:scale(1.08);
+}
+
+/* ===== DOCK ===== */
 
 .dock{
+  position:absolute;
+  z-index:5;
+  left:14px;
+  right:14px;
+  bottom:max(10px,env(safe-area-inset-bottom));
+  height:90px;
+  border-radius:30px;
 
-    position:absolute;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
 
-    z-index:4;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.23),rgba(255,255,255,.07));
 
-    left:16px;
-    right:16px;
+  border:1px solid rgba(255,255,255,.25);
 
-    bottom:
-    calc(
-        10px +
-        env(safe-area-inset-bottom)
-    );
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.3),
+    inset 0 1px rgba(255,255,255,.3);
 
-    height:90px;
-
-    border-radius:30px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:space-around;
-
-    background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.24),
-        rgba(255,255,255,.08)
-    );
-
-    border:
-    1px solid
-    rgba(255,255,255,.25);
-
-    box-shadow:
-
-    0 12px 35px
-    rgba(0,0,0,.30),
-
-    inset 0 1px
-    rgba(255,255,255,.30);
-
-    backdrop-filter:
-    blur(28px)
-    saturate(170%);
-
-    -webkit-backdrop-filter:
-    blur(28px)
-    saturate(170%);
+  backdrop-filter:blur(28px) saturate(175%);
+  -webkit-backdrop-filter:blur(28px) saturate(175%);
 }
 
-
-.dock .icon{
-
-    width:62px;
-    height:62px;
-
-    border-radius:18px;
-
-    font-size:29px;
+.dock .app-icon{
+  width:62px;
+  height:62px;
+  border-radius:18px;
+  font-size:28px;
 }
 
-
-/* =====================================================
-   SETTINGS
-===================================================== */
-
-.settings-overlay{
-
-    display:none;
-
-    position:absolute;
-    inset:0;
-
-    z-index:100;
-
-    background:
-    rgba(7,8,12,.70);
-
-    backdrop-filter:
-    blur(28px);
-
-    -webkit-backdrop-filter:
-    blur(28px);
-
-    padding:
-
-    calc(
-        env(safe-area-inset-top)
-        +
-        25px
-    )
-
-    18px
-
-    calc(
-        env(safe-area-inset-bottom)
-        +
-        25px
-    );
-
-    overflow-y:auto;
+.dock .app-name{
+  display:none;
 }
 
+/* ===== SETTINGS ===== */
 
-.settings-overlay.show{
-    display:block;
+.overlay{
+  display:none;
+  position:absolute;
+  inset:0;
+  z-index:100;
+  background:rgba(7,8,12,.72);
+  backdrop-filter:blur(28px);
+  -webkit-backdrop-filter:blur(28px);
+  overflow-y:auto;
+  padding:
+    calc(env(safe-area-inset-top) + 22px)
+    16px
+    calc(env(safe-area-inset-bottom) + 24px);
 }
 
-
-.settings-card{
-
-    max-width:430px;
-
-    margin:auto;
-
-    padding:22px;
-
-    border-radius:28px;
-
-    background:
-    rgba(35,35,42,.78);
-
-    border:
-    1px solid
-    rgba(255,255,255,.16);
-
-    box-shadow:
-    0 20px 50px
-    rgba(0,0,0,.40);
-
-    backdrop-filter:
-    blur(25px);
-
-    -webkit-backdrop-filter:
-    blur(25px);
+.overlay.show{
+  display:block;
 }
 
-
-.settings-title{
-
-    font-size:23px;
-    font-weight:700;
-
-    margin-bottom:22px;
+.panel{
+  max-width:440px;
+  margin:auto;
+  border-radius:28px;
+  padding:20px;
+  background:rgba(34,34,41,.8);
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 18px 50px rgba(0,0,0,.42);
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
 }
 
+.panel-title{
+  font-size:24px;
+  font-weight:700;
+  margin:0 0 20px;
+}
 
 .section-title{
-
-    font-size:13px;
-
-    text-transform:uppercase;
-
-    letter-spacing:.7px;
-
-    opacity:.55;
-
-    margin:
-    23px
-    2px
-    10px;
+  margin:22px 2px 10px;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.75px;
+  opacity:.55;
 }
 
-
-/* =====================================================
-   WALLPAPER GRID
-===================================================== */
-
-.wallpapers{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
-    gap:10px;
+.btn{
+  width:100%;
+  min-height:50px;
+  border:0;
+  border-radius:15px;
+  margin-top:10px;
+  background:#fff;
+  color:#111;
+  font-weight:650;
 }
 
+.btn.secondary{
+  color:#fff;
+  background:rgba(255,255,255,.1);
+}
+
+.btn.danger{
+  color:#ffb3ad;
+  background:rgba(255,59,48,.14);
+}
+
+/* ===== WALLPAPERS ===== */
+
+.wallpaper-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
 
 .wallpaper{
-
-    aspect-ratio:9/16;
-
-    border-radius:16px;
-
-    background-position:center;
-
-    background-size:cover;
-
-    border:
-    2px solid transparent;
-
-    position:relative;
-
-    overflow:hidden;
-
-    cursor:pointer;
-
-    box-shadow:
-    0 5px 15px
-    rgba(0,0,0,.22);
+  aspect-ratio:9/16;
+  border-radius:15px;
+  background:center/cover no-repeat;
+  position:relative;
+  overflow:hidden;
+  border:2px solid transparent;
 }
-
 
 .wallpaper.selected{
-
-    border-color:white;
+  border-color:#fff;
 }
-
 
 .wallpaper.selected::after{
-
-    content:"✓";
-
-    position:absolute;
-
-    right:7px;
-    top:7px;
-
-    width:25px;
-    height:25px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    background:white;
-
-    color:#111;
-
-    font-weight:800;
-
-    font-size:14px;
-
-    box-shadow:
-    0 3px 10px
-    rgba(0,0,0,.3);
+  content:"✓";
+  position:absolute;
+  right:6px;
+  top:6px;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  color:#111;
+  font-weight:800;
 }
 
-
-.wallpaper-delete{
-
-    position:absolute;
-
-    left:7px;
-    top:7px;
-
-    width:25px;
-    height:25px;
-
-    padding:0;
-
-    border:0;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    background:
-    rgba(0,0,0,.55);
-
-    color:white;
-
-    font-size:17px;
-
-    backdrop-filter:
-    blur(10px);
-
-    -webkit-backdrop-filter:
-    blur(10px);
+.mini-x{
+  position:absolute;
+  left:6px;
+  top:6px;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  border:0;
+  background:rgba(0,0,0,.55);
+  color:#fff;
 }
 
+/* ===== PAGE SETTINGS ===== */
 
-.wallpaper-empty{
-
-    grid-column:1/-1;
-
-    padding:18px;
-
-    text-align:center;
-
-    border-radius:16px;
-
-    background:
-    rgba(255,255,255,.06);
-
-    font-size:14px;
-
-    opacity:.65;
+.page-row,
+.app-row{
+  min-height:58px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-
-/* =====================================================
-   SETTINGS ROW
-===================================================== */
-
-.setting-row{
-
-    min-height:58px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:
-    space-between;
-
-    gap:10px;
-
-    border-bottom:
-
-    1px solid
-    rgba(255,255,255,.08);
-
-    font-size:16px;
+.row-left{
+  min-width:0;
+  flex:1;
 }
 
-
-.setting-left{
-
-    min-width:0;
-
-    flex:1;
+.row-title{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
-
-.setting-name{
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
+.row-sub{
+  margin-top:3px;
+  font-size:12px;
+  opacity:.5;
 }
 
-
-.setting-actions{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
+.row-actions{
+  display:flex;
+  align-items:center;
+  gap:7px;
 }
 
+.small-btn{
+  border:0;
+  min-width:36px;
+  height:36px;
+  padding:0 10px;
+  border-radius:11px;
+  background:rgba(255,255,255,.1);
+  color:#fff;
+}
 
-/* =====================================================
-   SWITCH
-===================================================== */
+.small-btn.red{
+  color:#ffb3ad;
+  background:rgba(255,59,48,.15);
+}
+
+/* ===== SWITCH ===== */
 
 .switch{
-
-    width:49px;
-    height:29px;
-
-    border-radius:20px;
-
-    background:
-    rgba(255,255,255,.18);
-
-    padding:3px;
-
-    transition:.2s;
-
-    cursor:pointer;
+  width:49px;
+  height:29px;
+  padding:3px;
+  border-radius:18px;
+  background:rgba(255,255,255,.18);
+  transition:.2s;
 }
-
 
 .switch-knob{
-
-    width:23px;
-    height:23px;
-
-    border-radius:50%;
-
-    background:white;
-
-    transition:.2s;
+  width:23px;
+  height:23px;
+  border-radius:50%;
+  background:#fff;
+  transition:.2s;
 }
-
 
 .switch.on{
-
-    background:#34c759;
+  background:#34c759;
 }
 
-
-.switch.on
-.switch-knob{
-
-    transform:
-    translateX(20px);
+.switch.on .switch-knob{
+  transform:translateX(20px);
 }
 
+/* ===== FORMS ===== */
 
-/* =====================================================
-   DELETE
-===================================================== */
-
-.delete-btn{
-
-    border:0;
-
-    width:34px;
-    height:34px;
-
-    border-radius:10px;
-
-    color:white;
-
-    background:
-    rgba(255,59,48,.22);
-
-    font-size:18px;
-
-    cursor:pointer;
+.form{
+  display:none;
+  margin-top:12px;
+  padding:14px;
+  border-radius:18px;
+  background:rgba(255,255,255,.07);
 }
 
-
-/* =====================================================
-   BUTTON
-===================================================== */
-
-.settings-button{
-
-    width:100%;
-
-    min-height:52px;
-
-    margin-top:14px;
-
-    border:0;
-
-    border-radius:16px;
-
-    font-size:16px;
-    font-weight:600;
-
-    background:
-    rgba(255,255,255,.94);
-
-    color:#111;
-
-    cursor:pointer;
+.form.show{
+  display:block;
 }
 
-
-.secondary{
-
-    background:
-    rgba(255,255,255,.10);
-
-    color:white;
+.input,
+.select,
+.textarea{
+  width:100%;
+  margin-top:10px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  outline:none;
 }
 
-
-/* =====================================================
-   ADD APPLICATION
-===================================================== */
-
-.add-form{
-
-    display:none;
-
-    margin-top:12px;
-
-    padding:15px;
-
-    border-radius:18px;
-
-    background:
-    rgba(255,255,255,.07);
+.input,
+.select{
+  height:48px;
+  padding:0 13px;
 }
 
-
-.add-form.show{
-    display:block;
+.textarea{
+  min-height:100px;
+  padding:12px 13px;
+  resize:vertical;
 }
 
-
-.input{
-
-    width:100%;
-
-    height:48px;
-
-    margin-top:10px;
-
-    border:
-    1px solid
-    rgba(255,255,255,.12);
-
-    border-radius:14px;
-
-    background:
-    rgba(255,255,255,.08);
-
-    color:white;
-
-    font-size:16px;
-
-    padding:
-    0 14px;
-
-    outline:none;
+.select option{
+  color:#111;
 }
 
-
-.input::placeholder{
-
-    color:
-    rgba(255,255,255,.45);
+.icon-pick{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:8px;
+  margin-top:10px;
 }
 
-
-.icon-options{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(6,1fr);
-
-    gap:8px;
-
-    margin-top:12px;
+.icon-choice{
+  height:44px;
+  border-radius:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:23px;
+  background:rgba(255,255,255,.07);
+  border:1px solid transparent;
 }
 
-
-.icon-option{
-
-    height:45px;
-
-    border-radius:12px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-size:24px;
-
-    background:
-    rgba(255,255,255,.08);
-
-    border:
-    1px solid transparent;
-
-    cursor:pointer;
+.icon-choice.selected{
+  border-color:#fff;
+  background:rgba(255,255,255,.16);
 }
 
-
-.icon-option.selected{
-
-    border-color:white;
-
-    background:
-    rgba(255,255,255,.18);
+.custom-icon-preview{
+  width:72px;
+  height:72px;
+  margin-top:10px;
+  border-radius:18px;
+  overflow:hidden;
+  display:none;
+  background:rgba(255,255,255,.08);
 }
 
-
-.form-hint{
-
-    margin-top:9px;
-
-    font-size:12px;
-
-    line-height:1.4;
-
-    opacity:.55;
+.custom-icon-preview.show{
+  display:block;
 }
 
-
-/* =====================================================
-   SMALL INFO
-===================================================== */
-
-.info{
-
-    font-size:13px;
-
-    line-height:1.45;
-
-    opacity:.60;
-
-    margin-top:12px;
+.custom-icon-preview img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
+/* ===== BUILT-IN APPS ===== */
+
+#builtinOverlay{
+  padding:0;
+  background:#f2f2f7;
+  color:#111;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+
+.builtin-shell{
+  position:absolute;
+  inset:0;
+  background:#f2f2f7;
+  color:#111;
+  display:flex;
+  flex-direction:column;
+}
+
+.builtin-top{
+  padding:
+    calc(env(safe-area-inset-top) + 10px)
+    16px
+    10px;
+  min-height:64px;
+  display:flex;
+  align-items:flex-end;
+  gap:10px;
+  background:rgba(248,248,250,.92);
+  border-bottom:1px solid #d8d8dc;
+}
+
+.back-btn{
+  border:0;
+  background:none;
+  padding:0;
+  color:#007aff;
+  font-size:16px;
+}
+
+.builtin-title{
+  font-size:20px;
+  font-weight:700;
+}
+
+.builtin-body{
+  flex:1;
+  overflow-y:auto;
+  padding:14px;
+}
+
+.card{
+  border-radius:16px;
+  background:#fff;
+  padding:14px;
+  margin-bottom:10px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+}
+
+.chat-row,
+.contact-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 4px;
+  border-bottom:1px solid #ececf0;
+}
+
+.avatar{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#7aa7ff,#836dff);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  overflow:hidden;
+}
+
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.chat-main{
+  flex:1;
+  min-width:0;
+}
+
+.chat-name{
+  font-weight:650;
+}
+
+.chat-last{
+  margin-top:3px;
+  color:#74747a;
+  font-size:14px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.bubble{
+  max-width:78%;
+  padding:9px 12px;
+  border-radius:17px;
+  margin:7px 0;
+  line-height:1.35;
+  font-size:15px;
+}
+
+.bubble.in{
+  background:#e9e9ee;
+  margin-right:auto;
+}
+
+.bubble.out{
+  background:#2f80ff;
+  color:#fff;
+  margin-left:auto;
+}
+
+.compose{
+  display:flex;
+  gap:8px;
+  padding:10px 12px calc(env(safe-area-inset-bottom) + 8px);
+  background:#f8f8fa;
+  border-top:1px solid #dddde2;
+}
+
+.compose input{
+  flex:1;
+  height:42px;
+  border:1px solid #d7d7dc;
+  border-radius:21px;
+  padding:0 14px;
+  background:#fff;
+  color:#111;
+}
+
+.compose button{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:0;
+  background:#007aff;
+  color:#fff;
+}
+
+.social-post{
+  background:#fff;
+  margin-bottom:14px;
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.social-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+}
+
+.social-img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  background:#ddd;
+}
+
+.social-text{
+  padding:12px;
+  line-height:1.35;
+}
+
+.note-item{
+  background:#fff;
+  border-radius:13px;
+  padding:13px;
+  margin-bottom:9px;
+}
+
+/* ===== HELPERS ===== */
+
+.muted{
+  opacity:.55;
+  font-size:13px;
+}
+
+.hidden{
+  display:none !important;
+}
 </style>
-
 </head>
-
 
 <body>
 
+<div id="home">
 
-<!-- =====================================================
-     HOME
-===================================================== -->
+  <div class="hero" id="secretHotspot">
+    <div class="hero-time" id="heroTime">11:01</div>
+    <div class="hero-date" id="heroDate"></div>
+  </div>
 
-<div
-class="home"
-id="home">
+  <div class="pages-viewport" id="pagesViewport">
+    <div class="pages-track" id="pagesTrack"></div>
+  </div>
 
+  <div class="page-dots" id="pageDots"></div>
 
-    <!-- STATUS -->
-
-    <div class="status">
-
-        <div id="clock">
-            09:41
-        </div>
-
-
-        <div class="status-right">
-
-            <span>●●●</span>
-
-            <span>⌁</span>
-
-            <span>100%</span>
-
-        </div>
-
-    </div>
-
-
-    <!-- CLOCK -->
-
-    <div class="date-area">
-
-        <div
-        class="big-time"
-        id="bigTime">
-
-            09:41
-
-        </div>
-
-
-        <div
-        class="date"
-        id="date">
-        </div>
-
-    </div>
-
-
-    <!-- APPS -->
-
-    <div
-    class="apps"
-    id="appsContainer">
-    </div>
-
-
-    <!-- DOCK -->
-
-    <div class="dock">
-
-
-        <div
-        class="app"
-        onclick="openURL('tel:')">
-
-            <div class="icon">
-                📞
-            </div>
-
-        </div>
-
-
-        <div
-        class="app"
-        onclick="openURL('https://www.google.com/')">
-
-            <div class="icon">
-                🌐
-            </div>
-
-        </div>
-
-
-        <div
-        class="app"
-        onclick="openURL('camera:')">
-
-            <div class="icon">
-                📷
-            </div>
-
-        </div>
-
-
-        <div
-        class="app"
-        onclick="openURL('calc:')">
-
-            <div class="icon">
-                🧮
-            </div>
-
-        </div>
-
-
-    </div>
-
+  <div class="dock" id="dock"></div>
 
 </div>
 
-
-
-<!-- =====================================================
-     SETTINGS
-===================================================== -->
-
-<div
-class="settings-overlay"
-id="settingsOverlay">
-
-
-    <div class="settings-card">
-
-
-        <div class="settings-title">
-            Настройки
-        </div>
-
-
-
-        <!-- WALLPAPER -->
-
-        <div class="section-title">
-            Обои
-        </div>
-
-
-        <div
-        class="wallpapers"
-        id="wallpaperList">
-        </div>
-
-
-        <input
-        type="file"
-        id="wallpaperInput"
-        accept="image/*"
-        hidden>
-
-
-        <button
-        class="settings-button"
-        onclick="chooseWallpaper()">
-
-            ＋ Добавить обои
-
-        </button>
-
-
-        <div class="info">
-
-            Можно выбрать любую фотографию
-            из Фото или Файлов.
-            Имя файла значения не имеет.
-
-        </div>
-
-
-
-        <!-- APPS -->
-
-        <div class="section-title">
-
-            Приложения
-
-        </div>
-
-
-        <div
-        id="appSettings">
-        </div>
-
-
-
-        <!-- ADD APP -->
-
-        <button
-        class="settings-button"
-        onclick="toggleAddForm()">
-
-            ＋ Добавить приложение
-
-        </button>
-
-
-
-        <div
-        class="add-form"
-        id="addForm">
-
-
-            <input
-            class="input"
-            id="newTitle"
-            placeholder="Название приложения">
-
-
-            <input
-            class="input"
-            id="newUrl"
-            placeholder="Ссылка или URL-схема">
-
-
-            <div class="section-title">
-                Значок
-            </div>
-
-
-            <div
-            class="icon-options"
-            id="iconOptions">
-            </div>
-
-
-            <div class="form-hint">
-
-                Например:
-                https://...
-                или специальная ссылка приложения.
-
-            </div>
-
-
-            <button
-            class="settings-button"
-            onclick="addApp()">
-
-                Добавить
-
-            </button>
-
-
-        </div>
-
-
-
-        <!-- CLOSE -->
-
-        <button
-        class="settings-button secondary"
-        onclick="closeSettings()">
-
-            Готово
-
-        </button>
-
-
+<!-- SETTINGS -->
+<div class="overlay" id="settingsOverlay">
+  <div class="panel">
+    <div class="panel-title">Настройки</div>
+
+    <div class="section-title">Обои</div>
+    <div class="wallpaper-grid" id="wallpaperGrid"></div>
+    <input id="wallpaperInput" type="file" accept="image/*" hidden>
+    <button class="btn" onclick="document.getElementById('wallpaperInput').click()">＋ Добавить обои</button>
+
+    <div class="section-title">Страницы</div>
+    <div id="pageSettings"></div>
+    <button class="btn" onclick="addPage()">＋ Добавить страницу</button>
+
+    <div class="section-title">Приложения</div>
+    <div id="appSettings"></div>
+    <button class="btn" onclick="toggleAppForm()">＋ Добавить приложение</button>
+
+    <div class="form" id="appForm">
+      <input class="input" id="newAppTitle" placeholder="Название">
+
+      <select class="select" id="newAppPage"></select>
+
+      <select class="select" id="newAppType" onchange="updateTypeFields()">
+        <option value="url">Открыть ссылку / приложение</option>
+        <option value="messages">Встроенные сообщения</option>
+        <option value="contacts">Встроенные контакты</option>
+        <option value="social">Встроенная лента</option>
+        <option value="notes">Встроенные заметки</option>
+      </select>
+
+      <input class="input" id="newAppUrl" placeholder="https://... или URL-схема">
+
+      <div class="section-title">Значок</div>
+      <div class="icon-pick" id="emojiPicker"></div>
+
+      <input id="iconFileInput" type="file" accept="image/*" hidden>
+      <button class="btn secondary" onclick="document.getElementById('iconFileInput').click()">Выбрать свою иконку</button>
+      <div class="custom-icon-preview" id="customIconPreview"></div>
+
+      <button class="btn" onclick="addApp()">Добавить</button>
     </div>
 
+    <button class="btn secondary" onclick="closeSettings()">Готово</button>
+  </div>
 </div>
 
-
+<!-- BUILT-IN APP OVERLAY -->
+<div class="overlay" id="builtinOverlay"></div>
 
 <script>
+/* =========================================================
+   STATE
+========================================================= */
 
-/* =====================================================
-   DEFAULT APPLICATIONS
-===================================================== */
-
-const defaultApps = [
-
-{
-    id:"music",
-
-    title:"Музыка",
-
-    icon:"🎵",
-
-    url:
-    "https://madenjanna-ui.github.io/Music-edition/",
-
-    enabled:true,
-
-    removable:false
-},
-
-{
-    id:"planner",
-
-    title:"Планер",
-
-    icon:"📅",
-
-    url:"#",
-
-    enabled:true,
-
-    removable:false
-},
-
-{
-    id:"family",
-
-    title:"Сообщения",
-
-    icon:"💬",
-
-    url:"#",
-
-    enabled:true,
-
-    removable:false
-},
-
-{
-    id:"games",
-
-    title:"Игры",
-
-    icon:"🎮",
-
-    url:
-    "https://madenjanna-ui.github.io/Avtoslalom/",
-
-    enabled:true,
-
-    removable:false
-},
-
-{
-    id:"journal",
-
-    title:"Журнал",
-
-    icon:"📊",
-
-    url:"#",
-
-    enabled:true,
-
-    removable:false
-},
-
-{
-    id:"notes",
-
-    title:"Заметки",
-
-    icon:"📝",
-
-    url:"#",
-
-    enabled:true,
-
-    removable:false
-},
-
-{
-    id:"photos",
-
-    title:"Фото",
-
-    icon:"🖼️",
-
-    url:"#",
-
-    enabled:true,
-
-    removable:false
-},
-
-{
-    id:"maps",
-
-    title:"Карты",
-
-    icon:"🗺️",
-
-    url:
-    "https://maps.apple.com/",
-
-    enabled:true,
-
-    removable:false
-}
-
+const emojiChoices = [
+  "🎵","📅","💬","🎮","📊","📝","🖼️","🗺️",
+  "🌐","📞","📷","🧮","📁","📚","✉️","🚗",
+  "🎬","📺","☁️","⭐","👤","📸","🎧","⚙️"
 ];
 
-
-/* =====================================================
-   ICON LIST
-===================================================== */
-
-const iconChoices = [
-
-"🎵",
-"📅",
-"💬",
-"🎮",
-"📝",
-"📊",
-
-"📷",
-"🖼️",
-"🌐",
-"🗺️",
-"📞",
-"🧮",
-
-"📁",
-"🎬",
-"📺",
-"☁️",
-"📚",
-"💳",
-
-"🚗",
-"✉️",
-"⌚",
-"🏠",
-"🔎",
-"⭐",
-
-"🎧",
-"🎙️",
-"📻",
-"🧭",
-"📰",
-"⚙️"
-
-];
-
-
-let selectedIcon =
-"⭐";
-
-
-/* =====================================================
-   LOAD APPS
-===================================================== */
-
-let apps =
-JSON.parse(
-
-    localStorage.getItem(
-        "launcherFullApps"
-    )
-
-    ||
-
-    "null"
-
-);
-
-
-if(!apps){
-
-    apps =
-    defaultApps;
-
-    saveApps();
-
-}
-
-
-/* =====================================================
-   SAVE APPS
-===================================================== */
-
-function saveApps(){
-
-    localStorage.setItem(
-
-        "launcherFullApps",
-
-        JSON.stringify(apps)
-
-    );
-
-}
-
-
-/* =====================================================
-   RENDER APPS
-===================================================== */
-
-function renderApps(){
-
-    const container =
-
-    document.getElementById(
-        "appsContainer"
-    );
-
-
-    container.innerHTML = "";
-
-
-    apps
-
-    .filter(
-        app =>
-        app.enabled
-    )
-
-    .forEach(
-        app => {
-
-
-            const el =
-            document.createElement(
-                "div"
-            );
-
-
-            el.className =
-            "app";
-
-
-            el.innerHTML = `
-
-                <div class="icon">
-
-                    ${app.icon}
-
-                </div>
-
-                <div class="name">
-
-                    ${escapeHTML(app.title)}
-
-                </div>
-
-            `;
-
-
-            el.onclick =
-            ()=>{
-
-                openURL(
-                    app.url
-                );
-
-            };
-
-
-            container
-            .appendChild(el);
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   SETTINGS APPLICATION LIST
-===================================================== */
-
-function renderSettings(){
-
-    const box =
-
-    document.getElementById(
-        "appSettings"
-    );
-
-
-    box.innerHTML = "";
-
-
-    apps.forEach(
-        app => {
-
-
-            const row =
-            document.createElement(
-                "div"
-            );
-
-
-            row.className =
-            "setting-row";
-
-
-            row.innerHTML = `
-
-                <div class="setting-left">
-
-                    <div class="setting-name">
-
-                        ${app.icon}
-                        ${escapeHTML(app.title)}
-
-                    </div>
-
-                </div>
-
-
-                <div class="setting-actions">
-
-                    <div
-                    class="switch
-                    ${app.enabled ? "on" : ""}">
-
-                        <div
-                        class="switch-knob">
-                        </div>
-
-                    </div>
-
-
-                    ${
-                        app.removable
-
-                        ?
-
-                        `
-                        <button
-                        class="delete-btn">
-
-                            ×
-
-                        </button>
-                        `
-
-                        :
-
-                        ""
-                    }
-
-                </div>
-
-            `;
-
-
-
-            const switchEl =
-
-            row.querySelector(
-                ".switch"
-            );
-
-
-            switchEl.onclick =
-            event => {
-
-
-                event.stopPropagation();
-
-
-                app.enabled =
-                !app.enabled;
-
-
-                saveApps();
-
-                renderApps();
-
-                renderSettings();
-
-            };
-
-
-
-            const deleteButton =
-
-            row.querySelector(
-                ".delete-btn"
-            );
-
-
-            if(deleteButton){
-
-
-                deleteButton.onclick =
-                event => {
-
-
-                    event.stopPropagation();
-
-
-                    if(
-
-                        confirm(
-                            `Удалить «${app.title}»?`
-                        )
-
-                    ){
-
-
-                        apps =
-                        apps.filter(
-
-                            item =>
-                            item.id
-                            !==
-                            app.id
-
-                        );
-
-
-                        saveApps();
-
-                        renderApps();
-
-                        renderSettings();
-
-                    }
-
-                };
-
-            }
-
-
-            box.appendChild(row);
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   ADD APPLICATION FORM
-===================================================== */
-
-function toggleAddForm(){
-
-    document
-    .getElementById(
-        "addForm"
-    )
-    .classList
-    .toggle(
-        "show"
-    );
-
-}
-
-
-/* =====================================================
-   ICON SELECTOR
-===================================================== */
-
-function renderIconOptions(){
-
-    const box =
-
-    document.getElementById(
-        "iconOptions"
-    );
-
-
-    box.innerHTML = "";
-
-
-    iconChoices.forEach(
-        icon => {
-
-
-            const item =
-            document.createElement(
-                "div"
-            );
-
-
-            item.className =
-
-            "icon-option"
-
-            +
-
-            (
-                icon === selectedIcon
-
-                ?
-
-                " selected"
-
-                :
-
-                ""
-            );
-
-
-            item.textContent =
-            icon;
-
-
-            item.onclick =
-            ()=>{
-
-
-                selectedIcon =
-                icon;
-
-
-                renderIconOptions();
-
-            };
-
-
-            box.appendChild(item);
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   ADD APPLICATION
-===================================================== */
-
-function addApp(){
-
-    const title =
-
-    document
-    .getElementById(
-        "newTitle"
-    )
-    .value
-    .trim();
-
-
-    const url =
-
-    document
-    .getElementById(
-        "newUrl"
-    )
-    .value
-    .trim();
-
-
-
-    if(!title){
-
-        alert(
-            "Введите название приложения."
-        );
-
-        return;
-
+const defaultState = {
+  currentPage: 0,
+  pages: [
+    { id:"page_1", name:"Страница 1" }
+  ],
+  apps: [
+    {
+      id:"music",
+      title:"Музыка",
+      icon:"🎵",
+      iconImage:null,
+      type:"url",
+      url:"https://madenjanna-ui.github.io/Music-edition/",
+      pageId:"page_1",
+      enabled:true,
+      removable:false
+    },
+    {
+      id:"games",
+      title:"Игры",
+      icon:"🎮",
+      iconImage:null,
+      type:"url",
+      url:"https://madenjanna-ui.github.io/Avtoslalom/",
+      pageId:"page_1",
+      enabled:true,
+      removable:false
+    },
+    {
+      id:"messages",
+      title:"Сообщения",
+      icon:"💬",
+      iconImage:null,
+      type:"messages",
+      url:"",
+      pageId:"page_1",
+      enabled:true,
+      removable:true
+    },
+    {
+      id:"contacts",
+      title:"Контакты",
+      icon:"👤",
+      iconImage:null,
+      type:"contacts",
+      url:"",
+      pageId:"page_1",
+      enabled:true,
+      removable:true
+    },
+    {
+      id:"social",
+      title:"Лента",
+      icon:"📸",
+      iconImage:null,
+      type:"social",
+      url:"",
+      pageId:"page_1",
+      enabled:true,
+      removable:true
+    },
+    {
+      id:"notes",
+      title:"Заметки",
+      icon:"📝",
+      iconImage:null,
+      type:"notes",
+      url:"",
+      pageId:"page_1",
+      enabled:true,
+      removable:true
     }
+  ],
+  dock: [
+    { id:"dock_phone", title:"Телефон", icon:"📞", type:"url", url:"tel:", iconImage:null },
+    { id:"dock_web", title:"Интернет", icon:"🌐", type:"url", url:"https://www.google.com/", iconImage:null },
+    { id:"dock_camera", title:"Камера", icon:"📷", type:"url", url:"camera:", iconImage:null },
+    { id:"dock_calc", title:"Калькулятор", icon:"🧮", type:"url", url:"calc:", iconImage:null }
+  ],
+  wallpapers: [],
+  currentWallpaper: null
+};
 
+let state = loadState();
+let selectedEmoji = "⭐";
+let selectedCustomIcon = null;
 
-    if(!url){
+/* =========================================================
+   STORAGE
+========================================================= */
 
-        alert(
-            "Введите ссылку приложения."
-        );
+function loadState(){
+  try{
+    const raw = localStorage.getItem("guestDesktopV3");
+    if(!raw) return structuredClone(defaultState);
+    const saved = JSON.parse(raw);
 
-        return;
+    // merge in case old save misses fields
+    saved.pages = Array.isArray(saved.pages) && saved.pages.length ? saved.pages : structuredClone(defaultState.pages);
+    saved.apps = Array.isArray(saved.apps) ? saved.apps : structuredClone(defaultState.apps);
+    saved.dock = Array.isArray(saved.dock) ? saved.dock : structuredClone(defaultState.dock);
+    saved.wallpapers = Array.isArray(saved.wallpapers) ? saved.wallpapers : [];
+    saved.currentPage = Number.isInteger(saved.currentPage) ? saved.currentPage : 0;
 
-    }
-
-
-
-    apps.push({
-
-        id:
-        "custom_"
-        +
-        Date.now(),
-
-        title:title,
-
-        icon:selectedIcon,
-
-        url:url,
-
-        enabled:true,
-
-        removable:true
-
-    });
-
-
-
-    saveApps();
-
-
-    renderApps();
-
-    renderSettings();
-
-
-
-    document
-    .getElementById(
-        "newTitle"
-    )
-    .value = "";
-
-
-    document
-    .getElementById(
-        "newUrl"
-    )
-    .value = "";
-
-
-    selectedIcon =
-    "⭐";
-
-
-    renderIconOptions();
-
-
-    document
-    .getElementById(
-        "addForm"
-    )
-    .classList
-    .remove(
-        "show"
-    );
-
+    return saved;
+  }catch(e){
+    return structuredClone(defaultState);
+  }
 }
 
-
-/* =====================================================
-   OPEN APPLICATION
-===================================================== */
-
-function openURL(url){
-
-    if(
-        !url
-        ||
-        url === "#"
-    ){
-
-        return;
-
-    }
-
-
-    window.location.href =
-    url;
-
+function saveState(){
+  try{
+    localStorage.setItem("guestDesktopV3", JSON.stringify(state));
+    return true;
+  }catch(e){
+    alert("Не удалось сохранить данные. Возможно, память браузера заполнена.");
+    return false;
+  }
 }
 
-
-/* =====================================================
-   WALLPAPERS
-===================================================== */
-
-let wallpapers =
-
-JSON.parse(
-
-    localStorage.getItem(
-        "launcherWallpapers"
-    )
-
-    ||
-
-    "[]"
-
-);
-
-
-let currentWallpaper =
-
-localStorage.getItem(
-    "launcherCurrentWallpaper"
-);
-
-
-/* =====================================================
-   APPLY WALLPAPER
-===================================================== */
-
-if(currentWallpaper){
-
-    document
-    .getElementById(
-        "home"
-    )
-    .style
-    .backgroundImage =
-
-    `url("${currentWallpaper}")`;
-
-}
-
-
-/* =====================================================
-   CHOOSE WALLPAPER
-===================================================== */
-
-function chooseWallpaper(){
-
-    document
-    .getElementById(
-        "wallpaperInput"
-    )
-    .click();
-
-}
-
-
-/* =====================================================
-   FILE SELECTED
-===================================================== */
-
-document
-.getElementById(
-    "wallpaperInput"
-)
-.addEventListener(
-    "change",
-    function(){
-
-
-        const file =
-        this.files[0];
-
-
-        if(!file){
-
-            return;
-
-        }
-
-
-        if(
-
-            !file.type
-            .startsWith(
-                "image/"
-            )
-
-        ){
-
-            alert(
-                "Выберите изображение."
-            );
-
-            this.value="";
-
-            return;
-
-        }
-
-
-
-        const reader =
-        new FileReader();
-
-
-        reader.onload =
-        function(event){
-
-
-            const originalImage =
-            event.target.result;
-
-
-            compressWallpaper(
-
-                originalImage,
-
-                compressedImage => {
-
-
-                    wallpapers.push({
-
-                        id:
-                        Date.now(),
-
-                        image:
-                        compressedImage
-
-                    });
-
-
-                    if(
-
-                        !saveWallpapers()
-
-                    ){
-
-                        return;
-
-                    }
-
-
-                    setWallpaper(
-                        compressedImage
-                    );
-
-
-                    renderWallpapers();
-
-                }
-
-            );
-
-        };
-
-
-        reader.readAsDataURL(
-            file
-        );
-
-
-        this.value="";
-
-    }
-);
-
-
-/* =====================================================
-   COMPRESS WALLPAPER
-   чтобы фотографии не забивали память
-===================================================== */
-
-function compressWallpaper(
-    source,
-    callback
-){
-
-    const image =
-    new Image();
-
-
-    image.onload =
-    function(){
-
-
-        const maxWidth =
-        1179;
-
-
-        const maxHeight =
-        2556;
-
-
-        let width =
-        image.width;
-
-
-        let height =
-        image.height;
-
-
-        const ratio =
-
-        Math.min(
-
-            maxWidth / width,
-
-            maxHeight / height,
-
-            1
-
-        );
-
-
-        width =
-        Math.round(
-            width * ratio
-        );
-
-
-        height =
-        Math.round(
-            height * ratio
-        );
-
-
-        const canvas =
-        document.createElement(
-            "canvas"
-        );
-
-
-        canvas.width =
-        width;
-
-
-        canvas.height =
-        height;
-
-
-        const ctx =
-        canvas.getContext(
-            "2d"
-        );
-
-
-        ctx.drawImage(
-
-            image,
-
-            0,
-            0,
-
-            width,
-            height
-
-        );
-
-
-        const compressed =
-
-        canvas.toDataURL(
-
-            "image/jpeg",
-
-            .82
-
-        );
-
-
-        callback(
-            compressed
-        );
-
-    };
-
-
-    image.src =
-    source;
-
-}
-
-
-/* =====================================================
-   SAVE WALLPAPERS
-===================================================== */
-
-function saveWallpapers(){
-
-    try{
-
-        localStorage.setItem(
-
-            "launcherWallpapers",
-
-            JSON.stringify(
-                wallpapers
-            )
-
-        );
-
-
-        return true;
-
-    }
-
-    catch(error){
-
-
-        alert(
-
-            "Не хватает памяти для сохранения обоев. Удали несколько старых изображений."
-
-        );
-
-
-        wallpapers.pop();
-
-
-        return false;
-
-    }
-
-}
-
-
-/* =====================================================
-   SET WALLPAPER
-===================================================== */
-
-function setWallpaper(image){
-
-    currentWallpaper =
-    image;
-
-
-    try{
-
-        localStorage.setItem(
-
-            "launcherCurrentWallpaper",
-
-            image
-
-        );
-
-    }
-
-    catch(error){
-
-        alert(
-            "Не удалось сохранить выбранные обои."
-        );
-
-    }
-
-
-    document
-    .getElementById(
-        "home"
-    )
-    .style
-    .backgroundImage =
-
-    `url("${image}")`;
-
-
-    renderWallpapers();
-
-}
-
-
-/* =====================================================
-   DELETE WALLPAPER
-===================================================== */
-
-function deleteWallpaper(
-    id,
-    event
-){
-
-    event.stopPropagation();
-
-
-    const item =
-
-    wallpapers.find(
-
-        wallpaper =>
-        wallpaper.id === id
-
-    );
-
-
-    if(!item){
-
-        return;
-
-    }
-
-
-
-    wallpapers =
-
-    wallpapers.filter(
-
-        wallpaper =>
-        wallpaper.id !== id
-
-    );
-
-
-    if(
-
-        currentWallpaper
-        ===
-        item.image
-
-    ){
-
-
-        currentWallpaper =
-        null;
-
-
-        localStorage.removeItem(
-
-            "launcherCurrentWallpaper"
-
-        );
-
-
-        document
-        .getElementById(
-            "home"
-        )
-        .style
-        .backgroundImage =
-
-        "linear-gradient(160deg,#53657a,#263548 50%,#0b1119)";
-
-    }
-
-
-    saveWallpapers();
-
-    renderWallpapers();
-
-}
-
-
-/* =====================================================
-   RENDER WALLPAPERS
-===================================================== */
-
-function renderWallpapers(){
-
-    const list =
-
-    document.getElementById(
-        "wallpaperList"
-    );
-
-
-    list.innerHTML = "";
-
-
-    if(
-        !wallpapers.length
-    ){
-
-
-        list.innerHTML = `
-
-            <div
-            class="wallpaper-empty">
-
-                Обои пока не добавлены
-
-            </div>
-
-        `;
-
-
-        return;
-
-    }
-
-
-
-    wallpapers.forEach(
-
-        wallpaper => {
-
-
-            const item =
-
-            document.createElement(
-                "div"
-            );
-
-
-            item.className =
-
-            "wallpaper"
-
-            +
-
-            (
-                currentWallpaper
-                ===
-                wallpaper.image
-
-                ?
-
-                " selected"
-
-                :
-
-                ""
-            );
-
-
-            item.style
-            .backgroundImage =
-
-            `url("${wallpaper.image}")`;
-
-
-            item.onclick =
-            ()=>{
-
-                setWallpaper(
-                    wallpaper.image
-                );
-
-            };
-
-
-
-            const del =
-
-            document.createElement(
-                "button"
-            );
-
-
-            del.className =
-            "wallpaper-delete";
-
-
-            del.textContent =
-            "×";
-
-
-            del.onclick =
-            event => {
-
-                deleteWallpaper(
-
-                    wallpaper.id,
-
-                    event
-
-                );
-
-            };
-
-
-            item.appendChild(
-                del
-            );
-
-
-            list.appendChild(
-                item
-            );
-
-        }
-
-    );
-
-}
-
-
-/* =====================================================
-   CLOCK
-===================================================== */
+/* =========================================================
+   TIME
+========================================================= */
 
 function updateClock(){
+  const now = new Date();
 
-    const now =
-    new Date();
+  document.getElementById("heroTime").textContent =
+    now.toLocaleTimeString("ru-RU",{hour:"2-digit",minute:"2-digit"});
 
+  let d = now.toLocaleDateString("ru-RU",{
+    weekday:"long",
+    day:"numeric",
+    month:"long"
+  });
 
-    const time =
-
-    now.toLocaleTimeString(
-
-        "ru-RU",
-
-        {
-
-            hour:
-            "2-digit",
-
-            minute:
-            "2-digit"
-
-        }
-
-    );
-
-
-    document
-    .getElementById(
-        "clock"
-    )
-    .textContent =
-    time;
-
-
-    document
-    .getElementById(
-        "bigTime"
-    )
-    .textContent =
-    time;
-
-
-
-    let date =
-
-    now.toLocaleDateString(
-
-        "ru-RU",
-
-        {
-
-            weekday:
-            "long",
-
-            day:
-            "numeric",
-
-            month:
-            "long"
-
-        }
-
-    );
-
-
-    date =
-
-    date.charAt(0)
-    .toUpperCase()
-
-    +
-
-    date.slice(1);
-
-
-    document
-    .getElementById(
-        "date"
-    )
-    .textContent =
-    date;
-
+  d = d.charAt(0).toUpperCase() + d.slice(1);
+  document.getElementById("heroDate").textContent = d;
 }
-
 
 updateClock();
-
-
-setInterval(
-
-    updateClock,
-
-    10000
-
-);
-
-
-/* =====================================================
-   SECRET SETTINGS
-   долгое удержание маленьких часов
-===================================================== */
-
-const clock =
-
-document.getElementById(
-    "clock"
-);
-
-
-let pressTimer;
-
-
-clock.addEventListener(
-
-    "touchstart",
-
-    ()=>{
-
-
-        pressTimer =
-
-        setTimeout(
-
-            openSettings,
-
-            1700
-
-        );
-
-    }
-
-);
-
-
-clock.addEventListener(
-
-    "touchend",
-
-    ()=>{
-
-        clearTimeout(
-            pressTimer
-        );
-
-    }
-
-);
-
-
-clock.addEventListener(
-
-    "touchmove",
-
-    ()=>{
-
-        clearTimeout(
-            pressTimer
-        );
-
-    }
-
-);
-
-
-/* также работает мышью на компьютере */
-
-clock.addEventListener(
-
-    "mousedown",
-
-    ()=>{
-
-        pressTimer =
-
-        setTimeout(
-
-            openSettings,
-
-            1700
-
-        );
-
-    }
-
-);
-
-
-clock.addEventListener(
-
-    "mouseup",
-
-    ()=>{
-
-        clearTimeout(
-            pressTimer
-        );
-
-    }
-
-);
-
-
-clock.addEventListener(
-
-    "mouseleave",
-
-    ()=>{
-
-        clearTimeout(
-            pressTimer
-        );
-
-    }
-
-);
-
-
-/* =====================================================
-   OPEN SETTINGS
-===================================================== */
+setInterval(updateClock,10000);
+
+/* =========================================================
+   WALLPAPER
+========================================================= */
+
+function applyWallpaper(){
+  const home = document.getElementById("home");
+
+  if(state.currentWallpaper){
+    home.style.backgroundImage = `url("${state.currentWallpaper}")`;
+  }else{
+    home.style.backgroundImage =
+      "linear-gradient(160deg,#53657a,#263548 50%,#0b1119)";
+  }
+}
+
+function compressImage(dataUrl,maxW,maxH,quality,callback){
+  const img = new Image();
+  img.onload = ()=>{
+    let w = img.width;
+    let h = img.height;
+    const ratio = Math.min(maxW/w,maxH/h,1);
+    w = Math.max(1,Math.round(w*ratio));
+    h = Math.max(1,Math.round(h*ratio));
+
+    const c = document.createElement("canvas");
+    c.width = w;
+    c.height = h;
+
+    const ctx = c.getContext("2d");
+    ctx.drawImage(img,0,0,w,h);
+
+    callback(c.toDataURL("image/jpeg",quality));
+  };
+  img.src = dataUrl;
+}
+
+document.getElementById("wallpaperInput").addEventListener("change",function(){
+  const file = this.files && this.files[0];
+  if(!file) return;
+
+  const reader = new FileReader();
+  reader.onload = e=>{
+    compressImage(e.target.result,1179,2556,.8,compressed=>{
+      const item = {
+        id:"wall_"+Date.now(),
+        image:compressed
+      };
+
+      state.wallpapers.push(item);
+      state.currentWallpaper = compressed;
+
+      if(saveState()){
+        applyWallpaper();
+        renderWallpaperSettings();
+      }else{
+        state.wallpapers.pop();
+      }
+    });
+  };
+  reader.readAsDataURL(file);
+  this.value="";
+});
+
+function renderWallpaperSettings(){
+  const box = document.getElementById("wallpaperGrid");
+  box.innerHTML = "";
+
+  if(!state.wallpapers.length){
+    box.innerHTML = `<div class="muted" style="grid-column:1/-1;padding:12px 0">Обои пока не добавлены</div>`;
+    return;
+  }
+
+  state.wallpapers.forEach(w=>{
+    const el = document.createElement("div");
+    el.className = "wallpaper" + (state.currentWallpaper===w.image ? " selected" : "");
+    el.style.backgroundImage = `url("${w.image}")`;
+
+    el.onclick = ()=>{
+      state.currentWallpaper = w.image;
+      saveState();
+      applyWallpaper();
+      renderWallpaperSettings();
+    };
+
+    const del = document.createElement("button");
+    del.className = "mini-x";
+    del.textContent = "×";
+    del.onclick = ev=>{
+      ev.stopPropagation();
+
+      const wasCurrent = state.currentWallpaper===w.image;
+      state.wallpapers = state.wallpapers.filter(x=>x.id!==w.id);
+
+      if(wasCurrent){
+        state.currentWallpaper = state.wallpapers[0]?.image || null;
+      }
+
+      saveState();
+      applyWallpaper();
+      renderWallpaperSettings();
+    };
+
+    el.appendChild(del);
+    box.appendChild(el);
+  });
+}
+
+/* =========================================================
+   ICON HTML
+========================================================= */
+
+function iconHTML(app){
+  if(app.iconImage){
+    return `<div class="app-icon"><img src="${app.iconImage}" alt=""></div>`;
+  }
+
+  return `<div class="app-icon"><span class="emoji">${escapeHTML(app.icon || "⭐")}</span></div>`;
+}
+
+function createAppElement(app,dock=false){
+  const el = document.createElement("div");
+  el.className = "app";
+  el.innerHTML = `
+    ${iconHTML(app)}
+    <div class="app-name">${escapeHTML(app.title || "")}</div>
+  `;
+
+  el.onclick = ()=>openApp(app);
+  return el;
+}
+
+/* =========================================================
+   RENDER DESKTOP
+========================================================= */
+
+function renderDesktop(){
+  if(!state.pages.length){
+    state.pages.push({id:"page_"+Date.now(),name:"Страница 1"});
+  }
+
+  state.currentPage = Math.max(0,Math.min(state.currentPage,state.pages.length-1));
+
+  const track = document.getElementById("pagesTrack");
+  const dots = document.getElementById("pageDots");
+  const dock = document.getElementById("dock");
+
+  track.innerHTML = "";
+  dots.innerHTML = "";
+  dock.innerHTML = "";
+
+  state.pages.forEach((page,index)=>{
+    const pageEl = document.createElement("section");
+    pageEl.className = "page";
+
+    const grid = document.createElement("div");
+    grid.className = "app-grid";
+
+    state.apps
+      .filter(a=>a.enabled!==false && a.pageId===page.id)
+      .forEach(app=>grid.appendChild(createAppElement(app)));
+
+    pageEl.appendChild(grid);
+    track.appendChild(pageEl);
+
+    const dot = document.createElement("span");
+    dot.className = "page-dot" + (index===state.currentPage ? " active" : "");
+    dots.appendChild(dot);
+  });
+
+  state.dock.forEach(app=>{
+    dock.appendChild(createAppElement(app,true));
+  });
+
+  updatePagePosition(false);
+}
+
+function updatePagePosition(animate=true){
+  const track = document.getElementById("pagesTrack");
+  track.style.transition = animate ? "transform .32s cubic-bezier(.22,.7,.18,1)" : "none";
+  track.style.transform = `translateX(-${state.currentPage*100}%)`;
+
+  [...document.querySelectorAll(".page-dot")]
+    .forEach((d,i)=>d.classList.toggle("active",i===state.currentPage));
+
+  setTimeout(()=>track.style.transition="transform .32s cubic-bezier(.22,.7,.18,1)",0);
+}
+
+/* =========================================================
+   SWIPE
+========================================================= */
+
+const viewport = document.getElementById("pagesViewport");
+let touchStartX = 0;
+let touchStartY = 0;
+let touching = false;
+
+viewport.addEventListener("touchstart",e=>{
+  if(!e.touches?.length) return;
+  touching = true;
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+},{passive:true});
+
+viewport.addEventListener("touchend",e=>{
+  if(!touching) return;
+  touching = false;
+
+  const t = e.changedTouches?.[0];
+  if(!t) return;
+
+  const dx = t.clientX-touchStartX;
+  const dy = t.clientY-touchStartY;
+
+  if(Math.abs(dx)<45 || Math.abs(dx)<Math.abs(dy)) return;
+
+  if(dx<0 && state.currentPage<state.pages.length-1){
+    state.currentPage++;
+  }else if(dx>0 && state.currentPage>0){
+    state.currentPage--;
+  }else{
+    return;
+  }
+
+  saveState();
+  updatePagePosition(true);
+},{passive:true});
+
+/* =========================================================
+   OPEN APP
+========================================================= */
+
+function openApp(app){
+  if(!app) return;
+
+  switch(app.type){
+    case "messages":
+      openMessages();
+      break;
+    case "contacts":
+      openContacts();
+      break;
+    case "social":
+      openSocial();
+      break;
+    case "notes":
+      openNotes();
+      break;
+    default:
+      if(app.url && app.url !== "#"){
+        window.location.href = app.url;
+      }
+  }
+}
+
+/* =========================================================
+   BUILT-IN APPS
+========================================================= */
+
+const sampleChats = [
+  {id:"c1",name:"Анна",last:"Хорошо, тогда вечером 😊",messages:[
+    {side:"in",text:"Привет! Ты сегодня свободен?"},
+    {side:"out",text:"После шести да."},
+    {side:"in",text:"Хорошо, тогда вечером 😊"}
+  ]},
+  {id:"c2",name:"Максим",last:"Фото получил 👍",messages:[
+    {side:"out",text:"Отправил тебе фото."},
+    {side:"in",text:"Фото получил 👍"}
+  ]},
+  {id:"c3",name:"Семья",last:"Встречаемся в 19:00",messages:[
+    {side:"in",text:"Встречаемся в 19:00"},
+    {side:"out",text:"Отлично."}
+  ]}
+];
+
+function showBuiltin(title,bodyHtml){
+  const ov = document.getElementById("builtinOverlay");
+  ov.innerHTML = `
+    <div class="builtin-shell">
+      <div class="builtin-top">
+        <button class="back-btn" onclick="closeBuiltin()">‹ Назад</button>
+        <div class="builtin-title">${escapeHTML(title)}</div>
+      </div>
+      <div class="builtin-body">${bodyHtml}</div>
+    </div>
+  `;
+  ov.classList.add("show");
+}
+
+function closeBuiltin(){
+  const ov = document.getElementById("builtinOverlay");
+  ov.classList.remove("show");
+  ov.innerHTML = "";
+}
+
+function openMessages(){
+  const rows = sampleChats.map(c=>`
+    <div class="chat-row" onclick="openChat('${c.id}')">
+      <div class="avatar">${escapeHTML(c.name.charAt(0))}</div>
+      <div class="chat-main">
+        <div class="chat-name">${escapeHTML(c.name)}</div>
+        <div class="chat-last">${escapeHTML(c.last)}</div>
+      </div>
+    </div>
+  `).join("");
+
+  showBuiltin("Сообщения",`<div class="card">${rows}</div>`);
+}
+
+function openChat(id){
+  const chat = sampleChats.find(c=>c.id===id);
+  if(!chat) return;
+
+  const ov = document.getElementById("builtinOverlay");
+  ov.innerHTML = `
+    <div class="builtin-shell">
+      <div class="builtin-top">
+        <button class="back-btn" onclick="openMessages()">‹ Чаты</button>
+        <div class="builtin-title">${escapeHTML(chat.name)}</div>
+      </div>
+      <div class="builtin-body" id="chatBody">
+        ${chat.messages.map(m=>`<div class="bubble ${m.side}">${escapeHTML(m.text)}</div>`).join("")}
+      </div>
+      <div class="compose">
+        <input id="chatInput" placeholder="Сообщение">
+        <button onclick="sendLocalMessage('${chat.id}')">↑</button>
+      </div>
+    </div>
+  `;
+  ov.classList.add("show");
+}
+
+function sendLocalMessage(id){
+  const input = document.getElementById("chatInput");
+  const text = input.value.trim();
+  if(!text) return;
+
+  const chat = sampleChats.find(c=>c.id===id);
+  if(!chat) return;
+
+  chat.messages.push({side:"out",text});
+  chat.last = text;
+  input.value = "";
+  openChat(id);
+
+  setTimeout(()=>{
+    const b = document.getElementById("chatBody");
+    if(b) b.scrollTop = b.scrollHeight;
+  },0);
+}
+
+function openContacts(){
+  const contacts = [
+    ["Анна","+7 900 000-00-01"],
+    ["Максим","+7 900 000-00-02"],
+    ["Ирина","+7 900 000-00-03"],
+    ["Сергей","+7 900 000-00-04"]
+  ];
+
+  showBuiltin("Контакты",
+    `<div class="card">
+      ${contacts.map(c=>`
+        <div class="contact-row">
+          <div class="avatar">${escapeHTML(c[0][0])}</div>
+          <div class="chat-main">
+            <div class="chat-name">${escapeHTML(c[0])}</div>
+            <div class="chat-last">${escapeHTML(c[1])}</div>
+          </div>
+        </div>
+      `).join("")}
+    </div>`
+  );
+}
+
+function openSocial(){
+  const svg1 = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="900" height="900">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop stop-color="#ffb36b"/>
+          <stop offset="1" stop-color="#6c63ff"/>
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#g)"/>
+      <circle cx="450" cy="360" r="160" fill="rgba(255,255,255,.25)"/>
+      <path d="M0 700 Q240 520 430 700 T900 650 V900 H0Z" fill="rgba(0,0,0,.2)"/>
+    </svg>
+  `);
+
+  const svg2 = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="900" height="900">
+      <rect width="100%" height="100%" fill="#18283d"/>
+      <circle cx="680" cy="220" r="90" fill="#f6d365"/>
+      <path d="M0 620 Q250 450 470 620 T900 560 V900 H0Z" fill="#2f5d50"/>
+      <path d="M0 710 Q260 560 500 730 T900 690 V900 H0Z" fill="#173d34"/>
+    </svg>
+  `);
+
+  showBuiltin("Лента",`
+    <div class="social-post">
+      <div class="social-head">
+        <div class="avatar">A</div>
+        <div><b>anna_photo</b><div class="muted">Сегодня</div></div>
+      </div>
+      <img class="social-img" src="${svg1}" alt="">
+      <div class="social-text"><b>anna_photo</b> Отличный вечер ✨</div>
+    </div>
+
+    <div class="social-post">
+      <div class="social-head">
+        <div class="avatar">M</div>
+        <div><b>max_travel</b><div class="muted">Вчера</div></div>
+      </div>
+      <img class="social-img" src="${svg2}" alt="">
+      <div class="social-text"><b>max_travel</b> Наконец-то выбрались за город.</div>
+    </div>
+  `);
+}
+
+function openNotes(){
+  let notes = JSON.parse(localStorage.getItem("guestDesktopNotes") || "[]");
+
+  const list = notes.length
+    ? notes.map((n,i)=>`
+        <div class="note-item" onclick="editNote(${i})">
+          <b>${escapeHTML(n.title || "Заметка")}</b>
+          <div class="muted" style="margin-top:5px">${escapeHTML((n.text||"").slice(0,80))}</div>
+        </div>
+      `).join("")
+    : `<div class="muted">Заметок пока нет</div>`;
+
+  showBuiltin("Заметки",`
+    <button class="btn" style="margin:0 0 12px;background:#007aff;color:#fff" onclick="editNote(-1)">＋ Новая заметка</button>
+    ${list}
+  `);
+}
+
+function editNote(index){
+  const notes = JSON.parse(localStorage.getItem("guestDesktopNotes") || "[]");
+  const note = index>=0 ? notes[index] : {title:"",text:""};
+
+  const ov = document.getElementById("builtinOverlay");
+  ov.innerHTML = `
+    <div class="builtin-shell">
+      <div class="builtin-top">
+        <button class="back-btn" onclick="openNotes()">‹ Заметки</button>
+        <div class="builtin-title">${index>=0 ? "Редактирование" : "Новая заметка"}</div>
+      </div>
+      <div class="builtin-body">
+        <input class="input" style="background:#fff;color:#111;border-color:#ddd" id="noteTitle" placeholder="Название" value="${escapeAttr(note.title)}">
+        <textarea class="textarea" style="background:#fff;color:#111;border-color:#ddd" id="noteText" placeholder="Текст">${escapeHTML(note.text)}</textarea>
+        <button class="btn" style="background:#007aff;color:#fff" onclick="saveNote(${index})">Сохранить</button>
+      </div>
+    </div>
+  `;
+}
+
+function saveNote(index){
+  const title = document.getElementById("noteTitle").value.trim();
+  const text = document.getElementById("noteText").value.trim();
+
+  const notes = JSON.parse(localStorage.getItem("guestDesktopNotes") || "[]");
+  const obj = {title,text};
+
+  if(index>=0) notes[index] = obj;
+  else notes.unshift(obj);
+
+  localStorage.setItem("guestDesktopNotes",JSON.stringify(notes));
+  openNotes();
+}
+
+/* =========================================================
+   SETTINGS OPEN / CLOSE
+========================================================= */
+
+let longPressTimer = null;
+const hotspot = document.getElementById("secretHotspot");
+
+function startLongPress(){
+  clearTimeout(longPressTimer);
+  longPressTimer = setTimeout(openSettings,1700);
+}
+function cancelLongPress(){
+  clearTimeout(longPressTimer);
+}
+
+hotspot.addEventListener("touchstart",startLongPress,{passive:true});
+hotspot.addEventListener("touchend",cancelLongPress,{passive:true});
+hotspot.addEventListener("touchmove",cancelLongPress,{passive:true});
+hotspot.addEventListener("mousedown",startLongPress);
+hotspot.addEventListener("mouseup",cancelLongPress);
+hotspot.addEventListener("mouseleave",cancelLongPress);
 
 function openSettings(){
-
-    renderSettings();
-
-    renderIconOptions();
-
-    renderWallpapers();
-
-
-    document
-    .getElementById(
-        "settingsOverlay"
-    )
-    .classList
-    .add(
-        "show"
-    );
-
+  renderSettings();
+  document.getElementById("settingsOverlay").classList.add("show");
 }
-
-
-/* =====================================================
-   CLOSE SETTINGS
-===================================================== */
 
 function closeSettings(){
-
-    document
-    .getElementById(
-        "settingsOverlay"
-    )
-    .classList
-    .remove(
-        "show"
-    );
-
+  document.getElementById("settingsOverlay").classList.remove("show");
 }
 
+/* =========================================================
+   PAGE SETTINGS
+========================================================= */
 
-/* =====================================================
-   HTML SECURITY
-===================================================== */
+function renderPageSettings(){
+  const box = document.getElementById("pageSettings");
+  box.innerHTML = "";
+
+  state.pages.forEach((p,index)=>{
+    const row = document.createElement("div");
+    row.className = "page-row";
+    row.innerHTML = `
+      <div class="row-left">
+        <div class="row-title">${escapeHTML(p.name)}</div>
+        <div class="row-sub">${state.apps.filter(a=>a.pageId===p.id).length} прилож.</div>
+      </div>
+      <div class="row-actions">
+        <button class="small-btn" ${index===0 ? "disabled" : ""}>←</button>
+        <button class="small-btn" ${index===state.pages.length-1 ? "disabled" : ""}>→</button>
+        <button class="small-btn red" ${state.pages.length===1 ? "disabled" : ""}>×</button>
+      </div>
+    `;
+
+    const buttons = row.querySelectorAll("button");
+
+    buttons[0].onclick = ()=>{
+      if(index<=0) return;
+      [state.pages[index-1],state.pages[index]] = [state.pages[index],state.pages[index-1]];
+      state.currentPage = index-1;
+      saveState();
+      renderDesktop();
+      renderSettings();
+    };
+
+    buttons[1].onclick = ()=>{
+      if(index>=state.pages.length-1) return;
+      [state.pages[index+1],state.pages[index]] = [state.pages[index],state.pages[index+1]];
+      state.currentPage = index+1;
+      saveState();
+      renderDesktop();
+      renderSettings();
+    };
+
+    buttons[2].onclick = ()=>{
+      if(state.pages.length===1) return;
+
+      const firstOther = state.pages.find(x=>x.id!==p.id);
+      state.apps.forEach(a=>{
+        if(a.pageId===p.id) a.pageId = firstOther.id;
+      });
+
+      state.pages = state.pages.filter(x=>x.id!==p.id);
+      state.currentPage = Math.min(state.currentPage,state.pages.length-1);
+      saveState();
+      renderDesktop();
+      renderSettings();
+    };
+
+    box.appendChild(row);
+  });
+}
+
+function addPage(){
+  const num = state.pages.length+1;
+  state.pages.push({
+    id:"page_"+Date.now(),
+    name:"Страница "+num
+  });
+
+  state.currentPage = state.pages.length-1;
+  saveState();
+  renderDesktop();
+  renderSettings();
+}
+
+/* =========================================================
+   APP SETTINGS
+========================================================= */
+
+function renderAppSettings(){
+  const box = document.getElementById("appSettings");
+  box.innerHTML = "";
+
+  state.apps.forEach(app=>{
+    const pageName = state.pages.find(p=>p.id===app.pageId)?.name || "";
+
+    const row = document.createElement("div");
+    row.className = "app-row";
+    row.innerHTML = `
+      <div class="row-left">
+        <div class="row-title">${app.iconImage ? "🖼️" : escapeHTML(app.icon || "⭐")} ${escapeHTML(app.title)}</div>
+        <div class="row-sub">${escapeHTML(pageName)}</div>
+      </div>
+
+      <div class="row-actions">
+        <div class="switch ${app.enabled!==false ? "on" : ""}">
+          <div class="switch-knob"></div>
+        </div>
+        ${app.removable!==false ? `<button class="small-btn red">×</button>` : ""}
+      </div>
+    `;
+
+    const sw = row.querySelector(".switch");
+    sw.onclick = ()=>{
+      app.enabled = app.enabled===false ? true : false;
+      saveState();
+      renderDesktop();
+      renderSettings();
+    };
+
+    const del = row.querySelector(".small-btn.red");
+    if(del){
+      del.onclick = ()=>{
+        if(confirm(`Удалить «${app.title}»?`)){
+          state.apps = state.apps.filter(a=>a.id!==app.id);
+          saveState();
+          renderDesktop();
+          renderSettings();
+        }
+      };
+    }
+
+    box.appendChild(row);
+  });
+}
+
+function renderPageSelect(){
+  const sel = document.getElementById("newAppPage");
+  sel.innerHTML = state.pages.map(p=>
+    `<option value="${escapeAttr(p.id)}">${escapeHTML(p.name)}</option>`
+  ).join("");
+}
+
+function renderEmojiPicker(){
+  const box = document.getElementById("emojiPicker");
+  box.innerHTML = "";
+
+  emojiChoices.forEach(icon=>{
+    const el = document.createElement("div");
+    el.className = "icon-choice" + (icon===selectedEmoji ? " selected" : "");
+    el.textContent = icon;
+    el.onclick = ()=>{
+      selectedEmoji = icon;
+      selectedCustomIcon = null;
+      document.getElementById("customIconPreview").classList.remove("show");
+      renderEmojiPicker();
+    };
+    box.appendChild(el);
+  });
+}
+
+function toggleAppForm(){
+  document.getElementById("appForm").classList.toggle("show");
+  renderPageSelect();
+  renderEmojiPicker();
+  updateTypeFields();
+}
+
+function updateTypeFields(){
+  const type = document.getElementById("newAppType").value;
+  document.getElementById("newAppUrl").style.display = type==="url" ? "block" : "none";
+}
+
+document.getElementById("iconFileInput").addEventListener("change",function(){
+  const file = this.files && this.files[0];
+  if(!file) return;
+
+  const reader = new FileReader();
+  reader.onload = e=>{
+    compressImage(e.target.result,512,512,.86,compressed=>{
+      selectedCustomIcon = compressed;
+
+      const prev = document.getElementById("customIconPreview");
+      prev.innerHTML = `<img src="${compressed}" alt="">`;
+      prev.classList.add("show");
+
+      document.querySelectorAll(".icon-choice").forEach(x=>x.classList.remove("selected"));
+    });
+  };
+  reader.readAsDataURL(file);
+  this.value="";
+});
+
+function addApp(){
+  const title = document.getElementById("newAppTitle").value.trim();
+  const type = document.getElementById("newAppType").value;
+  const pageId = document.getElementById("newAppPage").value;
+  const url = document.getElementById("newAppUrl").value.trim();
+
+  if(!title){
+    alert("Введите название.");
+    return;
+  }
+
+  if(type==="url" && !url){
+    alert("Введите ссылку или URL-схему.");
+    return;
+  }
+
+  state.apps.push({
+    id:"app_"+Date.now(),
+    title,
+    icon:selectedEmoji,
+    iconImage:selectedCustomIcon,
+    type,
+    url:type==="url" ? url : "",
+    pageId,
+    enabled:true,
+    removable:true
+  });
+
+  if(!saveState()) return;
+
+  document.getElementById("newAppTitle").value = "";
+  document.getElementById("newAppUrl").value = "";
+  selectedEmoji = "⭐";
+  selectedCustomIcon = null;
+  document.getElementById("customIconPreview").classList.remove("show");
+
+  renderDesktop();
+  renderSettings();
+
+  document.getElementById("appForm").classList.remove("show");
+}
+
+/* =========================================================
+   SETTINGS RENDER
+========================================================= */
+
+function renderSettings(){
+  renderWallpaperSettings();
+  renderPageSettings();
+  renderAppSettings();
+  renderPageSelect();
+  renderEmojiPicker();
+  updateTypeFields();
+}
+
+/* =========================================================
+   SAFE HTML
+========================================================= */
 
 function escapeHTML(text){
-
-    return String(text)
-
-    .replaceAll(
-        "&",
-        "&amp;"
-    )
-
-    .replaceAll(
-        "<",
-        "&lt;"
-    )
-
-    .replaceAll(
-        ">",
-        "&gt;"
-    )
-
-    .replaceAll(
-        '"',
-        "&quot;"
-    )
-
-    .replaceAll(
-        "'",
-        "&#039;"
-    );
-
+  return String(text ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
 
+function escapeAttr(text){
+  return escapeHTML(text).replaceAll("`","&#096;");
+}
 
-/* =====================================================
+/* =========================================================
    START
-===================================================== */
+========================================================= */
 
-renderApps();
-
-renderIconOptions();
-
-renderWallpapers();
+applyWallpaper();
+renderDesktop();
+renderSettings();
 
 </script>
-
 </body>
 </html>
