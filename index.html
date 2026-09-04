@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport"
+
+<meta
+name="viewport"
 content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#111">
+<meta name="theme-color" content="#111111">
 
 <title>Home</title>
 
 <style>
+
+/* =====================================================
+   BASE
+===================================================== */
+
 *{
     box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
     margin:0;
     width:100%;
     height:100%;
     overflow:hidden;
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+
+    font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "Segoe UI",
+    sans-serif;
+
     background:#111;
     color:#fff;
 }
@@ -32,37 +48,83 @@ body{
     inset:0;
 }
 
+
+/* =====================================================
+   HOME SCREEN
+===================================================== */
+
 .home{
     position:relative;
+
     width:100%;
     height:100dvh;
+
     overflow:hidden;
-    background:url("wallpapers/wall1.jpg") center/cover no-repeat;
-    transition:.3s;
+
+    background:
+    linear-gradient(
+        160deg,
+        #53657a,
+        #263548 50%,
+        #0b1119
+    );
+
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+
+    transition:
+    background-image .3s ease;
 }
+
+
+/* мягкое затемнение фона */
 
 .home::before{
     content:"";
+
     position:absolute;
     inset:0;
-    background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.04) 45%,rgba(0,0,0,.32));
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(0,0,0,.05),
+        rgba(0,0,0,.02) 45%,
+        rgba(0,0,0,.30)
+    );
+
     pointer-events:none;
 }
 
+
+/* =====================================================
+   STATUS
+===================================================== */
+
 .status{
-    height:54px;
-    padding:max(13px,env(safe-area-inset-top)) 22px 0;
+
     position:relative;
     z-index:5;
+
+    height:55px;
+
+    padding:
+    max(14px,env(safe-area-inset-top))
+    23px
+    0;
+
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
+
     font-size:15px;
     font-weight:650;
 }
 
 .status-right{
     display:flex;
+    align-items:center;
     gap:7px;
 }
 
@@ -71,783 +133,1680 @@ body{
     -webkit-user-select:none;
 }
 
+
+/* =====================================================
+   CLOCK / DATE
+===================================================== */
+
 .date-area{
+
     position:relative;
     z-index:2;
-    padding:15px 24px 0;
+
+    padding:
+    15px
+    24px
+    0;
 }
 
 .big-time{
-    font-size:46px;
+
+    font-size:47px;
+
     font-weight:300;
+
     line-height:1;
+
     letter-spacing:-2px;
-    text-shadow:0 2px 12px rgba(0,0,0,.35);
+
+    text-shadow:
+    0 2px 12px rgba(0,0,0,.35);
 }
 
 .date{
+
     margin-top:7px;
+
     font-size:15px;
-    opacity:.86;
-    text-shadow:0 2px 8px rgba(0,0,0,.45);
+
+    opacity:.88;
+
+    text-shadow:
+    0 2px 8px rgba(0,0,0,.50);
 }
+
+
+/* =====================================================
+   APP GRID
+===================================================== */
 
 .apps{
+
     position:relative;
     z-index:2;
-    padding:34px 20px 130px;
+
+    padding:
+    34px
+    20px
+    135px;
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:24px 15px;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    column-gap:15px;
+    row-gap:25px;
+
+    overflow-y:auto;
+
+    max-height:
+    calc(100dvh - 170px);
+
+    scrollbar-width:none;
 }
 
+.apps::-webkit-scrollbar{
+    display:none;
+}
+
+
 .app{
+
     text-align:center;
+
     user-select:none;
+
     cursor:pointer;
 }
 
+
+/* =====================================================
+   GLASS ICON
+===================================================== */
+
 .icon{
+
     width:min(17vw,70px);
     height:min(17vw,70px);
+
     margin:auto;
+
+    position:relative;
+
+    overflow:hidden;
+
     border-radius:19px;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     font-size:32px;
-    position:relative;
-    overflow:hidden;
 
     background:
-    linear-gradient(145deg,rgba(255,255,255,.36),rgba(255,255,255,.09));
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.35),
+        rgba(255,255,255,.10)
+    );
 
-    border:1px solid rgba(255,255,255,.30);
+    border:
+    1px solid
+    rgba(255,255,255,.30);
 
     box-shadow:
-    0 12px 28px rgba(0,0,0,.22),
-    inset 0 1px 1px rgba(255,255,255,.65),
-    inset 0 -1px 1px rgba(255,255,255,.10);
 
-    backdrop-filter:blur(18px) saturate(170%);
-    -webkit-backdrop-filter:blur(18px) saturate(170%);
+    0 12px 28px
+    rgba(0,0,0,.23),
 
-    transition:.12s;
+    inset 0 1px 1px
+    rgba(255,255,255,.65),
+
+    inset 0 -1px 1px
+    rgba(255,255,255,.09);
+
+    backdrop-filter:
+    blur(18px)
+    saturate(170%);
+
+    -webkit-backdrop-filter:
+    blur(18px)
+    saturate(170%);
+
+    transition:
+    transform .12s ease,
+    filter .12s ease;
 }
 
+
+/* стеклянный блик */
+
 .icon::before{
+
     content:"";
+
     position:absolute;
+
     top:-35%;
     left:-15%;
+
     width:80%;
     height:70%;
+
     border-radius:50%;
-    background:rgba(255,255,255,.22);
+
+    background:
+    rgba(255,255,255,.22);
+
     filter:blur(8px);
-    transform:rotate(-15deg);
+
+    transform:
+    rotate(-15deg);
+
     pointer-events:none;
 }
 
+
 .app:active .icon{
-    transform:scale(.89);
+
+    transform:
+    scale(.89);
+
+    filter:
+    brightness(.88);
 }
+
 
 .name{
+
     margin-top:7px;
+
     font-size:12px;
     font-weight:500;
-    text-shadow:0 2px 5px rgba(0,0,0,.75);
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    text-shadow:
+    0 2px 5px
+    rgba(0,0,0,.75);
 }
 
+
+/* =====================================================
+   DOCK
+===================================================== */
+
 .dock{
+
     position:absolute;
-    z-index:3;
+
+    z-index:4;
+
     left:16px;
     right:16px;
-    bottom:calc(10px + env(safe-area-inset-bottom));
+
+    bottom:
+    calc(
+        10px +
+        env(safe-area-inset-bottom)
+    );
+
     height:90px;
+
     border-radius:30px;
+
     display:flex;
+
     align-items:center;
     justify-content:space-around;
 
     background:
-    linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.08));
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.24),
+        rgba(255,255,255,.08)
+    );
 
-    border:1px solid rgba(255,255,255,.25);
+    border:
+    1px solid
+    rgba(255,255,255,.25);
 
     box-shadow:
-    0 12px 35px rgba(0,0,0,.30),
-    inset 0 1px rgba(255,255,255,.30);
 
-    backdrop-filter:blur(28px) saturate(170%);
-    -webkit-backdrop-filter:blur(28px) saturate(170%);
+    0 12px 35px
+    rgba(0,0,0,.30),
+
+    inset 0 1px
+    rgba(255,255,255,.30);
+
+    backdrop-filter:
+    blur(28px)
+    saturate(170%);
+
+    -webkit-backdrop-filter:
+    blur(28px)
+    saturate(170%);
 }
 
+
 .dock .icon{
+
     width:62px;
     height:62px;
+
     border-radius:18px;
+
     font-size:29px;
 }
 
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
 .settings-overlay{
+
     display:none;
+
     position:absolute;
     inset:0;
-    z-index:100;
-    background:rgba(7,8,12,.72);
 
-    backdrop-filter:blur(28px);
-    -webkit-backdrop-filter:blur(28px);
+    z-index:100;
+
+    background:
+    rgba(7,8,12,.70);
+
+    backdrop-filter:
+    blur(28px);
+
+    -webkit-backdrop-filter:
+    blur(28px);
 
     padding:
-    calc(env(safe-area-inset-top) + 25px)
+
+    calc(
+        env(safe-area-inset-top)
+        +
+        25px
+    )
+
     18px
-    calc(env(safe-area-inset-bottom) + 25px);
+
+    calc(
+        env(safe-area-inset-bottom)
+        +
+        25px
+    );
 
     overflow-y:auto;
 }
+
 
 .settings-overlay.show{
     display:block;
 }
 
-.settings-card{
-    max-width:430px;
-    margin:auto;
-    padding:22px;
-    border-radius:28px;
-    background:rgba(35,35,42,.78);
-    border:1px solid rgba(255,255,255,.16);
-    box-shadow:0 20px 50px rgba(0,0,0,.4);
 
-    backdrop-filter:blur(25px);
-    -webkit-backdrop-filter:blur(25px);
+.settings-card{
+
+    max-width:430px;
+
+    margin:auto;
+
+    padding:22px;
+
+    border-radius:28px;
+
+    background:
+    rgba(35,35,42,.78);
+
+    border:
+    1px solid
+    rgba(255,255,255,.16);
+
+    box-shadow:
+    0 20px 50px
+    rgba(0,0,0,.40);
+
+    backdrop-filter:
+    blur(25px);
+
+    -webkit-backdrop-filter:
+    blur(25px);
 }
 
+
 .settings-title{
+
     font-size:23px;
     font-weight:700;
+
     margin-bottom:22px;
 }
 
+
 .section-title{
+
     font-size:13px;
+
     text-transform:uppercase;
+
     letter-spacing:.7px;
+
     opacity:.55;
-    margin:22px 2px 10px;
+
+    margin:
+    23px
+    2px
+    10px;
 }
 
+
+/* =====================================================
+   WALLPAPER GRID
+===================================================== */
+
 .wallpapers{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
+
     gap:10px;
 }
 
+
 .wallpaper{
+
     aspect-ratio:9/16;
+
     border-radius:16px;
+
     background-position:center;
+
     background-size:cover;
-    border:2px solid transparent;
+
+    border:
+    2px solid transparent;
+
     position:relative;
+
     overflow:hidden;
+
     cursor:pointer;
+
+    box-shadow:
+    0 5px 15px
+    rgba(0,0,0,.22);
 }
 
+
 .wallpaper.selected{
+
     border-color:white;
 }
 
+
 .wallpaper.selected::after{
+
     content:"✓";
+
     position:absolute;
+
     right:7px;
     top:7px;
-    width:24px;
-    height:24px;
+
+    width:25px;
+    height:25px;
+
     border-radius:50%;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     background:white;
+
     color:#111;
-    font-weight:700;
+
+    font-weight:800;
+
+    font-size:14px;
+
+    box-shadow:
+    0 3px 10px
+    rgba(0,0,0,.3);
 }
 
-.setting-row{
-    min-height:58px;
+
+.wallpaper-delete{
+
+    position:absolute;
+
+    left:7px;
+    top:7px;
+
+    width:25px;
+    height:25px;
+
+    padding:0;
+
+    border:0;
+
+    border-radius:50%;
+
     display:flex;
+
     align-items:center;
-    justify-content:space-between;
+    justify-content:center;
+
+    background:
+    rgba(0,0,0,.55);
+
+    color:white;
+
+    font-size:17px;
+
+    backdrop-filter:
+    blur(10px);
+
+    -webkit-backdrop-filter:
+    blur(10px);
+}
+
+
+.wallpaper-empty{
+
+    grid-column:1/-1;
+
+    padding:18px;
+
+    text-align:center;
+
+    border-radius:16px;
+
+    background:
+    rgba(255,255,255,.06);
+
+    font-size:14px;
+
+    opacity:.65;
+}
+
+
+/* =====================================================
+   SETTINGS ROW
+===================================================== */
+
+.setting-row{
+
+    min-height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:
+    space-between;
+
     gap:10px;
-    border-bottom:1px solid rgba(255,255,255,.08);
+
+    border-bottom:
+
+    1px solid
+    rgba(255,255,255,.08);
+
     font-size:16px;
 }
 
+
 .setting-left{
+
     min-width:0;
+
     flex:1;
 }
 
+
 .setting-name{
+
     white-space:nowrap;
+
     overflow:hidden;
+
     text-overflow:ellipsis;
 }
 
+
 .setting-actions{
+
     display:flex;
+
     align-items:center;
+
     gap:8px;
 }
 
+
+/* =====================================================
+   SWITCH
+===================================================== */
+
 .switch{
+
     width:49px;
     height:29px;
+
     border-radius:20px;
-    background:rgba(255,255,255,.18);
+
+    background:
+    rgba(255,255,255,.18);
+
     padding:3px;
+
     transition:.2s;
+
+    cursor:pointer;
 }
+
 
 .switch-knob{
+
     width:23px;
     height:23px;
+
     border-radius:50%;
+
     background:white;
+
     transition:.2s;
 }
 
+
 .switch.on{
+
     background:#34c759;
 }
 
-.switch.on .switch-knob{
-    transform:translateX(20px);
+
+.switch.on
+.switch-knob{
+
+    transform:
+    translateX(20px);
 }
+
+
+/* =====================================================
+   DELETE
+===================================================== */
 
 .delete-btn{
+
     border:0;
+
     width:34px;
     height:34px;
+
     border-radius:10px;
+
     color:white;
-    background:rgba(255,59,48,.22);
+
+    background:
+    rgba(255,59,48,.22);
+
     font-size:18px;
+
+    cursor:pointer;
 }
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
 
 .settings-button{
+
     width:100%;
-    height:52px;
+
+    min-height:52px;
+
     margin-top:14px;
+
     border:0;
+
     border-radius:16px;
+
     font-size:16px;
     font-weight:600;
-    background:rgba(255,255,255,.94);
+
+    background:
+    rgba(255,255,255,.94);
+
     color:#111;
+
+    cursor:pointer;
 }
 
+
 .secondary{
-    background:rgba(255,255,255,.10);
+
+    background:
+    rgba(255,255,255,.10);
+
     color:white;
 }
 
+
+/* =====================================================
+   ADD APPLICATION
+===================================================== */
+
 .add-form{
+
     display:none;
+
     margin-top:12px;
+
     padding:15px;
+
     border-radius:18px;
-    background:rgba(255,255,255,.07);
+
+    background:
+    rgba(255,255,255,.07);
 }
+
 
 .add-form.show{
     display:block;
 }
 
+
 .input{
+
     width:100%;
+
     height:48px;
+
     margin-top:10px;
-    border:1px solid rgba(255,255,255,.12);
+
+    border:
+    1px solid
+    rgba(255,255,255,.12);
+
     border-radius:14px;
-    background:rgba(255,255,255,.08);
+
+    background:
+    rgba(255,255,255,.08);
+
     color:white;
+
     font-size:16px;
-    padding:0 14px;
+
+    padding:
+    0 14px;
+
     outline:none;
 }
 
+
 .input::placeholder{
-    color:rgba(255,255,255,.45);
+
+    color:
+    rgba(255,255,255,.45);
 }
 
+
 .icon-options{
+
     display:grid;
-    grid-template-columns:repeat(6,1fr);
+
+    grid-template-columns:
+    repeat(6,1fr);
+
     gap:8px;
+
     margin-top:12px;
 }
 
+
 .icon-option{
+
     height:45px;
+
     border-radius:12px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     font-size:24px;
-    background:rgba(255,255,255,.08);
-    border:1px solid transparent;
+
+    background:
+    rgba(255,255,255,.08);
+
+    border:
+    1px solid transparent;
+
+    cursor:pointer;
 }
+
 
 .icon-option.selected{
+
     border-color:white;
-    background:rgba(255,255,255,.18);
+
+    background:
+    rgba(255,255,255,.18);
 }
+
 
 .form-hint{
+
     margin-top:9px;
+
     font-size:12px;
+
     line-height:1.4;
+
     opacity:.55;
 }
 
-.empty{
-    padding:15px 0;
-    font-size:14px;
-    opacity:.55;
+
+/* =====================================================
+   SMALL INFO
+===================================================== */
+
+.info{
+
+    font-size:13px;
+
+    line-height:1.45;
+
+    opacity:.60;
+
+    margin-top:12px;
 }
+
 </style>
+
 </head>
+
 
 <body>
 
-<div class="home" id="home">
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<div
+class="home"
+id="home">
+
+
+    <!-- STATUS -->
 
     <div class="status">
-        <div id="clock">09:41</div>
+
+        <div id="clock">
+            09:41
+        </div>
+
 
         <div class="status-right">
+
             <span>●●●</span>
+
             <span>⌁</span>
+
             <span>100%</span>
+
         </div>
+
     </div>
+
+
+    <!-- CLOCK -->
 
     <div class="date-area">
-        <div class="big-time" id="bigTime">09:41</div>
-        <div class="date" id="date"></div>
+
+        <div
+        class="big-time"
+        id="bigTime">
+
+            09:41
+
+        </div>
+
+
+        <div
+        class="date"
+        id="date">
+        </div>
+
     </div>
 
-    <div class="apps" id="appsContainer"></div>
+
+    <!-- APPS -->
+
+    <div
+    class="apps"
+    id="appsContainer">
+    </div>
+
+
+    <!-- DOCK -->
 
     <div class="dock">
 
-        <div class="app" onclick="openURL('tel:')">
-            <div class="icon">📞</div>
+
+        <div
+        class="app"
+        onclick="openURL('tel:')">
+
+            <div class="icon">
+                📞
+            </div>
+
         </div>
 
-        <div class="app" onclick="openURL('https://www.google.com/')">
-            <div class="icon">🌐</div>
+
+        <div
+        class="app"
+        onclick="openURL('https://www.google.com/')">
+
+            <div class="icon">
+                🌐
+            </div>
+
         </div>
 
-        <div class="app" onclick="openURL('camera:')">
-            <div class="icon">📷</div>
+
+        <div
+        class="app"
+        onclick="openURL('camera:')">
+
+            <div class="icon">
+                📷
+            </div>
+
         </div>
 
-        <div class="app" onclick="openURL('calc:')">
-            <div class="icon">🧮</div>
+
+        <div
+        class="app"
+        onclick="openURL('calc:')">
+
+            <div class="icon">
+                🧮
+            </div>
+
         </div>
+
 
     </div>
+
 
 </div>
 
 
-<div class="settings-overlay" id="settingsOverlay">
+
+<!-- =====================================================
+     SETTINGS
+===================================================== -->
+
+<div
+class="settings-overlay"
+id="settingsOverlay">
+
 
     <div class="settings-card">
+
 
         <div class="settings-title">
             Настройки
         </div>
 
+
+
+        <!-- WALLPAPER -->
+
         <div class="section-title">
             Обои
         </div>
 
-        <div class="wallpapers">
 
-            <div
-            class="wallpaper"
-            data-wallpaper="wallpapers/wall1.jpg"
-            style="background-image:url('wallpapers/wall1.jpg')">
-            </div>
-
-            <div
-            class="wallpaper"
-            data-wallpaper="wallpapers/wall2.jpg"
-            style="background-image:url('wallpapers/wall2.jpg')">
-            </div>
-
-            <div
-            class="wallpaper"
-            data-wallpaper="wallpapers/wall3.jpg"
-            style="background-image:url('wallpapers/wall3.jpg')">
-            </div>
-
+        <div
+        class="wallpapers"
+        id="wallpaperList">
         </div>
 
 
-        <div class="section-title">
-            Приложения
-        </div>
+        <input
+        type="file"
+        id="wallpaperInput"
+        accept="image/*"
+        hidden>
 
-        <div id="appSettings"></div>
 
+        <button
+        class="settings-button"
+        onclick="chooseWallpaper()">
 
-        <button class="settings-button" onclick="toggleAddForm()">
-            ＋ Добавить приложение
+            ＋ Добавить обои
+
         </button>
 
 
-        <div class="add-form" id="addForm">
+        <div class="info">
+
+            Можно выбрать любую фотографию
+            из Фото или Файлов.
+            Имя файла значения не имеет.
+
+        </div>
+
+
+
+        <!-- APPS -->
+
+        <div class="section-title">
+
+            Приложения
+
+        </div>
+
+
+        <div
+        id="appSettings">
+        </div>
+
+
+
+        <!-- ADD APP -->
+
+        <button
+        class="settings-button"
+        onclick="toggleAddForm()">
+
+            ＋ Добавить приложение
+
+        </button>
+
+
+
+        <div
+        class="add-form"
+        id="addForm">
+
 
             <input
             class="input"
             id="newTitle"
-            placeholder="Название">
+            placeholder="Название приложения">
+
 
             <input
             class="input"
             id="newUrl"
             placeholder="Ссылка или URL-схема">
 
+
             <div class="section-title">
                 Значок
             </div>
 
-            <div class="icon-options" id="iconOptions"></div>
 
-            <div class="form-hint">
-                Примеры: https://..., tg://, tel:, maps://
+            <div
+            class="icon-options"
+            id="iconOptions">
             </div>
 
-            <button class="settings-button" onclick="addApp()">
+
+            <div class="form-hint">
+
+                Например:
+                https://...
+                или специальная ссылка приложения.
+
+            </div>
+
+
+            <button
+            class="settings-button"
+            onclick="addApp()">
+
                 Добавить
+
             </button>
+
 
         </div>
 
 
-        <button class="settings-button secondary" onclick="closeSettings()">
+
+        <!-- CLOSE -->
+
+        <button
+        class="settings-button secondary"
+        onclick="closeSettings()">
+
             Готово
+
         </button>
+
 
     </div>
 
 </div>
 
 
+
 <script>
 
+/* =====================================================
+   DEFAULT APPLICATIONS
+===================================================== */
+
 const defaultApps = [
+
 {
     id:"music",
+
     title:"Музыка",
+
     icon:"🎵",
-    url:"https://madenjanna-ui.github.io/Music-edition/",
+
+    url:
+    "https://madenjanna-ui.github.io/Music-edition/",
+
     enabled:true,
+
     removable:false
 },
+
 {
     id:"planner",
+
     title:"Планер",
+
     icon:"📅",
+
     url:"#",
+
     enabled:true,
+
     removable:false
 },
+
 {
     id:"family",
+
     title:"Сообщения",
+
     icon:"💬",
+
     url:"#",
+
     enabled:true,
+
     removable:false
 },
+
 {
     id:"games",
+
     title:"Игры",
+
     icon:"🎮",
-    url:"https://madenjanna-ui.github.io/Avtoslalom/",
+
+    url:
+    "https://madenjanna-ui.github.io/Avtoslalom/",
+
     enabled:true,
+
     removable:false
 },
+
 {
     id:"journal",
+
     title:"Журнал",
+
     icon:"📊",
+
     url:"#",
+
     enabled:true,
+
     removable:false
 },
+
 {
     id:"notes",
+
     title:"Заметки",
+
     icon:"📝",
+
     url:"#",
+
     enabled:true,
+
     removable:false
 },
+
 {
     id:"photos",
+
     title:"Фото",
+
     icon:"🖼️",
+
     url:"#",
+
     enabled:true,
+
     removable:false
 },
+
 {
     id:"maps",
+
     title:"Карты",
+
     icon:"🗺️",
-    url:"https://maps.apple.com/",
+
+    url:
+    "https://maps.apple.com/",
+
     enabled:true,
+
     removable:false
 }
+
 ];
 
+
+/* =====================================================
+   ICON LIST
+===================================================== */
 
 const iconChoices = [
-"🎵","📅","💬","🎮","📝","📊",
-"📷","🖼️","🌐","🗺️","📞","🧮",
-"📁","🎬","📺","☁️","📚","💳",
-"🚗","✉️","⌚","🏠","🔎","⭐"
+
+"🎵",
+"📅",
+"💬",
+"🎮",
+"📝",
+"📊",
+
+"📷",
+"🖼️",
+"🌐",
+"🗺️",
+"📞",
+"🧮",
+
+"📁",
+"🎬",
+"📺",
+"☁️",
+"📚",
+"💳",
+
+"🚗",
+"✉️",
+"⌚",
+"🏠",
+"🔎",
+"⭐",
+
+"🎧",
+"🎙️",
+"📻",
+"🧭",
+"📰",
+"⚙️"
+
 ];
 
 
-let selectedIcon = "⭐";
+let selectedIcon =
+"⭐";
 
 
-let apps = JSON.parse(
-    localStorage.getItem("launcherFullApps") || "null"
+/* =====================================================
+   LOAD APPS
+===================================================== */
+
+let apps =
+JSON.parse(
+
+    localStorage.getItem(
+        "launcherFullApps"
+    )
+
+    ||
+
+    "null"
+
 );
 
+
 if(!apps){
-    apps = defaultApps;
-    saveFullApps();
+
+    apps =
+    defaultApps;
+
+    saveApps();
+
 }
 
 
-const savedWallpaper =
-localStorage.getItem("launcherWallpaper")
-||
-"wallpapers/wall1.jpg";
+/* =====================================================
+   SAVE APPS
+===================================================== */
 
+function saveApps(){
 
-document.getElementById("home").style.backgroundImage =
-`url("${savedWallpaper}")`;
-
-
-function saveFullApps(){
     localStorage.setItem(
+
         "launcherFullApps",
+
         JSON.stringify(apps)
+
     );
+
 }
 
+
+/* =====================================================
+   RENDER APPS
+===================================================== */
 
 function renderApps(){
 
     const container =
-    document.getElementById("appsContainer");
+
+    document.getElementById(
+        "appsContainer"
+    );
+
 
     container.innerHTML = "";
 
+
     apps
-    .filter(app=>app.enabled)
-    .forEach(app=>{
 
-        const el = document.createElement("div");
+    .filter(
+        app =>
+        app.enabled
+    )
 
-        el.className = "app";
+    .forEach(
+        app => {
 
-        el.innerHTML = `
-            <div class="icon">${app.icon}</div>
-            <div class="name">${escapeHTML(app.title)}</div>
-        `;
 
-        el.onclick = ()=>openURL(app.url);
+            const el =
+            document.createElement(
+                "div"
+            );
 
-        container.appendChild(el);
-    });
+
+            el.className =
+            "app";
+
+
+            el.innerHTML = `
+
+                <div class="icon">
+
+                    ${app.icon}
+
+                </div>
+
+                <div class="name">
+
+                    ${escapeHTML(app.title)}
+
+                </div>
+
+            `;
+
+
+            el.onclick =
+            ()=>{
+
+                openURL(
+                    app.url
+                );
+
+            };
+
+
+            container
+            .appendChild(el);
+
+        }
+    );
+
 }
 
+
+/* =====================================================
+   SETTINGS APPLICATION LIST
+===================================================== */
 
 function renderSettings(){
 
     const box =
-    document.getElementById("appSettings");
+
+    document.getElementById(
+        "appSettings"
+    );
+
 
     box.innerHTML = "";
 
-    if(!apps.length){
-        box.innerHTML =
-        `<div class="empty">Нет приложений</div>`;
-        return;
-    }
 
-    apps.forEach(app=>{
+    apps.forEach(
+        app => {
 
-        const row = document.createElement("div");
 
-        row.className = "setting-row";
+            const row =
+            document.createElement(
+                "div"
+            );
 
-        row.innerHTML = `
-            <div class="setting-left">
-                <div class="setting-name">
-                    ${app.icon} ${escapeHTML(app.title)}
+
+            row.className =
+            "setting-row";
+
+
+            row.innerHTML = `
+
+                <div class="setting-left">
+
+                    <div class="setting-name">
+
+                        ${app.icon}
+                        ${escapeHTML(app.title)}
+
+                    </div>
+
                 </div>
-            </div>
 
-            <div class="setting-actions">
 
-                <div class="switch ${app.enabled ? "on" : ""}">
-                    <div class="switch-knob"></div>
+                <div class="setting-actions">
+
+                    <div
+                    class="switch
+                    ${app.enabled ? "on" : ""}">
+
+                        <div
+                        class="switch-knob">
+                        </div>
+
+                    </div>
+
+
+                    ${
+                        app.removable
+
+                        ?
+
+                        `
+                        <button
+                        class="delete-btn">
+
+                            ×
+
+                        </button>
+                        `
+
+                        :
+
+                        ""
+                    }
+
                 </div>
 
-                ${
-                    app.removable
-                    ?
-                    `<button class="delete-btn">×</button>`
-                    :
-                    ""
-                }
-
-            </div>
-        `;
-
-        const switchEl =
-        row.querySelector(".switch");
-
-        switchEl.onclick = e=>{
-            e.stopPropagation();
-
-            app.enabled = !app.enabled;
-
-            saveFullApps();
-            renderApps();
-            renderSettings();
-        };
+            `;
 
 
-        const deleteBtn =
-        row.querySelector(".delete-btn");
 
-        if(deleteBtn){
+            const switchEl =
 
-            deleteBtn.onclick = e=>{
+            row.querySelector(
+                ".switch"
+            );
 
-                e.stopPropagation();
 
-                if(confirm(
-                    `Удалить «${app.title}»?`
-                )){
-                    apps = apps.filter(
-                        item=>item.id !== app.id
-                    );
+            switchEl.onclick =
+            event => {
 
-                    saveFullApps();
-                    renderApps();
-                    renderSettings();
-                }
+
+                event.stopPropagation();
+
+
+                app.enabled =
+                !app.enabled;
+
+
+                saveApps();
+
+                renderApps();
+
+                renderSettings();
+
             };
+
+
+
+            const deleteButton =
+
+            row.querySelector(
+                ".delete-btn"
+            );
+
+
+            if(deleteButton){
+
+
+                deleteButton.onclick =
+                event => {
+
+
+                    event.stopPropagation();
+
+
+                    if(
+
+                        confirm(
+                            `Удалить «${app.title}»?`
+                        )
+
+                    ){
+
+
+                        apps =
+                        apps.filter(
+
+                            item =>
+                            item.id
+                            !==
+                            app.id
+
+                        );
+
+
+                        saveApps();
+
+                        renderApps();
+
+                        renderSettings();
+
+                    }
+
+                };
+
+            }
+
+
+            box.appendChild(row);
+
         }
+    );
 
-        box.appendChild(row);
-    });
 }
 
 
-function renderIconOptions(){
-
-    const box =
-    document.getElementById("iconOptions");
-
-    box.innerHTML = "";
-
-    iconChoices.forEach(icon=>{
-
-        const item =
-        document.createElement("div");
-
-        item.className =
-        "icon-option"
-        +
-        (
-            icon === selectedIcon
-            ?
-            " selected"
-            :
-            ""
-        );
-
-        item.textContent = icon;
-
-        item.onclick = ()=>{
-
-            selectedIcon = icon;
-
-            renderIconOptions();
-        };
-
-        box.appendChild(item);
-    });
-}
-
+/* =====================================================
+   ADD APPLICATION FORM
+===================================================== */
 
 function toggleAddForm(){
 
     document
-    .getElementById("addForm")
-    .classList.toggle("show");
+    .getElementById(
+        "addForm"
+    )
+    .classList
+    .toggle(
+        "show"
+    );
+
 }
 
+
+/* =====================================================
+   ICON SELECTOR
+===================================================== */
+
+function renderIconOptions(){
+
+    const box =
+
+    document.getElementById(
+        "iconOptions"
+    );
+
+
+    box.innerHTML = "";
+
+
+    iconChoices.forEach(
+        icon => {
+
+
+            const item =
+            document.createElement(
+                "div"
+            );
+
+
+            item.className =
+
+            "icon-option"
+
+            +
+
+            (
+                icon === selectedIcon
+
+                ?
+
+                " selected"
+
+                :
+
+                ""
+            );
+
+
+            item.textContent =
+            icon;
+
+
+            item.onclick =
+            ()=>{
+
+
+                selectedIcon =
+                icon;
+
+
+                renderIconOptions();
+
+            };
+
+
+            box.appendChild(item);
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ADD APPLICATION
+===================================================== */
 
 function addApp(){
 
     const title =
+
     document
-    .getElementById("newTitle")
+    .getElementById(
+        "newTitle"
+    )
     .value
     .trim();
 
+
     const url =
+
     document
-    .getElementById("newUrl")
+    .getElementById(
+        "newUrl"
+    )
     .value
     .trim();
+
 
 
     if(!title){
 
-        alert("Введите название приложения.");
+        alert(
+            "Введите название приложения."
+        );
 
         return;
+
     }
 
 
     if(!url){
 
-        alert("Введите ссылку или URL-схему.");
+        alert(
+            "Введите ссылку приложения."
+        );
 
         return;
+
     }
+
 
 
     apps.push({
@@ -870,32 +1829,52 @@ function addApp(){
     });
 
 
-    saveFullApps();
+
+    saveApps();
+
 
     renderApps();
 
     renderSettings();
 
 
+
     document
-    .getElementById("newTitle")
+    .getElementById(
+        "newTitle"
+    )
     .value = "";
 
 
     document
-    .getElementById("newUrl")
+    .getElementById(
+        "newUrl"
+    )
     .value = "";
 
 
-    selectedIcon = "⭐";
+    selectedIcon =
+    "⭐";
+
 
     renderIconOptions();
 
+
     document
-    .getElementById("addForm")
-    .classList.remove("show");
+    .getElementById(
+        "addForm"
+    )
+    .classList
+    .remove(
+        "show"
+    );
+
 }
 
+
+/* =====================================================
+   OPEN APPLICATION
+===================================================== */
 
 function openURL(url){
 
@@ -904,143 +1883,829 @@ function openURL(url){
         ||
         url === "#"
     ){
+
         return;
+
     }
 
-    window.location.href = url;
+
+    window.location.href =
+    url;
+
 }
 
 
-document
-.querySelectorAll(".wallpaper")
-.forEach(item=>{
+/* =====================================================
+   WALLPAPERS
+===================================================== */
 
-    item.onclick = ()=>{
+let wallpapers =
 
-        const wallpaper =
-        item.dataset.wallpaper;
+JSON.parse(
 
-        document
-        .getElementById("home")
-        .style.backgroundImage =
-        `url("${wallpaper}")`;
-
-        localStorage.setItem(
-            "launcherWallpaper",
-            wallpaper
-        );
-
-        updateWallpaperSelection();
-    };
-});
-
-
-function updateWallpaperSelection(){
-
-    const current =
     localStorage.getItem(
-        "launcherWallpaper"
+        "launcherWallpapers"
     )
+
     ||
-    "wallpapers/wall1.jpg";
+
+    "[]"
+
+);
+
+
+let currentWallpaper =
+
+localStorage.getItem(
+    "launcherCurrentWallpaper"
+);
+
+
+/* =====================================================
+   APPLY WALLPAPER
+===================================================== */
+
+if(currentWallpaper){
 
     document
-    .querySelectorAll(".wallpaper")
-    .forEach(item=>{
+    .getElementById(
+        "home"
+    )
+    .style
+    .backgroundImage =
 
-        item.classList.toggle(
-            "selected",
-            item.dataset.wallpaper === current
-        );
-    });
+    `url("${currentWallpaper}")`;
+
 }
 
+
+/* =====================================================
+   CHOOSE WALLPAPER
+===================================================== */
+
+function chooseWallpaper(){
+
+    document
+    .getElementById(
+        "wallpaperInput"
+    )
+    .click();
+
+}
+
+
+/* =====================================================
+   FILE SELECTED
+===================================================== */
+
+document
+.getElementById(
+    "wallpaperInput"
+)
+.addEventListener(
+    "change",
+    function(){
+
+
+        const file =
+        this.files[0];
+
+
+        if(!file){
+
+            return;
+
+        }
+
+
+        if(
+
+            !file.type
+            .startsWith(
+                "image/"
+            )
+
+        ){
+
+            alert(
+                "Выберите изображение."
+            );
+
+            this.value="";
+
+            return;
+
+        }
+
+
+
+        const reader =
+        new FileReader();
+
+
+        reader.onload =
+        function(event){
+
+
+            const originalImage =
+            event.target.result;
+
+
+            compressWallpaper(
+
+                originalImage,
+
+                compressedImage => {
+
+
+                    wallpapers.push({
+
+                        id:
+                        Date.now(),
+
+                        image:
+                        compressedImage
+
+                    });
+
+
+                    if(
+
+                        !saveWallpapers()
+
+                    ){
+
+                        return;
+
+                    }
+
+
+                    setWallpaper(
+                        compressedImage
+                    );
+
+
+                    renderWallpapers();
+
+                }
+
+            );
+
+        };
+
+
+        reader.readAsDataURL(
+            file
+        );
+
+
+        this.value="";
+
+    }
+);
+
+
+/* =====================================================
+   COMPRESS WALLPAPER
+   чтобы фотографии не забивали память
+===================================================== */
+
+function compressWallpaper(
+    source,
+    callback
+){
+
+    const image =
+    new Image();
+
+
+    image.onload =
+    function(){
+
+
+        const maxWidth =
+        1179;
+
+
+        const maxHeight =
+        2556;
+
+
+        let width =
+        image.width;
+
+
+        let height =
+        image.height;
+
+
+        const ratio =
+
+        Math.min(
+
+            maxWidth / width,
+
+            maxHeight / height,
+
+            1
+
+        );
+
+
+        width =
+        Math.round(
+            width * ratio
+        );
+
+
+        height =
+        Math.round(
+            height * ratio
+        );
+
+
+        const canvas =
+        document.createElement(
+            "canvas"
+        );
+
+
+        canvas.width =
+        width;
+
+
+        canvas.height =
+        height;
+
+
+        const ctx =
+        canvas.getContext(
+            "2d"
+        );
+
+
+        ctx.drawImage(
+
+            image,
+
+            0,
+            0,
+
+            width,
+            height
+
+        );
+
+
+        const compressed =
+
+        canvas.toDataURL(
+
+            "image/jpeg",
+
+            .82
+
+        );
+
+
+        callback(
+            compressed
+        );
+
+    };
+
+
+    image.src =
+    source;
+
+}
+
+
+/* =====================================================
+   SAVE WALLPAPERS
+===================================================== */
+
+function saveWallpapers(){
+
+    try{
+
+        localStorage.setItem(
+
+            "launcherWallpapers",
+
+            JSON.stringify(
+                wallpapers
+            )
+
+        );
+
+
+        return true;
+
+    }
+
+    catch(error){
+
+
+        alert(
+
+            "Не хватает памяти для сохранения обоев. Удали несколько старых изображений."
+
+        );
+
+
+        wallpapers.pop();
+
+
+        return false;
+
+    }
+
+}
+
+
+/* =====================================================
+   SET WALLPAPER
+===================================================== */
+
+function setWallpaper(image){
+
+    currentWallpaper =
+    image;
+
+
+    try{
+
+        localStorage.setItem(
+
+            "launcherCurrentWallpaper",
+
+            image
+
+        );
+
+    }
+
+    catch(error){
+
+        alert(
+            "Не удалось сохранить выбранные обои."
+        );
+
+    }
+
+
+    document
+    .getElementById(
+        "home"
+    )
+    .style
+    .backgroundImage =
+
+    `url("${image}")`;
+
+
+    renderWallpapers();
+
+}
+
+
+/* =====================================================
+   DELETE WALLPAPER
+===================================================== */
+
+function deleteWallpaper(
+    id,
+    event
+){
+
+    event.stopPropagation();
+
+
+    const item =
+
+    wallpapers.find(
+
+        wallpaper =>
+        wallpaper.id === id
+
+    );
+
+
+    if(!item){
+
+        return;
+
+    }
+
+
+
+    wallpapers =
+
+    wallpapers.filter(
+
+        wallpaper =>
+        wallpaper.id !== id
+
+    );
+
+
+    if(
+
+        currentWallpaper
+        ===
+        item.image
+
+    ){
+
+
+        currentWallpaper =
+        null;
+
+
+        localStorage.removeItem(
+
+            "launcherCurrentWallpaper"
+
+        );
+
+
+        document
+        .getElementById(
+            "home"
+        )
+        .style
+        .backgroundImage =
+
+        "linear-gradient(160deg,#53657a,#263548 50%,#0b1119)";
+
+    }
+
+
+    saveWallpapers();
+
+    renderWallpapers();
+
+}
+
+
+/* =====================================================
+   RENDER WALLPAPERS
+===================================================== */
+
+function renderWallpapers(){
+
+    const list =
+
+    document.getElementById(
+        "wallpaperList"
+    );
+
+
+    list.innerHTML = "";
+
+
+    if(
+        !wallpapers.length
+    ){
+
+
+        list.innerHTML = `
+
+            <div
+            class="wallpaper-empty">
+
+                Обои пока не добавлены
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+
+    wallpapers.forEach(
+
+        wallpaper => {
+
+
+            const item =
+
+            document.createElement(
+                "div"
+            );
+
+
+            item.className =
+
+            "wallpaper"
+
+            +
+
+            (
+                currentWallpaper
+                ===
+                wallpaper.image
+
+                ?
+
+                " selected"
+
+                :
+
+                ""
+            );
+
+
+            item.style
+            .backgroundImage =
+
+            `url("${wallpaper.image}")`;
+
+
+            item.onclick =
+            ()=>{
+
+                setWallpaper(
+                    wallpaper.image
+                );
+
+            };
+
+
+
+            const del =
+
+            document.createElement(
+                "button"
+            );
+
+
+            del.className =
+            "wallpaper-delete";
+
+
+            del.textContent =
+            "×";
+
+
+            del.onclick =
+            event => {
+
+                deleteWallpaper(
+
+                    wallpaper.id,
+
+                    event
+
+                );
+
+            };
+
+
+            item.appendChild(
+                del
+            );
+
+
+            list.appendChild(
+                item
+            );
+
+        }
+
+    );
+
+}
+
+
+/* =====================================================
+   CLOCK
+===================================================== */
 
 function updateClock(){
 
-    const now = new Date();
+    const now =
+    new Date();
+
 
     const time =
+
     now.toLocaleTimeString(
+
         "ru-RU",
+
         {
-            hour:"2-digit",
-            minute:"2-digit"
+
+            hour:
+            "2-digit",
+
+            minute:
+            "2-digit"
+
         }
+
     );
 
-    document
-    .getElementById("clock")
-    .textContent = time;
 
     document
-    .getElementById("bigTime")
-    .textContent = time;
+    .getElementById(
+        "clock"
+    )
+    .textContent =
+    time;
+
+
+    document
+    .getElementById(
+        "bigTime"
+    )
+    .textContent =
+    time;
+
 
 
     let date =
+
     now.toLocaleDateString(
+
         "ru-RU",
+
         {
-            weekday:"long",
-            day:"numeric",
-            month:"long"
+
+            weekday:
+            "long",
+
+            day:
+            "numeric",
+
+            month:
+            "long"
+
         }
+
     );
 
+
     date =
-    date.charAt(0).toUpperCase()
+
+    date.charAt(0)
+    .toUpperCase()
+
     +
+
     date.slice(1);
 
+
     document
-    .getElementById("date")
-    .textContent = date;
+    .getElementById(
+        "date"
+    )
+    .textContent =
+    date;
+
 }
 
 
 updateClock();
 
+
 setInterval(
+
     updateClock,
+
     10000
+
 );
 
 
+/* =====================================================
+   SECRET SETTINGS
+   долгое удержание маленьких часов
+===================================================== */
+
 const clock =
-document.getElementById("clock");
+
+document.getElementById(
+    "clock"
+);
+
 
 let pressTimer;
 
 
 clock.addEventListener(
+
     "touchstart",
+
+    ()=>{
+
+
+        pressTimer =
+
+        setTimeout(
+
+            openSettings,
+
+            1700
+
+        );
+
+    }
+
+);
+
+
+clock.addEventListener(
+
+    "touchend",
+
+    ()=>{
+
+        clearTimeout(
+            pressTimer
+        );
+
+    }
+
+);
+
+
+clock.addEventListener(
+
+    "touchmove",
+
+    ()=>{
+
+        clearTimeout(
+            pressTimer
+        );
+
+    }
+
+);
+
+
+/* также работает мышью на компьютере */
+
+clock.addEventListener(
+
+    "mousedown",
+
     ()=>{
 
         pressTimer =
+
         setTimeout(
+
             openSettings,
+
             1700
+
         );
+
     }
+
 );
 
 
 clock.addEventListener(
-    "touchend",
+
+    "mouseup",
+
     ()=>{
-        clearTimeout(pressTimer);
+
+        clearTimeout(
+            pressTimer
+        );
+
     }
+
 );
 
 
 clock.addEventListener(
-    "touchmove",
+
+    "mouseleave",
+
     ()=>{
-        clearTimeout(pressTimer);
+
+        clearTimeout(
+            pressTimer
+        );
+
     }
+
 );
 
+
+/* =====================================================
+   OPEN SETTINGS
+===================================================== */
 
 function openSettings(){
 
@@ -1048,36 +2713,84 @@ function openSettings(){
 
     renderIconOptions();
 
-    updateWallpaperSelection();
+    renderWallpapers();
+
 
     document
-    .getElementById("settingsOverlay")
-    .classList.add("show");
+    .getElementById(
+        "settingsOverlay"
+    )
+    .classList
+    .add(
+        "show"
+    );
+
 }
 
+
+/* =====================================================
+   CLOSE SETTINGS
+===================================================== */
 
 function closeSettings(){
 
     document
-    .getElementById("settingsOverlay")
-    .classList.remove("show");
+    .getElementById(
+        "settingsOverlay"
+    )
+    .classList
+    .remove(
+        "show"
+    );
+
 }
 
+
+/* =====================================================
+   HTML SECURITY
+===================================================== */
 
 function escapeHTML(text){
 
-    return text
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+    return String(text)
+
+    .replaceAll(
+        "&",
+        "&amp;"
+    )
+
+    .replaceAll(
+        "<",
+        "&lt;"
+    )
+
+    .replaceAll(
+        ">",
+        "&gt;"
+    )
+
+    .replaceAll(
+        '"',
+        "&quot;"
+    )
+
+    .replaceAll(
+        "'",
+        "&#039;"
+    );
+
 }
 
 
+/* =====================================================
+   START
+===================================================== */
+
 renderApps();
+
 renderIconOptions();
-updateWallpaperSelection();
+
+renderWallpapers();
 
 </script>
 
